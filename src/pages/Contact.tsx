@@ -34,15 +34,9 @@ const Contact = () => {
   const locations = [
     {
       name: 'Planta Industrial & Ventas',
-      address: 'Parque Industrial Sur, Buenos Aires',
-      phone: '+54 11 4455-6677',
+      address: 'Estado de Israel, R8324 Cipolletti, Río Negro',
+      phone: '+54 9 299 608-7387',
       timings: 'Lun a Vie: 8:00 a 17:00 hs'
-    },
-    {
-      name: 'Showroom Capital Federal',
-      address: 'Av. Libertador 4500, CABA',
-      phone: '+54 11 4899-0011',
-      timings: 'Lun a Vie: 10:00 a 19:00 hs'
     }
   ];
 
@@ -205,7 +199,12 @@ const Contact = () => {
             </div>
 
             {/* Map Placeholder with visual polish */}
-            <div className="h-48 bg-gray-900 rounded-3xl relative overflow-hidden group">
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Estado+de+Israel,+R8324+Cipolletti,+R%C3%ADo+Negro" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="h-48 bg-gray-900 rounded-3xl relative overflow-hidden group block"
+            >
               <img 
                 src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                 alt="Map Background"
@@ -216,7 +215,7 @@ const Contact = () => {
                 <span className="material-symbols-outlined text-[#a0d87a] text-4xl animate-bounce">location_on</span>
                 <span className="text-white font-bold text-sm tracking-widest uppercase">Ver mapa interactivo</span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

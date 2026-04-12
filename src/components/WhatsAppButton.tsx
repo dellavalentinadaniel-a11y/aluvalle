@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
   const isContactPage = location.pathname === '/contact';
 
   // Social link details
-  const whatsappNumber = "542994673451"; 
+  const whatsappNumber = "5492996087387"; 
   const message = "Hola Aluvallé! Estaba navegando por su sitio web y me gustaría recibir asesoramiento sobre sus sistemas.";
   const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
