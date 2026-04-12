@@ -13,6 +13,12 @@ Este documento registra los avances, tareas pendientes y mejoras planificadas pa
 - [x] Carga de perfiles Línea Mónaco (Estándar y Top).
 - [x] Implementación de desplegables para sub-líneas en detalle de producto.
 - [x] Página de Testeos y Ensayos Línea Mónaco.
+- [x] Página de Mecanizado Mónaco.
+
+### Línea Mediterránea
+- [x] Carga de perfiles Línea Mediterránea y Mediterránea RPT.
+- [x] Páginas de Mecanizado (Estándar y RPT).
+- [x] Conexión en Detalle de Producto.
 
 ### Línea Atlántica
 - [x] Carga de perfiles técnicos.
@@ -24,7 +30,6 @@ Este documento registra los avances, tareas pendientes y mejoras planificadas pa
 
 ### General / Catálogo
 - [x] Cargar perfiles técnicos para **Línea Delta**.
-- [ ] Cargar perfiles técnicos para **Línea Mediterránea**.
 - [ ] Reemplazar enlaces de descarga `#` por archivos reales (PDF/DWG).
 
 ## ✨ Mejoras Futuras

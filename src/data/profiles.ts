@@ -68,7 +68,7 @@ export const gammaProfiles: Profile[] = [
   { code: "108", weight: "0,47", txp: "6", description: "Hoja de Mosquitero para Ventana y Puerta Corrediza, y Puerta Mosquitero", page: "14", shape: 'mosquitero' },
   { code: "153 (a)", weight: "0,70", txp: "4", description: "Guía de Cortina Común", page: "15", shape: 'guia' },
   { code: "154 (a)", weight: "1,02", txp: "4", description: "Guía de Cortina Regulable (Barrio)", page: "15", shape: 'guia' },
-  { code: "174 (a)", weight: "0,74", txp: "4", description: "Marco para P. Fijo, V. Banderola, V. de Rebatir, Oscilo-Batiente y P. de Rebatir", page: "7", shape: 'marco' },
+  { code: "174 (a)", weight: "0,74", txp: "4", description: "Marco para Paño Fijo", page: "7", shape: 'marco' },
   { code: "175 (a)", weight: "0,84", txp: "4", description: "Marco con Contramarco para V. Banderola, V. de Rebatir, Oscilo-Batiente y P. de Rebatir", page: "7", shape: 'marco' },
   { code: "176 (a)", weight: "0,74", txp: "4", description: "Hoja V/S para Ventana Banderola, Ventana de Rebatir y Oscilo-Batiente", page: "8", shape: 'hoja' },
   { code: "177 (a)", weight: "0,69", txp: "4", description: "Hoja DVH para Ventana Banderola, Ventana de Rebatir y Oscilo-Batiente", page: "8", shape: 'hoja' },
@@ -95,7 +95,7 @@ export const gammaProfiles: Profile[] = [
   { code: "480", weight: "0,58", txp: "6", description: "Parante Central para Ventana y Puerta Corrediza Opción \"C\"", page: "6", shape: 'parante' },
   { code: "481", weight: "0,70", txp: "4", description: "Hoja para Ventana y Puerta Corrediza - Línea Combinada", page: "6", shape: 'hoja' },
   { code: "482", weight: "0,76", txp: "4", description: "Hoja para Ventana y Puerta Corrediza con D.V.H.", page: "6", shape: 'hoja' },
-  { code: "483", weight: "0,96", txp: "4", description: "Marco para Ventana y Puerta Corrediza", page: "5", shape: 'marco' },
+  { code: "483", weight: "1,00", txp: "4", description: "Marco para Ventana y Puerta Corrediza", page: "5", shape: 'marco' },
   { code: "484 (b)", weight: "1,06", txp: "4", description: "Marco con Contramarco para Ventana y Puerta Corrediza", page: "5", shape: 'marco' },
   { code: "486", weight: "0,18", txp: "20", description: "Contramarco Curvo Coplanar", page: "12", shape: 'contramarco' },
   { code: "518", weight: "1,00", txp: "4", description: "Refuerzo de Parante", page: "6", shape: 'parante' },
@@ -113,6 +113,139 @@ export const gammaProfiles: Profile[] = [
   { code: "885", weight: "0,20", txp: "20", description: "Contravidrio Recto de 9 mm", page: "13", shape: 'contravidrio' },
   { code: "887", weight: "0,19", txp: "20", description: "Contravidrio Recto de 6 mm", page: "13", shape: 'contravidrio' },
   { code: "9469", weight: "0,07", txp: "-", description: "Varilla de Poliamida", page: "8", shape: 'varilla' }
+];
+
+export const frenteIntegralProfiles: Profile[] = [
+  { code: '126', weight: '1,03', txp: '3', description: 'Tapa Cosmética', page: '5' },
+  { code: '127', weight: '0,46', txp: '8', description: 'Portador', page: '5' },
+  { code: '783', weight: '0,74', txp: '4', description: 'Nariz Frente Integral', page: '3' },
+  { code: '784', weight: '0,54', txp: '4', description: 'Adaptador D.V.H', page: '5' },
+  { code: '788', weight: '1,90', txp: '2', description: 'Columna de 100 mm', page: '3' },
+  { code: '789', weight: '2,11', txp: '2', description: 'Columna de 120 mm', page: '3' },
+  { code: '790', weight: '1,19', txp: '2', description: 'Columna de 64 mm', page: '3' },
+  { code: '791', weight: '0,44', txp: '8', description: 'Prensa', page: '5' },
+  { code: '792', weight: '0,37', txp: '8', description: 'Tapa', page: '5' },
+  { code: '796', weight: '2,63', txp: '2', description: 'Columna de 133,5 mm', page: '4' },
+  { code: '797', weight: '0,67', txp: '4', description: 'Tapa Curva', page: '5' },
+  { code: '800', weight: '3,14', txp: '4', description: 'Columna de 180 mm', page: '4' },
+];
+
+export const frenteVidriadoProfiles: Profile[] = [
+  { code: '351', weight: '1,07', txp: '4', description: 'Media Columna Rótula Macho', page: '4' },
+  { code: '352', weight: '1,23', txp: '3', description: 'Media Columna Rótula Hembra', page: '4' },
+  { code: '359', weight: '0,75', txp: '5', description: 'Bota Agua Paño de Abrir p/ V.S', page: '8' },
+  { code: '367', weight: '1,05', txp: '4', description: 'Columna Divisoria', page: '2' },
+  { code: '368', weight: '1,78', txp: '2', description: 'Columna a 45º', page: '3' },
+  { code: '369', weight: '0,38', txp: '10', description: 'Tapa de Columna', page: '5' },
+  { code: '370', weight: '1,78', txp: '2', description: 'Columna a 90º', page: '3' },
+  { code: '371', weight: '0,66', txp: '6', description: 'Tapa Columna a 90º', page: '6' },
+  { code: '372', weight: '0,79', txp: '4', description: 'Tapa de Columna', page: '6' },
+  { code: '373', weight: '0,78', txp: '4', description: 'Parante de Hoja p/V.S', page: '8' },
+  { code: '374', weight: '0,68', txp: '5', description: 'Cabezal / Zócalo de Hoja p/V.S', page: '8' },
+  { code: '376', weight: '0,60', txp: '7', description: 'Hoja DVH en Offset', page: '4' },
+  { code: '377', weight: '0,69', txp: '5', description: 'Hoja c/Contravidrio V.S', page: '8' },
+  { code: '378', weight: '0,79', txp: '4', description: 'Bota Agua Paño Fijo', page: '8' },
+  { code: '761', weight: '0,64', txp: '6', description: 'Marco Perimetral', page: '6' },
+  { code: '762', weight: '0,57', txp: '7', description: 'Travesaño de Hoja para Vidrio Estructural', page: '6' },
+  { code: '763', weight: '0,68', txp: '4', description: 'Bota Agua Paño Fijo para Vidrio Estructural', page: '6' },
+  { code: '764', weight: '0,60', txp: '4', description: 'Bota Agua Paño de Abrir para Vidrio Estructural', page: '6' },
+  { code: '765', weight: '1,31', txp: '2', description: 'Columna de 57 mm', page: '2' },
+  { code: '766', weight: '0,56', txp: '8', description: 'Parante de Hoja para Vidrio Estructural', page: '6' },
+  { code: '767', weight: '1,82', txp: '2', description: 'Columna de 97 mm', page: '2' },
+  { code: '768', weight: '1,07', txp: '4', description: 'Media Columna de 97 mm', page: '3' },
+  { code: '769', weight: '0,63', txp: '6', description: 'Hoja D.V.H. Pegado para Vidrio Estructural', page: '6' },
+  { code: '770', weight: '0,83', txp: '4', description: 'Hoja D.V.H. con Contravidrio', page: '7' },
+  { code: '771', weight: '0,15', txp: '15', description: 'Contravidrio', page: '7' },
+  { code: '781', weight: '0,85', txp: '2', description: 'Bota Agua Paño Fijo para Hoja 770', page: '7' },
+  { code: '782', weight: '0,81', txp: '4', description: 'Bota Agua Paño de Abrir para Hoja 770', page: '7' },
+  { code: '795 (a)', weight: '3,43', txp: '1', description: 'Columna 177 mm (a pedido)', page: '6' },
+  { code: '798', weight: '2,79', txp: '1', description: 'Columna Grande (151 mm)', page: '4' },
+];
+
+export const barandasProfiles: Profile[] = [
+  { code: '25', weight: '1,24', txp: '2', description: 'Pasamano Recto Baranda BBA', page: '4' },
+  { code: '28', weight: '1,35', txp: '2', description: 'Pasamano Curvo Baranda BBA', page: '4' },
+  { code: '29', weight: '0,20', txp: '14', description: 'Tapa Inferior Pasamano Baranda BBA', page: '4' },
+  { code: '30', weight: '0,83', txp: '4', description: 'Parante Baranda BBA', page: '4' },
+  { code: '31', weight: '0,38', txp: '8', description: 'Porta Bilisan Inferior Baranda BBA', page: '4' },
+  { code: '32', weight: '1,15', txp: '2', description: 'Pasamano Recto 35 mm Baranda BBA', page: '4' },
+  { code: '400', weight: '0,24', txp: '8', description: 'Remate Vidrio 8+8', page: '7' },
+  { code: '401', weight: '0,29', txp: '8', description: 'Remate Vidrio 10+10', page: '7' },
+  { code: '407', weight: '1,21', txp: '8', description: 'Pasamanos SP', page: '7' },
+  { code: '420', weight: '7,41', txp: '1', description: 'Base Baranda SPL', page: '5' },
+  { code: '421', weight: '0,30', txp: '8', description: 'Tapa SPL', page: '5' },
+  { code: '423', weight: '6,88', txp: '1', description: 'Base Baranda SPU', page: '7' },
+  { code: '425', weight: '10,42', txp: '1', description: 'Base Baranda SP', page: '6' },
+  { code: '426', weight: '0,77', txp: '4', description: 'Tapa SP', page: '6' },
+  { code: '439', weight: '1,05', txp: '2', description: 'Pasamanos Recto para Baranda Clásica', page: '3' },
+  { code: '468', weight: '0,53', txp: '8', description: 'Porta Vidrio para Baranda Clásica', page: '3' },
+  { code: '475', weight: '1,30', txp: '2', description: 'Pasamanos Redondo para Baranda Clásica', page: '3' },
+  { code: '476', weight: '0,61', txp: '8', description: 'Parante para Baranda Clásica', page: '3' },
+  { code: '477', weight: '0,56', txp: '8', description: 'Base de Pasamanos para Baranda Clásica', page: '3' },
+  { code: '478', weight: '0,51', txp: '8', description: 'Parante Angosto', page: '3' },
+];
+
+export const mamparasProfiles: Profile[] = [
+  { code: '201', weight: '0,52', txp: '10', description: 'Marco Mampara de Abrir', page: '19' },
+  { code: '202', weight: '0,57', txp: '10', description: 'Porta Hoja Mampara de Abrir', page: '19' },
+  { code: '203', weight: '0,64', txp: '6', description: 'Hoja Mampara de Abrir', page: '19' },
+  { code: '434', weight: '0,62', txp: '4', description: 'Cabezal Mampara Corrediza', page: '18' },
+  { code: '435', weight: '0,23', txp: '6', description: 'Tapa Cabezal Mampara Corrediza', page: '18' },
+  { code: '436', weight: '0,28', txp: '6', description: 'Umbral Mampara Corrediza', page: '18' },
+  { code: '437', weight: '0,08', txp: '20', description: 'Tapa Umbral Mampara Corrediza', page: '18' },
+  { code: '438', weight: '0,15', txp: '12', description: 'Cierre Vidrio 180º Mampara Corrediza', page: '18' },
+  { code: '440', weight: '0,19', txp: '12', description: 'Encuentro Vidrio 90º Mampara Corrediza', page: '18' },
+  { code: '941', weight: '0,82', txp: '4', description: 'Cabezal para Mampara de Baño 900', page: '17' },
+  { code: '942', weight: '0,37', txp: '8', description: 'Umbral para Mampara de Baño 900', page: '17' },
+  { code: '943', weight: '0,32', txp: '8', description: 'Jamba para Mampara de Baño 900', page: '17' },
+  { code: '944', weight: '0,35', txp: '10', description: 'Hoja para Mampara de Baño 900', page: '17' },
+  { code: '946', weight: '0,24', txp: '20', description: 'Barra Toallera', page: '17' },
+];
+
+export const placardProfiles: Profile[] = [
+  { code: '155 (c)', weight: '0,53', txp: '6', description: 'Parante de 15 mm para Frente de Placard', page: '7' },
+  { code: '156', weight: '0,16', txp: '20', description: 'Cantonera de 15 mm para Frente de Placard', page: '7' },
+  { code: '157', weight: '0,25', txp: '8', description: 'Guía Inferior para Frente de Placard', page: '7' },
+  { code: '158', weight: '0,20', txp: '20', description: 'Cantonera de 18 mm para Frente de Placard', page: '7' },
+  { code: '159 (c)', weight: '0,54', txp: '6', description: 'Parante de 18 mm para Frente de Placard', page: '7' },
+  { code: '160', weight: '0,68', txp: '4', description: 'Guía Superior para Frente de Placard', page: '7' },
+  { code: '398', weight: '0,91', txp: '5', description: 'Revestimiento Tubular para Puerta de Rebatir', page: '26' },
+  { code: '415', weight: '0,75', txp: '3', description: 'Revestimiento Tubular para Puerta de Rebatir (alt)', page: '26' },
+];
+
+export const cortinasProfiles: Profile[] = [
+  { code: '325 (a)', weight: '0,42', txp: '8', description: 'Tablilla Cortina Común Troquelada', page: '15' },
+  { code: '624 (a)', weight: '0,42', txp: '8', description: 'Tablilla Cortina Común', page: '15' },
+  { code: '626', weight: '0,90', txp: '4', description: 'Zócalo para Cortina Regulable', page: '16' },
+  { code: '627', weight: '0,49', txp: '6', description: 'Tablilla Comando para Cortina Regulable', page: '16' },
+  { code: '628', weight: '0,48', txp: '8', description: 'Tablilla Tubular para Cortina Regulable', page: '16' },
+  { code: '355', weight: '0,55', txp: '6', description: 'Marco Aereador Aletado con Mosquitero', page: '27' },
+  { code: '553', weight: '0,76', txp: '4', description: 'Tablilla Cortina Común', page: '27' },
+  { code: '520', weight: '0,21', txp: '16', description: 'Zócalo Cortina Común', page: '26' },
+];
+
+export const complementariosProfiles: Profile[] = [
+  { code: '79', weight: '0,85', txp: '6', description: 'Parasol Liviano 140 mm', page: '27' },
+  { code: '80', weight: '1,22', txp: '2', description: 'Parasol Tubular 140 mm', page: '27' },
+  { code: '98', weight: '1,25', txp: '3', description: 'Revestimiento Acanalado', page: '26' },
+  { code: '97', weight: '0,64', txp: '5', description: 'Revestimiento Doble Faz', page: '26' },
+  { code: '110', weight: '1,66', txp: '2', description: 'Zócalo Puerta Blindex', page: '21' },
+  { code: '111', weight: '0,39', txp: '8', description: 'Suplemento Zócalo', page: '21' },
+  { code: '124', weight: '0,64', txp: '6', description: 'Ángulo de 100 x 20 mm', page: '23' },
+  { code: '125', weight: '0,29', txp: '10', description: 'Ángulo de 60 x 12 mm', page: '22' },
+  { code: '191', weight: '1,19', txp: '3', description: 'Larguero de Techo', page: '20' },
+  { code: '192', weight: '1,27', txp: '3', description: 'Travesaño de Techo', page: '20' },
+  { code: '490', weight: '0,67', txp: '4', description: 'Columna para Tabiqueria Alcemar', page: '14' },
+  { code: '491', weight: '0,40', txp: '8', description: 'Tapa Columna para Tabiqueria Alcemar', page: '14' },
+  { code: '492', weight: '0,54', txp: '8', description: 'Travesaño para Tabiqueria Alcemar / Tradicional', page: '14' },
+  { code: '493', weight: '0,48', txp: '8', description: 'Marco para Tabiqueria Alcemar / Tradicional', page: '14' },
+  { code: '494', weight: '0,19', txp: '12', description: 'Tapa Terminación para Tabiqueria Alcemar', page: '14' },
+  { code: '498', weight: '0,34', txp: '10', description: 'Tapa Zócalo para Tabiqueria Alcemar / Tradicional', page: '14' },
+  { code: '499', weight: '1,04', txp: '2', description: 'Zócalo para Tabiqueria Alcemar / Tradicional', page: '14' },
+  { code: '630', weight: '0,65', txp: '6', description: 'Base Clip 630', page: '13' },
+  { code: '631', weight: '0,28', txp: '6', description: 'Clip para Tubos 25 mm', page: '13' },
+  { code: '995', weight: '0,31', txp: '10', description: 'Caño Redondo de 25,4 mm', page: '26' },
+  { code: '996', weight: '0,47', txp: '7', description: 'Caño Redondo de 38,1 mm', page: '26' },
 ];
 
 export const deltaProfiles: Profile[] = [
@@ -329,6 +462,73 @@ export const nizaProfiles: Profile[] = [
   { code: '745', weight: 0.96, shape: 'marco', description: 'Marco Ventana/Puerta Rebatir' },
   { code: '748', weight: 1.54, shape: 'zocalo', description: 'Zócalo de Puerta Rebatir' },
   { code: '772', weight: 0.40, shape: 'contramarco', description: 'Contrapuerta / Mosquitero' },
-  { code: '793(a)', weight: 2.54, shape: 'marco', description: 'Marco Reforzado Niza' },
   { code: '794(a)', weight: 2.14, shape: 'marco', description: 'Jamba 3 Guías Niza' }
+];
+
+export const mediterraneaProfiles: Profile[] = [
+  { code: '108', weight: '0,47', txp: '6', description: 'Mosquitero para Ventana y Puerta Corrediza', page: '10', shape: 'mosquitero' },
+  { code: '153 (a)', weight: '0,70', txp: '4', description: 'Guía de Cortina Común', page: '15', shape: 'guia' },
+  { code: '154 (a)', weight: '1,02', txp: '4', description: 'Guía de Cortina Regulable (Barrio)', page: '15', shape: 'guia' },
+  { code: '190', weight: '0,45', txp: '8', description: 'Travesaño de Mosquitero', page: '11', shape: 'travesaño' },
+  { code: '200', weight: '0,15', txp: '20', description: 'Bota Agua', page: '15', shape: 'botaagua' },
+  { code: '310 (a)', weight: '0,07', txp: '20', description: 'Tapa Terminación Coplanar Marco', page: '16', shape: 'acople' },
+  { code: '380', weight: '0,22', txp: '20', description: 'Contravidrio', page: '14', shape: 'contravidrio' },
+  { code: '405', weight: '0,72', shape: 'hoja', description: 'Hoja Perimetral Vidrio Simple (61 mm)', page: '9' },
+  { code: '406', weight: '0,68', shape: 'hoja', description: 'Hoja Perimetral DVH (61 mm)', page: '9' },
+  { code: '500(a)', weight: '2.17', shape: 'hoja', description: 'Cabezal y Parante Grande Puerta Rebatir M-Cinco', page: '4' },
+  { code: '518', weight: '1.00', shape: 'parante', description: 'Refuerzo de Parante Corrediza M-Uno/Tres/Cinco', page: '11' },
+  { code: '541(a)', weight: '1.57', shape: 'marco', description: 'Marco Grande para Puerta Rebatir M-Cinco', page: '4' },
+  { code: '542', weight: '2.55', shape: 'hoja', description: 'Zócalo Grande para Puerta Rebatir M-Cinco', page: '4' },
+  { code: '554(a)', weight: '1.48', shape: 'marco', description: 'Marco para Ventana y Puerta Corrediza M-Cinco', page: '5' },
+  { code: '561', weight: '0.75', shape: 'marco', description: 'Marco Paño Fijo Mediterránea', page: '12' },
+  { code: '571', weight: '0.25', shape: 'contravidrio', description: 'Contravidrio Recto 30 mm', page: '14' },
+  { code: '581', weight: '0.50', shape: 'premarco', description: 'Premarco 60 mm', page: '17' },
+  { code: '591', weight: '0.40', shape: 'acople', description: 'Acople Recto Mediterránea', page: '13' },
+  { code: '601', weight: '0.90', shape: 'travesaño', description: 'Travesaño Mediterránea', page: '10' },
+  { code: '620', weight: '0.45', shape: 'umbral', description: 'Umbral Transitable', page: '16' }
+];
+
+export const mediterraneaRPTProfiles: Profile[] = [
+  { code: '145(a)', weight: '0.17', shape: 'contramarco', description: 'Contramarco RPT Chico', page: '8' },
+  { code: '146(a)', weight: '0.19', shape: 'contramarco', description: 'Contramarco RPT Grande', page: '8' },
+  { code: '270', weight: '0.31', shape: 'acople', description: 'Suplemento Cerradero Jamba RPT', page: '12' },
+  { code: '278', weight: '0.53', shape: 'umbral', description: 'Sobre Guía Umbral ST-MF RPT', page: '15' },
+  { code: '281', weight: '0.35', shape: 'parante', description: 'Encuentro Central ST-MF RPT', page: '15' },
+  { code: '285', weight: '0.26', shape: 'acople', description: 'Tapa Vertical Lado Móvil ST-MF RPT', page: '16' },
+  { code: '286', weight: '0.37', shape: 'acople', description: 'Tapa Horizontal Lado Móvil ST-MF RPT', page: '16' },
+  { code: '310(a)', weight: '0.49', shape: 'acople', description: 'Tapa Terminación Exterior Marco RPT', page: '18' },
+  { code: '342', weight: '0.29', shape: 'parante', description: 'Encuentro Central M-Tres RPT', page: '11' },
+  { code: '347', weight: '0.22', shape: 'parante', description: 'Encuentro Central M-Uno RPT', page: '11' },
+  { code: '519', weight: '0.11', shape: 'acople', description: 'Adaptador Porta-Burlete RPT', page: '20' },
+  { code: '6350', weight: '1.25', shape: 'marco', description: 'Marco Perimetral RPT', page: '5' },
+  { code: '6351', weight: '1.45', shape: 'hoja', description: 'Hoja Perimetral RPT', page: '6' },
+  { code: '6355', weight: '1.10', shape: 'inversor', description: 'Inversor de Hoja RPT', page: '7' },
+  { code: '6360', weight: '1.30', shape: 'travesaño', description: 'Travesaño RPT', page: '10' }
+];
+
+export const monacoRPTProfiles: Profile[] = [
+  { code: '2001', weight: '1.15', shape: 'marco', description: 'Marco Monaco RPT', page: '5' },
+  { code: '2002', weight: '1.35', shape: 'hoja', description: 'Hoja Monaco RPT', page: '6' },
+  { code: '2003', weight: '1.05', shape: 'inversor', description: 'Inversor Monaco RPT', page: '7' },
+  { code: '2021', weight: '1.45', shape: 'marco', description: 'Marco Corrediza Monaco RPT', page: '8' },
+  { code: '2022', weight: '1.25', shape: 'hoja', description: 'Hoja Corrediza Monaco RPT', page: '9' },
+  { code: '2100', weight: '0.08', shape: 'varilla', description: 'Varilla Poliamida Standard RPT', page: '10' },
+  { code: '2201', weight: '1.55', shape: 'marco', description: 'Marco con Contramarco RPT', page: '12' },
+  { code: '2301', weight: '1.10', shape: 'travesaño', description: 'Travesaño Monaco RPT', page: '4' }
+];
+
+export const lamaParasolProfiles: Profile[] = [
+  { code: '79', weight: '0,85', txp: '6', description: 'Parasol Liviano 140 mm', page: '27' },
+  { code: '80', weight: '1,22', txp: '2', description: 'Parasol Tubular 140 mm', page: '27' },
+  { code: '630', weight: '0,65', txp: '6', description: 'Base Clip 630 p/Parasol', page: '13' },
+  { code: '631', weight: '0,28', txp: '6', description: 'Clip para Tubos 25 mm', page: '13' },
+];
+
+export const frameJuntaCerradaProfiles: Profile[] = [
+  { code: '97', weight: '0,64', txp: '5', description: 'Revestimiento Doble Faz', page: '26' },
+  { code: '98', weight: '1,25', txp: '3', description: 'Revestimiento Acanalado', page: '26' },
+  { code: '456', weight: '0,43', txp: '8', description: 'U de 15 x 40 x 1,75 mm', page: '26' },
+  { code: '466', weight: '0,17', txp: '16', description: 'U de 11,1 x 22 mm e:1,2', page: '26' },
+  { code: '469', weight: '0,18', txp: '12', description: 'U de 15 x 18 mm e:1,4', page: '26' },
+  { code: '650', weight: '0,25', txp: '16', description: 'U de 15 x 25 mm', page: '26' },
 ];

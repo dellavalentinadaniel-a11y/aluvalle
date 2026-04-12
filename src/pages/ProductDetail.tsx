@@ -2,7 +2,27 @@ import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useEffect } from 'react';
 import ProfileTable from '../components/ProfileTable';
-import { traditionalProfiles, gammaProfiles, deltaProfiles, monacoProfiles, monacoTopProfiles, atlanticaProfiles, nizaProfiles } from '../data/profiles';
+import { 
+  traditionalProfiles, 
+  gammaProfiles, 
+  deltaProfiles, 
+  monacoProfiles, 
+  monacoTopProfiles, 
+  atlanticaProfiles, 
+  nizaProfiles, 
+  mediterraneaProfiles, 
+  mediterraneaRPTProfiles, 
+  monacoRPTProfiles,
+  frenteIntegralProfiles,
+  frenteVidriadoProfiles,
+  barandasProfiles,
+  mamparasProfiles,
+  placardProfiles,
+  cortinasProfiles,
+  complementariosProfiles,
+  lamaParasolProfiles,
+  frameJuntaCerradaProfiles
+} from '../data/profiles';
 import { ChevronDown, Beaker, PenTool } from 'lucide-react';
 import { useState } from 'react';
 
@@ -119,18 +139,33 @@ export default function ProductDetail() {
               <p className="text-[#94979e] text-sm md:text-base leading-relaxed">Explore las diferentes variantes y componentes de la Línea Mónaco. Seleccione una categoría para ver el detalle de pesos y formas.</p>
             </div>
             
-            <Link 
-              to="/testeos/linea-monaco"
-              className="group flex items-center gap-4 bg-[#a0d87a]/10 border border-[#a0d87a]/20 px-6 py-4 hover:bg-[#a0d87a] transition-all rounded-xl"
-            >
-              <div className="bg-[#a0d87a] p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
-                <Beaker className="w-5 h-5 text-[#0b0e12] group-hover:text-[#a0d87a]" />
-              </div>
-              <div className="text-left">
-                <p className="text-[10px] uppercase tracking-widest text-[#a0d87a] group-hover:text-[#0b0e12] font-bold">Ensayos Técnicos</p>
-                <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">Ver Reporte de Desempeño</p>
-              </div>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                to="/testeos/linea-monaco"
+                className="group flex items-center gap-4 bg-[#a0d87a]/10 border border-[#a0d87a]/20 px-6 py-4 hover:bg-[#a0d87a] transition-all rounded-xl"
+              >
+                <div className="bg-[#a0d87a] p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                  <Beaker className="w-5 h-5 text-[#0b0e12] group-hover:text-[#a0d87a]" />
+                </div>
+                <div className="text-left">
+                  <p className="text-[10px] uppercase tracking-widest text-[#a0d87a] group-hover:text-[#0b0e12] font-bold">Ensayos Técnicos</p>
+                  <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">Ver Reporte de Desempeño</p>
+                </div>
+              </Link>
+
+              <Link 
+                to="/mecanizados/linea-monaco"
+                className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
+              >
+                <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                  <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                </div>
+                <div className="text-left">
+                  <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-[#0b0e12] font-bold">Producción Técnica</p>
+                  <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">Ver Manual de Mecanizado</p>
+                </div>
+              </Link>
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -172,7 +207,22 @@ export default function ProductDetail() {
           </div>
         </section>
       ) : (
-        (product.slug === 'linea-tradicional' || product.slug === 'linea-gamma' || product.slug === 'linea-delta' || product.slug === 'linea-atlantica' || product.slug === 'linea-niza') && (
+        (product.slug === 'linea-tradicional' || 
+         product.slug === 'linea-gamma' || 
+         product.slug === 'linea-delta' || 
+         product.slug === 'linea-atlantica' || 
+         product.slug === 'linea-niza' || 
+         product.slug === 'linea-mediterranea' || 
+         product.slug === 'linea-mediterranea-rpt' || 
+         product.slug === 'linea-monaco-rpt' ||
+         product.slug === 'frente-integral' ||
+         product.slug === 'frente-vidriado' ||
+         product.slug === 'sistemas-de-barandas' ||
+         product.slug === 'sistemas-de-mamparas' ||
+         product.slug === 'frentes-de-placard' ||
+         product.slug === 'cortinas-de-enrollar' ||
+         product.slug === 'sistema-de-lama-parasol' ||
+         product.slug === 'sistema-frame-de-junta-cerrada') && (
           <section className="max-w-7xl mx-auto px-6 pb-24">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
               <div className="max-w-2xl">
@@ -180,9 +230,14 @@ export default function ProductDetail() {
                 <p className="text-[#94979e] text-sm md:text-base leading-relaxed">Detalle técnico exhaustivo para especificación arquitectónica.</p>
               </div>
               
-              {(product.slug === 'linea-atlantica' || product.slug === 'linea-niza') && (
+              {(product.slug === 'linea-atlantica' || product.slug === 'linea-niza' || product.slug === 'linea-mediterranea' || product.slug === 'linea-mediterranea-rpt') && (
                 <Link 
-                  to={product.slug === 'linea-atlantica' ? "/mecanizados/linea-atlantica" : "/mecanizados/linea-niza"}
+                  to={
+                    product.slug === 'linea-atlantica' ? "/mecanizados/linea-atlantica" : 
+                    product.slug === 'linea-niza' ? "/mecanizados/linea-niza" :
+                    product.slug === 'linea-mediterranea' ? "/mecanizados/linea-mediterranea" :
+                    "/mecanizados/linea-mediterranea-rpt"
+                  }
                   className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
                 >
                   <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
@@ -202,7 +257,19 @@ export default function ProductDetail() {
                 product.slug === 'linea-gamma' ? gammaProfiles : 
                 product.slug === 'linea-delta' ? deltaProfiles : 
                 product.slug === 'linea-atlantica' ? atlanticaProfiles : 
-                nizaProfiles
+                product.slug === 'linea-niza' ? nizaProfiles :
+                product.slug === 'linea-mediterranea' ? mediterraneaProfiles :
+                product.slug === 'linea-mediterranea-rpt' ? mediterraneaRPTProfiles :
+                product.slug === 'linea-monaco-rpt' ? monacoRPTProfiles :
+                product.slug === 'frente-integral' ? frenteIntegralProfiles :
+                product.slug === 'frente-vidriado' ? frenteVidriadoProfiles :
+                product.slug === 'sistemas-de-barandas' ? barandasProfiles :
+                product.slug === 'sistemas-de-mamparas' ? mamparasProfiles :
+                product.slug === 'frentes-de-placard' ? placardProfiles :
+                product.slug === 'cortinas-de-enrollar' ? cortinasProfiles :
+                product.slug === 'sistema-de-lama-parasol' ? lamaParasolProfiles :
+                product.slug === 'sistema-frame-de-junta-cerrada' ? frameJuntaCerradaProfiles :
+                complementariosProfiles
               } 
             />
           </section>

@@ -21,6 +21,9 @@ import TermsOfService from './pages/TermsOfService.tsx';
 import MonacoTesting from './pages/MonacoTesting.tsx';
 import AtlanticaMachining from './pages/AtlanticaMachining.tsx';
 import NizaMachining from './pages/NizaMachining.tsx';
+import MediterraneaMachining from './pages/MediterraneaMachining.tsx';
+import MediterraneaRPTMachining from './pages/MediterraneaRPTMachining.tsx';
+import MonacoMachining from './pages/MonacoMachining.tsx';
 
 export default function App() {
   return (
@@ -46,6 +49,9 @@ export default function App() {
            <Route path="testeos/linea-monaco" element={<MonacoTesting />} />
            <Route path="mecanizados/linea-atlantica" element={<AtlanticaMachining />} />
            <Route path="mecanizados/linea-niza" element={<NizaMachining />} />
+           <Route path="mecanizados/linea-mediterranea" element={<MediterraneaMachining />} />
+           <Route path="mecanizados/linea-mediterranea-rpt" element={<MediterraneaRPTMachining />} />
+           <Route path="mecanizados/linea-monaco" element={<MonacoMachining />} />
         </Route>
       </Routes>
     </Router>

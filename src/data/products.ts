@@ -52,8 +52,9 @@ export const products: Product[] = [
       { title: 'Confort Acústico', description: 'Reducción sonora certificada para zonas de alto ruido urbano.', icon: 'volume_off' }
     ],
     downloads: [
-      { type: 'PDF', label: 'Manual Mediterránea', url: '#' },
-      { type: 'DWG', label: 'Planilla de Cortes', url: '#' }
+      { type: 'PDF', label: 'Catálogo Línea Mediterránea', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Mediterranea.pdf' },
+      { type: 'PDF', label: 'Catálogo Comercial Mediterránea', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Comercial_Linea_Mediterranea.pdf' },
+      { type: 'PDF', label: 'Mecanizados Mediterránea', url: 'https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea.pdf' }
     ],
     gallery: [
       'https://images.unsplash.com/photo-1600607686151-54b9f29d4d8c?auto=format&fit=crop&w=800&q=80',
@@ -203,7 +204,7 @@ export const products: Product[] = [
       { title: 'Confort Interior', description: 'Anula la condensación de humedad (transpiración) invernal en el marco.', icon: 'water_drop' }
     ],
     downloads: [
-      { type: 'PDF', label: 'Certificación RPT', url: '#' }
+      { type: 'PDF', label: 'Catálogo Línea Mónaco RPT', url: 'https://alcemar.com.ar/alcemar.com.ar/wp-content/uploads/2018/08/Catalogo_linea_MonacoRPT.pdf' }
     ],
     gallery: []
   },
@@ -226,7 +227,9 @@ export const products: Product[] = [
       { title: 'Bicolor RPT', description: 'La poliamida permite armar un perfil en un color interior y otro exterior.', icon: 'format_paint' }
     ],
     downloads: [
-      { type: 'PDF', label: 'Catálogo Med. RPT', url: '#' }
+      { type: 'PDF', label: 'Catálogo Mediterránea RPT', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Mediterranea_RPT.pdf' },
+      { type: 'PDF', label: 'Catálogo Comercial Med. RPT', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Comercial_Linea_Mediterranea_RPT.pdf' },
+      { type: 'PDF', label: 'Mecanizados Med. RPT', url: 'https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea_RPT.pdf' }
     ],
     gallery: []
   },
@@ -250,7 +253,7 @@ export const products: Product[] = [
       { title: 'Drenaje Inteligente', description: 'Canalización interna escalonada para asegurar estanqueidad total.', icon: 'water_damage' },
       { title: 'Fácil Montaje', description: 'Sistema de anclajes mecanizados en obra o en taller.', icon: 'construction' }
     ],
-    downloads: [{ type: 'DWG', label: 'Manual de Cortes y Nudos', url: '#' }],
+    downloads: [{ type: 'PDF', label: 'Catálogo Frente Integral', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Frente_Integral.pdf' }],
     gallery: []
   },
   {
@@ -270,7 +273,7 @@ export const products: Product[] = [
       { title: 'Reflexión Perfeccionada', description: 'Libre de tapas y presores de aluminio que interfieran la imagen exterior.', icon: 'flare' },
       { title: 'Ventanas Ocultas', description: 'Mecanismos proyectantes que no alteran el reticulado de la fachada una vez cerradas.', icon: 'disabled_visible' }
     ],
-    downloads: [{ type: 'PDF', label: 'Catálogo Piel de Vidrio', url: '#' }],
+    downloads: [{ type: 'PDF', label: 'Catálogo Frente Vidriado', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Frente_Vidriado.pdf' }],
     gallery: []
   },
   {
@@ -333,7 +336,10 @@ export const products: Product[] = [
       { title: 'Vision Completa', description: 'Sistema de piso perfilado para montaje de cristal limpio estilo "frameless".', icon: 'panorama_horizontal' },
       { title: 'Mantenimiento Zero', description: 'El aluminio anodizado o prepintado nunca se oxidará en bordes costeros ni requerirá pintura.', icon: 'cleaning_services' }
     ],
-    downloads: [{ type: 'PDF', label: 'Catálogo Técnico Barandas', url: '#' }],
+    downloads: [
+      { type: 'PDF', label: 'Catálogo Técnico Barandas', url: 'https://alcemar.com.ar/of_tecnica/cat/Catalogo_Barandas.pdf' },
+      { type: 'PDF', label: 'Catálogo Comercial Barandas', url: 'https://alcemar.com.ar/of_tecnica/cat/Catalogo_Barandas_Comercial.pdf' }
+    ],
     gallery: []
   },
   {
@@ -353,7 +359,7 @@ export const products: Product[] = [
       { title: 'Aislación extra', description: 'El poliuretano es una barrera térmica inexpugnable para las noches heladas.', icon: 'bed' },
       { title: 'Seguridad', description: 'Lamas extruídas de alto perfil disuaden irrupciones exteriores.', icon: 'lock_person' }
     ],
-    downloads: [{ type: 'DWG', label: 'Detalle Cajón Compacto', url: '#' }],
+    downloads: [{ type: 'PDF', label: 'Catálogo Complementarios', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Complementarios.pdf' }],
     gallery: []
   },
   {
@@ -373,7 +379,7 @@ export const products: Product[] = [
       { title: 'Espejo Modular', description: 'Posibilidad de usar vidrios o aglomerado con aluminio intermedio de separación decorativa.', icon: 'dashboard' },
       { title: 'Silencio', description: 'Cierre mullido contra el flanco al usar ruedas de teflón de alta precisión.', icon: 'volume_mute' }
     ],
-    downloads: [{ type: 'PDF', label: 'Hoja de Armado Placard', url: '#' }],
+    downloads: [{ type: 'PDF', label: 'Catálogo Complementarios', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Complementarios.pdf' }],
     gallery: []
   },
   {
@@ -393,7 +399,7 @@ export const products: Product[] = [
       { title: 'Sin estancamiento', description: 'Pendientes mínimas impiden que agua o bacterias permanezcan tras la ducha.', icon: 'clean_hands' },
       { title: 'Versatilidad', description: 'Formatos de puerta simple o esquineros para plato ducha cuadrante.', icon: 'crop_square' }
     ],
-    downloads: [{ type: 'PDF', label: 'Tipologías de Duchas', url: '#' }],
+    downloads: [{ type: 'PDF', label: 'Catálogo Técnico Mamparas', url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Tecnico_Mamparas.pdf' }],
     gallery: []
   }
 ];
