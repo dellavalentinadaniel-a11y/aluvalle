@@ -1,10 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useEffect } from 'react';
+import ProfileTable from '../components/ProfileTable';
+import { traditionalProfiles, gammaProfiles, deltaProfiles, monacoProfiles, monacoTopProfiles, atlanticaProfiles, nizaProfiles } from '../data/profiles';
+import { ChevronDown, Beaker, PenTool } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const product = products.find(p => p.slug === slug);
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(slug === 'linea-monaco' ? 'monaco-standard' : null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -103,6 +108,106 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
+
+      {/* Profiles Table */}
+      {/* Profiles Table / Accordions for Monaco and others */}
+      {product.slug === 'linea-monaco' ? (
+        <section className="max-w-7xl mx-auto px-6 pb-24">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold text-[#e1e2e8] uppercase mb-4">Catálogo de Perfiles</h2>
+              <p className="text-[#94979e] text-sm md:text-base leading-relaxed">Explore las diferentes variantes y componentes de la Línea Mónaco. Seleccione una categoría para ver el detalle de pesos y formas.</p>
+            </div>
+            
+            <Link 
+              to="/testeos/linea-monaco"
+              className="group flex items-center gap-4 bg-[#a0d87a]/10 border border-[#a0d87a]/20 px-6 py-4 hover:bg-[#a0d87a] transition-all rounded-xl"
+            >
+              <div className="bg-[#a0d87a] p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                <Beaker className="w-5 h-5 text-[#0b0e12] group-hover:text-[#a0d87a]" />
+              </div>
+              <div className="text-left">
+                <p className="text-[10px] uppercase tracking-widest text-[#a0d87a] group-hover:text-[#0b0e12] font-bold">Ensayos Técnicos</p>
+                <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">Ver Reporte de Desempeño</p>
+              </div>
+            </Link>
+          </div>
+
+          <div className="space-y-4">
+            <div className="border border-[#323539]/30 bg-[#111417]/50 overflow-hidden rounded-2xl">
+              <button 
+                onClick={() => setActiveAccordion(activeAccordion === 'monaco-standard' ? null : 'monaco-standard')}
+                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-[#191c20] transition-colors"
+              >
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#e1e2e8] uppercase">Mónaco Estándar</h3>
+                  <p className="text-[#94979e] text-xs uppercase tracking-widest mt-1">Perfiles base para tipologías corredizas y batientes</p>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-[#a0d87a] transition-transform duration-300 ${activeAccordion === 'monaco-standard' ? 'rotate-180' : ''}`} />
+              </button>
+              {activeAccordion === 'monaco-standard' && (
+                <div className="p-1 sm:p-4 border-t border-[#323539]/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                  <ProfileTable systemName="Mónaco Estándar" profiles={monacoProfiles} />
+                </div>
+              )}
+            </div>
+
+            <div className="border border-[#323539]/30 bg-[#111417]/50 overflow-hidden rounded-2xl">
+              <button 
+                onClick={() => setActiveAccordion(activeAccordion === 'monaco-top' ? null : 'monaco-top')}
+                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-[#191c20] transition-colors"
+              >
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#e1e2e8] uppercase">Mónaco Top</h3>
+                  <p className="text-[#94979e] text-xs uppercase tracking-widest mt-1">Sistemas de alta prestación reforzados</p>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-[#a0d87a] transition-transform duration-300 ${activeAccordion === 'monaco-top' ? 'rotate-180' : ''}`} />
+              </button>
+              {activeAccordion === 'monaco-top' && (
+                <div className="p-1 sm:p-4 border-t border-[#323539]/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                  <ProfileTable systemName="Mónaco Top" profiles={monacoTopProfiles} />
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      ) : (
+        (product.slug === 'linea-tradicional' || product.slug === 'linea-gamma' || product.slug === 'linea-delta' || product.slug === 'linea-atlantica' || product.slug === 'linea-niza') && (
+          <section className="max-w-7xl mx-auto px-6 pb-24">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+              <div className="max-w-2xl">
+                <h2 className="font-headline text-3xl md:text-5xl font-bold text-[#e1e2e8] uppercase mb-4">Catálogo de Perfiles</h2>
+                <p className="text-[#94979e] text-sm md:text-base leading-relaxed">Detalle técnico exhaustivo para especificación arquitectónica.</p>
+              </div>
+              
+              {(product.slug === 'linea-atlantica' || product.slug === 'linea-niza') && (
+                <Link 
+                  to={product.slug === 'linea-atlantica' ? "/mecanizados/linea-atlantica" : "/mecanizados/linea-niza"}
+                  className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
+                >
+                  <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                    <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-[#0b0e12] font-bold">Producción Técnica</p>
+                    <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">Ver Manual de Mecanizado</p>
+                  </div>
+                </Link>
+              )}
+            </div>
+            <ProfileTable 
+              systemName={product.name} 
+              profiles={
+                product.slug === 'linea-tradicional' ? traditionalProfiles : 
+                product.slug === 'linea-gamma' ? gammaProfiles : 
+                product.slug === 'linea-delta' ? deltaProfiles : 
+                product.slug === 'linea-atlantica' ? atlanticaProfiles : 
+                nizaProfiles
+              } 
+            />
+          </section>
+        )
+      )}
 
       {/* Gallery Section */}
       <section className="bg-[#0b0e12] py-24">

@@ -15,6 +15,12 @@ import TechnicalOffice from './pages/TechnicalOffice.tsx';
 import Projects from './pages/Projects.tsx';
 import Sustainability from './pages/Sustainability.tsx';
 import Contact from './pages/Contact.tsx';
+import AboutUs from './pages/AboutUs.tsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.tsx';
+import TermsOfService from './pages/TermsOfService.tsx';
+import MonacoTesting from './pages/MonacoTesting.tsx';
+import AtlanticaMachining from './pages/AtlanticaMachining.tsx';
+import NizaMachining from './pages/NizaMachining.tsx';
 
 export default function App() {
   return (
@@ -34,6 +40,12 @@ export default function App() {
            <Route path="proyectos" element={<Projects />} />
            <Route path="sostenibilidad" element={<Sustainability />} />
            <Route path="contact" element={<Contact />} />
+           <Route path="sobre-nosotros" element={<AboutUs />} />
+           <Route path="privacidad" element={<PrivacyPolicy />} />
+           <Route path="terminos" element={<TermsOfService />} />
+           <Route path="testeos/linea-monaco" element={<MonacoTesting />} />
+           <Route path="mecanizados/linea-atlantica" element={<AtlanticaMachining />} />
+           <Route path="mecanizados/linea-niza" element={<NizaMachining />} />
         </Route>
       </Routes>
     </Router>
