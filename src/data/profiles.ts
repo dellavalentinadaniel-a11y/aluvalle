@@ -1,10 +1,10 @@
 export interface Profile {
   code: string;
   weight: string;
-  txp: string;
+  txp?: string;
   description: string;
-  page: string;
-  shape?: 'marco' | 'hoja' | 'zocalo' | 'contravidrio' | 'parante' | 'travesaño' | 'acople' | 'contramarco' | 'premarco' | 'bisagra' | 'tubo' | 'guia' | 'mosquitero' | 'accesorio' | 'botaagua' | 'umbral' | 'goteron' | 'varilla';
+  page?: string;
+  shape?: 'marco' | 'hoja' | 'zocalo' | 'contravidrio' | 'parante' | 'travesaño' | 'acople' | 'contramarco' | 'premarco' | 'bisagra' | 'tubo' | 'guia' | 'mosquitero' | 'accesorio' | 'botaagua' | 'umbral' | 'goteron' | 'varilla' | 'omega' | 'inversor';
 }
 
 export const traditionalProfiles: Profile[] = [
@@ -427,42 +427,42 @@ export const monacoTopProfiles: Profile[] = [
 ];
 
 export const atlanticaProfiles: Profile[] = [
-  { code: '703', weight: 0.16, shape: 'omega', description: 'Parte Omega de Aluminio' },
-  { code: '705', weight: 0.16, shape: 'contramarco', description: 'Contravidrio 11 mm' },
-  { code: '725', weight: 0.26, shape: 'umbral', description: 'Tope Inferior Umbral' },
-  { code: '726', weight: 0.39, shape: 'umbral', description: 'Umbral Transitable' },
-  { code: '825(a)', weight: 0.84, shape: 'inversor', description: 'Inversor de Hoja' },
-  { code: '826(a)', weight: 1.05, shape: 'hoja', description: 'Hoja Perimetral DVH' },
-  { code: '827(a)', weight: 1.09, shape: 'hoja', description: 'Hoja Perimetral V. Simple' },
-  { code: '835', weight: 0.94, shape: 'travesaño', description: 'Travesaño Paño Fijo' },
-  { code: '849', weight: 1.54, shape: 'zocalo', description: 'Zócalo de Hoja Puerta' },
-  { code: '861(a)', weight: 1.10, shape: 'hoja', description: 'Cabezal y Parante Hoja' },
-  { code: '870', weight: 0.23, shape: 'contramarco', description: 'Contravidrio 30,5 mm' },
-  { code: '875(a)', weight: 0.88, shape: 'premarco', description: 'Premarco 3 Guías' },
-  { code: '876', weight: 0.33, shape: 'contramarco', description: 'Contravidrio Recto 29 mm' },
-  { code: '877', weight: 0.30, shape: 'contramarco', description: 'Contravidrio Recto 22 mm' },
-  { code: '878', weight: 0.25, shape: 'contramarco', description: 'Contravidrio Recto 15,2 mm' },
-  { code: '880', weight: 0.32, shape: 'contramarco', description: 'Contravidrio Recto 25 mm' },
-  { code: '883(a)', weight: 0.90, shape: 'hoja', description: 'Hoja Rebatir / Oscilo' },
-  { code: '885', weight: 0.20, shape: 'contramarco', description: 'Contravidrio Recto 9 mm' },
-  { code: '888', weight: 1.21, shape: 'travesaño', description: 'Travesaño Ancho' }
+  { code: '703', weight: '0.16', shape: 'omega', description: 'Parte Omega de Aluminio' },
+  { code: '705', weight: '0.16', shape: 'contramarco', description: 'Contravidrio 11 mm' },
+  { code: '725', weight: '0.26', shape: 'umbral', description: 'Tope Inferior Umbral' },
+  { code: '726', weight: '0.39', shape: 'umbral', description: 'Umbral Transitable' },
+  { code: '825(a)', weight: '0.84', shape: 'inversor', description: 'Inversor de Hoja' },
+  { code: '826(a)', weight: '1.05', shape: 'hoja', description: 'Hoja Perimetral DVH' },
+  { code: '827(a)', weight: '1.09', shape: 'hoja', description: 'Hoja Perimetral V. Simple' },
+  { code: '835', weight: '0.94', shape: 'travesaño', description: 'Travesaño Paño Fijo' },
+  { code: '849', weight: '1.54', shape: 'zocalo', description: 'Zócalo de Hoja Puerta' },
+  { code: '861(a)', weight: '1.10', shape: 'hoja', description: 'Cabezal y Parante Hoja' },
+  { code: '870', weight: '0.23', shape: 'contramarco', description: 'Contravidrio 30,5 mm' },
+  { code: '875(a)', weight: '0.88', shape: 'premarco', description: 'Premarco 3 Guías' },
+  { code: '876', weight: '0.33', shape: 'contramarco', description: 'Contravidrio Recto 29 mm' },
+  { code: '877', weight: '0.30', shape: 'contramarco', description: 'Contravidrio Recto 22 mm' },
+  { code: '878', weight: '0.25', shape: 'contramarco', description: 'Contravidrio Recto 15,2 mm' },
+  { code: '880', weight: '0.32', shape: 'contramarco', description: 'Contravidrio Recto 25 mm' },
+  { code: '883(a)', weight: '0.90', shape: 'hoja', description: 'Hoja Rebatir / Oscilo' },
+  { code: '885', weight: '0.20', shape: 'contramarco', description: 'Contravidrio Recto 9 mm' },
+  { code: '888', weight: '1.21', shape: 'travesaño', description: 'Travesaño Ancho' }
 ];
 
 export const nizaProfiles: Profile[] = [
-  { code: '721(a)', weight: 1.68, shape: 'marco', description: 'Marco 3 Guías N-UNO' },
-  { code: '722(a)', weight: 0.49, shape: 'guia', description: 'Guía Cortina Común' },
-  { code: '725', weight: 0.26, shape: 'umbral', description: 'Tope Inferior Hoja' },
-  { code: '724', weight: 0.91, shape: 'zocalo', description: 'Zócalo/Cabezal Hoja 90°' },
-  { code: '728', weight: 1.49, shape: 'zocalo', description: 'Zócalo Alto Hoja 90°' },
-  { code: '734(a)', weight: 1.18, shape: 'parante', description: 'Parante Hoja 90° Reforzado' },
-  { code: '735(a)', weight: 1.25, shape: 'inversor', description: 'Inversor de Hoja Niza' },
-  { code: '740(a)', weight: 1.10, shape: 'parante', description: 'Parante Lateral Hoja 90°' },
-  { code: '743', weight: 0.29, shape: 'contramarco', description: 'Contravidrio Curvo' },
-  { code: '744(a)', weight: 1.21, shape: 'travesaño', description: 'Travesaño de Hoja' },
-  { code: '745', weight: 0.96, shape: 'marco', description: 'Marco Ventana/Puerta Rebatir' },
-  { code: '748', weight: 1.54, shape: 'zocalo', description: 'Zócalo de Puerta Rebatir' },
-  { code: '772', weight: 0.40, shape: 'contramarco', description: 'Contrapuerta / Mosquitero' },
-  { code: '794(a)', weight: 2.14, shape: 'marco', description: 'Jamba 3 Guías Niza' }
+  { code: '721(a)', weight: '1.68', shape: 'marco', description: 'Marco 3 Guías N-UNO' },
+  { code: '722(a)', weight: '0.49', shape: 'guia', description: 'Guía Cortina Común' },
+  { code: '725', weight: '0.26', shape: 'umbral', description: 'Tope Inferior Hoja' },
+  { code: '724', weight: '0.91', shape: 'zocalo', description: 'Zócalo/Cabezal Hoja 90°' },
+  { code: '728', weight: '1.49', shape: 'zocalo', description: 'Zócalo Alto Hoja 90°' },
+  { code: '734(a)', weight: '1.18', shape: 'parante', description: 'Parante Hoja 90° Reforzado' },
+  { code: '735(a)', weight: '1.25', shape: 'inversor', description: 'Inversor de Hoja Niza' },
+  { code: '740(a)', weight: '1.10', shape: 'parante', description: 'Parante Lateral Hoja 90°' },
+  { code: '743', weight: '0.29', shape: 'contramarco', description: 'Contravidrio Curvo' },
+  { code: '744(a)', weight: '1.21', shape: 'travesaño', description: 'Travesaño de Hoja' },
+  { code: '745', weight: '0.96', shape: 'marco', description: 'Marco Ventana/Puerta Rebatir' },
+  { code: '748', weight: '1.54', shape: 'zocalo', description: 'Zócalo de Puerta Rebatir' },
+  { code: '772', weight: '0.40', shape: 'contramarco', description: 'Contrapuerta / Mosquitero' },
+  { code: '794(a)', weight: '2.14', shape: 'marco', description: 'Jamba 3 Guías Niza' }
 ];
 
 export const mediterraneaProfiles: Profile[] = [

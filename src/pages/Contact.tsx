@@ -13,21 +13,9 @@ const Contact = () => {
   const contactPoints = [
     {
       title: 'Ventas y Proyectos',
-      email: 'ventas@aluvalle.com.ar',
+      email: 'aluvallesas@gmail.com',
       desc: 'Asesoramiento comercial para obras y distribuidores.',
       icon: 'point_of_sale'
-    },
-    {
-      title: 'Oficina Técnica',
-      email: 'tecnica@aluvalle.com.ar',
-      desc: 'Soporte especializado para arquitectos e ingenieros.',
-      icon: 'architecture'
-    },
-    {
-      title: 'Administración',
-      email: 'administracion@aluvalle.com.ar',
-      desc: 'Consultas sobre facturación y pagos.',
-      icon: 'account_balance'
     }
   ];
 
@@ -51,27 +39,27 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header Section */}
         <section className="mb-20">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-[#a0d87a] font-bold tracking-[0.2em] uppercase text-xs mb-4 block"
           >
             Contacto Directo
           </motion.span>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
           >
-            Hablemos de su próximo <br/>
+            Hablemos de su próximo <br />
             <span className="text-[#a0d87a]">gran proyecto</span>
           </motion.h1>
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left: Contact Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -88,17 +76,17 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-xs uppercase tracking-widest text-gray-500 font-bold">Nombre</label>
-                        <input required type="text" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all" />
+                        <label htmlFor="nombre" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Nombre</label>
+                        <input id="nombre" required type="text" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs uppercase tracking-widest text-gray-500 font-bold">Email</label>
-                        <input required type="email" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all" />
+                        <label htmlFor="email" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Email</label>
+                        <input id="email" required type="email" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all" />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs uppercase tracking-widest text-gray-500 font-bold">Asunto</label>
-                      <select className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer">
+                      <label htmlFor="asunto" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Asunto</label>
+                      <select id="asunto" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer">
                         <option>Presupuesto de Obra</option>
                         <option>Soporte Técnico</option>
                         <option>Asesoramiento Comercial</option>
@@ -106,11 +94,11 @@ const Contact = () => {
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs uppercase tracking-widest text-gray-500 font-bold">Mensaje</label>
-                      <textarea required rows={4} className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all resize-none"></textarea>
+                      <label htmlFor="mensaje" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Mensaje</label>
+                      <textarea id="mensaje" required rows={4} className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all resize-none"></textarea>
                     </div>
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       disabled={formState === 'sending'}
                       className="w-full bg-[#a0d87a] text-[#111417] py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-[#8cc565] transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                     >
@@ -135,7 +123,7 @@ const Contact = () => {
                   </div>
                   <h2 className="text-3xl font-bold text-white mb-4">¡Mensaje Recibido!</h2>
                   <p className="text-gray-400 mb-8 max-w-sm mx-auto">Hemos recibido su consulta correctamente. Un asesor técnico se pondrá en contacto con usted en las próximas 24 horas hábiles.</p>
-                  <button 
+                  <button
                     onClick={() => setFormState('idle')}
                     className="text-[#a0d87a] border border-[#a0d87a] px-8 py-3 rounded-xl hover:bg-[#a0d87a] hover:text-[#111417] transition-all"
                   >
@@ -151,7 +139,7 @@ const Contact = () => {
             {/* Contact Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {contactPoints.map((point, idx) => (
-                <motion.div 
+                <motion.div
                   key={point.title}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -178,7 +166,7 @@ const Contact = () => {
               </h2>
               <div className="space-y-4">
                 {locations.map((loc, idx) => (
-                  <motion.div 
+                  <motion.div
                     key={loc.name}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -199,14 +187,14 @@ const Contact = () => {
             </div>
 
             {/* Map Placeholder with visual polish */}
-            <a 
-              href="https://www.google.com/maps/search/?api=1&query=Estado+de+Israel,+R8324+Cipolletti,+R%C3%ADo+Negro" 
-              target="_blank" 
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Estado+de+Israel,+R8324+Cipolletti,+R%C3%ADo+Negro"
+              target="_blank"
               rel="noopener noreferrer"
               className="h-48 bg-gray-900 rounded-3xl relative overflow-hidden group block"
             >
-              <img 
-                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+              <img
+                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
                 alt="Map Background"
                 className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:scale-110 transition-transform duration-700"
               />
