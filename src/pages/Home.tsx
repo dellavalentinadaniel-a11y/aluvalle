@@ -60,33 +60,129 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature Grid */}
-      <section className="py-32 px-4 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <motion.div 
-            whileHover={{ y: -10 }}
-            className="p-10 bg-[#161a1f] rounded-[2.5rem] border border-gray-800"
-          >
-            <span className="material-symbols-outlined text-[#a0d87a] text-4xl mb-6">architecture</span>
-            <h3 className="text-2xl font-bold text-white mb-4">Ingeniería Técnica</h3>
-            <p className="text-gray-500 leading-relaxed text-sm">Soporte especializado desde la concepción del proyecto hasta la instalación final en obra.</p>
-          </motion.div>
-          <motion.div 
-            whileHover={{ y: -10 }}
-            className="p-10 bg-[#161a1f] rounded-[2.5rem] border border-gray-800"
-          >
-            <span className="material-symbols-outlined text-[#a0d87a] text-4xl mb-6">eco</span>
-            <h3 className="text-2xl font-bold text-white mb-4">Eficiencia Térmica</h3>
-            <p className="text-gray-500 leading-relaxed text-sm">Sistemas RPT que garantizan el máximo confort climático y ahorro energético.</p>
-          </motion.div>
-          <motion.div 
-            whileHover={{ y: -10 }}
-            className="p-10 bg-[#161a1f] rounded-[2.5rem] border border-gray-800"
-          >
-            <span className="material-symbols-outlined text-[#a0d87a] text-4xl mb-6">verified</span>
-            <h3 className="text-2xl font-bold text-white mb-4">Calidad Certificada</h3>
-            <p className="text-gray-500 leading-relaxed text-sm">Ensayos rigurosos bajo normas internacionales de estanqueidad y resistencia.</p>
-          </motion.div>
+      {/* Infrastructure Gallery */}
+      <section className="py-32 bg-[#0b0e12]/50 border-y border-[#323539]/10">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-2xl">
+              <motion.span 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-[#a0d87a] font-bold tracking-[0.2em] uppercase text-[10px] mb-4 block"
+              >
+                Nuestra Infraestructura
+              </motion.span>
+              <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">
+                Capacidad técnica <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">sin límites geográficos.</span>
+              </h2>
+            </div>
+            <Link to="/contact" className="text-white font-bold flex items-center gap-3 group">
+              Explorar instalaciones
+              <span className="material-symbols-outlined text-[#a0d87a] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Main large image */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="md:col-span-2 h-[500px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+            >
+              <img 
+                src="/gallery/warehouse.jpg" 
+                alt="Almacén de perfiles" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] via-transparent to-transparent opacity-80" />
+              <div className="absolute bottom-10 left-10">
+                <span className="bg-[#a0d87a] text-[#111417] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter mb-4 inline-block">Logística</span>
+                <h4 className="text-3xl font-bold text-white mb-2">Stock Permanente Capaz</h4>
+                <p className="text-gray-400 text-sm max-w-sm">Garantizamos la disponibilidad inmediata de toda nuestra gama de sistemas para proyectos de gran envergadura.</p>
+              </div>
+            </motion.div>
+
+            {/* Side column */}
+            <div className="flex flex-col gap-6">
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+              >
+                <img 
+                  src="/gallery/showroom.jpg" 
+                  alt="Showroom Aluvallé" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent opacity-80" />
+                <div className="absolute bottom-6 left-6">
+                  <h4 className="text-xl font-bold text-white">Showroom Técnico</h4>
+                  <p className="text-gray-400 text-[10px] uppercase tracking-widest mt-1">Experiencia inmersiva</p>
+                </div>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+              >
+                <img 
+                  src="/gallery/profiles.jpg" 
+                  alt="Perfiles de aluminio" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent opacity-80" />
+                <div className="absolute bottom-6 left-6">
+                  <h4 className="text-xl font-bold text-white">Matricería Propia</h4>
+                  <p className="text-gray-400 text-[10px] uppercase tracking-widest mt-1">Diseño de vanguardia</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Lower row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+             <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+              >
+                <img 
+                  src="/gallery/industrial.jpg" 
+                  alt="Planta industrial" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent opacity-80" />
+                <div className="absolute bottom-8 left-8">
+                  <h4 className="text-2xl font-bold text-white">Extrusión de Precisión</h4>
+                  <p className="text-gray-400 text-sm mt-2 max-w-xs">Procesos industriales certificados bajo los más altos estándares internacionales de calidad.</p>
+                </div>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+              >
+                <img 
+                  src="/gallery/office.jpg" 
+                  alt="Divisiones de oficina" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent opacity-80" />
+                <div className="absolute bottom-8 left-8">
+                  <h4 className="text-2xl font-bold text-white">Arquitectura Interior</h4>
+                  <p className="text-gray-400 text-sm mt-2 max-w-xs">Sistemas modulares y perfiles para divisiones de alta gama en entornos corporativos.</p>
+                </div>
+              </motion.div>
+          </div>
         </div>
       </section>
 
