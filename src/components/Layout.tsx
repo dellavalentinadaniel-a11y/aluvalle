@@ -38,7 +38,7 @@ export default function Layout() {
               menu
             </button>
             <Link to="/" className="flex items-center">
-              <img src={logoAluvalle} alt="ALUVALLE" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
+              <img src={logoAluvalle} alt="ALUVALLE" className="h-12 md:h-14 w-auto object-contain brightness-0 invert" />
             </Link>
           </div>
           <div className="hidden lg:flex items-center gap-8 font-headline tracking-tight font-bold uppercase text-sm">
@@ -204,7 +204,7 @@ export default function Layout() {
           {/* Logo + descripción */}
           <div className="flex flex-col gap-5 max-w-xs">
             <Link to="/">
-              <img src={logoAluvalle} alt="ALUVALLE" className="h-16 md:h-20 w-auto object-contain brightness-0 invert opacity-90" />
+              <img src={logoAluvalle} alt="ALUVALLE" className="h-24 md:h-28 w-auto object-contain brightness-0 invert" />
             </Link>
             <p className="text-[#94979e] text-[11px] leading-relaxed">
               Ingeniería de precisión para paisajes arquitectónicos modernos. Socio estratégico oficial de Alcemar S.A.
