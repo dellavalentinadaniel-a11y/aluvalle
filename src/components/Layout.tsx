@@ -9,6 +9,11 @@ export default function Layout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const [expandedSubMenu, setExpandedSubMenu] = useState<string | null>(null);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
 
   const navLinks = [
     {
@@ -27,8 +32,8 @@ export default function Layout() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="fixed top-0 w-full z-50 bg-[#191c20]/60 backdrop-blur-xl bg-gradient-to-b from-[#111417] to-transparent">
+    <div className={`min-h-screen flex flex-col transition-colors duration-500 ${theme === 'light' ? 'light bg-background' : 'bg-background'}`}>
+      <header className={`fixed top-0 w-full z-50 backdrop-blur-xl border-b border-outline/10 ${theme === 'light' ? 'bg-background/80' : 'bg-surface-container-low/60'}`}>
         <nav className="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
           <div className="flex items-center gap-4">
             <button
@@ -38,18 +43,18 @@ export default function Layout() {
               menu
             </button>
             <Link to="/" className="flex items-center">
-              <img src={logoAluvalle} alt="ALUVALLE" className="h-12 md:h-14 w-auto object-contain brightness-0 invert" />
+              <img src={logoAluvalle} alt="ALUVALLE" className={`h-12 md:h-14 w-auto object-contain transition-all duration-500 ${theme === 'dark' ? 'brightness-0 invert' : ''}`} />
             </Link>
           </div>
           <div className="hidden lg:flex items-center gap-8 font-headline tracking-tight font-bold uppercase text-sm">
             {navLinks.map((link) => (
               link.subLinks ? (
                 <div key={link.name} className="relative group cursor-pointer">
-                  <div className={`flex items-center gap-1 ${location.pathname.startsWith('/sistemas') ? 'text-[#a0d87a]' : 'text-[#e1e2e8] group-hover:text-[#a0d87a]'} transition-colors duration-300 py-4`}>
+                  <div className={`flex items-center gap-1 ${location.pathname.startsWith('/sistemas') ? 'text-primary' : 'text-on-surface group-hover:text-primary'} transition-colors duration-300 py-4`}>
                     {link.name}
                     <span className="material-symbols-outlined text-[1rem]">expand_more</span>
                   </div>
-                  <div className="absolute top-full left-0 mt-2 w-72 bg-[#111417]/95 backdrop-blur-xl border border-[#323539]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 flex flex-col z-50 rounded-xl overflow-hidden">
+                  <div className={`absolute top-full left-0 mt-2 w-72 backdrop-blur-xl border border-outline/20 shadow-[0_20px_50px_rgba(0,0,0,0.2)] opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 flex flex-col z-50 rounded-xl overflow-hidden ${theme === 'light' ? 'bg-white' : 'bg-surface-container-high'}`}>
                     <div className="p-2 flex flex-col">
                       {link.subLinks.map(sub => (
                         <Link
@@ -68,7 +73,7 @@ export default function Layout() {
                 <Link
                   key={link.name}
                   to={link.path!}
-                  className={`${location.pathname === link.path ? 'text-[#a0d87a]' : 'text-[#e1e2e8] hover:text-[#a0d87a]'} transition-colors duration-300`}
+                  className={`${location.pathname === link.path ? 'text-primary' : 'text-on-surface hover:text-primary'} transition-colors duration-300`}
                 >
                   {link.name}
                 </Link>
@@ -76,7 +81,10 @@ export default function Layout() {
             ))}
           </div>
           <div className="flex items-center gap-4">
-            <button className="hidden md:block material-symbols-outlined text-[#e1e2e8] hover:text-[#a0d87a] transition-all">search</button>
+            <button onClick={toggleTheme} className="material-symbols-outlined text-on-surface hover:text-primary transition-all">
+              {theme === 'light' ? 'dark_mode' : 'light_mode'}
+            </button>
+            <button className="hidden md:block material-symbols-outlined text-on-surface hover:text-primary transition-all">search</button>
             <Link to="/oficina-tecnica" className="btn-gradient text-on-primary px-6 py-2 rounded-full font-bold text-xs tracking-widest uppercase active:opacity-70 transition-all">
               Portal
             </Link>
@@ -204,9 +212,9 @@ export default function Layout() {
           {/* Logo + descripción */}
           <div className="flex flex-col gap-5 max-w-xs">
             <Link to="/">
-              <img src={logoAluvalle} alt="ALUVALLE" className="h-24 md:h-28 w-auto object-contain brightness-0 invert" />
+              <img src={logoAluvalle} alt="ALUVALLE" className={`h-24 md:h-28 w-auto object-contain transition-all duration-500 ${theme === 'dark' ? 'brightness-0 invert' : ''}`} />
             </Link>
-            <p className="text-[#94979e] text-[11px] leading-relaxed">
+            <p className="text-on-surface-variant text-[11px] leading-relaxed">
               Ingeniería de precisión para paisajes arquitectónicos modernos. Socio estratégico oficial de Alcemar S.A.
             </p>
           </div>
@@ -214,36 +222,36 @@ export default function Layout() {
           {/* Columnas de navegación */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 md:pl-16">
             <div className="flex flex-col gap-3">
-              <span className="text-white font-bold font-headline uppercase tracking-widest text-[11px] mb-1 md:text-[#e1e2e8] md:underline-offset-4">Soluciones</span>
-              <Link to="/sistemas/ventanas-y-puertas" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Sistemas Residenciales</Link>
-              <Link to="/sistemas/lamas-y-fachadas" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Fachadas Comerciales</Link>
-              <Link to="/sistemas/accesorios" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Accesorios y Herrajes</Link>
-              <Link to="/proyectos" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Distribuidores</Link>
+               <span className="text-on-surface font-bold font-headline uppercase tracking-widest text-[11px] mb-1 md:underline-offset-4">Soluciones</span>
+              <Link to="/sistemas/ventanas-y-puertas" className="text-on-surface-variant hover:text-primary transition-colors">Sistemas Residenciales</Link>
+              <Link to="/sistemas/lamas-y-fachadas" className="text-on-surface-variant hover:text-primary transition-colors">Fachadas Comerciales</Link>
+              <Link to="/sistemas/accesorios" className="text-on-surface-variant hover:text-primary transition-colors">Accesorios y Herrajes</Link>
+              <Link to="/proyectos" className="text-on-surface-variant hover:text-primary transition-colors">Distribuidores</Link>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="text-white font-bold font-headline uppercase tracking-widest text-[11px] mb-1">Recursos</span>
-              <Link to="/oficina-tecnica" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Portal Técnico</Link>
-              <Link to="/oficina-tecnica" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Objetos BIM</Link>
-              <Link to="/oficina-tecnica" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Especificaciones</Link>
+               <span className="text-on-surface font-bold font-headline uppercase tracking-widest text-[11px] mb-1">Recursos</span>
+               <Link to="/oficina-tecnica" className="text-on-surface-variant hover:text-primary transition-colors">Portal Técnico</Link>
+              <Link to="/oficina-tecnica" className="text-on-surface-variant hover:text-primary transition-colors">Objetos BIM</Link>
+              <Link to="/oficina-tecnica" className="text-on-surface-variant hover:text-primary transition-colors">Especificaciones</Link>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="text-white font-bold font-headline uppercase tracking-widest text-[11px] mb-1">Empresa</span>
-              <Link to="/sobre-nosotros" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Sobre Nosotros</Link>
-              <Link to="/sostenibilidad" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Sostenibilidad</Link>
-              <Link to="/proyectos" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Portafolio</Link>
+               <span className="text-on-surface font-bold font-headline uppercase tracking-widest text-[11px] mb-1">Empresa</span>
+               <Link to="/sobre-nosotros" className="text-on-surface-variant hover:text-primary transition-colors">Sobre Nosotros</Link>
+              <Link to="/sostenibilidad" className="text-on-surface-variant hover:text-primary transition-colors">Sostenibilidad</Link>
+              <Link to="/proyectos" className="text-on-surface-variant hover:text-primary transition-colors">Portafolio</Link>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="text-white font-bold font-headline uppercase tracking-widest text-[11px] mb-1">Legal</span>
-              <Link to="/privacidad" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Política de Privacidad</Link>
-              <Link to="/terminos" className="text-[#94979e] hover:text-[#a0d87a] transition-colors">Términos de Servicio</Link>
+               <span className="text-on-surface font-bold font-headline uppercase tracking-widest text-[11px] mb-1">Legal</span>
+               <Link to="/privacidad" className="text-on-surface-variant hover:text-primary transition-colors">Política de Privacidad</Link>
+              <Link to="/terminos" className="text-on-surface-variant hover:text-primary transition-colors">Términos de Servicio</Link>
             </div>
           </div>
 
           {/* Contacto y redes sociales */}
           <div className="flex flex-col gap-5 min-w-[180px]">
-            <span className="text-white font-bold font-headline uppercase tracking-widest text-[11px]">Contacto</span>
-            <a href="mailto:aluvallesas@gmail.com" className="text-[#94979e] hover:text-[#a0d87a] transition-colors text-[11px]">aluvallesas@gmail.com</a>
-            <a href="https://wa.me/5492996087387" className="text-[#94979e] hover:text-[#a0d87a] transition-colors text-[11px]">+54 9 299 608-7387</a>
+             <span className="text-on-surface font-bold font-headline uppercase tracking-widest text-[11px]">Contacto</span>
+             <a href="mailto:aluvallesas@gmail.com" className="text-on-surface-variant hover:text-primary transition-colors text-[11px]">aluvallesas@gmail.com</a>
+            <a href="https://wa.me/5492996087387" className="text-on-surface-variant hover:text-primary transition-colors text-[11px]">+54 9 299 608-7387</a>
             <div className="flex gap-3 mt-1">
               {/* WhatsApp */}
               <a href="https://wa.me/5492996087387?text=Hola%20Aluvall%C3%A9!%20Estaba%20navegando%20por%20su%20sitio%20web%20y%20me%20gustar%C3%ADa%20recibir%20asesoramiento%20sobre%20sus%20sistemas." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
@@ -265,9 +273,9 @@ export default function Layout() {
         </div>
 
         {/* Barra de copyright */}
-        <div className="border-t border-[#323539]/20">
+         <div className="border-t border-outline/10">
           <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-center">
-            <span className="text-[#94979e] text-[10px] tracking-widest uppercase text-center">
+             <span className="text-on-surface-variant text-[10px] tracking-widest uppercase text-center">
               © 2026 SISTEMAS ARQUITECTÓNICOS ALUVALLE. TODOS LOS DERECHOS RESERVADOS.
             </span>
           </div>

@@ -29,11 +29,11 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-24 pb-20 bg-[#0b0e12]">
+    <div className="min-h-screen pt-24 pb-20 bg-background transition-colors duration-500">
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-20">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#a0d87a]/20 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#a0d87a]/10 blur-[120px] rounded-full" />
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -42,7 +42,7 @@ const Contact = () => {
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[#a0d87a] font-bold tracking-[0.2em] uppercase text-xs mb-4 block"
+            className="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block"
           >
             Contacto Directo
           </motion.span>
@@ -50,10 +50,10 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
+            className="text-5xl md:text-7xl font-bold text-on-surface mb-6 tracking-tight"
           >
             Hablemos de su próximo <br />
-            <span className="text-[#a0d87a]">gran proyecto</span>
+            <span className="text-primary">gran proyecto</span>
           </motion.h1>
         </section>
 
@@ -63,7 +63,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-[#161a1f] border border-gray-800 p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden"
+            className="bg-surface-container border border-outline/10 p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden"
           >
             <AnimatePresence mode="wait">
               {formState !== 'success' ? (
@@ -72,21 +72,21 @@ const Contact = () => {
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -20 }}
                 >
-                  <h2 className="text-2xl font-bold text-white mb-8">Envíanos un mensaje</h2>
+                  <h2 className="text-2xl font-bold text-on-surface mb-8">Envíanos un mensaje</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="nombre" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Nombre</label>
-                        <input id="nombre" required type="text" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all" />
+                        <label htmlFor="nombre" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Nombre</label>
+                        <input id="nombre" placeholder="Tu nombre" required type="text" className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all" />
                       </div>
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Email</label>
-                        <input id="email" required type="email" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all" />
+                        <label htmlFor="email" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Email</label>
+                        <input id="email" placeholder="tu@email.com" required type="email" className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all" />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="asunto" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Asunto</label>
-                      <select id="asunto" className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer">
+                      <label htmlFor="asunto" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Asunto</label>
+                      <select id="asunto" className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer">
                         <option>Presupuesto de Obra</option>
                         <option>Soporte Técnico</option>
                         <option>Asesoramiento Comercial</option>
@@ -94,17 +94,17 @@ const Contact = () => {
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="mensaje" className="text-xs uppercase tracking-widest text-gray-500 font-bold">Mensaje</label>
-                      <textarea id="mensaje" required rows={4} className="w-full bg-gray-900/50 border border-gray-800 focus:border-[#a0d87a] text-white p-4 rounded-xl outline-none transition-all resize-none"></textarea>
+                      <label htmlFor="mensaje" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Mensaje</label>
+                      <textarea id="mensaje" required rows={4} className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all resize-none"></textarea>
                     </div>
                     <button
                       type="submit"
                       disabled={formState === 'sending'}
-                      className="w-full bg-[#a0d87a] text-[#111417] py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-[#8cc565] transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                      className="w-full bg-primary text-on-primary py-5 rounded-xl font-bold uppercase tracking-widest hover:brightness-110 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                     >
                       {formState === 'sending' ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-[#111417]/30 border-t-[#111417] rounded-full animate-spin" />
+                          <div className="w-5 h-5 border-2 border-on-primary/30 border-t-on-primary rounded-full animate-spin" />
                           Enviando...
                         </>
                       ) : 'Enviar Mensaje'}
@@ -118,14 +118,14 @@ const Contact = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-20 text-center"
                 >
-                  <div className="w-20 h-20 bg-[#a0d87a]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="material-symbols-outlined text-[#a0d87a] text-4xl">check_circle</span>
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="material-symbols-outlined text-primary text-4xl">check_circle</span>
                   </div>
-                  <h2 className="text-3xl font-bold text-white mb-4">¡Mensaje Recibido!</h2>
-                  <p className="text-gray-400 mb-8 max-w-sm mx-auto">Hemos recibido su consulta correctamente. Un asesor técnico se pondrá en contacto con usted en las próximas 24 horas hábiles.</p>
+                  <h2 className="text-3xl font-bold text-on-surface mb-4">¡Mensaje Recibido!</h2>
+                  <p className="text-on-surface-variant mb-8 max-w-sm mx-auto">Hemos recibido su consulta correctamente. Un asesor técnico se pondrá en contacto con usted en las próximas 24 horas hábiles.</p>
                   <button
                     onClick={() => setFormState('idle')}
-                    className="text-[#a0d87a] border border-[#a0d87a] px-8 py-3 rounded-xl hover:bg-[#a0d87a] hover:text-[#111417] transition-all"
+                    className="text-primary border border-primary px-8 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-all"
                   >
                     Enviar otro mensaje
                   </button>
@@ -144,14 +144,14 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + idx * 0.1 }}
-                  className="bg-[#1a1d21] border border-gray-800 p-6 rounded-2xl hover:bg-[#212429] transition-all"
+                  className="bg-surface-container-high border border-outline/10 p-6 rounded-2xl hover:bg-surface-container-highest transition-all"
                 >
-                  <span className="material-symbols-outlined text-[#a0d87a] mb-4">
+                  <span className="material-symbols-outlined text-primary mb-4">
                     {point.icon}
                   </span>
-                  <h3 className="text-lg font-bold text-white mb-2">{point.title}</h3>
-                  <p className="text-sm text-gray-500 mb-3">{point.desc}</p>
-                  <a href={`mailto:${point.email}`} className="text-[#a0d87a] font-medium hover:underline text-sm">
+                  <h3 className="text-lg font-bold text-on-surface mb-2">{point.title}</h3>
+                  <p className="text-sm text-on-surface-variant mb-3">{point.desc}</p>
+                  <a href={`mailto:${point.email}`} className="text-primary font-medium hover:underline text-sm">
                     {point.email}
                   </a>
                 </motion.div>
@@ -160,8 +160,8 @@ const Contact = () => {
 
             {/* Locations Section */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                <span className="material-symbols-outlined text-[#a0d87a]">location_on</span>
+              <h2 className="text-2xl font-bold text-on-surface flex items-center gap-3">
+                <span className="material-symbols-outlined text-primary">location_on</span>
                 Nuestras Sedes
               </h2>
               <div className="space-y-4">
@@ -174,11 +174,11 @@ const Contact = () => {
                     className="flex flex-col md:flex-row md:items-center justify-between p-6 bg-[#1a1d21] border-l-4 border-[#a0d87a] rounded-r-2xl gap-4 cursor-default hover:bg-[#212429] transition-colors"
                   >
                     <div>
-                      <h4 className="text-white font-bold mb-1">{loc.name}</h4>
-                      <p className="text-gray-500 text-sm">{loc.address}</p>
+                      <h4 className="text-on-surface font-bold mb-1">{loc.name}</h4>
+                      <p className="text-on-surface-variant text-sm">{loc.address}</p>
                     </div>
                     <div className="text-left md:text-right">
-                      <p className="text-[#a0d87a] font-bold text-sm mb-1">{loc.phone}</p>
+                      <p className="text-primary font-bold text-sm mb-1">{loc.phone}</p>
                       <p className="text-gray-600 text-[11px] uppercase tracking-wider">{loc.timings}</p>
                     </div>
                   </motion.div>
@@ -198,10 +198,10 @@ const Contact = () => {
                 alt="Map Background"
                 className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-2">
-                <span className="material-symbols-outlined text-[#a0d87a] text-4xl animate-bounce">location_on</span>
-                <span className="text-white font-bold text-sm tracking-widest uppercase">Ver mapa interactivo</span>
+                <span className="material-symbols-outlined text-primary text-4xl animate-bounce">location_on</span>
+                <span className="text-on-surface font-bold text-sm tracking-widest uppercase">Ver mapa interactivo</span>
               </div>
             </a>
           </div>

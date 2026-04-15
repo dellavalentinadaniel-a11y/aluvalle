@@ -59,6 +59,30 @@
   --radius-full: 0.75rem;
 }
 
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  .light {
+    --color-background: #fdfdfc;
+    --color-on-background: #191c1e;
+    --color-surface: #ffffff;
+    --color-on-surface: #191c1e;
+    --color-surface-container: #f1f4f9;
+    --color-surface-container-low: #f8fafc;
+    --color-surface-container-high: #edf2f7;
+    --color-surface-container-highest: #e2e8f0;
+    --color-surface-container-lowest: #ffffff;
+    --color-primary: #2d5a12;
+    --color-on-primary: #ffffff;
+    --color-secondary: #536348;
+    --color-on-secondary: #ffffff;
+    --color-outline: #73796e;
+    --color-outline-variant: #c3c8bc;
+    --color-inverse-surface: #2e312c;
+    --color-on-surface-variant: #43493e;
+  }
+}
+
 @layer base {
   body {
     @apply bg-background text-on-background font-body selection:bg-primary selection:text-on-primary;
@@ -68,6 +92,7 @@
 
 @layer utilities {
   .glass-effect {
+    -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
   }
   .text-vertical {
@@ -75,11 +100,13 @@
   }
   .glass-panel {
     background: rgba(25, 28, 32, 0.6);
+    -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
   }
   .text-gradient {
     background: linear-gradient(135deg, #a0d87a 0%, #86bc61 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .btn-gradient {
