@@ -6,63 +6,63 @@ const productLines = [
     slug: 'linea-tradicional',
     category: 'Sistemas Básicos',
     desc: 'Sistema de carpintería tradicional con excelente relación costo-beneficio.',
-    img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/warehouse.jpg',
   },
   {
     name: 'Línea Mediterránea',
     slug: 'linea-mediterranea',
     category: 'Sistemas Premium',
     desc: 'La máxima expresión del diseño en aluminio para residencias de lujo.',
-    img: 'https://images.unsplash.com/photo-1600566753376-12c8be740e5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/residential.jpg',
   },
   {
     name: 'Línea Gamma',
     slug: 'linea-gamma',
     category: 'Sistemas Ligeros',
     desc: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales.',
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/office.jpg',
   },
   {
     name: 'Línea Delta',
     slug: 'linea-delta',
     category: 'Deslizamiento Suave',
     desc: 'Máxima apertura y fluidez visual con diseño estructural resistente.',
-    img: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/residential.jpg',
   },
   {
     name: 'Línea Mónaco',
     slug: 'linea-monaco',
     category: 'Alta Gama',
     desc: 'Sistema avanzado de estanqueidad y cierre para grandes dimensiones.',
-    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/showroom.jpg',
   },
   {
     name: 'Línea Atlántica',
     slug: 'linea-atlantica',
     category: 'Robustez Extra',
     desc: 'Especialmente diseñada para frentes marítimos y presiones extremas de viento.',
-    img: 'https://images.unsplash.com/photo-1600585154526-990dced4e569?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/warehouse.jpg',
   },
   {
     name: 'Línea Niza',
     slug: 'linea-niza',
     category: 'Estilo Europeo',
     desc: 'Detalles europeos y precisión milimétrica en cada encuentro.',
-    img: 'https://images.unsplash.com/photo-1600607686027-6f8c622c81da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/residential.jpg',
   },
   {
     name: 'Línea Mónaco RPT',
     slug: 'linea-monaco-rpt',
     category: 'Ruptura Puente Térmico',
     desc: 'Eficiencia energética superior manteniendo la estética de la Línea Mónaco.',
-    img: 'https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/office.jpg',
   },
   {
     name: 'Línea Mediterránea RPT',
     slug: 'linea-mediterranea-rpt',
     category: 'Ruptura Puente Térmico',
     desc: 'El tope de gama en rendimiento acústico, térmico y sofisticación de diseño.',
-    img: 'https://images.unsplash.com/photo-1600607686151-54b9f29d4d8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    img: '/gallery/office.jpg',
   },
 ];
 
@@ -206,5 +206,3 @@ export default function Systems() {
     </div>
   );
 }
-
-

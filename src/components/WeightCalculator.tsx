@@ -1,16 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { allProfiles, Profile } from '../data/profiles';
-
-interface CalculationItem {
-  id: string;
-  profile: Profile;
-  length: number; // en metros
-  quantity: number;
-}
+import { useCalculator } from '../context/CalculatorContext';
 
 const WeightCalculator: React.FC = () => {
-  const [items, setItems] = useState<CalculationItem[]>([]);
+  const { items, addItem: globalAddItem, updateQuantity, removeItem, totalWeight } = useCalculator();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProfile, setSelectedProfile] = useState<Profile | null>(null);
   const [length, setLength] = useState<string>('6');
@@ -25,33 +19,16 @@ const WeightCalculator: React.FC = () => {
     ).slice(0, 10);
   }, [searchTerm]);
 
-  const addItem = () => {
+  const handleAddItem = () => {
     if (!selectedProfile || !length || !quantity) return;
     
-    const newItem: CalculationItem = {
-      id: Math.random().toString(36).substr(2, 9),
-      profile: selectedProfile,
-      length: parseFloat(length),
-      quantity: parseInt(quantity)
-    };
-
-    setItems([...items, newItem]);
+    globalAddItem(selectedProfile, parseFloat(length), parseInt(quantity));
+    
     setSelectedProfile(null);
     setSearchTerm('');
     setLength('6');
     setQuantity('1');
   };
-
-  const removeItem = (id: string) => {
-    setItems(items.filter(item => item.id !== id));
-  };
-
-  const totalWeight = useMemo(() => {
-    return items.reduce((acc, item) => {
-      const weightPerMeter = parseFloat(item.profile.weight.replace(',', '.'));
-      return acc + (weightPerMeter * item.length * item.quantity);
-    }, 0);
-  }, [items]);
 
   const generateShareText = () => {
     let text = "*Cotización de Peso - Aluvalle*\n\n";
@@ -170,7 +147,7 @@ const WeightCalculator: React.FC = () => {
 
           <div className="md:col-span-3">
             <button
-              onClick={addItem}
+              onClick={handleAddItem}
               disabled={!selectedProfile}
               className="w-full bg-primary text-on-primary p-4 rounded-xl font-bold hover:brightness-110 disabled:opacity-50 disabled:grayscale transition-all flex items-center justify-center gap-2"
             >
@@ -217,7 +194,23 @@ const WeightCalculator: React.FC = () => {
                         <td className="p-4 font-bold text-primary">{item.profile.code}</td>
                         <td className="p-4 text-sm text-on-surface-variant">{item.profile.description}</td>
                         <td className="p-4 text-center">{item.length}m</td>
-                        <td className="p-4 text-center">{item.quantity}</td>
+                        <td className="p-4 text-center">
+                          <div className="flex items-center justify-center gap-2">
+                            <button 
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              className="w-6 h-6 rounded-md border border-outline/20 flex items-center justify-center hover:bg-primary/10 transition-colors"
+                            >
+                              <span className="material-symbols-outlined text-[14px]">remove</span>
+                            </button>
+                            <span className="w-8 text-center font-bold text-xs">{item.quantity}</span>
+                            <button 
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              className="w-6 h-6 rounded-md border border-outline/20 flex items-center justify-center hover:bg-primary/10 transition-colors"
+                            >
+                              <span className="material-symbols-outlined text-[14px]">add</span>
+                            </button>
+                          </div>
+                        </td>
                         <td className="p-4 text-right font-mono text-xs">{item.profile.weight} kg/m</td>
                         <td className="p-4 text-right font-bold text-on-surface">{subtotal.toFixed(3)} kg</td>
                         <td className="p-4 text-center">

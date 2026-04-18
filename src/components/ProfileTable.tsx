@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Info } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { ChevronDown, ChevronUp, Info, Calculator, Check } from 'lucide-react';
+import { useCalculator } from '../context/CalculatorContext';
 
 interface Profile {
   code: string;
@@ -121,10 +122,14 @@ const ProfileDetailDrawer: React.FC<{ profile: Profile | null; onClose: () => vo
 const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState<Profile | null>(null);
+  const { items, addItem } = useCalculator();
   const INITIAL_COUNT = 10;
   
   const displayedProfiles = isExpanded ? profiles : profiles.slice(0, INITIAL_COUNT);
   const hasMore = profiles.length > INITIAL_COUNT;
+
+  // Crear un Set de códigos añadidos para búsqueda rápida
+  const addedCodes = useMemo(() => new Set(items.map(item => item.profile.code)), [items]);
 
   return (
     <div className="relative">
@@ -157,35 +162,59 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => 
                 <th className="px-6 py-5 border-b border-outline/5">T.xP.</th>
                 <th className="px-6 py-5 border-b border-outline/5">Descripción</th>
                 <th className="px-6 py-5 border-b border-outline/5 text-center">Forma</th>
-                <th className="px-6 py-5 border-b border-outline/5 text-center">Ficha</th>
+                <th className="px-6 py-5 border-b border-outline/5 text-center">Acciones</th>
               </tr>
             </thead>
             <tbody className="font-body text-sm">
-              {displayedProfiles.map((profile, index) => (
-                <tr key={profile.code + index} className="group hover:bg-primary/5 transition-colors border-b border-outline/5 last:border-0">
-                  <td className="px-8 py-6 font-bold text-on-surface group-hover:text-primary transition-all duration-300">{profile.code}</td>
-                  <td className="px-6 py-6 text-on-surface-variant">{profile.weight}</td>
-                  <td className="px-6 py-6 text-on-surface-variant">
-                    <span className="bg-surface-container px-2.5 py-1.5 rounded-lg text-[10px] border border-outline/5 font-bold uppercase">{profile.txp}</span>
-                  </td>
-                  <td className="px-6 py-6 text-on-surface font-medium leading-relaxed max-w-xs">{profile.description}</td>
-                  <td className="px-6 py-6 text-center">
-                    <div className="bg-surface-container-high/40 p-1.5 inline-block border border-outline/5 group-hover:border-primary/30 transition-all rounded-xl">
-                      <ShapeIcon shape={profile.shape} />
-                    </div>
-                  </td>
-                  <td className="px-6 py-6 text-center">
-                    <button 
-                      onClick={() => setSelectedProfile(profile)}
-                      className="bg-surface-container-high/60 p-2.5 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm"
-                      title="Ver ficha técnica"
-                      aria-label={`Ver ficha técnica del perfil ${profile.code}`}
-                    >
-                      <Info className="w-5 h-5" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {displayedProfiles.map((profile, index) => {
+                const isAdded = addedCodes.has(profile.code);
+                return (
+                  <tr 
+                    key={profile.code + index} 
+                    className={`group transition-colors border-b border-outline/5 last:border-0 ${isAdded ? 'bg-primary/5' : 'hover:bg-primary/5'}`}
+                  >
+                    <td className={`px-8 py-6 font-bold transition-all duration-300 ${isAdded ? 'text-primary' : 'text-on-surface group-hover:text-primary'}`}>{profile.code}</td>
+                    <td className="px-6 py-6 text-on-surface-variant">{profile.weight}</td>
+                    <td className="px-6 py-6 text-on-surface-variant">
+                      <span className="bg-surface-container px-2.5 py-1.5 rounded-lg text-[10px] border border-outline/5 font-bold uppercase">{profile.txp}</span>
+                    </td>
+                    <td className="px-6 py-6 text-on-surface font-medium leading-relaxed max-w-xs">{profile.description}</td>
+                    <td className="px-6 py-6 text-center">
+                      <div className={`bg-surface-container-high/40 p-1.5 inline-block border transition-all rounded-xl ${isAdded ? 'border-primary/50' : 'border-outline/5 group-hover:border-primary/30'}`}>
+                        <ShapeIcon shape={profile.shape} />
+                      </div>
+                    </td>
+                    <td className="px-6 py-6">
+                      <div className="flex items-center justify-center gap-2">
+                        <button 
+                          onClick={() => setSelectedProfile(profile)}
+                          className="bg-surface-container-high/60 p-2.5 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm"
+                          title="Ver ficha técnica"
+                          aria-label={`Ver ficha técnica del perfil ${profile.code}`}
+                        >
+                          <Info className="w-5 h-5" />
+                        </button>
+                        <button 
+                          onClick={() => !isAdded && addItem(profile)}
+                          className={`p-2.5 border transition-all rounded-xl shadow-sm flex items-center justify-center ${
+                            isAdded
+                              ? 'bg-primary text-on-primary border-primary cursor-default'
+                              : 'bg-surface-container-high/60 text-on-surface-variant border-outline/10 hover:border-primary hover:text-primary'
+                          }`}
+                          title={isAdded ? "Ya añadido a la calculadora" : "Añadir a calculadora de peso"}
+                          aria-label={isAdded ? `Perfil ${profile.code} ya añadido` : `Añadir perfil ${profile.code} a calculadora`}
+                        >
+                          {isAdded ? (
+                            <Check className="w-5 h-5 animate-in zoom-in duration-300" />
+                          ) : (
+                            <Calculator className="w-5 h-5" />
+                          )}
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -27,6 +27,9 @@ const DeltaMachining = lazy(() => import('./pages/DeltaMachining.tsx'));
 const TradicionalMachining = lazy(() => import('./pages/TradicionalMachining.tsx'));
 const TechnicalCatalog = lazy(() => import('./pages/TechnicalCatalog.tsx'));
 
+import { CalculatorProvider } from './context/CalculatorContext';
+import { Analytics } from '@vercel/analytics/react';
+
 // Loading component
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-background flex items-center justify-center">
@@ -36,11 +39,13 @@ const LoadingScreen = () => (
 
 export default function App() {
   return (
-    <Router>
-      <Suspense fallback={<LoadingScreen />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+    <CalculatorProvider>
+      <Analytics />
+      <Router>
+        <Suspense fallback={<LoadingScreen />}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
             <Route path="sistemas">
               <Route index element={<Navigate to="ventanas-y-puertas" replace />} />
               <Route path="ventanas-y-puertas" element={<Systems />} />
@@ -70,5 +75,6 @@ export default function App() {
         </Routes>
       </Suspense>
     </Router>
+    </CalculatorProvider>
   );
 }

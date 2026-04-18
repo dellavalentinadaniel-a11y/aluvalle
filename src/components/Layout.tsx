@@ -1,11 +1,13 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useCalculator } from '../context/CalculatorContext';
 import CookieBanner from './CookieBanner';
 import WhatsAppButton from './WhatsAppButton';
 import logoAluvalle from './logo-aluvalle.png';
 
 export default function Layout() {
+  const { items } = useCalculator();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const [expandedSubMenu, setExpandedSubMenu] = useState<string | null>(null);
@@ -149,6 +151,25 @@ export default function Layout() {
             <button className="hidden md:block material-symbols-outlined text-on-surface hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container">
               search
             </button>
+            
+            {/* Calculator Icon with Badge */}
+            <Link
+              to="/oficina-tecnica"
+              className="relative p-2 text-on-surface hover:text-primary transition-all rounded-full hover:bg-surface-container group"
+              title="Ver Calculadora de Pesos"
+            >
+              <span className="material-symbols-outlined">calculate</span>
+              {items.length > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute top-0 right-0 w-4 h-4 bg-primary text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center shadow-lg border border-background"
+                >
+                  {items.length}
+                </motion.span>
+              )}
+            </Link>
+
             <Link
               to="/contact"
               className="btn-gradient px-8 py-3 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] transform hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center gap-2"

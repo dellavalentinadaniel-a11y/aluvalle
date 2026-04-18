@@ -7,8 +7,7 @@ export const products: Product[] = [
     name: 'Línea Tradicional',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/warehouse.jpg',
     description: 'Sistema de carpintería tradicional con excelente relación costo-beneficio.',
     introText:
       'La Línea Tradicional es nuestro sistema más versátil y probado. Diseñada para ofrecer una solución robusta y económica sin comprometer la estética ni la funcionalidad básica de una abertura de aluminio de alta calidad.',
@@ -42,21 +41,17 @@ export const products: Product[] = [
       },
     ],
     downloads: [
-      { type: 'PDF', label: 'Catálogo Técnico', url: '#' },
-      { type: 'DWG', label: 'Perfiles CAD', url: '#' },
+      { type: 'PDF', label: 'Catálogo Línea Tradicional', url: '/docs/Línea Tradicional/Catalogo_Linea_Tradicional (1).pdf' },
+      { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-tradicional' },
     ],
-    gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=800&q=80',
-    ],
+    gallery: ['/gallery/warehouse.jpg', '/gallery/industrial.jpg'],
   },
   {
     slug: 'linea-mediterranea',
     name: 'Línea Mediterránea',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600566753376-12c8be740e5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/residential.jpg',
     description:
       'La máxima expresión del diseño en aluminio para residencias de lujo. Alto rendimiento térmico y acústico.',
     introText:
@@ -89,12 +84,12 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Comercial Mediterránea',
-        url: '/doc/Sistemas de ventanas y puertas/Línea Mediterránea/Catalogo_Comercial_Linea_Mediterranea.pdf',
+        url: '/docs/Línea Mediterránea/Catalogo_Comercial_Linea_Mediterranea.pdf',
       },
       {
         type: 'PDF',
         label: 'Catálogo Técnico Mediterránea',
-        url: '/doc/Sistemas de ventanas y puertas/Línea Mediterránea/Catalogo_Linea_Mediterranea.pdf',
+        url: '/docs/Línea Mediterránea/Catalogo_Linea_Mediterranea.pdf',
       },
       {
         type: 'MECANIZADO',
@@ -102,18 +97,14 @@ export const products: Product[] = [
         url: '/mecanizados/linea-mediterranea',
       },
     ],
-    gallery: [
-      'https://images.unsplash.com/photo-1600607686151-54b9f29d4d8c?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1600585153490-76fb20a32601?auto=format&fit=crop&w=800&q=80',
-    ],
+    gallery: ['/gallery/residential.jpg', '/gallery/showroom.jpg'],
   },
   {
     slug: 'linea-gamma',
     name: 'Línea Gamma',
     category: 'Sistemas Ligeros',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/office.jpg',
     description: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales.',
     introText:
       'Nuestra Línea Gamma es perfecta para proyectos modernos que necesitan perfiles más delgados para maximizar la superficie vidriada, manteniendo las máximas prestaciones estructurales de Alcemar.',
@@ -142,20 +133,17 @@ export const products: Product[] = [
       },
     ],
     downloads: [
-      { type: 'PDF', label: 'Catálogo Gamma', url: '#' },
+      { type: 'PDF', label: 'Catálogo Gamma', url: '/docs/Línea Gamma/Catalogo_Linea_Gamma.pdf' },
       { type: 'MECANIZADO', label: 'Guía de Mecanizado Gamma', url: '/mecanizados/linea-gamma' },
     ],
-    gallery: [
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-    ],
+    gallery: ['/gallery/office.jpg', '/gallery/showroom.jpg'],
   },
   {
     slug: 'linea-delta',
     name: 'Línea Delta',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/residential.jpg',
     description: 'Máxima apertura y fluidez visual con diseño estructural resistente.',
     introText:
       'La Línea Delta ofrece un deslizamiento extremadamente suave gracias a su pista de acero inoxidable intercambiable. Es ideal para puertas balcón de tamaño medio y grande que requieren apertura constante con el mínimo esfuerzo.',
@@ -178,18 +166,18 @@ export const products: Product[] = [
         icon: 'straighten',
       },
     ],
-    downloads: [{ type: 'PDF', label: 'Folleto Delta', url: '#' }],
-    gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    downloads: [
+      { type: 'PDF', label: 'Folleto Delta', url: '/docs/Línea Delta/Catalogo_Linea_Delta.pdf' },
+      { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-delta' }
     ],
+    gallery: ['/gallery/residential.jpg', '/gallery/profiles.jpg'],
   },
   {
     slug: 'linea-monaco',
     name: 'Línea Mónaco',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/showroom.jpg',
     description: 'Sistema avanzado de estanqueidad y cierre para grandes dimensiones.',
     introText:
       'Mónaco es sinónimo de protección climática. A través de empaquetaduras dobles, burletes coextruídos y una cámara compensadora de presiones, garantiza impermeabilidad total aun bajo condiciones de lluvia racheada severa.',
@@ -211,18 +199,18 @@ export const products: Product[] = [
         icon: 'pan_tool_alt',
       },
     ],
-    downloads: [{ type: 'PDF', label: 'Catálogo Mónaco', url: '#' }],
-    gallery: [
-      'https://images.unsplash.com/photo-1600607686027-6f8c622c81da?auto=format&fit=crop&w=800&q=80',
+    downloads: [
+      { type: 'PDF', label: 'Catálogo Mónaco', url: '/docs/Línea Mónaco/Catalogo_Linea_Monaco.pdf' },
+      { type: 'MECANIZADO', label: 'Guía de Mecanizados', url: '/mecanizados/linea-monaco' }
     ],
+    gallery: ['/gallery/showroom.jpg', '/gallery/office.jpg'],
   },
   {
     slug: 'linea-atlantica',
     name: 'Línea Atlántica',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600585154526-990dced4e569?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/warehouse.jpg',
     description: 'Especialmente diseñada para frentes marítimos y presiones extremas de viento.',
     introText:
       'La Línea Atlántica fue diseñada enfrentando la necesidad arquitectónica de zonas costeras y edificios en altura donde la fuerza del viento y la exposición salina es implacable.',
@@ -244,18 +232,18 @@ export const products: Product[] = [
         icon: 'waterfall_chart',
       },
     ],
-    downloads: [{ type: 'PDF', label: 'Ensayo Viento Atlántica', url: '#' }],
-    gallery: [
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
+    downloads: [
+      { type: 'PDF', label: 'Catálogo Atlántica', url: '/docs/Línea Atlántica/Catalogo_Linea_Atlantica.pdf' },
+      { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-atlantica' }
     ],
+    gallery: ['/gallery/warehouse.jpg', '/gallery/industrial.jpg'],
   },
   {
     slug: 'linea-niza',
     name: 'Línea Niza',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600607686027-6f8c622c81da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/residential.jpg',
     description: 'Detalles europeos y precisión milimétrica en cada encuentro.',
     introText:
       'Inspirada en el interiorismo de lujo, la Línea Niza es una opción netamenta estética para interiores y exteriores protegidos que buscan destacar el mínimo marco y el máximo cristal.',
@@ -271,16 +259,18 @@ export const products: Product[] = [
         icon: 'straighten',
       },
     ],
-    downloads: [{ type: 'PDF', label: 'Folleto Niza', url: '#' }],
-    gallery: [],
+    downloads: [
+      { type: 'PDF', label: 'Catálogo Niza', url: '/docs/Línea Niza/Catalogo_Linea_Niza.pdf' },
+      { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-niza' }
+    ],
+    gallery: ['/gallery/residential.jpg', '/gallery/showroom.jpg'],
   },
   {
     slug: 'linea-monaco-rpt',
     name: 'Línea Mónaco RPT',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/office.jpg',
     description: 'Eficiencia energética superior manteniendo la estética de la Línea Mónaco.',
     introText:
       'Al incorporar perfiles de poliamida reforzada, logramos dividir térmicamente la cara interior de la exterior del aluminio, impidiendo la transferencia térmica y reduciendo enormemente el gasto energético en calefacción y refrigeración del hogar.',
@@ -306,18 +296,17 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Línea Mónaco RPT',
-        url: 'https://alcemar.com.ar/alcemar.com.ar/wp-content/uploads/2018/08/Catalogo_linea_MonacoRPT.pdf',
+        url: '/docs/Línea Mónaco RPT/Catalogo_linea_MonacoRPT.pdf',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/office.jpg', '/gallery/showroom.jpg'],
   },
   {
     slug: 'linea-mediterranea-rpt',
     name: 'Línea Mediterránea RPT',
     category: 'Sistemas de ventanas y puertas',
     categorySlug: 'ventanas-y-puertas',
-    heroImage:
-      'https://images.unsplash.com/photo-1600607686151-54b9f29d4d8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/residential.jpg',
     description: 'El tope de gama en rendimiento acústico, térmico y sofisticación de diseño.',
     introText:
       'La suma del diseño europeo pesado de la Línea Mediterránea y la Ruptura de Puente Térmico (RPT) de 34mm convierten a este sistema en el rey absoluto del asilamiento térmico en carpinterías nacionales de alta gama.',
@@ -342,21 +331,21 @@ export const products: Product[] = [
     downloads: [
       {
         type: 'PDF',
-        label: 'Catálogo Mediterránea RPT',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Mediterranea_RPT.pdf',
+        label: 'Catálogo Técnico RPT',
+        url: '/docs/Línea Mediterránea RPT/Catalogo_Linea_Mediterranea_RPT.pdf',
       },
       {
         type: 'PDF',
-        label: 'Catálogo Comercial Med. RPT',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Comercial_Linea_Mediterranea_RPT.pdf',
+        label: 'Catálogo Comercial RPT',
+        url: '/docs/Línea Mediterránea RPT/Catalogo_Comercial_Linea_Mediterranea_RPT.pdf',
       },
       {
-        type: 'PDF',
-        label: 'Mecanizados Med. RPT',
-        url: 'https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea_RPT.pdf',
+        type: 'MECANIZADO',
+        label: 'Manual de Mecanizado RPT',
+        url: '/mecanizados/linea-mediterranea-rpt',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/residential.jpg', '/gallery/office.jpg'],
   },
 
   // --- LAMAS Y FACHADAS ---
@@ -365,8 +354,7 @@ export const products: Product[] = [
     name: 'Frente Integral',
     category: 'Fachadas Continuas',
     categorySlug: 'lamas-y-fachadas',
-    heroImage:
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/industrial.jpg',
     description:
       'Sistema estructural para fachadas continuas de gran escala. Máxima transparencia y seguridad.',
     introText:
@@ -393,18 +381,17 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Frente Integral',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Frente_Integral.pdf',
+        url: '#',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/industrial.jpg', '/gallery/warehouse.jpg'],
   },
   {
     slug: 'frente-vidriado',
     name: 'Frente Vidriado (Piel de Vidrio)',
     category: 'Fachadas Piel de Vidrio',
     categorySlug: 'lamas-y-fachadas',
-    heroImage:
-      'https://images.unsplash.com/photo-1574880575306-1262dced0765?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/office.jpg',
     description: 'Sistema de Piel de Vidrio (Stick) para envolventes lisas desde el exterior.',
     introText:
       'Conocido como Curtain Wall de aspecto ciego, este sistema utiliza silicona estructural para pegar los paños de vidrio a un bastidor oculto de aluminio, ofreciendo un plano 100% de cristal desde el exterior del edificio.',
@@ -430,18 +417,17 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Frente Vidriado',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Frente_Vidriado.pdf',
+        url: '#',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/office.jpg', '/gallery/showroom.jpg'],
   },
   {
     slug: 'sistema-de-lama-parasol',
     name: 'Sistema de Lama Parasol',
     category: 'Control Solar Exterior',
     categorySlug: 'lamas-y-fachadas',
-    heroImage:
-      'https://images.unsplash.com/photo-1510006851064-e6056cd0e3a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/warehouse.jpg',
     description:
       'Sistema de aspas y perfiles de aluminio para diseño de control lumínico exterior.',
     introText:
@@ -466,15 +452,14 @@ export const products: Product[] = [
       },
     ],
     downloads: [{ type: 'DWG', label: 'Detalles Constructivos Lamas', url: '#' }],
-    gallery: [],
+    gallery: ['/gallery/warehouse.jpg', '/gallery/industrial.jpg'],
   },
   {
     slug: 'sistema-frame-de-junta-cerrada',
     name: 'Frame de Junta Cerrada',
     category: 'Sistemas Modulares Rápido',
     categorySlug: 'lamas-y-fachadas',
-    heroImage:
-      'https://images.unsplash.com/photo-1428366890462-dd4baecf492b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/office.jpg',
     description:
       'Evolución del Curtain Wall. Paneles modulados unitizados en taller para montaje ultra rápido.',
     introText:
@@ -498,7 +483,7 @@ export const products: Product[] = [
       },
     ],
     downloads: [{ type: 'PDF', label: 'Ventajas Metodología Frame', url: '#' }],
-    gallery: [],
+    gallery: ['/gallery/office.jpg', '/gallery/showroom.jpg'],
   },
 
   // --- SISTEMAS COMPLEMENTARIOS ---
@@ -507,15 +492,14 @@ export const products: Product[] = [
     name: 'Sistemas de Barandas',
     category: 'Balcones y Terrazas',
     categorySlug: 'complementarios',
-    heroImage:
-      'https://images.unsplash.com/photo-1579725942555-ea819e99ee2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/residential.jpg',
     description:
       'Línea completa de protección de vacíos balcón. Múltiples fijaciones y soportes de cristal.',
     introText:
       'Compromiso vitalicio con la seguridad personal. Barandas de aluminio (líneas Clásica, Panorama, SPU) verificadas estructuralmente para soporte de impacto de personas y vientos rigurosos según las normativas de construcción urbanas.',
     isRPT: false,
     specs: [
-      { label: 'Anclaje', value: 'Superior / Lateral de losa', icon: 'anchor' },
+      { label: 'Ancho de Columna', value: '60mm', icon: 'view_column' },
       { label: 'Soporte de Cristal', value: 'Con o Sin pasamanos superior', icon: 'dock' },
     ],
     features: [
@@ -535,23 +519,17 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Técnico Barandas',
-        url: 'https://alcemar.com.ar/of_tecnica/cat/Catalogo_Barandas.pdf',
-      },
-      {
-        type: 'PDF',
-        label: 'Catálogo Comercial Barandas',
-        url: 'https://alcemar.com.ar/of_tecnica/cat/Catalogo_Barandas_Comercial.pdf',
+        url: '#',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/residential.jpg', '/gallery/showroom.jpg'],
   },
   {
     slug: 'cortinas-de-enrollar',
     name: 'Cortinas de Enrollar',
     category: 'Protección y Oscurecimiento',
     categorySlug: 'complementarios',
-    heroImage:
-      'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/residential.jpg',
     description:
       'Tablillas inyectadas en poliuretano u extruidas de aluminio para control total de luz y resguardo nocturno.',
     introText:
@@ -577,18 +555,17 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Complementarios',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Complementarios.pdf',
+        url: '#',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/residential.jpg', '/gallery/office.jpg'],
   },
   {
     slug: 'frentes-de-placard',
     name: 'Frentes de Placard',
     category: 'Interiores Integrales',
     categorySlug: 'complementarios',
-    heroImage:
-      'https://images.unsplash.com/photo-1595514535415-eb1025ca4e5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/showroom.jpg',
     description:
       'Solución integral deslizante de alta calidad para organización interior y armarios empotrados.',
     introText:
@@ -615,18 +592,17 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Complementarios',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Complementarios.pdf',
+        url: '#',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/showroom.jpg', '/gallery/office.jpg'],
   },
   {
     slug: 'sistemas-de-mamparas',
     name: 'Sistemas de Mamparas',
     category: 'Divisiones en Cristal para Baño',
     categorySlug: 'complementarios',
-    heroImage:
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/gallery/showroom.jpg',
     description: 'Estructuras firmes expuestas en ambientes de alta humedad.',
     introText:
       'Aluminio especialmente aleado y anonizado bajo estrictas normas para asegurar la longevidad del metal ante los vapores constantes del área de ducha, sin alojar incrustraciones en guías de correderas.',
@@ -651,9 +627,9 @@ export const products: Product[] = [
       {
         type: 'PDF',
         label: 'Catálogo Técnico Mamparas',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Tecnico_Mamparas.pdf',
+        url: '#',
       },
     ],
-    gallery: [],
+    gallery: ['/gallery/showroom.jpg', '/gallery/residential.jpg'],
   },
 ];
