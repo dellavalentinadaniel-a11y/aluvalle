@@ -11,7 +11,7 @@ export interface ProductFeature {
 }
 
 export interface ProductDownload {
-  type: 'PDF' | 'DWG' | 'RVT';
+  type: 'PDF' | 'DWG' | 'RVT' | 'MECANIZADO';
   label: string;
   url: string;
 }

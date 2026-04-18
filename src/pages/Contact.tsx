@@ -31,9 +31,14 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-24 pb-20 bg-background transition-colors duration-500">
       {/* Background patterns */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-20">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <img
+          src="/gallery/showroom.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          alt=""
+        />
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -240,9 +245,9 @@ const Contact = () => {
               className="h-48 bg-gray-900 rounded-3xl relative overflow-hidden group block"
             >
               <img
-                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                alt="Map Background"
-                className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:scale-110 transition-transform duration-700"
+                src="/gallery/showroom.jpg"
+                alt="Showroom Aluvallé"
+                className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-2">

@@ -2,17 +2,28 @@ import { motion } from 'motion/react';
 
 export default function AboutUs() {
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-[#0b0e12] text-[#94979e] font-body">
-      <div className="max-w-4xl mx-auto px-6">
+    <div className="min-h-screen pt-32 pb-20 bg-background text-on-surface-variant font-body relative">
+      {/* Background patterns */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <img
+          src="/gallery/profiles.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          alt=""
+        />
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-headline font-bold text-[#e1e2e8] mb-6 uppercase tracking-tighter">
+          <h1 className="text-4xl md:text-6xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tighter">
             Sobre Nosotros
           </h1>
-          <p className="text-sm uppercase tracking-[0.2em] text-[#a0d87a] font-bold">
+          <p className="text-sm uppercase tracking-[0.2em] text-primary font-bold">
             Ingeniería en Aluminio
           </p>
         </motion.div>
@@ -20,7 +31,7 @@ export default function AboutUs() {
         <section className="space-y-16 leading-relaxed">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-2xl font-headline font-bold text-[#e1e2e8] mb-4 uppercase">
+              <h2 className="text-2xl font-headline font-bold text-on-surface mb-4 uppercase">
                 Nuestra Historia
               </h2>
               <p className="mb-4">
@@ -33,37 +44,37 @@ export default function AboutUs() {
                 la gama más completa de sistemas de carpintería de alta gama en Argentina.
               </p>
             </div>
-            <div className="aspect-square bg-[#191c20] border border-[#323539] flex items-center justify-center p-8 rounded-[2rem]">
-              <span className="material-symbols-outlined text-8xl text-[#a0d87a]">
+            <div className="aspect-square bg-surface-variant/10 border border-outline/10 flex items-center justify-center p-8 rounded-[2rem] backdrop-blur-sm">
+              <span className="material-symbols-outlined text-8xl text-primary">
                 architecture
               </span>
             </div>
           </div>
 
           <div>
-            <h2 className="text-2xl font-headline font-bold text-[#e1e2e8] mb-8 uppercase text-center">
+            <h2 className="text-2xl font-headline font-bold text-on-surface mb-8 uppercase text-center">
               Nuestros Valores
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              <div className="bg-[#191c20]/40 p-10 border border-[#323539]/20 flex flex-col items-center text-center">
-                <span className="material-symbols-outlined text-[#a0d87a] text-4xl mb-4">
+              <div className="bg-surface-variant/5 p-10 border border-outline/10 flex flex-col items-center text-center backdrop-blur-sm">
+                <span className="material-symbols-outlined text-primary text-4xl mb-4">
                   diamond
                 </span>
-                <h3 className="text-[#e1e2e8] font-bold mb-2">Excelencia</h3>
+                <h3 className="text-on-surface font-bold mb-2">Excelencia</h3>
                 <p className="text-xs">
                   Comprometidos con la más alta calidad en cada detalle técnico.
                 </p>
               </div>
-              <div className="bg-[#191c20]/40 p-10 border border-[#323539]/20 flex flex-col items-center text-center">
-                <span className="material-symbols-outlined text-[#a0d87a] text-4xl mb-4">bolt</span>
-                <h3 className="text-[#e1e2e8] font-bold mb-2">Innovación</h3>
+              <div className="bg-surface-variant/5 p-10 border border-outline/10 flex flex-col items-center text-center backdrop-blur-sm">
+                <span className="material-symbols-outlined text-primary text-4xl mb-4">bolt</span>
+                <h3 className="text-on-surface font-bold mb-2">Innovación</h3>
                 <p className="text-xs">
                   Búsqueda constante de las últimas tecnologías en RPT y fachadas.
                 </p>
               </div>
-              <div className="bg-[#191c20]/40 p-10 border border-[#323539]/20 flex flex-col items-center text-center">
-                <span className="material-symbols-outlined text-[#a0d87a] text-4xl mb-4">eco</span>
-                <h3 className="text-[#e1e2e8] font-bold mb-2">Sostenibilidad</h3>
+              <div className="bg-surface-variant/5 p-10 border border-outline/10 flex flex-col items-center text-center backdrop-blur-sm">
+                <span className="material-symbols-outlined text-primary text-4xl mb-4">eco</span>
+                <h3 className="text-on-surface font-bold mb-2">Sostenibilidad</h3>
                 <p className="text-xs">
                   Fomentamos el uso de materiales 100% reciclables y eficiencia energética.
                 </p>
@@ -71,8 +82,8 @@ export default function AboutUs() {
             </div>
           </div>
 
-          <div className="bg-[#111417] p-12 border border-[#323539]/30 text-center">
-            <h2 className="text-2xl font-headline font-bold text-[#e1e2e8] mb-4 uppercase inline-block border-b-2 border-[#a0d87a] pb-2">
+          <div className="bg-surface-variant/10 p-12 border border-outline/10 text-center backdrop-blur-md rounded-3xl">
+            <h2 className="text-2xl font-headline font-bold text-on-surface mb-4 uppercase inline-block border-b-2 border-primary pb-2">
               Nuestra Alianza
             </h2>
             <p className="max-w-2xl mx-auto mt-6 text-lg">

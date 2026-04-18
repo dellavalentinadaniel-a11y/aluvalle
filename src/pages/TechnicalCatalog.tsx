@@ -1,7 +1,7 @@
-
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Download, FileText, ZoomIn } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const catalogImages = [
   { id: 1, url: '/assets/catalog/tradicional/page_7_top_1776516071744.png', title: 'Página 7 - Superior', description: 'Ventana y Puerta Corrediza Liviana' },
@@ -39,22 +39,33 @@ export default function TechnicalCatalog() {
   }, []);
 
   return (
-    <div className="bg-[#0b0e12] min-h-screen pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="bg-background min-h-screen pt-32 pb-20 relative">
+      {/* Background patterns */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <img
+          src="/gallery/profiles.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          alt=""
+        />
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div className="animate-in fade-in slide-in-from-left-4 duration-700">
             <Link 
               to={`/productos/${slug}`}
-              className="inline-flex items-center gap-2 text-[#a0d87a] hover:text-white transition-colors mb-6 group"
+              className="inline-flex items-center gap-2 text-primary hover:brightness-125 transition-all mb-6 group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               <span className="text-sm font-bold uppercase tracking-widest">Volver al Producto</span>
             </Link>
-            <h1 className="font-headline text-4xl md:text-6xl font-bold text-white uppercase leading-none mb-4">
-              Catálogo <span className="text-[#a0d87a]">Técnico</span>
+            <h1 className="font-headline text-4xl md:text-6xl font-bold text-on-surface uppercase leading-none mb-4">
+              Catálogo <span className="text-primary">Técnico</span>
             </h1>
-            <p className="text-[#94979e] text-lg max-w-2xl">
+            <p className="text-on-surface-variant text-lg max-w-2xl">
               Explora las especificaciones técnicas completas, esquemas de perfiles y detalles de armado para la {slug?.replace(/-/g, ' ')}.
             </p>
           </div>
@@ -63,7 +74,7 @@ export default function TechnicalCatalog() {
             href="/Catalogo_Linea_Tradicional.pdf" 
             target="_blank"
             download
-            className="flex items-center gap-3 bg-[#a0d87a] text-[#0b0e12] px-8 py-4 rounded-xl font-bold hover:bg-white transition-all transform hover:scale-105 animate-in fade-in slide-in-from-right-4 duration-700"
+            className="flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-xl font-bold hover:brightness-110 transition-all transform hover:scale-105 animate-in fade-in slide-in-from-right-4 duration-700 shadow-lg shadow-primary/20"
           >
             <Download className="w-5 h-5" />
             Descargar PDF Completo
@@ -73,10 +84,13 @@ export default function TechnicalCatalog() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {catalogImages.map((image, index) => (
-            <div 
+            <motion.div 
               key={image.id}
-              className="group relative bg-[#111417] border border-[#323539]/30 rounded-2xl overflow-hidden hover:border-[#a0d87a]/50 transition-all duration-500 animate-in fade-in slide-in-from-bottom-4"
-              style={{ animationDelay: `${index * 50}ms` }}
+              className="group relative bg-surface-variant/5 border border-outline/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
             >
               <div className="aspect-[3/4] overflow-hidden relative">
                 <img 
@@ -86,39 +100,39 @@ export default function TechnicalCatalog() {
                 />
                 
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <div className="text-white">
-                    <p className="text-[#a0d87a] text-xs font-bold uppercase tracking-widest mb-1">{image.title}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                  <div className="text-on-surface">
+                    <p className="text-primary text-xs font-bold uppercase tracking-widest mb-1">{image.title}</p>
                     <p className="text-sm font-medium">{image.description}</p>
                   </div>
                 </div>
 
                 {/* Technical Badge */}
-                <div className="absolute top-4 right-4 bg-[#0b0e12]/80 backdrop-blur-md border border-white/10 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ZoomIn className="w-5 h-5 text-[#a0d87a]" />
+                <div className="absolute top-4 right-4 bg-surface-variant/80 backdrop-blur-md border border-outline/10 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ZoomIn className="w-5 h-5 text-primary" />
                 </div>
               </div>
               
-              <div className="p-5 flex justify-between items-center bg-[#191c20]/50">
+              <div className="p-5 flex justify-between items-center bg-surface-variant/10 backdrop-blur-md">
                 <div>
-                  <h3 className="text-white font-bold text-sm uppercase tracking-wide">{image.title}</h3>
-                  <p className="text-[#94979e] text-[10px] uppercase tracking-wider">{image.description}</p>
+                  <h3 className="text-on-surface font-bold text-sm uppercase tracking-wide">{image.title}</h3>
+                  <p className="text-on-surface-variant text-[10px] uppercase tracking-wider">{image.description}</p>
                 </div>
-                <div className="bg-[#a0d87a]/10 p-2 rounded-lg">
-                  <FileText className="w-4 h-4 text-[#a0d87a]" />
+                <div className="bg-primary/10 p-2 rounded-lg">
+                  <FileText className="w-4 h-4 text-primary" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         
         {/* Footer Info */}
-        <div className="mt-20 p-12 bg-gradient-to-r from-[#111417] to-[#191c20] rounded-3xl border border-[#323539]/30 text-center">
-            <h2 className="text-2xl font-bold text-white uppercase mb-4">¿Necesitas soporte técnico adicional?</h2>
-            <p className="text-[#94979e] mb-8 max-w-xl mx-auto">Nuestro equipo técnico está a su disposición para consultas sobre aplicaciones específicas o desarrollos a medida.</p>
+        <div className="mt-20 p-12 bg-surface-variant/5 backdrop-blur-sm rounded-3xl border border-outline/10 text-center">
+            <h2 className="text-2xl font-bold text-on-surface uppercase mb-4">¿Necesitas soporte técnico adicional?</h2>
+            <p className="text-on-surface-variant mb-8 max-w-xl mx-auto">Nuestro equipo técnico está a su disposición para consultas sobre aplicaciones específicas o desarrollos a medida.</p>
             <Link 
               to="/contact"
-              className="inline-block bg-white text-[#0b0e12] px-10 py-4 rounded-xl font-bold uppercase text-sm tracking-widest hover:bg-[#a0d87a] transition-colors"
+              className="inline-block bg-primary text-on-primary px-10 py-4 rounded-xl font-bold uppercase text-sm tracking-widest hover:brightness-110 transition-colors shadow-lg shadow-primary/20"
             >
               Contactar Oficina Técnica
             </Link>

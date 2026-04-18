@@ -86,18 +86,18 @@ export default function Layout() {
                     <span className="material-symbols-outlined text-[1rem]">expand_more</span>
                   </div>
                   <div
-                    className={`absolute top-full left-0 mt-2 w-72 backdrop-blur-xl border border-outline/20 shadow-[0_20px_50px_rgba(0,0,0,0.2)] opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 flex flex-col z-50 rounded-xl overflow-visible ${theme === 'light' ? 'bg-white' : 'bg-surface-container-high'}`}
+                    className="absolute top-full left-0 mt-2 w-80 bg-surface/95 backdrop-blur-xl border border-outline/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)] opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-3 transition-all duration-500 flex flex-col z-50 rounded-[2rem] overflow-visible p-3"
                   >
-                    <div className="p-2 flex flex-col">
+                    <div className="flex flex-col gap-1">
                       {link.subLinks.map((sub) => (
                         <div key={sub.name} className="relative group/sub">
                           <Link
                             to={sub.path}
-                            className={`w-full px-4 py-3 text-[10px] font-headline tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary hover:bg-primary/5 transition-all flex items-center justify-between rounded-lg ${sub.items ? 'cursor-default' : ''}`}
+                            className={`w-full px-6 py-4 text-[10px] font-headline tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary hover:bg-primary/8 transition-all flex items-center justify-between rounded-2xl ${sub.items ? 'cursor-default' : ''}`}
                           >
                             {sub.name}
                             {sub.items && (
-                              <span className="material-symbols-outlined text-sm">
+                              <span className="material-symbols-outlined text-[1rem] opacity-40 group-hover/sub:opacity-100 transition-opacity">
                                 chevron_right
                               </span>
                             )}
@@ -105,17 +105,19 @@ export default function Layout() {
 
                           {sub.items && (
                             <div
-                              className={`absolute left-full top-0 ml-1 w-64 backdrop-blur-xl border border-outline/20 shadow-[0_20px_50px_rgba(0,0,0,0.2)] opacity-0 invisible group-hover/sub:visible group-hover/sub:opacity-100 group-hover/sub:translate-x-0 -translate-x-2 transition-all duration-300 flex flex-col z-[60] rounded-xl p-2 ${theme === 'light' ? 'bg-white' : 'bg-surface-container-high'}`}
+                              className="absolute left-full top-0 ml-3 w-72 bg-surface/98 backdrop-blur-xl border border-outline/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)] opacity-0 invisible group-hover/sub:visible group-hover/sub:opacity-100 group-hover/sub:translate-x-0 -translate-x-4 transition-all duration-500 flex flex-col z-[60] rounded-[2rem] p-3"
                             >
-                              {sub.items.map((item) => (
-                                <Link
-                                  key={item.name}
-                                  to={item.path}
-                                  className="px-4 py-2 text-[10px] font-headline tracking-[0.1em] uppercase text-on-surface-variant hover:text-primary hover:bg-primary/5 transition-all rounded-lg"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
+                              <div className="flex flex-col gap-1">
+                                {sub.items.map((item) => (
+                                  <Link
+                                    key={item.name}
+                                    to={item.path}
+                                    className="px-6 py-3 text-[10px] font-headline tracking-[0.1em] uppercase text-on-surface-variant hover:text-primary hover:bg-primary/8 transition-all rounded-xl"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                ))}
+                              </div>
                             </div>
                           )}
                         </div>
@@ -127,28 +129,32 @@ export default function Layout() {
                 <Link
                   key={link.name}
                   to={link.path!}
-                  className={`${location.pathname === link.path ? 'text-primary' : 'text-on-surface hover:text-primary'} transition-colors duration-300`}
+                  className={`${location.pathname === link.path ? 'text-primary' : 'text-on-surface hover:text-primary'} transition-all duration-300 relative py-2 group-hover:text-primary`}
                 >
                   {link.name}
+                  {location.pathname === link.path && (
+                    <motion.div layoutId="nav-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                  )}
                 </Link>
               )
             )}
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <button
               onClick={toggleTheme}
-              className="material-symbols-outlined text-on-surface hover:text-primary transition-all"
+              className="material-symbols-outlined text-on-surface hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container"
             >
               {theme === 'light' ? 'dark_mode' : 'light_mode'}
             </button>
-            <button className="hidden md:block material-symbols-outlined text-on-surface hover:text-primary transition-all">
+            <button className="hidden md:block material-symbols-outlined text-on-surface hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container">
               search
             </button>
             <Link
-              to="/oficina-tecnica"
-              className="btn-gradient text-on-primary px-6 py-2 rounded-full font-bold text-xs tracking-widest uppercase active:opacity-70 transition-all"
+              to="/contact"
+              className="btn-gradient px-8 py-3 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] transform hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center gap-2"
             >
-              Portal
+              <div className="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse" />
+              <span className="text-on-primary">Contáctanos</span>
             </Link>
           </div>
         </nav>
@@ -173,17 +179,17 @@ export default function Layout() {
               className="fixed inset-y-0 left-0 w-80 z-[60] flex flex-col bg-background shadow-2xl lg:hidden"
             >
               <div className="p-8 flex justify-between items-center">
-                <span className="text-[#e1e2e8] font-bold font-headline tracking-tight uppercase">
+                <span className="text-on-surface font-bold font-headline tracking-tight uppercase">
                   SOLUCIONES ARQUITECTÓNICAS
                 </span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="material-symbols-outlined text-[#e1e2e8]"
+                  className="material-symbols-outlined text-on-surface"
                 >
                   close
                 </button>
               </div>
-              <div className="flex flex-col divide-y divide-[#323539]/10">
+              <div className="flex flex-col divide-y divide-outline/10">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
@@ -197,7 +203,7 @@ export default function Layout() {
                           onClick={() =>
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
-                          className="w-full py-4 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-[#94979e] hover:bg-[#191c20]"
+                          className="w-full py-4 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
                         >
                           {link.name}
                           <motion.span
@@ -255,11 +261,11 @@ export default function Layout() {
               </div>
               <div className="p-8 mt-auto border-t border-[#323539]/10">
                 <Link
-                  to="/oficina-tecnica"
+                  to="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="btn-gradient w-full flex items-center justify-center py-4 rounded-xl font-bold uppercase tracking-widest text-xs text-white"
                 >
-                  Portal Profesional
+                  Contactar Ahora
                 </Link>
               </div>
             </motion.aside>
@@ -305,14 +311,14 @@ export default function Layout() {
           </a>
         </div>
 
-        {/* Separador con glow azul */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#4f8ef7] to-transparent shadow-[0_0_12px_2px_rgba(79,142,247,0.6)]" />
+        {/* Separador con glow adaptativo */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent shadow-[0_0_15px_rgba(79,142,247,0.2)] dark:shadow-[0_0_15px_rgba(79,142,247,0.4)]" />
 
         {/* Cuerpo principal del footer */}
-        <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-12 items-start">
+        <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-12 items-start">
           {/* Logo + descripción */}
-          <div className="flex flex-col gap-5 max-w-xs">
-            <Link to="/">
+          <div className="flex flex-col gap-6 max-w-xs">
+            <Link to="/" className="group">
               <img
                 src={logoAluvalle}
                 alt="ALUVALLE"
@@ -524,11 +530,11 @@ export default function Layout() {
                 Agencia de Crecimiento
               </span>
               <div className="flex items-center gap-3">
-                <span className="font-headline font-black text-white italic uppercase tracking-tighter text-xl group-hover:text-[#a0d87a] transition-colors">
+                <span className="font-headline font-black text-on-surface italic uppercase tracking-tighter text-xl group-hover:text-primary transition-colors">
                   SEOGROWTHERS
                 </span>
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-12 transition-transform shadow-[0_0_20px_rgba(160,216,122,0.3)]">
-                  <span className="material-symbols-outlined text-[#163800] text-sm font-bold">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-12 transition-transform shadow-lg shadow-primary/30">
+                  <span className="material-symbols-outlined text-on-primary text-sm font-bold">
                     rocket_launch
                   </span>
                 </div>

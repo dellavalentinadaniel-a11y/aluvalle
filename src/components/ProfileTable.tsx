@@ -58,20 +58,25 @@ const ProfileDetailDrawer: React.FC<{ profile: Profile | null; onClose: () => vo
 
   return (
     <div className="fixed inset-0 z-[100] flex justify-end">
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={onClose} />
-      <div className="relative w-full max-w-md bg-[#0b0e12] h-full shadow-2xl border-l border-[#323539] p-8 overflow-y-auto">
-        <button onClick={onClose} className="absolute top-6 right-6 text-[#94979e] hover:text-white transition-colors">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={onClose} />
+      <div className="relative w-full max-w-md bg-surface h-full shadow-2xl border-l border-outline/10 p-8 overflow-y-auto">
+        <button 
+          onClick={onClose} 
+          className="absolute top-6 right-6 text-on-surface-variant hover:text-primary transition-colors"
+          title="Cerrar detalles"
+          aria-label="Cerrar detalles del perfil"
+        >
           <ChevronUp className="w-6 h-6 rotate-90" />
         </button>
 
         <div className="mb-10 pt-10">
-          <span className="text-[#a0d87a] font-bold text-xs uppercase tracking-[0.2em] mb-2 block">Ficha Técnica de Perfil</span>
-          <h2 className="text-4xl font-bold text-white uppercase tracking-tighter mb-2">Cod. {profile.code}</h2>
-          <p className="text-[#94979e] text-sm leading-relaxed">{profile.description}</p>
+          <span className="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-2 block">Ficha Técnica de Perfil</span>
+          <h2 className="text-4xl font-bold text-on-surface uppercase tracking-tighter mb-2">Cod. {profile.code}</h2>
+          <p className="text-on-surface-variant text-sm leading-relaxed">{profile.description}</p>
         </div>
 
-        <div className="bg-[#111417] border border-[#323539]/30 p-8 flex items-center justify-center mb-8 rounded-lg">
-          <div className="w-full aspect-square text-[#a0d87a]">
+        <div className="bg-surface-container/30 border border-outline/10 p-8 flex items-center justify-center mb-8 rounded-2xl">
+          <div className="w-full aspect-square text-primary">
             {profile.technicalDetails?.sketch || (
               <div className="flex flex-col items-center gap-4 opacity-40">
                 <ShapeIcon shape={profile.shape} />
@@ -83,25 +88,25 @@ const ProfileDetailDrawer: React.FC<{ profile: Profile | null; onClose: () => vo
 
         <div className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-[#191c20] p-4 border border-[#323539]/20 rounded">
-              <p className="text-[#5c6166] text-[10px] uppercase font-bold mb-1">Peso Nominal</p>
-              <p className="text-[#e1e2e8] font-bold">{profile.weight} Kg/m</p>
+            <div className="bg-surface-container-low p-4 border border-outline/5 rounded-xl">
+              <p className="text-on-surface-variant text-[10px] uppercase font-bold mb-1">Peso Nominal</p>
+              <p className="text-on-surface font-bold">{profile.weight} Kg/m</p>
             </div>
-            <div className="bg-[#191c20] p-4 border border-[#323539]/20 rounded">
-              <p className="text-[#5c6166] text-[10px] uppercase font-bold mb-1">Dimensiones</p>
-              <p className="text-[#e1e2e8] font-bold">{profile.technicalDetails?.dimensions || 'Consultar'}</p>
+            <div className="bg-surface-container-low p-4 border border-outline/5 rounded-xl">
+              <p className="text-on-surface-variant text-[10px] uppercase font-bold mb-1">Dimensiones</p>
+              <p className="text-on-surface font-bold">{profile.technicalDetails?.dimensions || 'Consultar'}</p>
             </div>
           </div>
 
           <div>
-            <h4 className="text-white text-xs uppercase font-bold mb-4 flex items-center gap-2">
-              <div className="w-1 h-4 bg-[#a0d87a]" />
+            <h4 className="text-on-surface text-xs uppercase font-bold mb-4 flex items-center gap-2">
+              <div className="w-1 h-4 bg-primary" />
               Aplicaciones Técnicas
             </h4>
             <ul className="space-y-3">
               {(profile.technicalDetails?.applications || ['Uso general en sistemas de carpintería tradicional.']).map((app, i) => (
-                <li key={i} className="text-[#94979e] text-xs flex items-start gap-3">
-                  <span className="text-[#a0d87a] mt-0.5">•</span>
+                <li key={i} className="text-on-surface-variant text-xs flex items-start gap-3">
+                  <span className="text-primary mt-0.5">•</span>
                   {app}
                 </li>
               ))}
@@ -125,20 +130,20 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => 
     <div className="relative">
       <ProfileDetailDrawer profile={selectedProfile} onClose={() => setSelectedProfile(null)} />
       
-      <div className="w-full bg-[#111417] border border-[#323539]/30 shadow-2xl overflow-hidden mt-16">
-        <div className="bg-[#191c20] px-8 py-6 border-b border-[#323539]/30 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="w-full bg-surface border border-outline/10 shadow-xl overflow-hidden mt-16 rounded-[2rem]">
+        <div className="bg-surface-container-low px-8 py-8 border-b border-outline/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <h3 className="font-headline text-2xl font-bold text-white uppercase tracking-tight">Índice de Perfiles</h3>
-            <p className="font-label text-[#a0d87a] text-[10px] uppercase tracking-widest mt-1">
+            <h3 className="font-headline text-3xl font-bold text-on-surface uppercase tracking-tight">Índice de Perfiles</h3>
+            <p className="font-label text-primary text-[10px] uppercase tracking-widest mt-1">
               {systemName} — {profiles.length} perfiles
             </p>
           </div>
-          <div className="flex items-center gap-4 text-[#94979e] text-[10px] uppercase tracking-widest bg-black/20 px-4 py-2 rounded-full">
+          <div className="flex items-center gap-4 text-on-surface-variant text-[10px] uppercase tracking-widest bg-surface-container-high/50 px-6 py-3 rounded-full border border-outline/5">
             <span className="hidden sm:flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#a0d87a]"></span> T.xP.: Tiras por Paquete
+              <span className="w-2 h-2 rounded-full bg-primary/40"></span> T.xP.: Tiras por Paquete
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#a0d87a]"></span> Largo: 6150mm
+              <span className="w-2 h-2 rounded-full bg-primary"></span> Largo: 6150mm
             </span>
           </div>
         </div>
@@ -146,35 +151,37 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-black/20 text-[#a0d87a] text-[11px] uppercase tracking-widest font-bold">
-                <th className="px-8 py-4 border-b border-[#323539]/20">Código</th>
-                <th className="px-6 py-4 border-b border-[#323539]/20">Peso</th>
-                <th className="px-6 py-4 border-b border-[#323539]/20">T.xP.</th>
-                <th className="px-6 py-4 border-b border-[#323539]/20">Descripción</th>
-                <th className="px-6 py-4 border-b border-[#323539]/20 text-center">Forma</th>
-                <th className="px-6 py-4 border-b border-[#323539]/20 text-center">Ficha</th>
+              <tr className="bg-surface-container-highest/30 text-primary text-[11px] uppercase tracking-widest font-bold">
+                <th className="px-8 py-5 border-b border-outline/5">Código</th>
+                <th className="px-6 py-5 border-b border-outline/5">Peso</th>
+                <th className="px-6 py-5 border-b border-outline/5">T.xP.</th>
+                <th className="px-6 py-5 border-b border-outline/5">Descripción</th>
+                <th className="px-6 py-5 border-b border-outline/5 text-center">Forma</th>
+                <th className="px-6 py-5 border-b border-outline/5 text-center">Ficha</th>
               </tr>
             </thead>
             <tbody className="font-body text-sm">
               {displayedProfiles.map((profile, index) => (
-                <tr key={profile.code + index} className="group hover:bg-[#a0d87a]/5 transition-colors border-b border-[#323539]/10 last:border-0">
-                  <td className="px-8 py-5 font-bold text-[#e1e2e8] group-hover:text-[#a0d87a] transition-colors">{profile.code}</td>
-                  <td className="px-6 py-5 text-[#94979e]">{profile.weight}</td>
-                  <td className="px-6 py-5 text-[#94979e]">
-                    <span className="bg-[#191c20] px-2 py-1 rounded text-[10px] border border-[#323539]/30">{profile.txp}</span>
+                <tr key={profile.code + index} className="group hover:bg-primary/5 transition-colors border-b border-outline/5 last:border-0">
+                  <td className="px-8 py-6 font-bold text-on-surface group-hover:text-primary transition-all duration-300">{profile.code}</td>
+                  <td className="px-6 py-6 text-on-surface-variant">{profile.weight}</td>
+                  <td className="px-6 py-6 text-on-surface-variant">
+                    <span className="bg-surface-container px-2.5 py-1.5 rounded-lg text-[10px] border border-outline/5 font-bold uppercase">{profile.txp}</span>
                   </td>
-                  <td className="px-6 py-5 text-[#e1e2e8] font-medium leading-snug max-w-xs">{profile.description}</td>
-                  <td className="px-6 py-5 text-center">
-                    <div className="bg-black/40 p-1 inline-block border border-[#323539]/30 group-hover:border-[#a0d87a]/30 transition-colors">
+                  <td className="px-6 py-6 text-on-surface font-medium leading-relaxed max-w-xs">{profile.description}</td>
+                  <td className="px-6 py-6 text-center">
+                    <div className="bg-surface-container-high/40 p-1.5 inline-block border border-outline/5 group-hover:border-primary/30 transition-all rounded-xl">
                       <ShapeIcon shape={profile.shape} />
                     </div>
                   </td>
-                  <td className="px-6 py-5 text-center">
+                  <td className="px-6 py-6 text-center">
                     <button 
                       onClick={() => setSelectedProfile(profile)}
-                      className="bg-[#191c20] p-2 text-[#a0d87a] border border-[#323539]/30 hover:bg-[#a0d87a] hover:text-[#0b0e12] transition-all rounded"
+                      className="bg-surface-container-high/60 p-2.5 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm"
+                      title="Ver ficha técnica"
+                      aria-label={`Ver ficha técnica del perfil ${profile.code}`}
                     >
-                      <Info className="w-4 h-4" />
+                      <Info className="w-5 h-5" />
                     </button>
                   </td>
                 </tr>
@@ -186,7 +193,7 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => 
         {hasMore && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full py-6 bg-[#191c20] hover:bg-[#a0d87a] text-[#a0d87a] hover:text-[#0b0e12] font-bold uppercase text-[10px] tracking-[0.2em] transition-all flex items-center justify-center gap-2"
+            className="w-full py-8 bg-surface-container-low hover:bg-primary text-primary hover:text-on-primary font-bold uppercase text-[10px] tracking-[0.3em] transition-all duration-500 border-t border-outline/5"
           >
             {isExpanded ? <><ChevronUp className="w-4 h-4" /> Mostrar Menos</> : <><ChevronDown className="w-4 h-4" /> Ver Catálogo Completo</>}
           </button>

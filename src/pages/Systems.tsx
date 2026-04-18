@@ -68,21 +68,33 @@ const productLines = [
 
 export default function Systems() {
   return (
-    <div className="pt-24 pb-20">
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 mb-16 pt-12">
-        <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-12">
-          <div className="max-w-2xl">
-            <span className="font-label text-[#a0d87a] uppercase tracking-[0.2em] text-xs mb-4 block">
-              Catálogo de Productos
-            </span>
-            <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-[#e1e2e8] leading-none uppercase">
-              Sistemas de <br />
-              <span className="text-[#94979e]">Ventanas y Puertas</span>
-            </h1>
-          </div>
-          <div className="hidden md:block pb-2">
-            <p className="font-body text-[#94979e] max-w-xs text-sm leading-relaxed border-l border-[#323539]/50 pl-6">
+    <div className="pt-24 pb-20 bg-background relative min-h-screen">
+      {/* Background patterns */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <img
+          src="/gallery/profiles.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          alt=""
+        />
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="max-w-7xl mx-auto px-6 mb-16 pt-12">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-12">
+            <div className="max-w-2xl">
+              <span className="font-label text-primary uppercase tracking-[0.2em] text-xs mb-4 block">
+                Catálogo de Productos
+              </span>
+              <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-surface leading-none uppercase">
+                Sistemas de <br />
+                <span className="text-on-surface-variant">Ventanas y Puertas</span>
+              </h1>
+            </div>
+            <div className="hidden md:block pb-2">
+              <p className="font-body text-on-surface-variant max-w-xs text-sm leading-relaxed border-l border-outline/10 pl-6">
               Descubra nuestra línea completa de soluciones en carpintería de aluminio. Ingeniería
               de precisión diseñada para todo tipo de proyectos.
             </p>
@@ -177,17 +189,18 @@ export default function Systems() {
               Consulta especificaciones de armado, catálogos en PDF y perfiles CAD de todos nuestros
               sistemas.
             </p>
-            <button className="bg-[#a0d87a] text-[#0b0e12] font-bold px-8 py-4 text-xs uppercase tracking-widest flex items-center gap-3 hover:bg-white transition-colors">
+            <button className="bg-primary text-on-primary font-bold px-8 py-4 text-xs uppercase tracking-widest flex items-center gap-3 hover:brightness-110 transition-all">
               Descargar Listado en PDF
               <span className="material-symbols-outlined text-sm">download</span>
             </button>
           </div>
           {/* Abstract Design Element */}
           <div className="absolute right-0 top-0 w-1/3 h-full opacity-5 pointer-events-none hidden md:block">
-            <div className="w-full h-full border-l-[100px] border-t-[100px] border-[#a0d87a] rotate-45 transform translate-x-1/2 -translate-y-1/2"></div>
+            <div className="w-full h-full border-l-[100px] border-t-[100px] border-primary rotate-45 transform translate-x-1/2 -translate-y-1/2"></div>
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }

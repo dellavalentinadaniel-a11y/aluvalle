@@ -13,10 +13,10 @@ export default function Home() {
             animate={{ scale: 1, opacity: 0.5 }}
             transition={{ duration: 2 }}
             className="w-full h-full object-cover grayscale"
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+            src="/gallery/showroom.jpg"
             alt="Arquitectura de Vanguardia"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="hero-overlay" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
@@ -103,20 +103,20 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="md:col-span-2 h-[500px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+              className="md:col-span-2 h-[500px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
             >
               <img
                 src="/gallery/warehouse.jpg"
                 alt="Almacén de perfiles"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
               <div className="absolute bottom-10 left-10">
-                <span className="bg-primary text-on-primary text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter mb-4 inline-block">
+                <span className="bg-primary text-on-primary text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter mb-4 inline-block shadow-lg">
                   Logística
                 </span>
-                <h4 className="text-3xl font-bold text-white mb-2">Stock Permanente Capaz</h4>
-                <p className="text-gray-400 text-sm max-w-sm">
+                <h4 className="text-3xl font-bold text-on-surface mb-2">Stock Permanente Capaz</h4>
+                <p className="text-on-surface-variant text-sm max-w-sm leading-relaxed">
                   Garantizamos la disponibilidad inmediata de toda nuestra gama de sistemas para
                   proyectos de gran envergadura.
                 </p>
@@ -129,17 +129,17 @@ export default function Home() {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
               >
                 <img
                   src="/gallery/showroom.jpg"
                   alt="Showroom Aluvallé"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
                 <div className="absolute bottom-6 left-6">
-                  <h4 className="text-xl font-bold text-white">Showroom Técnico</h4>
-                  <p className="text-gray-400 text-[10px] uppercase tracking-widest mt-1">
+                  <h4 className="text-xl font-bold text-on-surface">Showroom Técnico</h4>
+                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mt-1">
                     Experiencia inmersiva
                   </p>
                 </div>
@@ -149,17 +149,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
               >
                 <img
                   src="/gallery/profiles.jpg"
                   alt="Perfiles de aluminio"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
                 <div className="absolute bottom-6 left-6">
-                  <h4 className="text-xl font-bold text-white">Matricería Propia</h4>
-                  <p className="text-gray-400 text-[10px] uppercase tracking-widest mt-1">
+                  <h4 className="text-xl font-bold text-on-surface">Matricería Propia</h4>
+                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mt-1">
                     Diseño de vanguardia
                   </p>
                 </div>
@@ -173,17 +173,17 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+              className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
             >
               <img
                 src="/gallery/industrial.jpg"
                 alt="Planta industrial"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
               <div className="absolute bottom-8 left-8">
-                <h4 className="text-2xl font-bold text-white">Extrusión de Precisión</h4>
-                <p className="text-gray-400 text-sm mt-2 max-w-xs">
+                <h4 className="text-2xl font-bold text-on-surface">Extrusión de Precisión</h4>
+                <p className="text-on-surface-variant text-sm mt-2 max-w-xs leading-relaxed">
                   Procesos industriales certificados bajo los más altos estándares internacionales
                   de calidad.
                 </p>
@@ -194,17 +194,17 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair"
+              className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
             >
               <img
                 src="/gallery/office.jpg"
                 alt="Divisiones de oficina"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e12] to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
               <div className="absolute bottom-8 left-8">
-                <h4 className="text-2xl font-bold text-white">Arquitectura Interior</h4>
-                <p className="text-gray-400 text-sm mt-2 max-w-xs">
+                <h4 className="text-2xl font-bold text-on-surface">Arquitectura Interior</h4>
+                <p className="text-on-surface-variant text-sm mt-2 max-w-xs leading-relaxed">
                   Sistemas modulares y perfiles para divisiones de alta gama en entornos
                   corporativos.
                 </p>
@@ -224,10 +224,23 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-on-surface mb-8 tracking-tight">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mb-12 rounded-[2.5rem] overflow-hidden aspect-video border border-outline/10 shadow-2xl relative group"
+          >
+            <img
+              src="/gallery/industrial.jpg"
+              alt="Precisión Técnica"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-bold text-on-surface mb-8 tracking-tight uppercase">
             El estándar de oro en perfiles arquitectónicos
           </h2>
-          <p className="text-gray-400 text-lg mb-12">
+          <p className="text-on-surface-variant text-lg mb-12">
             Socio estratégico oficial de Alcemar S.A. para el desarrollo de infraestructuras
             premium.
           </p>
