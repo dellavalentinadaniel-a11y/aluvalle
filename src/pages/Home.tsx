@@ -7,12 +7,12 @@ export default function Home() {
     <div className="bg-background transition-colors duration-500">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-surface">
           <motion.img
             initial={{ scale: 1.2, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.5 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2 }}
-            className="w-full h-full object-cover grayscale"
+            className="w-full h-full object-cover grayscale img-filter-theme"
             src="/gallery/showroom.jpg"
             alt="Arquitectura de Vanguardia"
           />
@@ -108,9 +108,9 @@ export default function Home() {
               <img
                 src="/gallery/warehouse.jpg"
                 alt="Almacén de perfiles"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
               <div className="absolute bottom-10 left-10">
                 <span className="bg-primary text-on-primary text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter mb-4 inline-block shadow-lg">
                   Logística
@@ -134,9 +134,9 @@ export default function Home() {
                 <img
                   src="/gallery/showroom.jpg"
                   alt="Showroom Aluvallé"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-90" />
                 <div className="absolute bottom-6 left-6">
                   <h4 className="text-xl font-bold text-on-surface">Showroom Técnico</h4>
                   <p className="text-primary font-bold text-[10px] uppercase tracking-widest mt-1">
@@ -152,11 +152,13 @@ export default function Home() {
                 className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
               >
                 <img
-                  src="/gallery/profiles.jpg"
+                  src="/gallery/showroom.jpg"
                   alt="Perfiles de aluminio"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-90" />
                 <div className="absolute bottom-6 left-6">
                   <h4 className="text-xl font-bold text-on-surface">Matricería Propia</h4>
                   <p className="text-primary font-bold text-[10px] uppercase tracking-widest mt-1">
@@ -178,7 +180,9 @@ export default function Home() {
               <img
                 src="/gallery/industrial.jpg"
                 alt="Planta industrial"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
               <div className="absolute bottom-8 left-8">
@@ -255,3 +259,5 @@ export default function Home() {
     </div>
   );
 }
+
+

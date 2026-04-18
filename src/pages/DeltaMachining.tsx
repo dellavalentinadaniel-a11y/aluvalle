@@ -2,51 +2,49 @@ import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench } from 'lu
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export default function MonacoMachining() {
+export default function DeltaMachining() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const tools = [
     {
-      title: 'Punzonadora Mónaco',
-      description:
-        'Realiza todos los calados necesarios para la línea (desagües, cierres, encuadres).',
+      title: 'Punzonadora Delta',
+      description: 'Cortes y calados específicos para guías de rodamiento y cierres laterales.',
       icon: Wrench,
     },
     {
-      title: 'Fresadora Frontal',
-      description: 'Para el mecanizado de los travesaños y encuentros de marco.',
+      title: 'Fresadora de Desagües',
+      description: 'Mecanizado de ranuras de descarga de agua en marcos de ventana corrediza.',
       icon: Settings,
     },
     {
-      title: 'Matríz Neumática',
-      description: 'Accionamiento por pedal para alta producción en serie.',
-      icon: Wrench,
+      title: 'Herramienta de Montaje',
+      description: 'Kit de plantillas para la colocación precisa de accesorios y rodamientos.',
+      icon: Scissors,
     },
   ];
 
   const operations = [
     {
-      title: 'Cortes a 45° y 90°',
-      desc: 'Marcos y hojas con corte a 45°. Travesaños y complementos con corte a 90°.',
-      details:
-        'Utilice siempre discos de tungsteno con refrigeración para asegurar cortes limpios.',
+      title: 'Corte de Marcos y Hojas',
+      desc: 'Corte a 90° para marcos perimetrales y hojas corredizas de la serie Delta.',
+      details: 'Asegure un corte preciso de 90° para permitir el correcto ensamble con tornillos de fijación.',
     },
     {
-      title: 'Desagües de Marco',
-      desc: 'Mecanizado en la cámara exterior del marco para evacuación de agua.',
-      details: 'Dimensiones sugeridas: 25mm x 5mm, con una separación máxima de 600mm.',
+      title: 'Mecanizado de Umbrales',
+      desc: 'Fresado de los extremos del umbral para el encuentro con las jambas.',
+      details: 'Utilice siempre sellador de silicona en los encuentros para evitar filtraciones.',
     },
     {
-      title: 'Cierre Multipunto',
-      desc: 'Calado para la caja del mecanismo y puntos de cierre en el marco.',
-      details: 'Requiere fresado específico según la marca del herraje (Giesse, Fapim, Roto).',
+      title: 'Instalación de Rodamientos',
+      desc: 'Calado en la base de las hojas para la inserción de ruedas regulables.',
+      details: 'Verificar la alineación para asegurar un deslizamiento suave y silencioso.',
     },
     {
-      title: 'Mecanizado de Felpas',
-      desc: 'Corte y fijación de felpas de polipropileno para hermeticidad.',
-      details: 'Asegure el solape correcto en los encuentros de hoja y marco.',
+      title: 'Cierres Laterales',
+      desc: 'Mecanizado de las jambas para el calado de los cierres de embutir.',
+      details: 'Ajuste la altura según el proyecto para garantizar la seguridad del cierre.',
     },
   ];
 
@@ -66,11 +64,11 @@ export default function MonacoMachining() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Navigation */}
         <Link
-          to="/productos/linea-monaco"
+          to="/productos/linea-delta"
           className="inline-flex items-center gap-2 text-primary uppercase tracking-widest text-[10px] font-bold mb-12 hover:brightness-125 transition-all"
         >
           <ArrowLeft className="w-4 h-4" />
-          Volver a Línea Mónaco
+          Volver a Línea Delta
         </Link>
 
         {/* Header */}
@@ -79,21 +77,20 @@ export default function MonacoMachining() {
             <h1 className="font-headline text-5xl md:text-7xl font-bold text-on-surface uppercase leading-none tracking-tighter mb-4">
               Mecanizados
               <br />
-              <span className="text-primary">Mónaco</span>
+              <span className="text-primary">Delta</span>
             </h1>
             <p className="text-on-surface-variant max-w-xl text-lg">
-              Guía técnica para el armado de la Línea Mónaco. Optimización de procesos y herramental
-              necesario para centros de producción.
+              Optimización y armado para la Línea Delta. Sistemas corredizos de alta prestación con ingeniería Aluvallé.
             </p>
           </div>
           <a
-            href="https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Monaco.pdf"
+            href="/docs/Sistemas de ventanas y puertas/Línea Delta/Catalogo_Linea_Delta.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 bg-primary text-on-primary px-8 py-5 font-bold uppercase text-xs tracking-[0.2em] hover:brightness-110 transition-all shadow-2xl"
           >
             <Download className="w-4 h-4" />
-            Descargar Manual PDF
+            Descargar Catálogo Técnico
           </a>
         </div>
 
@@ -146,7 +143,7 @@ export default function MonacoMachining() {
           <div>
             <div className="bg-surface-variant/5 border border-outline/10 p-12 sticky top-40 backdrop-blur-sm">
               <h2 className="font-headline text-3xl font-bold text-on-surface uppercase mb-8">
-                Requisitos de Planta
+                Requisitos en Obra
               </h2>
               <div className="space-y-8">
                 <div className="flex gap-6">
@@ -158,21 +155,20 @@ export default function MonacoMachining() {
                       Espacio Recomendado
                     </h4>
                     <p className="text-on-surface-variant text-sm leading-relaxed">
-                      Área mínima de 40m² para manipulación de perfiles de hasta 6 metros de largo.
+                      Requiere bancos de armado de 3x2 metros para el ensamble de hojas de gran porte.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-6">
                   <div className="bg-primary/10 p-4 rounded-xl">
-                    <Download className="w-6 h-6 text-primary" />
+                    <Settings className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h4 className="text-on-surface font-bold uppercase text-sm mb-1 tracking-wider">
-                      Planillas de Corte
+                      Regulación de Hoja
                     </h4>
                     <p className="text-on-surface-variant text-sm leading-relaxed">
-                      Disponibles en formato XLS para software de optimización (Cortamás, Softal,
-                      etc).
+                      Utilice llaves Allen de 4mm para el ajuste fino de la altura de los rodamientos.
                     </p>
                   </div>
                 </div>
@@ -180,10 +176,10 @@ export default function MonacoMachining() {
 
               <div className="mt-12 pt-12 border-t border-outline/10">
                 <p className="text-xs text-on-surface-variant leading-relaxed mb-6 uppercase tracking-widest font-bold">
-                  Consulte por Capacitación
+                  Soporte Aluvallé
                 </p>
                 <button className="w-full bg-surface-variant/20 hover:bg-primary hover:text-on-primary text-on-surface font-bold py-4 uppercase text-[10px] tracking-[0.2em] transition-all">
-                  Solicitar Instructor en Taller
+                  Contactar Asistencia Técnica
                 </button>
               </div>
             </div>
@@ -193,5 +189,3 @@ export default function MonacoMachining() {
     </div>
   );
 }
-
-

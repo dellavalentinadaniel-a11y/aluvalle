@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import WeightCalculator from '../components/WeightCalculator';
 
 interface Resource {
   id: string;
@@ -96,8 +97,8 @@ const TechnicalOffice = () => {
       {/* Background decoration */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
         <img
-          src="/gallery/office.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.05] grayscale"
+          src="/gallery/showroom.jpg"
+          className="bg-image-theme animate-slow-zoom"
           alt=""
         />
         <span className="ghost-text absolute -top-20 -left-20 text-[20rem] font-black uppercase">
@@ -206,6 +207,11 @@ const TechnicalOffice = () => {
           ))}
         </div>
 
+        {/* Weight Calculator Section */}
+        <section className="mt-20">
+          <WeightCalculator />
+        </section>
+
         {/* Info Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -232,3 +238,5 @@ const TechnicalOffice = () => {
 };
 
 export default TechnicalOffice;
+
+

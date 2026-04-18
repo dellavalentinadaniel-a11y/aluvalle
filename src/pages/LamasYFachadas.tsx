@@ -37,8 +37,8 @@ export default function LamasYFachadas() {
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img
-          src="/gallery/profiles.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          src="/gallery/showroom.jpg"
+          className="bg-image-theme animate-slow-zoom"
           alt=""
         />
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
@@ -67,17 +67,17 @@ export default function LamasYFachadas() {
         </div>
 
         {/* Filter / Categorization */}
-        <div className="flex flex-wrap gap-4 mb-20 border-b border-[#323539]/20 pb-4">
-          <button className="px-5 py-2 bg-[#191c20] text-[#a0d87a] border border-[#a0d87a]/30 rounded-full text-xs font-bold uppercase tracking-wider">
+        <div className="flex flex-wrap gap-4 mb-20 border-b border-outline/10 pb-4">
+          <button className="px-5 py-2 bg-surface-container text-primary border border-primary/30 rounded-full text-xs font-bold uppercase tracking-wider">
             Ver Todos
           </button>
-          <button className="px-5 py-2 bg-[#111417] border border-[#323539]/30 text-[#94979e] rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#191c20] hover:text-[#e1e2e8] transition-colors">
+          <button className="px-5 py-2 bg-surface-container-low border border-outline/20 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
             Piel de Vidrio
           </button>
-          <button className="px-5 py-2 bg-[#111417] border border-[#323539]/30 text-[#94979e] rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#191c20] hover:text-[#e1e2e8] transition-colors">
+          <button className="px-5 py-2 bg-surface-container-low border border-outline/20 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
             Modulares
           </button>
-          <button className="px-5 py-2 bg-[#111417] border border-[#323539]/30 text-[#94979e] rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#191c20] hover:text-[#e1e2e8] transition-colors">
+          <button className="px-5 py-2 bg-surface-container-low border border-outline/20 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
             Control Solar
           </button>
         </div>
@@ -89,49 +89,50 @@ export default function LamasYFachadas() {
           {productLines.map((product) => (
             <div
               key={product.name}
-              className="group flex flex-col bg-[#111417] border border-[#323539]/20 shadow-lg hover:border-[#a0d87a]/50 transition-all duration-300"
+              className="group flex flex-col bg-surface-container-low border border-outline/10 shadow-xl hover:shadow-2xl rounded-[2.5rem] overflow-hidden hover:border-primary/50 transition-all duration-300"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#191c20]">
+              <div className="relative aspect-[4/3] overflow-hidden bg-surface-container">
                 <img
                   src={product.img}
                   alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 img-filter-theme"
                 />
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-6 left-6">
                   {product.category === 'Control Solar' && (
-                    <span className="bg-[#a0d87a]/90 text-[#0b0e12] px-3 py-1 text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
+                    <span className="bg-primary text-on-primary px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest backdrop-blur-md rounded-full">
                       Alta Eficiencia
                     </span>
                   )}
                 </div>
-                <div className="absolute bottom-4 right-4">
-                  <span className="bg-black/60 backdrop-blur-md text-[#e1e2e8] px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-[#323539]/50">
+                <div className="absolute bottom-6 right-6">
+                  <span className="bg-background/80 backdrop-blur-md text-on-surface px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest border border-outline/20 rounded-full">
                     + Info
                   </span>
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow">
-                <span className="font-label text-[#a0d87a] text-[10px] uppercase tracking-widest mb-2 block">
+                <span className="font-label text-primary text-[10px] uppercase tracking-widest mb-2 block">
                   {product.category}
                 </span>
-                <h3 className="font-headline text-2xl font-bold text-[#e1e2e8] uppercase mb-4 tracking-tight">
+                <h3 className="font-headline text-2xl font-bold text-on-surface uppercase mb-4 tracking-tight">
                   {product.name}
                 </h3>
-                <p className="font-body text-[#94979e] text-sm mb-8 flex-grow leading-relaxed">
+                <p className="font-body text-on-surface-variant text-sm mb-8 flex-grow leading-relaxed">
                   {product.desc}
                 </p>
-
-                <div className="pt-6 border-t border-[#323539]/20 flex justify-between items-center">
+                <div className="pt-6 border-t border-outline/10 flex justify-between items-center">
                   <Link
                     to={`/productos/${product.slug}`}
-                    className="flex items-center gap-2 text-[#a0d87a] font-bold text-xs uppercase tracking-[0.2em] group/btn hover:text-white transition-colors"
+                    className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-[0.2em] group/btn hover:text-on-surface transition-colors"
                   >
                     Ver Detalles
                     <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
                       arrow_forward
                     </span>
                   </Link>
-                  <span className="material-symbols-outlined text-[#323539] group-hover:text-[#a0d87a] transition-colors">
+                  <span className="material-symbols-outlined text-outline group-hover:text-primary transition-colors">
                     add_circle
                   </span>
                 </div>
@@ -143,9 +144,9 @@ export default function LamasYFachadas() {
 
       {/* CTA Section */}
       <section className="max-w-7xl mx-auto px-6 mt-32">
-        <div className="bg-[#191c20] border border-[#323539]/20 p-12 md:p-20 relative overflow-hidden">
+        <div className="bg-surface-container-low border border-outline/20 p-12 md:p-20 relative overflow-hidden rounded-[2rem]">
           <div className="relative z-10 max-w-xl">
-            <h2 className="font-headline text-4xl font-bold text-[#e1e2e8] uppercase mb-6 leading-tight">
+            <h2 className="font-headline text-4xl font-bold text-on-surface uppercase mb-6 leading-tight">
               Soluciones a medida
               <br />
               para grandes obras
@@ -154,7 +155,7 @@ export default function LamasYFachadas() {
               Consulta perfiles, catálogos técnicos de armado y detalles de colocación de todos los
               sistemas de fachadas y parasoles.
             </p>
-            <button className="bg-primary text-on-primary font-bold px-8 py-4 text-xs uppercase tracking-widest flex items-center gap-3 hover:brightness-110 transition-all">
+            <button className="bg-primary text-on-primary font-bold px-8 py-4 text-xs uppercase tracking-widest flex items-center gap-3 hover:brightness-110 transition-all rounded-xl">
               Descargar Catálogo de Fachadas
               <span className="material-symbols-outlined text-sm">download</span>
             </button>
@@ -169,3 +170,5 @@ export default function LamasYFachadas() {
     </div>
   );
 }
+
+

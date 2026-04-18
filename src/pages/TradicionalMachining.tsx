@@ -2,51 +2,49 @@ import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench } from 'lu
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export default function MonacoMachining() {
+export default function TradicionalMachining() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const tools = [
     {
-      title: 'Punzonadora Mónaco',
-      description:
-        'Realiza todos los calados necesarios para la línea (desagües, cierres, encuadres).',
+      title: 'Punzonadora Tradicional',
+      description: 'Herramienta fundamental para el calado de escuadras y desagües de la línea.',
       icon: Wrench,
     },
     {
-      title: 'Fresadora Frontal',
-      description: 'Para el mecanizado de los travesaños y encuentros de marco.',
-      icon: Settings,
+      title: 'Cortadora de Disco',
+      description: 'Sierra circular para cortes precisos a 45° y 90° en perfiles básicos.',
+      icon: Scissors,
     },
     {
-      title: 'Matríz Neumática',
-      description: 'Accionamiento por pedal para alta producción en serie.',
-      icon: Wrench,
+      title: 'Plantillas de Perforación',
+      description: 'Guías metálicas para asegurar la posición exacta de tornillos y picaportes.',
+      icon: Ruler,
     },
   ];
 
   const operations = [
     {
-      title: 'Cortes a 45° y 90°',
-      desc: 'Marcos y hojas con corte a 45°. Travesaños y complementos con corte a 90°.',
-      details:
-        'Utilice siempre discos de tungsteno con refrigeración para asegurar cortes limpios.',
+      title: 'Corte de Perfiles',
+      desc: 'Corte a 45° para el armado de cuadros y 90° para travesaños.',
+      details: 'El sistema permite un armado rápido mediante tornillos autorroscantes en los encuentros.',
     },
     {
-      title: 'Desagües de Marco',
-      desc: 'Mecanizado en la cámara exterior del marco para evacuación de agua.',
-      details: 'Dimensiones sugeridas: 25mm x 5mm, con una separación máxima de 600mm.',
+      title: 'Caja de Cerradura',
+      desc: 'Mecanizado central en el perfil de hoja para la inserción de cerraduras de seguridad.',
+      details: 'Utilice brocas de acero rápido y lubricación constante para un acabado limpio.',
     },
     {
-      title: 'Cierre Multipunto',
-      desc: 'Calado para la caja del mecanismo y puntos de cierre en el marco.',
-      details: 'Requiere fresado específico según la marca del herraje (Giesse, Fapim, Roto).',
+      title: 'Mecanizado de Escuadras',
+      desc: 'Calado para la inserción de escuadras de tracción o de embutir.',
+      details: 'Asegure la limpieza interna de la cámara del perfil antes de insertar la escuadra.',
     },
     {
-      title: 'Mecanizado de Felpas',
-      desc: 'Corte y fijación de felpas de polipropileno para hermeticidad.',
-      details: 'Asegure el solape correcto en los encuentros de hoja y marco.',
+      title: 'Desagües de Condensación',
+      desc: 'Calados en el umbral inferior para permitir la salida de agua acumulada.',
+      details: 'Realice las perforaciones de adentro hacia afuera para facilitar la fluidez.',
     },
   ];
 
@@ -66,11 +64,11 @@ export default function MonacoMachining() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Navigation */}
         <Link
-          to="/productos/linea-monaco"
+          to="/productos/linea-tradicional"
           className="inline-flex items-center gap-2 text-primary uppercase tracking-widest text-[10px] font-bold mb-12 hover:brightness-125 transition-all"
         >
           <ArrowLeft className="w-4 h-4" />
-          Volver a Línea Mónaco
+          Volver a Línea Tradicional
         </Link>
 
         {/* Header */}
@@ -79,21 +77,20 @@ export default function MonacoMachining() {
             <h1 className="font-headline text-5xl md:text-7xl font-bold text-on-surface uppercase leading-none tracking-tighter mb-4">
               Mecanizados
               <br />
-              <span className="text-primary">Mónaco</span>
+              <span className="text-primary">Tradicional</span>
             </h1>
             <p className="text-on-surface-variant max-w-xl text-lg">
-              Guía técnica para el armado de la Línea Mónaco. Optimización de procesos y herramental
-              necesario para centros de producción.
+              Manual de armado para sistemas clásicos. Eficiencia y simplicidad en la carpintería de aluminio tradicional.
             </p>
           </div>
           <a
-            href="https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Monaco.pdf"
+            href="/docs/Sistemas de ventanas y puertas/Línea Tradicional/Catalogo_Linea_Tradicional (1).pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 bg-primary text-on-primary px-8 py-5 font-bold uppercase text-xs tracking-[0.2em] hover:brightness-110 transition-all shadow-2xl"
           >
             <Download className="w-4 h-4" />
-            Descargar Manual PDF
+            Descargar Catálogo Técnico
           </a>
         </div>
 
@@ -146,7 +143,7 @@ export default function MonacoMachining() {
           <div>
             <div className="bg-surface-variant/5 border border-outline/10 p-12 sticky top-40 backdrop-blur-sm">
               <h2 className="font-headline text-3xl font-bold text-on-surface uppercase mb-8">
-                Requisitos de Planta
+                Instalación
               </h2>
               <div className="space-y-8">
                 <div className="flex gap-6">
@@ -155,24 +152,23 @@ export default function MonacoMachining() {
                   </div>
                   <div>
                     <h4 className="text-on-surface font-bold uppercase text-sm mb-1 tracking-wider">
-                      Espacio Recomendado
+                      Montaje en Vano
                     </h4>
                     <p className="text-on-surface-variant text-sm leading-relaxed">
-                      Área mínima de 40m² para manipulación de perfiles de hasta 6 metros de largo.
+                      Utilice tornillos de fijación con tarugos de Nylon de 8mm cada 500mm de distancia.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-6">
                   <div className="bg-primary/10 p-4 rounded-xl">
-                    <Download className="w-6 h-6 text-primary" />
+                    <Settings className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h4 className="text-on-surface font-bold uppercase text-sm mb-1 tracking-wider">
-                      Planillas de Corte
+                      Sellado Perimetral
                     </h4>
                     <p className="text-on-surface-variant text-sm leading-relaxed">
-                      Disponibles en formato XLS para software de optimización (Cortamás, Softal,
-                      etc).
+                      Es fundamental el uso de sellador poliuretánico o silicona neutra en todo el perímetro exterior.
                     </p>
                   </div>
                 </div>
@@ -180,10 +176,10 @@ export default function MonacoMachining() {
 
               <div className="mt-12 pt-12 border-t border-outline/10">
                 <p className="text-xs text-on-surface-variant leading-relaxed mb-6 uppercase tracking-widest font-bold">
-                  Consulte por Capacitación
+                  Soporte Aluvallé
                 </p>
                 <button className="w-full bg-surface-variant/20 hover:bg-primary hover:text-on-primary text-on-surface font-bold py-4 uppercase text-[10px] tracking-[0.2em] transition-all">
-                  Solicitar Instructor en Taller
+                  Consultar Departamento Técnico
                 </button>
               </div>
             </div>
@@ -193,5 +189,3 @@ export default function MonacoMachining() {
     </div>
   );
 }
-
-

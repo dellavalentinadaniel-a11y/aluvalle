@@ -10,17 +10,17 @@ export default function GammaMachining() {
   const tools = [
     {
       title: 'Punzonadora Gamma',
-      description: 'Realiza calados de desagües, cierres y encuentros de hoja.',
+      description: 'Realiza calados de desagües, cierres y encuentros de hoja de forma neumática.',
       icon: Wrench,
     },
     {
       title: 'Fresadora Frontal',
-      description: 'Para el mecanizado de travesaños y encuentros de marco.',
+      description: 'Para el mecanizado de los travesaños y encuentros de marco de la serie.',
       icon: Settings,
     },
     {
-      title: 'Copiadora',
-      description: 'Fresados de cajas de cerradura y picaportes.',
+      title: 'Copiadora Vertical',
+      description: 'Fresados de alta precisión para cajas de cerradura y picaportes.',
       icon: Settings,
     },
   ];
@@ -30,17 +30,22 @@ export default function GammaMachining() {
       title: 'Cortes a 45°',
       desc: 'Toda la serie Gamma requiere cortes a 45° tanto en marcos como en hojas.',
       details:
-        'Utilice siempre discos de tungsteno con refrigeración para asegurar cortes limpios.',
+        'Utilice siempre discos de tungsteno con refrigeración para asegurar cortes limpios y sin rebabas.',
     },
     {
       title: 'Desagües de Marco',
       desc: 'Mecanizado en la cámara exterior del marco para evacuación de agua.',
-      details: 'Dimensiones sugeridas: 25mm x 5mm, con una separación máxima de 600mm.',
+      details: 'Dimensiones sugeridas: 25mm x 5mm, con una separación máxima de 600mm entre calados.',
     },
     {
       title: 'Mecanizado de Cerraduras',
       desc: 'Calado para la caja del mecanismo en puertas de abrir Gamma.',
       details: 'Requiere fresado específico según la marca del herraje (Giesse, Fapim, Roto).',
+    },
+    {
+      title: 'Encuentro de Hojas',
+      desc: 'Mecanizado para el correcto solape de perfiles centrales en ventanas de dos hojas.',
+      details: 'Asegure el uso de burletes y accesorios originales para garantizar la estanqueidad.',
     },
   ];
 
@@ -49,8 +54,8 @@ export default function GammaMachining() {
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img
-          src="/gallery/profiles.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          src="/gallery/showroom.jpg"
+          className="bg-image-theme animate-slow-zoom"
           alt=""
         />
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
@@ -58,6 +63,7 @@ export default function GammaMachining() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Navigation */}
         <Link
           to="/productos/linea-gamma"
           className="inline-flex items-center gap-2 text-primary uppercase tracking-widest text-[10px] font-bold mb-12 hover:brightness-125 transition-all"
@@ -66,6 +72,7 @@ export default function GammaMachining() {
           Volver a Línea Gamma
         </Link>
 
+        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
           <div>
             <h1 className="font-headline text-5xl md:text-7xl font-bold text-on-surface uppercase leading-none tracking-tighter mb-4">
@@ -74,12 +81,11 @@ export default function GammaMachining() {
               <span className="text-primary">Gamma</span>
             </h1>
             <p className="text-on-surface-variant max-w-xl text-lg">
-              Guía técnica oficial de Aluvalle para el armado de la nueva Línea Gamma (Ventanas y
-              Puertas).
+              Guía técnica oficial de Aluvalle para el armado de la Línea Gamma. Serie ligera de alta eficiencia para carpintería de aluminio.
             </p>
           </div>
           <a
-            href="#"
+            href="/docs/Sistemas de ventanas y puertas/Línea Gamma/Mecanizados_Linea_Gamma.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 bg-primary text-on-primary px-8 py-5 font-bold uppercase text-xs tracking-[0.2em] hover:brightness-110 transition-all shadow-2xl"
@@ -89,6 +95,7 @@ export default function GammaMachining() {
           </a>
         </div>
 
+        {/* Tools Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {tools.map((t, i) => (
             <div
@@ -105,6 +112,7 @@ export default function GammaMachining() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          {/* Main Operations */}
           <div>
             <h2 className="font-label text-on-surface uppercase tracking-widest text-xs mb-10 flex items-center gap-4">
               <Scissors className="w-5 h-5 text-primary" />
@@ -113,8 +121,8 @@ export default function GammaMachining() {
             <div className="space-y-12">
               {operations.map((op, i) => (
                 <div
-                   key={i}
-                   className="relative pl-12 border-l border-outline/20 hover:border-primary/50 transition-colors py-2"
+                  key={i}
+                  className="relative pl-12 border-l border-outline/20 hover:border-primary/50 transition-colors py-2"
                 >
                   <div className="absolute left-[-5px] top-6 w-[9px] h-[9px] bg-primary rounded-full shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]" />
                   <h4 className="text-on-surface font-bold uppercase mb-2 tracking-tight">
@@ -132,10 +140,11 @@ export default function GammaMachining() {
             </div>
           </div>
 
+          {/* Technical Requirements */}
           <div>
             <div className="bg-surface-variant/5 border border-outline/10 p-12 sticky top-40 backdrop-blur-sm">
               <h2 className="font-headline text-3xl font-bold text-on-surface uppercase mb-8">
-                Requisitos Técnicos
+                Requisitos de Taller
               </h2>
               <div className="space-y-8">
                 <div className="flex gap-6">
@@ -147,10 +156,32 @@ export default function GammaMachining() {
                       Espacio Recomendado
                     </h4>
                     <p className="text-on-surface-variant text-sm leading-relaxed">
-                      Mínimo 30m² para manipulación de perfiles de la serie Gamma.
+                      Área mínima de taller de 30m² para manipulación de perfiles y armado de marcos.
                     </p>
                   </div>
                 </div>
+                <div className="flex gap-6">
+                  <div className="bg-primary/10 p-4 rounded-xl">
+                    <Download className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-on-surface font-bold uppercase text-sm mb-1 tracking-wider">
+                      Planillas de Corte
+                    </h4>
+                    <p className="text-on-surface-variant text-sm leading-relaxed">
+                      Consulte tablas de descuento oficial en el manual de armado según el tipo de herraje.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 pt-12 border-t border-outline/10">
+                <p className="text-xs text-on-surface-variant leading-relaxed mb-6 uppercase tracking-widest font-bold">
+                  Soporte Aluvallé
+                </p>
+                <button className="w-full bg-surface-variant/20 hover:bg-primary hover:text-on-primary text-on-surface font-bold py-4 uppercase text-[10px] tracking-[0.2em] transition-all">
+                  Consultar al Departamento Técnico
+                </button>
               </div>
             </div>
           </div>
@@ -159,3 +190,5 @@ export default function GammaMachining() {
     </div>
   );
 }
+
+

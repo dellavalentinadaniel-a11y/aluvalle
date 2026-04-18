@@ -435,4 +435,25 @@ export const cortinasProfiles: Profile[] = [
 export const complementariosProfiles: Profile[] = [
   { code: 'CP-01', weight: '0.45', shape: 'tubo', description: 'Tubo Estándar' },
   { code: 'CP-02', weight: '0.55', shape: 'varilla', description: 'Ángulo Estándar' }
-];
+];
+export const allProfiles: Profile[] = [
+  ...traditionalProfiles,
+  ...mediterraneaProfiles,
+  ...mediterraneaRPTProfiles,
+  ...monacoRPTProfiles,
+  ...lamaParasolProfiles,
+  ...frameJuntaCerradaProfiles,
+  ...gammaProfiles,
+  ...deltaProfiles,
+  ...monacoProfiles,
+  ...atlanticaProfiles,
+  ...nizaProfiles,
+  ...monacoTopProfiles,
+  ...frenteIntegralProfiles,
+  ...frenteVidriadoProfiles,
+  ...barandasProfiles,
+  ...mamparasProfiles,
+  ...placardProfiles,
+  ...cortinasProfiles,
+  ...complementariosProfiles
+];

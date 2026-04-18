@@ -1,0 +1,32 @@
+# Actualizaciones del Día - 18 de Abril, 2026
+
+## ✅ Tareas Completadas Hoy
+- **Sincronización de Datos**: Se sincronizaron los perfiles de la Línea Tradicional con la base de datos de Excel.
+- **Catálogo Técnico**: Implementación de la página de Catálogo Técnico con capturas de pantalla de los PDFs.
+- **Correcciones Técnicas**: Restauración de datos de perfiles faltantes y migración a `.tsx` para soporte nativo de JSX.
+- **Identidad Visual**: Unificación de la identidad visual en todo el sitio, correcciones de componentes JSX y preparación final para el despliegue.
+- **Limpieza**: Eliminación de archivos temporales de fusión y depuración del repositorio.
+
+## 📝 Pendientes (ROADMAP)
+
+### Línea Gamma
+- [ ] Incorporar el **Catálogo Comercial Nueva Gamma**.
+- [ ] Agregar documentación de **Mecanizado**.
+- [ ] Refinar trazados SVG para perfiles complejos (encuentros de 4 hojas).
+
+### Línea Delta y Tradicional
+- [ ] Incorporar manuales de **Mecanizado** (actualmente faltantes).
+
+### Funcionalidades del Catálogo
+- [ ] **Descargas Reales**: Reemplazar enlaces provisionales (`#`) por archivos PDF/DWG reales.
+- [ ] **Buscador Global**: Implementar filtrado por código, tipo o descripción en tiempo real.
+- [ ] **Calculadora de Peso**: Desarrollar la herramienta interactiva para estimar pesos de obra (visto script base en `aluvalle-expert/scripts/`).
+- [ ] **Oficina Técnica**: Integrar enlaces directos a archivos DWG para AutoCAD.
+
+### Mejoras de UX/UI
+- [ ] **Visualizador 3D**: Renderizado interactivo de secciones de perfiles.
+- [ ] **Modo Comparativa**: Herramienta para comparar especificaciones entre diferentes líneas.
+- [ ] **Video-Tutoriales**: Añadir guías de armado en las secciones de mecanizado.
+
+---
+*Informe generado automáticamente por Gemini CLI*

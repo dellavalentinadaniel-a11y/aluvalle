@@ -125,9 +125,21 @@
     @apply opacity-[0.07] text-primary;
   }
   .hero-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent;
+    @apply absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent transition-all duration-700;
   }
   .light .hero-overlay {
     @apply from-background via-background/20 to-transparent;
+  }
+  .img-filter-theme {
+    @apply grayscale opacity-50 transition-all duration-700;
+  }
+  .light .img-filter-theme {
+    @apply grayscale-0 opacity-100 brightness-110;
+  }
+  .bg-image-theme {
+    @apply absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale transition-all duration-500;
+  }
+  .light .bg-image-theme {
+    @apply opacity-[0.06] grayscale-0 brightness-125;
   }
 }

@@ -34,7 +34,7 @@ const Contact = () => {
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <img
           src="/gallery/showroom.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          className="bg-image-theme animate-slow-zoom"
           alt=""
         />
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
@@ -215,41 +215,41 @@ const Contact = () => {
               </h2>
               <div className="space-y-4">
                 {locations.map((loc, idx) => (
-                  <motion.div
-                    key={loc.name}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 + idx * 0.1 }}
-                    className="flex flex-col md:flex-row md:items-center justify-between p-6 bg-[#1a1d21] border-l-4 border-[#a0d87a] rounded-r-2xl gap-4 cursor-default hover:bg-[#212429] transition-colors"
-                  >
-                    <div>
-                      <h4 className="text-on-surface font-bold mb-1">{loc.name}</h4>
-                      <p className="text-on-surface-variant text-sm">{loc.address}</p>
-                    </div>
-                    <div className="text-left md:text-right">
-                      <p className="text-primary font-bold text-sm mb-1">{loc.phone}</p>
-                      <p className="text-gray-600 text-[11px] uppercase tracking-wider">
-                        {loc.timings}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                    <motion.div
+                      key={loc.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + idx * 0.1 }}
+                      className="flex flex-col md:flex-row md:items-center justify-between p-6 bg-surface-container-high border-l-4 border-primary rounded-r-2xl gap-4 cursor-default hover:bg-surface-container-highest transition-colors"
+                    >
+                      <div>
+                        <h4 className="text-on-surface font-bold mb-1">{loc.name}</h4>
+                        <p className="text-on-surface-variant text-sm">{loc.address}</p>
+                      </div>
+                      <div className="text-left md:text-right">
+                        <p className="text-primary font-bold text-sm mb-1">{loc.phone}</p>
+                        <p className="text-on-surface-variant text-[11px] uppercase tracking-wider">
+                          {loc.timings}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            {/* Map Placeholder with visual polish */}
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Estado+de+Israel,+R8324+Cipolletti,+R%C3%ADo+Negro"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-48 bg-gray-900 rounded-3xl relative overflow-hidden group block"
-            >
-              <img
-                src="/gallery/showroom.jpg"
-                alt="Showroom Aluvallé"
-                className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+  
+              {/* Map Placeholder with visual polish */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Estado+de+Israel,+R8324+Cipolletti,+R%C3%ADo+Negro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-48 bg-surface-container-low rounded-3xl relative overflow-hidden group block"
+              >
+                <img
+                  src="/gallery/showroom.jpg"
+                  alt="Showroom Aluvallé"
+                  className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:scale-110 transition-transform duration-700 img-filter-theme"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-2">
                 <span className="material-symbols-outlined text-primary text-4xl animate-bounce">
                   location_on
@@ -267,3 +267,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
+

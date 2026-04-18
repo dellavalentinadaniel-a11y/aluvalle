@@ -25,8 +25,8 @@ const Sustainability = () => {
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img
-          src="/gallery/profiles.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          src="/gallery/showroom.jpg"
+          className="bg-image-theme animate-slow-zoom"
           alt=""
         />
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
@@ -39,7 +39,7 @@ const Sustainability = () => {
           <img
             src="/gallery/industrial.jpg"
             alt="Naturaleza y Sostenibilidad"
-            className="w-full h-full object-cover opacity-20 grayscale"
+            className="w-full h-full object-cover opacity-20 grayscale img-filter-theme"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
         </div>
@@ -124,3 +124,5 @@ const Sustainability = () => {
 };
 
 export default Sustainability;
+
+

@@ -61,8 +61,8 @@ export default function ProductDetail() {
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img
-          src="/gallery/profiles.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale animate-slow-zoom"
+          src="/gallery/showroom.jpg"
+          className="bg-image-theme animate-slow-zoom"
           alt=""
         />
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
@@ -411,7 +411,7 @@ export default function ProductDetail() {
                 <img
                   src={img}
                   alt={`Proyecto ${i}`}
-                  className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100"
+                  className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 img-filter-theme"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
                   <span className="text-white font-bold tracking-[0.2em] text-[10px] uppercase">
@@ -485,3 +485,5 @@ export default function ProductDetail() {
   </div>
 );
 }
+
+
