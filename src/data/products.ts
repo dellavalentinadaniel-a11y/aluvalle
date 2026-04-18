@@ -63,43 +63,43 @@ export const products: Product[] = [
       'Línea Mediterránea representa el tope de gama en sistemas de carpintería nacional. Sus perfiles de diseño europeo permiten fabricar aberturas de grandes dimensiones con un funcionamiento extremadamente suave y una hermeticidad inigualable.',
     isRPT: false,
     specs: [
-      { label: 'Ancho del Marco', value: '110mm / 125mm', icon: 'settings_overscan' },
-      { label: 'Vidrio Soportado', value: 'DVH / TVH', icon: 'window' },
-      { label: 'Cierre', value: 'Multipunto', icon: 'lock' },
-      { label: 'Aislación', value: 'Térmica Superior', icon: 'thermostat' },
+      { label: 'Niveles de Prestación', value: 'M1, M3, M5, M7 (Integral)', icon: 'layers' },
+      { label: 'Ancho del Marco', value: '86mm a 160mm (3 guías)', icon: 'settings_overscan' },
+      { label: 'Acristalamiento', value: 'Simple, DVH y TVH', icon: 'window' },
+      { label: 'Tipologías', value: 'Corrediza, Elevable, Rebatir, Oscilobatiente', icon: 'view_quilt' }
     ],
     features: [
       {
-        title: 'Alta Gama',
-        description: 'Perfiles con diseño curvo o rectilíneo según la estética del proyecto.',
-        icon: 'star',
+        title: 'Sistema Integral',
+        description: 'Cuatro niveles de prestación con una misma presencia estética que se pueden combinar.',
+        icon: 'grid_view',
       },
       {
-        title: 'Grandes Luces',
-        description: 'Permite hojas de hasta 3 metros de altura para integrar el exterior.',
-        icon: 'height',
+        title: 'Pistas Reforzadas',
+        description: 'Tratamiento anti-desgaste para un deslizamiento suave y duradero en hojas pesadas.',
+        icon: 'straighten',
       },
       {
-        title: 'Confort Acústico',
-        description: 'Reducción sonora certificada para zonas de alto ruido urbano.',
-        icon: 'volume_off',
+        title: 'Cámara Europea',
+        description: 'Compatibilidad total con los herrajes de más alta calidad del mercado internacional.',
+        icon: 'settings_input_component',
       },
     ],
     downloads: [
       {
         type: 'PDF',
-        label: 'Catálogo Línea Mediterránea',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Linea_Mediterranea.pdf',
-      },
-      {
-        type: 'PDF',
         label: 'Catálogo Comercial Mediterránea',
-        url: 'https://alcemar.com.ar/of_tecnica/Catalogo_Comercial_Linea_Mediterranea.pdf',
+        url: '/doc/Sistemas de ventanas y puertas/Línea Mediterránea/Catalogo_Comercial_Linea_Mediterranea.pdf',
       },
       {
         type: 'PDF',
-        label: 'Mecanizados Mediterránea',
-        url: 'https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea.pdf',
+        label: 'Catálogo Técnico Mediterránea',
+        url: '/doc/Sistemas de ventanas y puertas/Línea Mediterránea/Catalogo_Linea_Mediterranea.pdf',
+      },
+      {
+        type: 'MECANIZADO',
+        label: 'Guía de Mecanizados Mediterránea',
+        url: '/mecanizados/linea-mediterranea',
       },
     ],
     gallery: [
