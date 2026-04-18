@@ -15,8 +15,8 @@ const Contact = () => {
       title: 'Ventas y Proyectos',
       email: 'aluvallesas@gmail.com',
       desc: 'Asesoramiento comercial para obras y distribuidores.',
-      icon: 'point_of_sale'
-    }
+      icon: 'point_of_sale',
+    },
   ];
 
   const locations = [
@@ -24,8 +24,8 @@ const Contact = () => {
       name: 'Planta Industrial & Ventas',
       address: 'Estado de Israel, R8324 Cipolletti, Río Negro',
       phone: '+54 9 299 608-7387',
-      timings: 'Lun a Vie: 8:00 a 17:00 hs'
-    }
+      timings: 'Lun a Vie: 8:00 a 17:00 hs',
+    },
   ];
 
   return (
@@ -67,26 +67,52 @@ const Contact = () => {
           >
             <AnimatePresence mode="wait">
               {formState !== 'success' ? (
-                <motion.div
-                  key="form"
-                  initial={{ opacity: 1 }}
-                  exit={{ opacity: 0, y: -20 }}
-                >
+                <motion.div key="form" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -20 }}>
                   <h2 className="text-2xl font-bold text-on-surface mb-8">Envíanos un mensaje</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="nombre" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Nombre</label>
-                        <input id="nombre" placeholder="Tu nombre" required type="text" className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all" />
+                        <label
+                          htmlFor="nombre"
+                          className="text-xs uppercase tracking-widest text-on-surface-variant font-bold"
+                        >
+                          Nombre
+                        </label>
+                        <input
+                          id="nombre"
+                          placeholder="Tu nombre"
+                          required
+                          type="text"
+                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all"
+                        />
                       </div>
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Email</label>
-                        <input id="email" placeholder="tu@email.com" required type="email" className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all" />
+                        <label
+                          htmlFor="email"
+                          className="text-xs uppercase tracking-widest text-on-surface-variant font-bold"
+                        >
+                          Email
+                        </label>
+                        <input
+                          id="email"
+                          placeholder="tu@email.com"
+                          required
+                          type="email"
+                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all"
+                        />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="asunto" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Asunto</label>
-                      <select id="asunto" className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer">
+                      <label
+                        htmlFor="asunto"
+                        className="text-xs uppercase tracking-widest text-on-surface-variant font-bold"
+                      >
+                        Asunto
+                      </label>
+                      <select
+                        id="asunto"
+                        className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer"
+                      >
                         <option>Presupuesto de Obra</option>
                         <option>Soporte Técnico</option>
                         <option>Asesoramiento Comercial</option>
@@ -94,8 +120,18 @@ const Contact = () => {
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="mensaje" className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Mensaje</label>
-                      <textarea id="mensaje" required rows={4} className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all resize-none"></textarea>
+                      <label
+                        htmlFor="mensaje"
+                        className="text-xs uppercase tracking-widest text-on-surface-variant font-bold"
+                      >
+                        Mensaje
+                      </label>
+                      <textarea
+                        id="mensaje"
+                        required
+                        rows={4}
+                        className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all resize-none"
+                      ></textarea>
                     </div>
                     <button
                       type="submit"
@@ -107,7 +143,9 @@ const Contact = () => {
                           <div className="w-5 h-5 border-2 border-on-primary/30 border-t-on-primary rounded-full animate-spin" />
                           Enviando...
                         </>
-                      ) : 'Enviar Mensaje'}
+                      ) : (
+                        'Enviar Mensaje'
+                      )}
                     </button>
                   </form>
                 </motion.div>
@@ -119,10 +157,15 @@ const Contact = () => {
                   className="py-20 text-center"
                 >
                   <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="material-symbols-outlined text-primary text-4xl">check_circle</span>
+                    <span className="material-symbols-outlined text-primary text-4xl">
+                      check_circle
+                    </span>
                   </div>
                   <h2 className="text-3xl font-bold text-on-surface mb-4">¡Mensaje Recibido!</h2>
-                  <p className="text-on-surface-variant mb-8 max-w-sm mx-auto">Hemos recibido su consulta correctamente. Un asesor técnico se pondrá en contacto con usted en las próximas 24 horas hábiles.</p>
+                  <p className="text-on-surface-variant mb-8 max-w-sm mx-auto">
+                    Hemos recibido su consulta correctamente. Un asesor técnico se pondrá en
+                    contacto con usted en las próximas 24 horas hábiles.
+                  </p>
                   <button
                     onClick={() => setFormState('idle')}
                     className="text-primary border border-primary px-8 py-3 rounded-xl hover:bg-primary hover:text-on-primary transition-all"
@@ -146,12 +189,13 @@ const Contact = () => {
                   transition={{ delay: 0.3 + idx * 0.1 }}
                   className="bg-surface-container-high border border-outline/10 p-6 rounded-2xl hover:bg-surface-container-highest transition-all"
                 >
-                  <span className="material-symbols-outlined text-primary mb-4">
-                    {point.icon}
-                  </span>
+                  <span className="material-symbols-outlined text-primary mb-4">{point.icon}</span>
                   <h3 className="text-lg font-bold text-on-surface mb-2">{point.title}</h3>
                   <p className="text-sm text-on-surface-variant mb-3">{point.desc}</p>
-                  <a href={`mailto:${point.email}`} className="text-primary font-medium hover:underline text-sm">
+                  <a
+                    href={`mailto:${point.email}`}
+                    className="text-primary font-medium hover:underline text-sm"
+                  >
                     {point.email}
                   </a>
                 </motion.div>
@@ -179,7 +223,9 @@ const Contact = () => {
                     </div>
                     <div className="text-left md:text-right">
                       <p className="text-primary font-bold text-sm mb-1">{loc.phone}</p>
-                      <p className="text-gray-600 text-[11px] uppercase tracking-wider">{loc.timings}</p>
+                      <p className="text-gray-600 text-[11px] uppercase tracking-wider">
+                        {loc.timings}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -200,8 +246,12 @@ const Contact = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-2">
-                <span className="material-symbols-outlined text-primary text-4xl animate-bounce">location_on</span>
-                <span className="text-on-surface font-bold text-sm tracking-widest uppercase">Ver mapa interactivo</span>
+                <span className="material-symbols-outlined text-primary text-4xl animate-bounce">
+                  location_on
+                </span>
+                <span className="text-on-surface font-bold text-sm tracking-widest uppercase">
+                  Ver mapa interactivo
+                </span>
               </div>
             </a>
           </div>

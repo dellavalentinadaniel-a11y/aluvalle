@@ -1,16 +1,15 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Wind, 
-  Droplets, 
-  AirVent, 
-  CheckCircle2, 
-  Info, 
+import {
+  Wind,
+  Droplets,
+  AirVent,
+  CheckCircle2,
+  Info,
   ChevronRight,
   ShieldCheck,
   Zap,
-  Award
+  Award,
 } from 'lucide-react';
 
 const MonacoTesting = () => {
@@ -19,23 +18,23 @@ const MonacoTesting = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
   };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       {/* Hero Section */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -43,26 +42,31 @@ const MonacoTesting = () => {
       >
         <div className="inline-flex items-center space-x-2 bg-[#a0d87a]/10 border border-[#a0d87a]/20 px-4 py-2 rounded-full mb-6">
           <Award className="w-4 h-4 text-[#a0d87a]" />
-          <span className="text-[#a0d87a] text-sm font-medium tracking-wide uppercase">Certificación Oficial INTI</span>
+          <span className="text-[#a0d87a] text-sm font-medium tracking-wide uppercase">
+            Certificación Oficial INTI
+          </span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
           Informes de Ensayo <span className="text-[#a0d87a]">Línea Mónaco</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          Resultados técnicos de laboratorio sobre hermeticidad, estanqueidad y resistencia estructural 
-          bajo normas IRAM, garantizando el máximo estándar de calidad en el mercado.
+          Resultados técnicos de laboratorio sobre hermeticidad, estanqueidad y resistencia
+          estructural bajo normas IRAM, garantizando el máximo estándar de calidad en el mercado.
         </p>
       </motion.div>
 
       {/* Main Results Grid */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Air Permeability */}
-        <motion.div variants={itemVariants} className="bg-[#111] border border-white/5 p-8 rounded-3xl hover:border-[#a0d87a]/30 transition-colors group">
+        <motion.div
+          variants={itemVariants}
+          className="bg-[#111] border border-white/5 p-8 rounded-3xl hover:border-[#a0d87a]/30 transition-colors group"
+        >
           <div className="w-14 h-14 bg-[#a0d87a]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <AirVent className="w-8 h-8 text-[#a0d87a]" />
           </div>
@@ -79,12 +83,16 @@ const MonacoTesting = () => {
             </div>
           </div>
           <p className="mt-6 text-sm text-gray-400 leading-relaxed">
-            Excelente comportamiento frente a infiltraciones no deseadas, asegurando confort térmico.
+            Excelente comportamiento frente a infiltraciones no deseadas, asegurando confort
+            térmico.
           </p>
         </motion.div>
 
         {/* Water Tightness */}
-        <motion.div variants={itemVariants} className="bg-[#111] border border-white/5 p-8 rounded-3xl hover:border-[#a0d87a]/30 transition-colors group">
+        <motion.div
+          variants={itemVariants}
+          className="bg-[#111] border border-white/5 p-8 rounded-3xl hover:border-[#a0d87a]/30 transition-colors group"
+        >
           <div className="w-14 h-14 bg-[#a0d87a]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <Droplets className="w-8 h-8 text-[#a0d87a]" />
           </div>
@@ -107,7 +115,10 @@ const MonacoTesting = () => {
         </motion.div>
 
         {/* Wind Resistance */}
-        <motion.div variants={itemVariants} className="bg-[#111] border border-white/5 p-8 rounded-3xl hover:border-[#a0d87a]/30 transition-colors group">
+        <motion.div
+          variants={itemVariants}
+          className="bg-[#111] border border-white/5 p-8 rounded-3xl hover:border-[#a0d87a]/30 transition-colors group"
+        >
           <div className="w-14 h-14 bg-[#a0d87a]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <Wind className="w-8 h-8 text-[#a0d87a]" />
           </div>
@@ -130,7 +141,7 @@ const MonacoTesting = () => {
       </motion.div>
 
       {/* Detailed Technical Specs Section */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -144,18 +155,35 @@ const MonacoTesting = () => {
             </h2>
             <div className="space-y-4">
               {[
-                { title: "Resistencia a la Flexión", status: "Aprobado", detail: "Sin fallas en herrajes ni perfiles." },
-                { title: "Resistencia a la Torsión", status: "Aprobado", detail: "Mecanismos de cierre operativos post-ensayo." },
-                { title: "Deformación Diagonal", status: "Aprobado", detail: "Rigidez estructural garantizada." }
+                {
+                  title: 'Resistencia a la Flexión',
+                  status: 'Aprobado',
+                  detail: 'Sin fallas en herrajes ni perfiles.',
+                },
+                {
+                  title: 'Resistencia a la Torsión',
+                  status: 'Aprobado',
+                  detail: 'Mecanismos de cierre operativos post-ensayo.',
+                },
+                {
+                  title: 'Deformación Diagonal',
+                  status: 'Aprobado',
+                  detail: 'Rigidez estructural garantizada.',
+                },
               ].map((test, index) => (
-                <div key={index} className="flex items-start bg-white/5 p-6 rounded-2xl border border-white/5">
+                <div
+                  key={index}
+                  className="flex items-start bg-white/5 p-6 rounded-2xl border border-white/5"
+                >
                   <div className="bg-[#a0d87a]/20 p-2 rounded-lg mr-4">
                     <CheckCircle2 className="w-5 h-5 text-[#a0d87a]" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold flex items-center">
                       {test.title}
-                      <span className="ml-3 text-[10px] bg-[#a0d87a]/20 text-[#a0d87a] px-2 py-0.5 rounded-full uppercase tracking-tighter">Satisfactorio</span>
+                      <span className="ml-3 text-[10px] bg-[#a0d87a]/20 text-[#a0d87a] px-2 py-0.5 rounded-full uppercase tracking-tighter">
+                        Satisfactorio
+                      </span>
                     </h4>
                     <p className="text-gray-400 text-sm mt-1">{test.detail}</p>
                   </div>
@@ -172,29 +200,30 @@ const MonacoTesting = () => {
             <ul className="space-y-6">
               <li className="flex items-center text-gray-300">
                 <ChevronRight className="w-5 h-5 mr-3 text-[#a0d87a]" />
-                <span className="font-medium">Tipo:</span> 
+                <span className="font-medium">Tipo:</span>
                 <span className="ml-2 text-white">Ventana corrediza de dos hojas</span>
               </li>
               <li className="flex items-center text-gray-300">
                 <ChevronRight className="w-5 h-5 mr-3 text-[#a0d87a]" />
-                <span className="font-medium">Medidas:</span> 
+                <span className="font-medium">Medidas:</span>
                 <span className="ml-2 text-white">1600mm x 1000mm</span>
               </li>
               <li className="flex items-center text-gray-300">
                 <ChevronRight className="w-5 h-5 mr-3 text-[#a0d87a]" />
-                <span className="font-medium">Accesorios:</span> 
+                <span className="font-medium">Accesorios:</span>
                 <span className="ml-2 text-white">Cierres laterales y felpa de polipropileno</span>
               </li>
               <li className="flex items-center text-gray-300">
                 <ChevronRight className="w-5 h-5 mr-3 text-[#a0d87a]" />
-                <span className="font-medium">Laboratorio:</span> 
+                <span className="font-medium">Laboratorio:</span>
                 <span className="ml-2 text-white italic">INTI - Construcciones</span>
               </li>
             </ul>
             <div className="mt-10 p-6 bg-white/5 rounded-3xl flex items-center border border-white/5">
               <Info className="w-6 h-6 text-[#a0d87a] mr-4 flex-shrink-0" />
               <p className="text-sm text-gray-400">
-                Este informe es de carácter público para profesionales de la construcción. Para obtener el protocolo completo en PDF, solicítelo en nuestra oficina técnica.
+                Este informe es de carácter público para profesionales de la construcción. Para
+                obtener el protocolo completo en PDF, solicítelo en nuestra oficina técnica.
               </p>
             </div>
           </div>

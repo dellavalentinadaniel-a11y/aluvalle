@@ -6,18 +6,18 @@ const Sustainability = () => {
     {
       title: 'Aluminio 100% Reciclable',
       desc: 'El aluminio es un material infinitamente reciclable. El 75% de todo el aluminio producido en la historia sigue en uso hoy.',
-      icon: 'sync'
+      icon: 'sync',
     },
     {
       title: 'Eficiencia RPT',
       desc: 'Nuestros sistemas con Ruptura de Puente Térmico reducen hasta un 40% el consumo de energía en climatización.',
-      icon: 'eco'
+      icon: 'eco',
     },
     {
       title: 'Huella de Carbono',
       desc: 'Optimizamos nuestra logística y procesos de extrusión para minimizar las emisiones de CO2 por tonelada producida.',
-      icon: 'co2'
-    }
+      icon: 'co2',
+    },
   ];
 
   return (
@@ -25,8 +25,8 @@ const Sustainability = () => {
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+          <img
+            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
             alt="Naturaleza y Sostenibilidad"
             className="w-full h-full object-cover opacity-40 grayscale"
           />
@@ -34,28 +34,29 @@ const Sustainability = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-[#a0d87a] font-bold tracking-[0.2em] uppercase text-xs mb-4 block"
           >
             Compromiso Ambiental
           </motion.span>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter"
           >
-            Diseño para el <br/>
+            Diseño para el <br />
             <span className="text-[#a0d87a]">Infinito</span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-gray-300 max-w-xl text-lg leading-relaxed"
           >
-            En Aluvalle, entendemos que la arquitectura del futuro debe ser circular. Trabajamos con el metal más sustentable del planeta para crear hogares eficientes y conscientes.
+            En Aluvalle, entendemos que la arquitectura del futuro debe ser circular. Trabajamos con
+            el metal más sustentable del planeta para crear hogares eficientes y conscientes.
           </motion.p>
         </div>
       </section>
@@ -78,9 +79,7 @@ const Sustainability = () => {
                 </span>
               </div>
               <h3 className="text-xl font-bold text-white mb-4">{pillar.title}</h3>
-              <p className="text-gray-500 leading-relaxed text-sm">
-                {pillar.desc}
-              </p>
+              <p className="text-gray-500 leading-relaxed text-sm">{pillar.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -88,14 +87,25 @@ const Sustainability = () => {
 
       {/* Deep Content */}
       <section className="max-w-5xl mx-auto px-4 py-32 text-center">
-        <h2 className="text-4xl font-bold text-white mb-8">Certificaciones LEED y Etiquetado de Eficiencia</h2>
+        <h2 className="text-4xl font-bold text-white mb-8">
+          Certificaciones LEED y Etiquetado de Eficiencia
+        </h2>
         <p className="text-gray-400 text-lg leading-loose mb-16">
-          Nuestros sistemas están ensayados bajo las normas de etiquetado de eficiencia energética, permitiendo a los edificios alcanzar las más altas certificaciones internacionales de sustentabilidad. La elección de una carpintería de aluminio de alta gama con RPT es la decisión más influyente en la reducción de la huella operativa de una vivienda.
+          Nuestros sistemas están ensayados bajo las normas de etiquetado de eficiencia energética,
+          permitiendo a los edificios alcanzar las más altas certificaciones internacionales de
+          sustentabilidad. La elección de una carpintería de aluminio de alta gama con RPT es la
+          decisión más influyente en la reducción de la huella operativa de una vivienda.
         </p>
         <div className="flex flex-wrap justify-center gap-12 opacity-50">
-          <span className="text-white font-bold tracking-widest uppercase border-x border-gray-800 px-8">IRAM 11910</span>
-          <span className="text-white font-bold tracking-widest uppercase border-x border-gray-800 px-8">LEED SILVER</span>
-          <span className="text-white font-bold tracking-widest uppercase border-x border-gray-800 px-8">A+ EFFICIENCY</span>
+          <span className="text-white font-bold tracking-widest uppercase border-x border-gray-800 px-8">
+            IRAM 11910
+          </span>
+          <span className="text-white font-bold tracking-widest uppercase border-x border-gray-800 px-8">
+            LEED SILVER
+          </span>
+          <span className="text-white font-bold tracking-widest uppercase border-x border-gray-800 px-8">
+            A+ EFFICIENCY
+          </span>
         </div>
       </section>
     </div>

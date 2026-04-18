@@ -24,6 +24,8 @@ import NizaMachining from './pages/NizaMachining.tsx';
 import MediterraneaMachining from './pages/MediterraneaMachining.tsx';
 import MediterraneaRPTMachining from './pages/MediterraneaRPTMachining.tsx';
 import MonacoMachining from './pages/MonacoMachining.tsx';
+import GammaMachining from './pages/GammaMachining.tsx';
+import TechnicalCatalog from './pages/TechnicalCatalog.tsx';
 
 export default function App() {
   return (
@@ -38,20 +40,22 @@ export default function App() {
             <Route path="complementarios" element={<Complementarios />} />
             <Route path="accesorios" element={<Accesorios />} />
           </Route>
-           <Route path="productos/:slug" element={<ProductDetail />} />
-           <Route path="oficina-tecnica" element={<TechnicalOffice />} />
-           <Route path="proyectos" element={<Projects />} />
-           <Route path="sostenibilidad" element={<Sustainability />} />
-           <Route path="contact" element={<Contact />} />
-           <Route path="sobre-nosotros" element={<AboutUs />} />
-           <Route path="privacidad" element={<PrivacyPolicy />} />
-           <Route path="terminos" element={<TermsOfService />} />
-           <Route path="testeos/linea-monaco" element={<MonacoTesting />} />
-           <Route path="mecanizados/linea-atlantica" element={<AtlanticaMachining />} />
-           <Route path="mecanizados/linea-niza" element={<NizaMachining />} />
-           <Route path="mecanizados/linea-mediterranea" element={<MediterraneaMachining />} />
-           <Route path="mecanizados/linea-mediterranea-rpt" element={<MediterraneaRPTMachining />} />
-           <Route path="mecanizados/linea-monaco" element={<MonacoMachining />} />
+          <Route path="productos/:slug" element={<ProductDetail />} />
+          <Route path="catalogo-tecnico/:slug" element={<TechnicalCatalog />} />
+          <Route path="oficina-tecnica" element={<TechnicalOffice />} />
+          <Route path="proyectos" element={<Projects />} />
+          <Route path="sostenibilidad" element={<Sustainability />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="sobre-nosotros" element={<AboutUs />} />
+          <Route path="privacidad" element={<PrivacyPolicy />} />
+          <Route path="terminos" element={<TermsOfService />} />
+          <Route path="testeos/linea-monaco" element={<MonacoTesting />} />
+          <Route path="mecanizados/linea-atlantica" element={<AtlanticaMachining />} />
+          <Route path="mecanizados/linea-niza" element={<NizaMachining />} />
+          <Route path="mecanizados/linea-mediterranea" element={<MediterraneaMachining />} />
+          <Route path="mecanizados/linea-mediterranea-rpt" element={<MediterraneaRPTMachining />} />
+          <Route path="mecanizados/linea-monaco" element={<MonacoMachining />} />
+          <Route path="mecanizados/linea-gamma" element={<GammaMachining />} />
         </Route>
       </Routes>
     </Router>

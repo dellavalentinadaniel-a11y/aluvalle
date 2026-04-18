@@ -1,90 +1,91 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Puzzle, 
-  Droplets, 
-  Frame, 
-  Key, 
+import {
+  Puzzle,
+  Droplets,
+  Frame,
+  Key,
   ChevronRight,
   HelpCircle,
   Gem,
   Cpu,
-  Download
+  Download,
 } from 'lucide-react';
 
 const NizaMachining = () => {
   const sections = [
     {
-      title: "Desagües y Estanqueidad",
+      title: 'Desagües y Estanqueidad',
       icon: <Droplets className="w-6 h-6" />,
-      description: "Sistemas de drenaje invisibles para mantener la estética minimalista.",
+      description: 'Sistemas de drenaje invisibles para mantener la estética minimalista.',
       items: [
-        "Mecanizados para marcos N-Tres y N-Cinco",
-        "Evacuación de agua en umbrales estéticos",
-        "Calados ocultos para canalización interna",
-        "Mecanizado de inversores de flujo"
-      ]
+        'Mecanizados para marcos N-Tres y N-Cinco',
+        'Evacuación de agua en umbrales estéticos',
+        'Calados ocultos para canalización interna',
+        'Mecanizado de inversores de flujo',
+      ],
     },
     {
-      title: "Cortes y Armado a 90°",
+      title: 'Cortes y Armado a 90°',
       icon: <Frame className="w-6 h-6" />,
-      description: "Preparación milimétrica para encuentros perfectos.",
+      description: 'Preparación milimétrica para encuentros perfectos.',
       items: [
-        "Mecanizado de Jamba para tornillo de armado",
-        "Preparación de umbral y dintel N-UNO",
-        "Ensambe de hojas con corte a 90°",
-        "Ajuste de guías de cortina premium"
-      ]
+        'Mecanizado de Jamba para tornillo de armado',
+        'Preparación de umbral y dintel N-UNO',
+        'Ensambe de hojas con corte a 90°',
+        'Ajuste de guías de cortina premium',
+      ],
     },
     {
-      title: "Herrajes y Accionamiento",
+      title: 'Herrajes y Accionamiento',
       icon: <Key className="w-6 h-6" />,
-      description: "Mecanizado de precisión para componentes móviles.",
+      description: 'Mecanizado de precisión para componentes móviles.',
       items: [
-        "Alojamiento de rodamientos de alta carga",
-        "Cierre multipunto Niza con falleba oculta",
-        "Mecanizado de cerraduras de seguridad",
-        "Calados para accesorios de oscilo-batiente"
-      ]
+        'Alojamiento de rodamientos de alta carga',
+        'Cierre multipunto Niza con falleba oculta',
+        'Mecanizado de cerraduras de seguridad',
+        'Calados para accesorios de oscilo-batiente',
+      ],
     },
     {
-      title: "Especificación Técnica",
+      title: 'Especificación Técnica',
       icon: <Cpu className="w-6 h-6" />,
-      description: "Documentación para procesos automatizados CNC.",
+      description: 'Documentación para procesos automatizados CNC.',
       items: [
-        "Referencia de troquelados Niza",
-        "Cotas de perforación estandarizadas",
-        "Ajustes mecánicos de fábrica"
-      ]
-    }
+        'Referencia de troquelados Niza',
+        'Cotas de perforación estandarizadas',
+        'Ajustes mecánicos de fábrica',
+      ],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       {/* Hero */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 px-4 py-2 rounded-full mb-6">
           <Gem className="w-4 h-4 text-amber-500" />
-          <span className="text-amber-500 text-sm font-medium uppercase tracking-[0.2em]">Serie Premium</span>
+          <span className="text-amber-500 text-sm font-medium uppercase tracking-[0.2em]">
+            Serie Premium
+          </span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
           Manual de Mecanizados <span className="text-amber-500">Línea Niza</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          Guía avanzada de fabricación para carpintería de diseño europeo. 
-          Precisión y detalle para un acabado impecable.
+          Guía avanzada de fabricación para carpintería de diseño europeo. Precisión y detalle para
+          un acabado impecable.
         </p>
       </motion.div>
 
       {/* Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
         {sections.map((section, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             className="group relative"
             initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
@@ -113,7 +114,7 @@ const NizaMachining = () => {
       </div>
 
       {/* Bottom */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -127,13 +128,15 @@ const NizaMachining = () => {
             <div>
               <h4 className="text-2xl font-bold mb-4 italic">Asistencia Técnica Niza</h4>
               <p className="text-gray-400 max-w-md leading-relaxed">
-                Debido a la complejidad y fineza de los encuentros de la línea Niza, se recomienda consultar con fábrica los ajustes para mecanizado CNC o el uso de troqueladoras automatizadas.
+                Debido a la complejidad y fineza de los encuentros de la línea Niza, se recomienda
+                consultar con fábrica los ajustes para mecanizado CNC o el uso de troqueladoras
+                automatizadas.
               </p>
             </div>
           </div>
-          <a 
-            href="https://www.alcemar.com.ar/of_tecnica/Mecanizados_Linea_Niza.pdf" 
-            target="_blank" 
+          <a
+            href="https://www.alcemar.com.ar/of_tecnica/Mecanizados_Linea_Niza.pdf"
+            target="_blank"
             rel="noopener noreferrer"
             className="bg-amber-500 hover:bg-amber-600 text-[#0b0e12] px-10 py-5 rounded-2xl font-black flex items-center gap-3 transition-all uppercase tracking-widest text-xs hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] shadow-2xl"
           >

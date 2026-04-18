@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-on-primary: #163800;
@@ -49,9 +49,9 @@
   --color-surface: #111417;
   --color-inverse-on-surface: #2e3135;
 
-  --font-headline: "Manrope", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-label: "Work Sans", sans-serif;
+  --font-headline: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Work Sans', sans-serif;
 
   --radius-DEFAULT: 0.125rem;
   --radius-lg: 0.25rem;
@@ -61,26 +61,24 @@
 
 @custom-variant light (&:where(.light, .light *));
 
-@theme {
-  .light {
-    --color-background: #fdfdfc;
-    --color-on-background: #191c1e;
-    --color-surface: #ffffff;
-    --color-on-surface: #191c1e;
-    --color-surface-container: #f1f4f9;
-    --color-surface-container-low: #f8fafc;
-    --color-surface-container-high: #edf2f7;
-    --color-surface-container-highest: #e2e8f0;
-    --color-surface-container-lowest: #ffffff;
-    --color-primary: #2d5a12;
-    --color-on-primary: #ffffff;
-    --color-secondary: #536348;
-    --color-on-secondary: #ffffff;
-    --color-outline: #73796e;
-    --color-outline-variant: #c3c8bc;
-    --color-inverse-surface: #2e312c;
-    --color-on-surface-variant: #43493e;
-  }
+.light {
+  --color-background: #fdfdfc;
+  --color-on-background: #191c1e;
+  --color-surface: #ffffff;
+  --color-on-surface: #191c1e;
+  --color-surface-container: #f1f4f9;
+  --color-surface-container-low: #f8fafc;
+  --color-surface-container-high: #edf2f7;
+  --color-surface-container-highest: #e2e8f0;
+  --color-surface-container-lowest: #ffffff;
+  --color-primary: #2d5a12;
+  --color-on-primary: #ffffff;
+  --color-secondary: #536348;
+  --color-on-secondary: #ffffff;
+  --color-outline: #73796e;
+  --color-outline-variant: #c3c8bc;
+  --color-inverse-surface: #2e312c;
+  --color-on-surface-variant: #43493e;
 }
 
 @layer base {

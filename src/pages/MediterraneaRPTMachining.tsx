@@ -1,84 +1,85 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Settings, 
-  Droplet, 
-  Scissors, 
-  Lock, 
+import {
+  Settings,
+  Droplet,
+  Scissors,
+  Lock,
   ChevronRight,
   Info,
   Layers,
   Wrench,
   Download,
-  Flame
+  Flame,
 } from 'lucide-react';
 
 const MediterraneaRPTMachining = () => {
   const categories = [
     {
-      title: "Ruptura de Puente Térmico",
+      title: 'Ruptura de Puente Térmico',
       icon: <Flame className="w-6 h-6" />,
-      description: "Cálculo y montaje de perfiles con poliamidas.",
+      description: 'Cálculo y montaje de perfiles con poliamidas.',
       items: [
-        "Ensamblado de perfiles exterior/interior (Pág. 4)",
-        "Cálculo de varilla de poliamida 24mm (Pág. 6)",
-        "Mecanizado de punzonas para poliamida",
-        "Detalle de unión mecánica RPT (Pág. 10)"
-      ]
+        'Ensamblado de perfiles exterior/interior (Pág. 4)',
+        'Cálculo de varilla de poliamida 24mm (Pág. 6)',
+        'Mecanizado de punzonas para poliamida',
+        'Detalle de unión mecánica RPT (Pág. 10)',
+      ],
     },
     {
-      title: "Desagües y Estanqueidad RPT",
+      title: 'Desagües y Estanqueidad RPT',
       icon: <Droplet className="w-6 h-6" />,
-      description: "Sistema de drenaje específico para cámaras térmicas.",
+      description: 'Sistema de drenaje específico para cámaras térmicas.',
       items: [
-        "Desagüe decalado en marcos (Pág. 12)",
-        "Corte de burlete central EPDM (Pág. 15)",
-        "Mecanizado de salida de agua RPT (Pág. 18)",
-        "Sellado de esquinas con pegamento epoxi"
-      ]
+        'Desagüe decalado en marcos (Pág. 12)',
+        'Corte de burlete central EPDM (Pág. 15)',
+        'Mecanizado de salida de agua RPT (Pág. 18)',
+        'Sellado de esquinas con pegamento epoxi',
+      ],
     },
     {
-      title: "Accesorios y Herrajes",
+      title: 'Accesorios y Herrajes',
       icon: <Settings className="w-6 h-6" />,
-      description: "Instalación de componentes para alta prestación.",
+      description: 'Instalación de componentes para alta prestación.',
       items: [
-        "Montaje de cámara europea 20mm (Pág. 22)",
-        "Mecanizado para cremona y varillas (Pág. 25)",
-        "Instalación de escuadras de empuje/tracción (Pág. 28)",
-        "Ajuste de puntos de cierre perimetral"
-      ]
+        'Montaje de cámara europea 20mm (Pág. 22)',
+        'Mecanizado para cremona y varillas (Pág. 25)',
+        'Instalación de escuadras de empuje/tracción (Pág. 28)',
+        'Ajuste de puntos de cierre perimetral',
+      ],
     },
     {
-      title: "Procesos Industriales",
+      title: 'Procesos Industriales',
       icon: <Wrench className="w-6 h-6" />,
-      description: "Maquinaria de precisión para el sistema RPT.",
+      description: 'Maquinaria de precisión para el sistema RPT.',
       items: [
-        "Uso de Punzonadora Mediterránea RPT (Pág. 32)",
-        "Ajuste de matrices para corte poliamida",
-        "Fresa de desagüe automático",
-        "Plantillas de perforación para herrajes RPT"
-      ]
-    }
+        'Uso de Punzonadora Mediterránea RPT (Pág. 32)',
+        'Ajuste de matrices para corte poliamida',
+        'Fresa de desagüe automático',
+        'Plantillas de perforación para herrajes RPT',
+      ],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       {/* Hero */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <div className="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/20 px-4 py-2 rounded-full mb-6">
           <Flame className="w-4 h-4 text-orange-400" />
-          <span className="text-orange-400 text-sm font-medium uppercase">Alta Eficiencia Térmica</span>
+          <span className="text-orange-400 text-sm font-medium uppercase">
+            Alta Eficiencia Térmica
+          </span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
           Mecanizados <span className="text-orange-400">Mediterránea RPT</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-          Especificaciones técnicas para la fabricación de sistemas con Ruptura de Puente Térmico. 
+          Especificaciones técnicas para la fabricación de sistemas con Ruptura de Puente Térmico.
           Máximo rendimiento térmico y acústico.
         </p>
       </motion.div>
@@ -86,7 +87,7 @@ const MediterraneaRPTMachining = () => {
       {/* Categories Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         {categories.map((cat, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             className="bg-[#111] border border-white/5 p-8 rounded-[2.5rem] hover:border-orange-500/30 transition-all group"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -124,13 +125,15 @@ const MediterraneaRPTMachining = () => {
           <div>
             <h4 className="text-xl font-bold mb-2">Nota Técnica RPT</h4>
             <p className="text-gray-400 leading-relaxed text-sm">
-              La correcta alineación de las poliamidas es fundamental para evitar filtraciones de aire. Se recomienda el uso de prensas de ensamblado Alcemar para asegurar la homogeneidad del puente térmico.
+              La correcta alineación de las poliamidas es fundamental para evitar filtraciones de
+              aire. Se recomienda el uso de prensas de ensamblado Alcemar para asegurar la
+              homogeneidad del puente térmico.
             </p>
           </div>
         </div>
-        <a 
-          href="https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea_RPT.pdf" 
-          target="_blank" 
+        <a
+          href="https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea_RPT.pdf"
+          target="_blank"
           rel="noopener noreferrer"
           className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 transition-colors shrink-0"
         >

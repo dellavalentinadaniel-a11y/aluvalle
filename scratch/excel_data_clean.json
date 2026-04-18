@@ -1,0 +1,595 @@
+﻿[
+  {
+    "row": "1",
+    "A": "DESCRIPCION",
+    "B": "CODIGO",
+    "C": "PESO (Kg/m)",
+    "D": "T. x P.",
+    "E": "FORMA (Descripci├│n Visual)"
+  },
+  {
+    "row": "2",
+    "A": "Z├│calo Alto para Puerta Corrediza",
+    "B": "5.0",
+    "C": "0.81",
+    "D": "4.0",
+    "E": "Perfil ancho con doble c├ímara central y muescas de encastre."
+  },
+  {
+    "row": "3",
+    "A": "Encuentro Central para Ventana y Puerta Corrediza de 4 Hojas",
+    "B": "7.0",
+    "C": "0.36",
+    "D": "12.0",
+    "E": "Secci├│n en &quot;I&quot; con muesca lateral para cierre."
+  },
+  {
+    "row": "4",
+    "A": "Marco para Ventana Corrediza",
+    "B": "11.0",
+    "C": "0.38",
+    "D": "8.0",
+    "E": "Secci├│n en &quot;U&quot; con rebordes internos hacia el centro."
+  },
+  {
+    "row": "5",
+    "A": "Umbral para Ventana y Puerta Corrediza L├¡nea Liviana",
+    "B": "13.0",
+    "C": "0.64",
+    "D": "6.0",
+    "E": "Perfil con tres canales o muescas superiores alineadas."
+  },
+  {
+    "row": "6",
+    "A": "Batiente para Puerta de Rebatir",
+    "B": "16 (a)",
+    "C": "0.31",
+    "D": "8.0",
+    "E": "Secci├│n en &quot;L&quot; con una extensi├│n escalonada lateral."
+  },
+  {
+    "row": "7",
+    "A": "Porta Felpa Z├│calo",
+    "B": "22.0",
+    "C": "0.23",
+    "D": "16.0",
+    "E": "Perfil peque├▒o en forma de &quot;C&quot; con muescas de sujeci├│n."
+  },
+  {
+    "row": "8",
+    "A": "Z├│calo para Ventana Corrediza - L├¡nea Combinada",
+    "B": "23.0",
+    "C": "0.5",
+    "D": "8.0",
+    "E": "Perfil ancho sim├®trico con doble c├ímara interna."
+  },
+  {
+    "row": "9",
+    "A": "Encuentro Central para Ventana y Puerta Corrediza - L├¡nea Combinada",
+    "B": "26.0",
+    "C": "0.27",
+    "D": "10.0",
+    "E": "Perfil en &quot;L&quot; con muescas pronunciadas de encastre."
+  },
+  {
+    "row": "10",
+    "A": "Encuentro Central para 4 Hojas con Perfil 481 de Parante Lateral",
+    "B": "27.0",
+    "C": "0.18",
+    "D": "20.0",
+    "E": "Perfil peque├▒o con forma de &quot;Y&quot; invertida estilizada."
+  },
+  {
+    "row": "11",
+    "A": "Contravidrio",
+    "B": "34.0",
+    "C": "0.14",
+    "D": "20.0",
+    "E": "Perfil en &quot;L&quot; con terminaci├│n externa redondeada."
+  },
+  {
+    "row": "12",
+    "A": "Columna a 45┬░",
+    "B": "43.0",
+    "C": "1.17",
+    "D": "2.0",
+    "E": "Secci├│n pentagonal (forma de casa o diamante)."
+  },
+  {
+    "row": "13",
+    "A": "Mosquitero para Ventana y Corrediza L├¡nea Liviana",
+    "B": "60.0",
+    "C": "0.25",
+    "D": "12.0",
+    "E": "Perfil rectangular con muesca profunda lateral."
+  },
+  {
+    "row": "14",
+    "A": "Mosquitero Fijo",
+    "B": "61.0",
+    "C": "0.17",
+    "D": "20.0",
+    "E": "Secci├│n rectangular simple con una peque├▒a muesca central."
+  },
+  {
+    "row": "15",
+    "A": "Tapacanto para Puerta de Rebatir",
+    "B": "66.0",
+    "C": "0.15",
+    "D": "20.0",
+    "E": "Perfil tipo l├ímina ondulada o estriada."
+  },
+  {
+    "row": "16",
+    "A": "Batiente para Puerta de Rebatir",
+    "B": "93.0",
+    "C": "0.28",
+    "D": "12.0",
+    "E": "Perfil en &quot;L&quot; con un peque├▒o escal├│n interno."
+  },
+  {
+    "row": "17",
+    "A": "Marco para Ventana y Puerta Corrediza - L├¡nea Liviana",
+    "B": "101.0",
+    "C": "0.66",
+    "D": "6.0",
+    "E": "Secci├│n en &quot;U&quot; ancha con muescas de gu├¡a."
+  },
+  {
+    "row": "18",
+    "A": "Parante Lateral para Ventana y Puerta Corrediza - L├¡nea Liviana y L├¡nea 900",
+    "B": "103.0",
+    "C": "0.46",
+    "D": "8.0",
+    "E": "Perfil en &quot;H&quot; con c├ímaras laterales rectangulares."
+  },
+  {
+    "row": "19",
+    "A": "Parante Central para Ventana y Puerta Corrediza - L├¡nea Liviana y L├¡nea 900",
+    "B": "104.0",
+    "C": "0.42",
+    "D": "8.0",
+    "E": "Similar al 103, dise├▒ado para posici├│n central."
+  },
+  {
+    "row": "20",
+    "A": "Mosquitero para Ventana y Puerta Corrediza",
+    "B": "105.0",
+    "C": "0.32",
+    "D": "10.0",
+    "E": "Perfil en &quot;I&quot; peque├▒o con muescas de encastre."
+  },
+  {
+    "row": "21",
+    "A": "Mosquitero para Ventana y Puerta Corrediza, y Puerta Mosquitero",
+    "B": "108.0",
+    "C": "0.47",
+    "D": "6.0",
+    "E": "Perfil con c├ímara cuadrada y muesca lateral extendida."
+  },
+  {
+    "row": "22",
+    "A": "Gu├¡a para Cortina Com├║n",
+    "B": "120 (a)",
+    "C": "0.37",
+    "D": "12.0",
+    "E": "Secci├│n en &quot;U&quot; con gancho lateral de sujeci├│n."
+  },
+  {
+    "row": "23",
+    "A": "Tapacinta M├│vil",
+    "B": "122.0",
+    "C": "0.29",
+    "D": "8.0",
+    "E": "L├ímina plana con terminaciones curvas hacia adentro."
+  },
+  {
+    "row": "24",
+    "A": "Travesa├▒o de Mosquitero",
+    "B": "190.0",
+    "C": "0.45",
+    "D": "8.0",
+    "E": "Secci├│n en &quot;I&quot; con muescas superiores e inferiores."
+  },
+  {
+    "row": "25",
+    "A": "Marco para Puerta de Rebatir - L├¡nea Recta, sin Contravidrio",
+    "B": "271 (a)",
+    "C": "0.54",
+    "D": "4.0",
+    "E": "Perfil tipo marco, secci├│n en &quot;L&quot; con muesca externa de encastre."
+  },
+  {
+    "row": "26",
+    "A": "Travesa├▒o para Puerta de Rebatir - L├¡nea Recta, sin Contravidrio",
+    "B": "272.0",
+    "C": "1.05",
+    "D": "3.0",
+    "E": "Perfil ancho con doble c├ímara central sim├®trica y alas laterales."
+  },
+  {
+    "row": "27",
+    "A": "Parante para Puerta de Rebatir - L├¡nea Recta, sin Contravidrio",
+    "B": "273 (a)",
+    "C": "0.96",
+    "D": "3.0",
+    "E": "Secci├│n en &quot;H&quot; con c├ímaras rectangulares a los lados y canal central."
+  },
+  {
+    "row": "28",
+    "A": "Batiente para Puerta de Rebatir - L├¡nea Recta, sin Contravidrio",
+    "B": "275 (a)",
+    "C": "0.29",
+    "D": "8.0",
+    "E": "Perfil peque├▒o, secci├│n en forma de &quot;F&quot; estilizada o gancho."
+  },
+  {
+    "row": "29",
+    "A": "Marco Postig├│n",
+    "B": "289 (a)",
+    "C": "0.59",
+    "D": "4.0",
+    "E": "Secci├│n rectangular cerrada con una pesta├▒a o solapa lateral plana."
+  },
+  {
+    "row": "30",
+    "A": "Hoja de Raja",
+    "B": "290.0",
+    "C": "0.44",
+    "D": "8.0",
+    "E": "Secci├│n escalonada tipo &quot;Z&quot; con muesca angular para vidrio."
+  },
+  {
+    "row": "31",
+    "A": "Marco Postig├│n",
+    "B": "291.0",
+    "C": "0.35",
+    "D": "12.0",
+    "E": "Secci├│n en &quot;L&quot; simple con una peque├▒a c├ímara cuadrada interna."
+  },
+  {
+    "row": "32",
+    "A": "Marco para Puerta de Rebatir - L├¡nea Tradicional",
+    "B": "427 (a)",
+    "C": "0.58",
+    "D": "6.0",
+    "E": "Secci├│n rectangular abierta con muescas de encastre en los bordes."
+  },
+  {
+    "row": "33",
+    "A": "Parante para Puerta de Rebatir - L├¡nea Tradicional",
+    "B": "428 (a)",
+    "C": "0.98",
+    "D": "3.0",
+    "E": "Tubo rectangular hueco de paredes reforzadas (c├ímara de aire simple)."
+  },
+  {
+    "row": "34",
+    "A": "Travesa├▒o para Puerta de Rebatir - L├¡nea Tradicional",
+    "B": "429.0",
+    "C": "1.01",
+    "D": "3.0",
+    "E": "Tubo cuadrado con muescas laterales profundas para uni├│n."
+  },
+  {
+    "row": "35",
+    "A": "Marco para Puerta de Rebatir - L├¡nea con Bisagra de Encolizar",
+    "B": "432 (a)",
+    "C": "0.79",
+    "D": "6.0",
+    "E": "Perfil en &quot;C&quot; con prolongaciones espec├¡ficas para fijaci├│n de bisagra."
+  },
+  {
+    "row": "36",
+    "A": "Parante para Puerta de Rebatir - L├¡nea con Bisagra de Encolizar",
+    "B": "433 (a)",
+    "C": "1.13",
+    "D": "3.0",
+    "E": "Tubo rectangular con canal central dise├▒ado para bisagra."
+  },
+  {
+    "row": "37",
+    "A": "Tablilla de Postig├│n",
+    "B": "448.0",
+    "C": "0.3",
+    "D": "10.0",
+    "E": "L├ímina curva con forma de &quot;S&quot; suave y delgada."
+  },
+  {
+    "row": "38",
+    "A": "Tablilla de Postig├│n Recta",
+    "B": "449.0",
+    "C": "0.26",
+    "D": "10.0",
+    "E": "Perfil plano con un peque├▒o escal├│n o muesca en un extremo."
+  },
+  {
+    "row": "39",
+    "A": "Acople",
+    "B": "453.0",
+    "C": "0.45",
+    "D": "8.0",
+    "E": "Secci├│n en &quot;I&quot; o doble &quot;T&quot; para uni├│n mec├ínica de perfiles."
+  },
+  {
+    "row": "40",
+    "A": "Columna a 90┬░ / 180┬░",
+    "B": "455.0",
+    "C": "1.18",
+    "D": "2.0",
+    "E": "Tubo cuadrado perfecto de gran secci├│n (C├ímara central)."
+  },
+  {
+    "row": "41",
+    "A": "Parante de Postig├│n",
+    "B": "462.0",
+    "C": "0.45",
+    "D": "8.0",
+    "E": "Secci├│n en &quot;H&quot; peque├▒a con refuerzos en los extremos laterales."
+  },
+  {
+    "row": "42",
+    "A": "Parante de Postig├│n y Puerta de Rebatir de 24,5 mm.",
+    "B": "463 (a)",
+    "C": "0.56",
+    "D": "4.0",
+    "E": "Secci├│n en &quot;H&quot; ancha reforzada para espesores de 24,5 mm."
+  },
+  {
+    "row": "43",
+    "A": "Perimetral de Vidrio Repartido",
+    "B": "470.0",
+    "C": "0.27",
+    "D": "8.0",
+    "E": "Perfil peque├▒o con muesca tipo &quot;U&quot; y aleta de fijaci├│n."
+  },
+  {
+    "row": "44",
+    "A": "Central de Vidrio Repartido",
+    "B": "471.0",
+    "C": "0.32",
+    "D": "8.0",
+    "E": "Secci├│n en forma de cruz sim├®trica para divisi├│n de vidrios."
+  },
+  {
+    "row": "45",
+    "A": "Parante Central para Ventana y Puerta Corrediza - L├¡nea Combinada",
+    "B": "480.0",
+    "C": "0.58",
+    "D": "6.0",
+    "E": "Secci├│n compleja de doble c├ímara y aletas laterales de cierre."
+  },
+  {
+    "row": "46",
+    "A": "Hoja para Ventana y Puerta Corrediza - L├¡nea Combinada",
+    "B": "481.0",
+    "C": "0.68",
+    "D": "4.0",
+    "E": "Secci├│n en &quot;H&quot; con solapas dise├▒adas para contravidrio."
+  },
+  {
+    "row": "47",
+    "A": "Hoja para Puerta de Rebatir",
+    "B": "514 (a)",
+    "C": "0.91",
+    "D": "3.0",
+    "E": "Perfil rectangular robusto con rebaje para encastre de pa├▒o."
+  },
+  {
+    "row": "48",
+    "A": "Marco para Ventana Banderola, Ventana y Puerta de Rebatir y Oscilo-Batiente",
+    "B": "516 (a)",
+    "C": "0.76",
+    "D": "2.0",
+    "E": "Perfil complejo con c├ímara y solapa superior."
+  },
+  {
+    "row": "49",
+    "A": "Refuerzo de Parante",
+    "B": "518.0",
+    "C": "1.0",
+    "D": "4.0",
+    "E": "Perfil tipo &quot;reloj de arena&quot; con doble c├ímara c├│ncava."
+  },
+  {
+    "row": "50",
+    "A": "Travesa├▒o de Hoja s/contravidrio",
+    "B": "552.0",
+    "C": "0.86",
+    "D": "3.0",
+    "E": "Perfil en &quot;H&quot; con c├ímaras laterales internas."
+  },
+  {
+    "row": "51",
+    "A": "Adaptador para D.V.H.",
+    "B": "553.0",
+    "C": "0.21",
+    "D": "16.0",
+    "E": "Canal en &quot;U&quot; con rebordes internos de encastre."
+  },
+  {
+    "row": "52",
+    "A": "Premarco de 55 mm",
+    "B": "648 (a)",
+    "C": "0.5",
+    "D": "5.0",
+    "E": "Tubo rectangular simple (secci├│n hueca)."
+  },
+  {
+    "row": "53",
+    "A": "Marco para Pa├▒o Fijo de 31,5 mm.",
+    "B": "673.0",
+    "C": "0.39",
+    "D": "6.0",
+    "E": "Perfil escalonado con muesca para vidrio."
+  },
+  {
+    "row": "54",
+    "A": "Inversor de Hoja.",
+    "B": "702.0",
+    "C": "0.81",
+    "D": "4.0",
+    "E": "Perfil con m├║ltiples c├ímaras y solapa externa."
+  },
+  {
+    "row": "55",
+    "A": "Contramarco Curvo de 30 mm.",
+    "B": "709 (a)",
+    "C": "0.19",
+    "D": "12.0",
+    "E": "Perfil curvo delgado tipo moldura."
+  },
+  {
+    "row": "56",
+    "A": "Premarco de 77 mm",
+    "B": "715 (a)",
+    "C": "0.7",
+    "D": "4.0",
+    "E": "Perfil ancho en &quot;U&quot; con alas laterales."
+  },
+  {
+    "row": "57",
+    "A": "Contramarco Curvo de 45 mm.",
+    "B": "723 (a)",
+    "C": "0.26",
+    "D": "8.0",
+    "E": "Perfil curvo, secci├│n m├ís ancha que el 709."
+  },
+  {
+    "row": "58",
+    "A": "Contramarco Curvo de 33 mm.",
+    "B": "746 (a)",
+    "C": "0.18",
+    "D": "12.0",
+    "E": "Perfil curvo con doble muesca trasera."
+  },
+  {
+    "row": "59",
+    "A": "Marco para Ventana y Puerta Corrediza - L├¡nea 900",
+    "B": "901.0",
+    "C": "0.75",
+    "D": "6.0",
+    "E": "Perfil de marco para doble v├¡a."
+  },
+  {
+    "row": "60",
+    "A": "Z├│calo para Ventana Corrediza",
+    "B": "902.0",
+    "C": "0.4",
+    "D": "8.0",
+    "E": "Perfil de z├│calo con c├ímaras sim├®tricas."
+  },
+  {
+    "row": "61",
+    "A": "Marco para Pa├▒o Fijo",
+    "B": "907.0",
+    "C": "0.59",
+    "D": "6.0",
+    "E": "Perfil de marco con c├ímara y solapa."
+  },
+  {
+    "row": "62",
+    "A": "Contravidrio",
+    "B": "908.0",
+    "C": "0.16",
+    "D": "20.0",
+    "E": "Perfil peque├▒o tipo gancho curvo."
+  },
+  {
+    "row": "63",
+    "A": "Contravidrio",
+    "B": "909.0",
+    "C": "0.16",
+    "D": "20.0",
+    "E": "Similar al 908, con ├íngulo de curva distinto."
+  },
+  {
+    "row": "64",
+    "A": "Bisagra para Ventana Ventiluz y Banderola",
+    "B": "915.0",
+    "C": "0.33",
+    "D": "10.0",
+    "E": "Perfil peque├▒o con muesca de encastre lateral."
+  },
+  {
+    "row": "65",
+    "A": "Marco para Ventana Ventiluz y Banderola",
+    "B": "916.0",
+    "C": "0.74",
+    "D": "4.0",
+    "E": "Perfil en &quot;T&quot; con c├ímara central reforzada."
+  },
+  {
+    "row": "66",
+    "A": "Marco para Ventana y Puerta Corrediza - L├¡nea 900 y L├¡nea Tradicional",
+    "B": "917.0",
+    "C": "1.03",
+    "D": "4.0",
+    "E": "Perfil de marco reforzado de tres c├ímaras."
+  },
+  {
+    "row": "67",
+    "A": "Hoja para Ventana Ventiluz",
+    "B": "918.0",
+    "C": "0.51",
+    "D": "8.0",
+    "E": "Perfil de hoja con muesca profunda para vidrio."
+  },
+  {
+    "row": "68",
+    "A": "Hoja para Ventana Banderola",
+    "B": "919.0",
+    "C": "0.53",
+    "D": "8.0",
+    "E": "Similar al 918, con dimensiones de c├ímara distintas."
+  },
+  {
+    "row": "69",
+    "A": "Marco Reforzado para Ventana y Puerta Corrediza - L├¡nea Tradicional",
+    "B": "921.0",
+    "C": "1.0",
+    "D": "4.0",
+    "E": "Perfil de marco robusto con cuatro c├ímaras."
+  },
+  {
+    "row": "70",
+    "A": "Porta - Contravidrio",
+    "B": "952.0",
+    "C": "0.28",
+    "D": "8.0",
+    "E": "Perfil en &quot;L&quot; con canal espec├¡fico para contravidrio."
+  },
+  {
+    "row": "71",
+    "A": "Marco de 3 Gu├¡a para Ventana Corrediza",
+    "B": "961.0",
+    "C": "1.16",
+    "D": "2.0",
+    "E": "Perfil de marco ancho con tres rieles o gu├¡as escalonadas."
+  },
+  {
+    "row": "72",
+    "A": "Columna Curva a 90┬░",
+    "B": "986.0",
+    "C": "1.06",
+    "D": "2.0",
+    "E": "Secci├│n de cuarto de c├¡rculo (forma de abanico)."
+  },
+  {
+    "row": "73",
+    "A": "Travesa├▒o Angosto para Pa├▒o Fijo",
+    "B": "993.0",
+    "C": "0.67",
+    "D": "8.0",
+    "E": "Secci├│n en &quot;I&quot; estrecha con doble c├ímara central y aletas."
+  },
+  {
+    "row": "74",
+    "A": "Travesa├▒o Ancho para Pa├▒o Fijo",
+    "B": "994.0",
+    "C": "0.96",
+    "D": "3.0",
+    "E": "Secci├│n en &quot;I&quot; ancha con c├ímara central rectangular extendida."
+  }
+]
+

@@ -1,69 +1,68 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Settings, 
-  Droplet, 
-  Scissors, 
-  Lock, 
+import {
+  Settings,
+  Droplet,
+  Scissors,
+  Lock,
   ChevronRight,
   Info,
   Layers,
   Wrench,
-  Download
+  Download,
 } from 'lucide-react';
 
 const AtlanticaMachining = () => {
   const categories = [
     {
-      title: "Desagües y Drenajes",
+      title: 'Desagües y Drenajes',
       icon: <Droplet className="w-6 h-6" />,
-      description: "Mecanizados críticos para la estanqueidad del sistema.",
+      description: 'Mecanizados críticos para la estanqueidad del sistema.',
       items: [
-        "Mecanizado de caja de agua en marcos (Pág. 2)",
-        "Drenaje en umbrales altos (Pág. 4)",
-        "Desagüe en marco de 3 guías (Pág. 12)",
-        "Perforaciones de salida exterior (Pág. 5)"
-      ]
+        'Mecanizado de caja de agua en marcos (Pág. 2)',
+        'Drenaje en umbrales altos (Pág. 4)',
+        'Desagüe en marco de 3 guías (Pág. 12)',
+        'Perforaciones de salida exterior (Pág. 5)',
+      ],
     },
     {
-      title: "Ensambles y Uniones",
+      title: 'Ensambles y Uniones',
       icon: <Layers className="w-6 h-6" />,
-      description: "Preparación de perfiles para armado estructural.",
+      description: 'Preparación de perfiles para armado estructural.',
       items: [
-        "Mecanizado de Jamba de marco (Pág. 3)",
-        "Troquelado para escuadras de marco (Pág. 11)",
-        "Corte y mecanizado de travesaños (Pág. 18)",
-        "Unión de Jamba para marcos telescópicos (Pág. 6)"
-      ]
+        'Mecanizado de Jamba de marco (Pág. 3)',
+        'Troquelado para escuadras de marco (Pág. 11)',
+        'Corte y mecanizado de travesaños (Pág. 18)',
+        'Unión de Jamba para marcos telescópicos (Pág. 6)',
+      ],
     },
     {
-      title: "Cierres y Herrajes",
+      title: 'Cierres y Herrajes',
       icon: <Lock className="w-6 h-6" />,
-      description: "Troquelados para sistemas de seguridad y apertura.",
+      description: 'Troquelados para sistemas de seguridad y apertura.',
       items: [
-        "Mecanizado para cierre lateral Alcemar (Pág. 8)",
-        "Falleba multipunto en parante de hoja (Pág. 15)",
-        "Alojamiento de rodamientos regulables (Pág. 10)",
-        "Cajeado para cerradura de puerta (Pág. 19)"
-      ]
+        'Mecanizado para cierre lateral Alcemar (Pág. 8)',
+        'Falleba multipunto en parante de hoja (Pág. 15)',
+        'Alojamiento de rodamientos regulables (Pág. 10)',
+        'Cajeado para cerradura de puerta (Pág. 19)',
+      ],
     },
     {
-      title: "Herramental Específico",
+      title: 'Herramental Específico',
       icon: <Wrench className="w-6 h-6" />,
-      description: "Equipamiento recomendado para procesos industriales.",
+      description: 'Equipamiento recomendado para procesos industriales.',
       items: [
-        "Uso de Punzonadora Línea Atlántica (Pág. 20)",
-        "Matrices de corte a 45° y 90°",
-        "Plantillas de perforación para herrajes"
-      ]
-    }
+        'Uso de Punzonadora Línea Atlántica (Pág. 20)',
+        'Matrices de corte a 45° y 90°',
+        'Plantillas de perforación para herrajes',
+      ],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       {/* Hero */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -76,15 +75,15 @@ const AtlanticaMachining = () => {
           Manual de Mecanizados <span className="text-blue-400">Atlántica</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-          Hoja de ruta técnica para la fabricación de aberturas de alta prestación. 
-          Detalles de punzonado, calados y ensambles.
+          Hoja de ruta técnica para la fabricación de aberturas de alta prestación. Detalles de
+          punzonado, calados y ensambles.
         </p>
       </motion.div>
 
       {/* Categories Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         {categories.map((cat, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             className="bg-[#111] border border-white/5 p-8 rounded-[2.5rem] hover:border-blue-500/30 transition-all group"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -122,13 +121,15 @@ const AtlanticaMachining = () => {
           <div>
             <h4 className="text-xl font-bold mb-2">Nota para el fabricante</h4>
             <p className="text-gray-400 leading-relaxed text-sm">
-              Se recomienda el uso de punzonadoras originales Alcemar para garantizar la precisión de los calados y evitar deformaciones en los perfiles. El uso de herramientas genéricas podría anular la garantía del sistema.
+              Se recomienda el uso de punzonadoras originales Alcemar para garantizar la precisión
+              de los calados y evitar deformaciones en los perfiles. El uso de herramientas
+              genéricas podría anular la garantía del sistema.
             </p>
           </div>
         </div>
-        <a 
-          href="https://alcemar.com.ar/alcemar.com.ar/wp-content/uploads/2018/08/Mecanizados-Atlantica.pdf" 
-          target="_blank" 
+        <a
+          href="https://alcemar.com.ar/alcemar.com.ar/wp-content/uploads/2018/08/Mecanizados-Atlantica.pdf"
+          target="_blank"
           rel="noopener noreferrer"
           className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 transition-colors shrink-0"
         >

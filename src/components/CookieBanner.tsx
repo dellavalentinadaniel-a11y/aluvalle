@@ -34,19 +34,20 @@ const CookieBanner = () => {
               <div className="space-y-1">
                 <h4 className="text-white font-bold text-sm">Privacidad y Cookies</h4>
                 <p className="text-gray-400 text-xs leading-relaxed">
-                  Utilizamos cookies propias y de terceros para mejorar su experiencia de navegación y ofrecer contenidos técnica y arquitectónicamente relevantes.
+                  Utilizamos cookies propias y de terceros para mejorar su experiencia de navegación
+                  y ofrecer contenidos técnica y arquitectónicamente relevantes.
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <button 
+              <button
                 onClick={handleAccept}
                 className="flex-1 bg-[#a0d87a] text-[#111417] py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-[#8bc565] transition-all"
               >
                 Aceptar Todo
               </button>
-              <button 
+              <button
                 onClick={() => setIsVisible(false)}
                 className="px-6 py-3 text-gray-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors"
               >

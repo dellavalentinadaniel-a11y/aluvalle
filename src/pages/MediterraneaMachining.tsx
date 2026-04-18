@@ -1,70 +1,69 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Settings, 
-  Droplet, 
-  Scissors, 
-  Lock, 
+import {
+  Settings,
+  Droplet,
+  Scissors,
+  Lock,
   ChevronRight,
   Info,
   Layers,
   Wrench,
-  Download
+  Download,
 } from 'lucide-react';
 
 const MediterraneaMachining = () => {
   const categories = [
     {
-      title: "Cortes y Ángulos",
+      title: 'Cortes y Ángulos',
       icon: <Scissors className="w-6 h-6" />,
-      description: "Dimensionamiento y ángulos de corte para marcos y hojas.",
+      description: 'Dimensionamiento y ángulos de corte para marcos y hojas.',
       items: [
-        "Corte a 45° para marcos de rebatir (Pág. 3)",
-        "Corte a 90° para hojas corredizas (Pág. 8)",
-        "Mecanizado de Jamba para marcos telescópicos (Pág. 6)",
-        "Dimensionamiento de zócalos y cabezales (Pág. 10)"
-      ]
+        'Corte a 45° para marcos de rebatir (Pág. 3)',
+        'Corte a 90° para hojas corredizas (Pág. 8)',
+        'Mecanizado de Jamba para marcos telescópicos (Pág. 6)',
+        'Dimensionamiento de zócalos y cabezales (Pág. 10)',
+      ],
     },
     {
-      title: "Desagües de Estanqueidad",
+      title: 'Desagües de Estanqueidad',
       icon: <Droplet className="w-6 h-6" />,
-      description: "Mecanizados para el flujo de agua y hermeticidad.",
+      description: 'Mecanizados para el flujo de agua y hermeticidad.',
       items: [
-        "Caja de agua en marcos corredizos (Pág. 5)",
-        "Drenaje de condensación en paño fijo (Pág. 12)",
-        "Perforación de salida con válvula (Pág. 14)",
-        "Mecanizado de bota-aguas en hojas (Pág. 18)"
-      ]
+        'Caja de agua en marcos corredizos (Pág. 5)',
+        'Drenaje de condensación en paño fijo (Pág. 12)',
+        'Perforación de salida con válvula (Pág. 14)',
+        'Mecanizado de bota-aguas en hojas (Pág. 18)',
+      ],
     },
     {
-      title: "Sistemas de Cierre",
+      title: 'Sistemas de Cierre',
       icon: <Lock className="w-6 h-6" />,
-      description: "Preparación para herrajes de seguridad y operación.",
+      description: 'Preparación para herrajes de seguridad y operación.',
       items: [
-        "Calado para sistema multipunto Giesse (Pág. 22)",
-        "Alojamiento de bisagras de libro (Pág. 25)",
-        "Mecanizado para cerradura de seguridad (Pág. 28)",
-        "Cajeado de rodamientos regulables (Pág. 30)"
-      ]
+        'Calado para sistema multipunto Giesse (Pág. 22)',
+        'Alojamiento de bisagras de libro (Pág. 25)',
+        'Mecanizado para cerradura de seguridad (Pág. 28)',
+        'Cajeado de rodamientos regulables (Pág. 30)',
+      ],
     },
     {
-      title: "Equipamiento de Taller",
+      title: 'Equipamiento de Taller',
       icon: <Wrench className="w-6 h-6" />,
-      description: "Matrices y troqueles necesarios para el sistema.",
+      description: 'Matrices y troqueles necesarios para el sistema.',
       items: [
-        "Uso de Punzonadora Mediterránea N°3 (Pág. 35)",
-        "Mecanizado de escuadras de tracción",
-        "Plantillas para accesorios complementarios",
-        "Ajuste de matrices para corte de poliamidas"
-      ]
-    }
+        'Uso de Punzonadora Mediterránea N°3 (Pág. 35)',
+        'Mecanizado de escuadras de tracción',
+        'Plantillas para accesorios complementarios',
+        'Ajuste de matrices para corte de poliamidas',
+      ],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       {/* Hero */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -77,7 +76,7 @@ const MediterraneaMachining = () => {
           Mecanizados <span className="text-emerald-400">Mediterránea</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-          Guía técnica completa para el procesamiento y fabricación de la línea Mediterránea. 
+          Guía técnica completa para el procesamiento y fabricación de la línea Mediterránea.
           Estándares de calidad Alcemar para carpintería de alta gama.
         </p>
       </motion.div>
@@ -85,7 +84,7 @@ const MediterraneaMachining = () => {
       {/* Categories Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         {categories.map((cat, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             className="bg-[#111] border border-white/5 p-8 rounded-[2.5rem] hover:border-emerald-500/30 transition-all group"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -123,13 +122,15 @@ const MediterraneaMachining = () => {
           <div>
             <h4 className="text-xl font-bold mb-2">Asistencia Técnica</h4>
             <p className="text-gray-400 leading-relaxed text-sm">
-              La línea Mediterránea requiere una precisión de corte de ±0.5 mm para garantizar el funcionamiento de los accesorios multipunto. Utilice siempre las punzonadoras originales Alcemar para un acabado profesional.
+              La línea Mediterránea requiere una precisión de corte de ±0.5 mm para garantizar el
+              funcionamiento de los accesorios multipunto. Utilice siempre las punzonadoras
+              originales Alcemar para un acabado profesional.
             </p>
           </div>
         </div>
-        <a 
-          href="https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea.pdf" 
-          target="_blank" 
+        <a
+          href="https://alcemar.com.ar/of_tecnica/Mecanizados_Linea_Mediterranea.pdf"
+          target="_blank"
           rel="noopener noreferrer"
           className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 transition-colors shrink-0"
         >
