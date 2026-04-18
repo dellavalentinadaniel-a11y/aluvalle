@@ -4,6 +4,7 @@
  */
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Layout from './components/Layout.tsx';
 import Home from './pages/Home.tsx';
 import Systems from './pages/Systems.tsx';
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="mecanizados/linea-gamma" element={<GammaMachining />} />
         </Route>
       </Routes>
+      <Analytics />
     </Router>
   );
 }
