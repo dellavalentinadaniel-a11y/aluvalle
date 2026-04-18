@@ -29,6 +29,7 @@ const TechnicalCatalog = lazy(() => import('./pages/TechnicalCatalog.tsx'));
 
 import { CalculatorProvider } from './context/CalculatorContext';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Loading component
 const LoadingScreen = () => (
@@ -41,6 +42,7 @@ export default function App() {
   return (
     <CalculatorProvider>
       <Analytics />
+      <SpeedInsights />
       <Router>
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
