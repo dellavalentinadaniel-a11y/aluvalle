@@ -3,6 +3,8 @@ import { products } from '../data/products';
 import { useEffect } from 'react';
 import ProfileTable from '../components/ProfileTable';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { FloatingCTA } from '../components/FloatingCTA';
+import { TechTabs } from '../components/TechTabs';
 import {
   traditionalProfiles,
   gammaProfiles,
@@ -556,6 +558,8 @@ export default function ProductDetail() {
           </Link>
         </div>
       </section>
+
+      <FloatingCTA showAfterSeconds={5} />
     </div>
   </div>
 );

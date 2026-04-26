@@ -3,11 +3,50 @@ import { motion, AnimatePresence } from 'motion/react';
 
 const Contact = () => {
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    asunto: '',
+    mensaje: ''
+  });
+
+  const validateField = (name: string, value: string) => {
+    const newErrors = { ...errors };
+
+    if (!value.trim()) {
+      newErrors[name] = 'Este campo es requerido';
+    } else if (name === 'email' && !value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      newErrors[name] = 'Email inválido';
+    } else {
+      delete newErrors[name];
+    }
+
+    setErrors(newErrors);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    validateField(name, value);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormState('sending');
-    setTimeout(() => setFormState('success'), 1500);
+
+    // Validar todos los campos
+    Object.entries(formData).forEach(([key, value]) => {
+      validateField(key, value);
+    });
+
+    if (Object.keys(errors).length === 0 && Object.values(formData).every(v => v.trim())) {
+      setFormState('sending');
+      setTimeout(() => setFormState('success'), 1500);
+    }
   };
 
   const contactPoints = [
@@ -86,11 +125,20 @@ const Contact = () => {
                         </label>
                         <input
                           id="nombre"
+                          name="nombre"
                           placeholder="Tu nombre"
                           required
                           type="text"
-                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all text-base"
+                          value={formData.nombre}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className={`w-full bg-surface-container-low border text-on-surface p-4 rounded-xl outline-none transition-all text-base ${
+                            errors.nombre
+                              ? 'border-red-500 focus:border-red-500'
+                              : 'border-outline/20 focus:border-primary'
+                          }`}
                         />
+                        {errors.nombre && <p className="text-red-500 text-xs font-semibold">{errors.nombre}</p>}
                       </div>
                       <div className="space-y-2">
                         <label
@@ -101,11 +149,20 @@ const Contact = () => {
                         </label>
                         <input
                           id="email"
+                          name="email"
                           placeholder="tu@email.com"
                           required
                           type="email"
-                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all text-base"
+                          value={formData.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className={`w-full bg-surface-container-low border text-on-surface p-4 rounded-xl outline-none transition-all text-base ${
+                            errors.email
+                              ? 'border-red-500 focus:border-red-500'
+                              : 'border-outline/20 focus:border-primary'
+                          }`}
                         />
+                        {errors.email && <p className="text-red-500 text-xs font-semibold">{errors.email}</p>}
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -134,10 +191,19 @@ const Contact = () => {
                       </label>
                       <textarea
                         id="mensaje"
+                        name="mensaje"
                         required
                         rows={4}
-                        className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all resize-none text-base"
+                        value={formData.mensaje}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={`w-full bg-surface-container-low border text-on-surface p-4 rounded-xl outline-none transition-all resize-none text-base ${
+                          errors.mensaje
+                            ? 'border-red-500 focus:border-red-500'
+                            : 'border-outline/20 focus:border-primary'
+                        }`}
                       ></textarea>
+                      {errors.mensaje && <p className="text-red-500 text-xs font-semibold">{errors.mensaje}</p>}
                     </div>
                     <button
                       type="submit"
