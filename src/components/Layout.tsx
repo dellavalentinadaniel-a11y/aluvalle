@@ -147,20 +147,26 @@ export default function Layout() {
           <div className="flex items-center gap-6">
             <button
               onClick={toggleTheme}
-              className="material-symbols-outlined text-on-surface hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container"
+              className="material-symbols-outlined text-on-surface hover:text-primary transition-all p-3 -m-1 rounded-full hover:bg-surface-container"
               aria-label={`Cambiar a modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
+              title={`Modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
             >
               {theme === 'light' ? 'dark_mode' : 'light_mode'}
             </button>
-            <button className="hidden md:block material-symbols-outlined text-on-surface hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container">
+            <button
+              className="hidden md:block material-symbols-outlined text-on-surface hover:text-primary transition-all p-3 -m-1 rounded-full hover:bg-surface-container"
+              aria-label="Buscar"
+              title="Buscar"
+            >
               search
             </button>
             
             {/* Calculator Icon with Badge */}
             <Link
               to="/oficina-tecnica"
-              className="relative p-2 text-on-surface hover:text-primary transition-all rounded-full hover:bg-surface-container group"
+              className="relative p-3 -m-1 text-on-surface hover:text-primary transition-all rounded-full hover:bg-surface-container group"
               title="Ver Calculadora de Pesos"
+              aria-label="Calculadora de pesos"
             >
               <span className="material-symbols-outlined">calculate</span>
               {items.length > 0 && (

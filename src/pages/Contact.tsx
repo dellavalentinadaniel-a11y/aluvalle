@@ -137,6 +137,7 @@ const Contact = () => {
                               ? 'border-red-500 focus:border-red-500'
                               : 'border-outline/20 focus:border-primary'
                           }`}
+                          inputMode="text"
                         />
                         {errors.nombre && <p className="text-red-500 text-xs font-semibold">{errors.nombre}</p>}
                       </div>
@@ -161,6 +162,7 @@ const Contact = () => {
                               ? 'border-red-500 focus:border-red-500'
                               : 'border-outline/20 focus:border-primary'
                           }`}
+                          inputMode="email"
                         />
                         {errors.email && <p className="text-red-500 text-xs font-semibold">{errors.email}</p>}
                       </div>
@@ -174,6 +176,9 @@ const Contact = () => {
                       </label>
                       <select
                         id="asunto"
+                        name="asunto"
+                        value={formData.asunto}
+                        onChange={handleChange}
                         className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer text-base"
                       >
                         <option>Presupuesto de Obra</option>
@@ -202,6 +207,7 @@ const Contact = () => {
                             ? 'border-red-500 focus:border-red-500'
                             : 'border-outline/20 focus:border-primary'
                         }`}
+                        style={{ fontSize: '16px' }}
                       ></textarea>
                       {errors.mensaje && <p className="text-red-500 text-xs font-semibold">{errors.mensaje}</p>}
                     </div>

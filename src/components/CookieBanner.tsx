@@ -45,13 +45,17 @@ const CookieBanner = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleAccept}
-                className="flex-1 bg-[#a0d87a] text-[#111417] py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-[#8bc565] transition-all"
+                className="flex-1 bg-[#a0d87a] text-[#111417] py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-[#8bc565] transition-all focus:outline-none focus:ring-2 focus:ring-[#a0d87a] focus:ring-offset-2 focus:ring-offset-[#1a1d21]"
+                aria-label="Aceptar todas las cookies"
+                type="button"
               >
                 Aceptar Todo
               </button>
               <button
                 onClick={() => setIsVisible(false)}
-                className="px-6 py-3 text-gray-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors"
+                className="px-6 py-4 text-gray-400 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors focus:outline-none focus:ring-2 focus:ring-gray-600 rounded-lg"
+                aria-label="Configurar cookies"
+                type="button"
               >
                 Configurar
               </button>
