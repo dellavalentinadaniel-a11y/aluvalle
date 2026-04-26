@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Download, FileText, ZoomIn } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 const catalogData: Record<string, { pdf: string, images: any[] }> = {
   'linea-tradicional': {
@@ -109,9 +109,11 @@ export default function TechnicalCatalog() {
               >
                 {/* ... existing image rendering ... */}
                 <div className="aspect-[3/4] overflow-hidden relative">
-                  <img 
-                    src={image.url} 
+                  <img
+                    src={image.url}
                     alt={image.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
                   />
                   
@@ -148,7 +150,7 @@ export default function TechnicalCatalog() {
         </div>
         
         {/* Footer Info */}
-        <div className="mt-20 p-12 bg-surface-variant/5 backdrop-blur-sm rounded-3xl border border-outline/10 text-center">
+        <div className="mt-20 p-6 md:p-12 bg-surface-variant/5 backdrop-blur-sm rounded-3xl border border-outline/10 text-center">
             <h2 className="text-2xl font-bold text-on-surface uppercase mb-4">¿Necesitas soporte técnico adicional?</h2>
             <p className="text-on-surface-variant mb-8 max-w-xl mx-auto">Nuestro equipo técnico está a su disposición para consultas sobre aplicaciones específicas o desarrollos a medida.</p>
             <Link 

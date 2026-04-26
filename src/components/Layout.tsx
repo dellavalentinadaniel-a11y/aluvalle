@@ -65,7 +65,9 @@ export default function Layout() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="material-symbols-outlined text-primary lg:hidden"
+              className="material-symbols-outlined text-primary lg:hidden p-3 -m-3"
+              aria-label="Abrir menú de navegación"
+              aria-expanded={isMobileMenuOpen ? 'true' : 'false'}
             >
               menu
             </button>
@@ -145,6 +147,7 @@ export default function Layout() {
             <button
               onClick={toggleTheme}
               className="material-symbols-outlined text-on-surface hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container"
+              aria-label={`Cambiar a modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
             >
               {theme === 'light' ? 'dark_mode' : 'light_mode'}
             </button>
@@ -205,7 +208,8 @@ export default function Layout() {
                 </span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="material-symbols-outlined text-on-surface"
+                  className="material-symbols-outlined text-on-surface p-3 -m-3"
+                  aria-label="Cerrar menú"
                 >
                   close
                 </button>
@@ -224,7 +228,8 @@ export default function Layout() {
                           onClick={() =>
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
-                          className="w-full py-4 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
+                          className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
+                          aria-expanded={expandedSubMenu === link.name}
                         >
                           {link.name}
                           <motion.span
@@ -257,7 +262,7 @@ export default function Layout() {
                                         key={item.name}
                                         to={item.path}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="py-3 px-12 flex items-center font-body text-[11px] tracking-wider text-on-surface-variant hover:text-primary transition-colors"
+                                        className="py-4 px-12 flex items-center font-body text-xs tracking-wider text-on-surface-variant hover:text-primary transition-colors"
                                       >
                                         - {item.name}
                                       </Link>
@@ -295,7 +300,7 @@ export default function Layout() {
       </AnimatePresence>
 
       <WhatsAppButton />
-      <main className="flex-grow">
+      <main className="flex-grow pt-[72px]">
         <Outlet />
       </main>
 

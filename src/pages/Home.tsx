@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export default function Home() {
   return (
@@ -9,12 +9,15 @@ export default function Home() {
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-surface">
           <motion.img
-            initial={{ scale: 1.2, opacity: 0 }}
+            initial={{ scale: 1.05, opacity: 1 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1.5 }}
             className="w-full h-full object-cover grayscale img-filter-theme"
             src="/gallery/showroom.jpg"
             alt="Arquitectura de Vanguardia"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
           />
           <div className="hero-overlay" />
         </div>
@@ -70,7 +73,7 @@ export default function Home() {
       </section>
 
       {/* Infrastructure Gallery */}
-      <section className="py-32 bg-surface-container-low/30 border-y border-outline/10">
+      <section className="py-16 md:py-32 bg-surface-container-low/30 border-y border-outline/10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-2xl">
@@ -103,11 +106,13 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="md:col-span-2 h-[500px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+              className="md:col-span-2 h-[300px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
             >
               <img
                 src="/gallery/warehouse.jpg"
                 alt="Almacén de perfiles"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
@@ -129,11 +134,13 @@ export default function Home() {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+                className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
               >
                 <img
                   src="/gallery/showroom.jpg"
                   alt="Showroom Aluvallé"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-90" />
@@ -149,7 +156,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+                className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
               >
                 <img
                   src="/gallery/showroom.jpg"
@@ -175,7 +182,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+              className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
             >
               <img
                 src="/gallery/industrial.jpg"
@@ -198,12 +205,14 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+              className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
             >
               <img
                 src="/gallery/office.jpg"
                 alt="Divisiones de oficina"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
               <div className="absolute bottom-8 left-8">
@@ -219,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* Visual Break / Call to Action */}
-      <section className="py-40 bg-background relative overflow-hidden">
+      <section className="py-16 md:py-40 bg-background relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="grid grid-cols-6 h-full">
             {[...Array(6)].map((_, i) => (
@@ -237,6 +246,8 @@ export default function Home() {
             <img
               src="/gallery/industrial.jpg"
               alt="Precisión Técnica"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />

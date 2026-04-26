@@ -3,9 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export default function WhatsAppButton() {
   const location = useLocation();
-  const isContactPage = location.pathname === '/contact';
 
-  // Social link details
   const whatsappNumber = '5492996087387';
   const message =
     'Hola Aluvallé! Estaba navegando por su sitio web y me gustaría recibir asesoramiento sobre sus sistemas.';
@@ -20,7 +18,8 @@ export default function WhatsAppButton() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className={`fixed bottom-8 right-8 z-[100] w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(37,211,102,0.4)] transition-shadow hover:shadow-[0_15px_40px_rgba(37,211,102,0.6)] ${isContactPage ? 'flex' : 'hidden md:flex'}`}
+      className="fixed bottom-8 right-8 z-[100] w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(37,211,102,0.4)] transition-shadow hover:shadow-[0_15px_40px_rgba(37,211,102,0.6)]"
+      aria-label="Contactar por WhatsApp"
       title="Contactar por WhatsApp"
     >
       <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white" xmlns="http://www.w3.org/2000/svg">

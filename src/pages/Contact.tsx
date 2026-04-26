@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 const Contact = () => {
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success'>('idle');
@@ -55,7 +55,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold text-on-surface mb-6 tracking-tight"
+            className="text-3xl md:text-5xl lg:text-7xl font-bold text-on-surface mb-6 tracking-tight"
           >
             Hablemos de su próximo <br />
             <span className="text-primary">gran proyecto</span>
@@ -88,7 +88,7 @@ const Contact = () => {
                           placeholder="Tu nombre"
                           required
                           type="text"
-                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all"
+                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all text-base"
                         />
                       </div>
                       <div className="space-y-2">
@@ -103,7 +103,7 @@ const Contact = () => {
                           placeholder="tu@email.com"
                           required
                           type="email"
-                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all"
+                          className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all text-base"
                         />
                       </div>
                     </div>
@@ -116,7 +116,7 @@ const Contact = () => {
                       </label>
                       <select
                         id="asunto"
-                        className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer"
+                        className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all appearance-none cursor-pointer text-base"
                       >
                         <option>Presupuesto de Obra</option>
                         <option>Soporte Técnico</option>
@@ -135,7 +135,7 @@ const Contact = () => {
                         id="mensaje"
                         required
                         rows={4}
-                        className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all resize-none"
+                        className="w-full bg-surface-container-low border border-outline/20 focus:border-primary text-on-surface p-4 rounded-xl outline-none transition-all resize-none text-base"
                       ></textarea>
                     </div>
                     <button
