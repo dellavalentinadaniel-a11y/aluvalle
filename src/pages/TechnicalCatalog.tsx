@@ -3,36 +3,50 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Download, FileText, ZoomIn } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const catalogImages = [
-  { id: 1, url: '/assets/catalog/tradicional/page_7_top_1776516071744.png', title: 'Página 7 - Superior', description: 'Ventana y Puerta Corrediza Liviana' },
-  { id: 2, url: '/assets/catalog/tradicional/page_7_bottom_8_top_1776516073045.png', title: 'Página 7-8', description: 'Esquemas de perfiles 101-105' },
-  { id: 3, url: '/assets/catalog/tradicional/page_8_1776516080054.png', title: 'Página 8', description: 'Marcos y hojas corredizas' },
-  { id: 4, url: '/assets/catalog/tradicional/page_9_1776516089997.png', title: 'Página 9', description: 'Ventana de Abrir y Paño Fijo' },
-  { id: 5, url: '/assets/catalog/tradicional/page_10_1776516091252.png', title: 'Página 10', description: 'Contravidrios y perfiles de terminación' },
-  { id: 6, url: '/assets/catalog/tradicional/page_11_1776516097985.png', title: 'Página 11', description: 'Cámara de 20 mm - Sistemas de Abrir' },
-  { id: 7, url: '/assets/catalog/tradicional/page_12_1776516099242.png', title: 'Página 12', description: 'Celosía de Abrir' },
-  { id: 8, url: '/assets/catalog/tradicional/page_13_1776516105388.png', title: 'Página 13', description: 'Ventana Guillotina' },
-  { id: 9, url: '/assets/catalog/tradicional/page_14_1776516106635.png', title: 'Página 14', description: 'Ventana Banderola y Ventiluz' },
-  { id: 10, url: '/assets/catalog/tradicional/page_15_1776516113651.png', title: 'Página 15', description: 'Puerta de Rebatir' },
-  { id: 11, url: '/assets/catalog/tradicional/page_16_1776516114910.png', title: 'Página 16', description: 'Postigos y Celosías - Marcos' },
-  { id: 12, url: '/assets/catalog/tradicional/page_17_1776516129686.png', title: 'Página 17', description: 'Postigos y Celosías - Hojas' },
-  { id: 13, url: '/assets/catalog/tradicional/page_18_1776516130926.png', title: 'Página 18', description: 'Tablillas y Porta Tablillas' },
-  { id: 14, url: '/assets/catalog/tradicional/page_19_1776516136902.png', title: 'Página 19', description: 'Complementos de Postigo' },
-  { id: 15, url: '/assets/catalog/tradicional/page_20_1776516138176.png', title: 'Página 20', description: 'Sistemas Diferenciales' },
-  { id: 16, url: '/assets/catalog/tradicional/page_21_1776516145186.png', title: 'Página 21', description: 'Cortes Transversales' },
-  { id: 17, url: '/assets/catalog/tradicional/page_22_1776516146428.png', title: 'Página 22', description: 'Frentes de Placard' },
-  { id: 18, url: '/assets/catalog/tradicional/page_23_1776516153669.png', title: 'Página 23', description: 'Cortinas de Enrollar' },
-  { id: 19, url: '/assets/catalog/tradicional/page_24_1776516154925.png', title: 'Página 24', description: 'Accesorios de Cortina' },
-  { id: 20, url: '/assets/catalog/tradicional/page_25_26_1776516162059.png', title: 'Página 25-26', description: 'Tubos y Ángulos' },
-  { id: 21, url: '/assets/catalog/tradicional/page_27_1776516168805.png', title: 'Página 27', description: 'Perfiles Varios de Terminación' },
-  { id: 22, url: '/assets/catalog/tradicional/page_28_1776516170064.png', title: 'Página 28', description: 'Complementarios Generales' },
-  { id: 23, url: '/assets/catalog/tradicional/page_29_30_1776516171333.png', title: 'Página 29-30', description: 'Esquemas de Armado - Puertas Corredizas' },
-  { id: 24, url: '/assets/catalog/tradicional/page_31_41_start_1776516178277.png', title: 'Sección Técnica', description: 'Detalles de Mecanizado y Ensamblaje' },
-  { id: 25, url: '/assets/catalog/tradicional/page_41_end_1776516179564.png', title: 'Página Final', description: 'Tabla de Pesos y Medidas' },
-];
+const catalogData: Record<string, { pdf: string, images: any[] }> = {
+  'linea-tradicional': {
+    pdf: '/Catalogo_Linea_Tradicional.pdf',
+    images: [
+      { id: 1, url: '/assets/catalog/tradicional/page_7_top_1776516071744.png', title: 'Página 7 - Superior', description: 'Ventana y Puerta Corrediza Liviana' },
+      { id: 2, url: '/assets/catalog/tradicional/page_7_bottom_8_top_1776516073045.png', title: 'Página 7-8', description: 'Esquemas de perfiles 101-105' },
+      { id: 3, url: '/assets/catalog/tradicional/page_8_1776516080054.png', title: 'Página 8', description: 'Marcos y hojas corredizas' },
+      { id: 4, url: '/assets/catalog/tradicional/page_9_1776516089997.png', title: 'Página 9', description: 'Ventana de Abrir y Paño Fijo' },
+      { id: 5, url: '/assets/catalog/tradicional/page_10_1776516091252.png', title: 'Página 10', description: 'Contravidrios y perfiles de terminación' },
+      { id: 6, url: '/assets/catalog/tradicional/page_11_1776516097985.png', title: 'Página 11', description: 'Cámara de 20 mm - Sistemas de Abrir' },
+      { id: 7, url: '/assets/catalog/tradicional/page_12_1776516099242.png', title: 'Página 12', description: 'Celosía de Abrir' },
+      { id: 8, url: '/assets/catalog/tradicional/page_13_1776516105388.png', title: 'Página 13', description: 'Ventana Guillotina' },
+      { id: 9, url: '/assets/catalog/tradicional/page_14_1776516106635.png', title: 'Página 14', description: 'Ventana Banderola y Ventiluz' },
+      { id: 10, url: '/assets/catalog/tradicional/page_15_1776516113651.png', title: 'Página 15', description: 'Puerta de Rebatir' },
+      { id: 11, url: '/assets/catalog/tradicional/page_16_1776516114910.png', title: 'Página 16', description: 'Postigos y Celosías - Marcos' },
+      { id: 12, url: '/assets/catalog/tradicional/page_17_1776516129686.png', title: 'Página 17', description: 'Postigos y Celosías - Hojas' },
+      { id: 13, url: '/assets/catalog/tradicional/page_18_1776516130926.png', title: 'Página 18', description: 'Tablillas y Porta Tablillas' },
+      { id: 14, url: '/assets/catalog/tradicional/page_19_1776516136902.png', title: 'Página 19', description: 'Complementos de Postigo' },
+      { id: 15, url: '/assets/catalog/tradicional/page_20_1776516138176.png', title: 'Página 20', description: 'Sistemas Diferenciales' },
+      { id: 16, url: '/assets/catalog/tradicional/page_21_1776516145186.png', title: 'Página 21', description: 'Cortes Transversales' },
+      { id: 17, url: '/assets/catalog/tradicional/page_22_1776516146428.png', title: 'Página 22', description: 'Frentes de Placard' },
+      { id: 18, url: '/assets/catalog/tradicional/page_23_1776516153669.png', title: 'Página 23', description: 'Cortinas de Enrollar' },
+      { id: 19, url: '/assets/catalog/tradicional/page_24_1776516154925.png', title: 'Página 24', description: 'Accesorios de Cortina' },
+      { id: 20, url: '/assets/catalog/tradicional/page_25_26_1776516162059.png', title: 'Página 25-26', description: 'Tubos y Ángulos' },
+      { id: 21, url: '/assets/catalog/tradicional/page_27_1776516168805.png', title: 'Página 27', description: 'Perfiles Varios de Terminación' },
+      { id: 22, url: '/assets/catalog/tradicional/page_28_1776516170064.png', title: 'Página 28', description: 'Complementarios Generales' },
+      { id: 23, url: '/assets/catalog/tradicional/page_29_30_1776516171333.png', title: 'Página 29-30', description: 'Esquemas de Armado - Puertas Corredizas' },
+      { id: 24, url: '/assets/catalog/tradicional/page_31_41_start_1776516178277.png', title: 'Sección Técnica', description: 'Detalles de Mecanizado y Ensamblaje' },
+      { id: 25, url: '/assets/catalog/tradicional/page_41_end_1776516179564.png', title: 'Página Final', description: 'Tabla de Pesos y Medidas' },
+    ]
+  },
+  'linea-delta': {
+    pdf: '/docs/Línea Delta/Catalogo_Linea_Delta.pdf',
+    images: [] // To be populated when images are available
+  },
+  'linea-mediterranea': {
+    pdf: '/docs/Línea Mediterránea/Catalogo_Linea_Mediterranea.pdf',
+    images: []
+  }
+};
 
 export default function TechnicalCatalog() {
   const { slug } = useParams<{ slug: string }>();
+  const currentCatalog = catalogData[slug || ''] || catalogData['linea-tradicional'];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -71,7 +85,7 @@ export default function TechnicalCatalog() {
           </div>
 
           <a 
-            href="/Catalogo_Linea_Tradicional.pdf" 
+            href={currentCatalog.pdf} 
             target="_blank"
             download
             className="flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-xl font-bold hover:brightness-110 transition-all transform hover:scale-105 animate-in fade-in slide-in-from-right-4 duration-700 shadow-lg shadow-primary/20"
@@ -83,47 +97,54 @@ export default function TechnicalCatalog() {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {catalogImages.map((image, index) => (
-            <motion.div 
-              key={image.id}
-              className="group relative bg-surface-variant/5 border border-outline/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-            >
-              <div className="aspect-[3/4] overflow-hidden relative">
-                <img 
-                  src={image.url} 
-                  alt={image.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
-                />
-                
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <div className="text-on-surface">
-                    <p className="text-primary text-xs font-bold uppercase tracking-widest mb-1">{image.title}</p>
-                    <p className="text-sm font-medium">{image.description}</p>
+          {currentCatalog.images.length > 0 ? (
+            currentCatalog.images.map((image, index) => (
+              <motion.div 
+                key={image.id}
+                className="group relative bg-surface-variant/5 border border-outline/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                {/* ... existing image rendering ... */}
+                <div className="aspect-[3/4] overflow-hidden relative">
+                  <img 
+                    src={image.url} 
+                    alt={image.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
+                  />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <div className="text-on-surface">
+                      <p className="text-primary text-xs font-bold uppercase tracking-widest mb-1">{image.title}</p>
+                      <p className="text-sm font-medium">{image.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-4 right-4 bg-surface-variant/80 backdrop-blur-md border border-outline/10 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ZoomIn className="w-5 h-5 text-primary" />
                   </div>
                 </div>
-
-                {/* Technical Badge */}
-                <div className="absolute top-4 right-4 bg-surface-variant/80 backdrop-blur-md border border-outline/10 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ZoomIn className="w-5 h-5 text-primary" />
+                
+                <div className="p-5 flex justify-between items-center bg-surface-variant/10 backdrop-blur-md">
+                  <div>
+                    <h3 className="text-on-surface font-bold text-sm uppercase tracking-wide">{image.title}</h3>
+                    <p className="text-on-surface-variant text-[10px] uppercase tracking-wider">{image.description}</p>
+                  </div>
+                  <div className="bg-primary/10 p-2 rounded-lg">
+                    <FileText className="w-4 h-4 text-primary" />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="p-5 flex justify-between items-center bg-surface-variant/10 backdrop-blur-md">
-                <div>
-                  <h3 className="text-on-surface font-bold text-sm uppercase tracking-wide">{image.title}</h3>
-                  <p className="text-on-surface-variant text-[10px] uppercase tracking-wider">{image.description}</p>
-                </div>
-                <div className="bg-primary/10 p-2 rounded-lg">
-                  <FileText className="w-4 h-4 text-primary" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center bg-surface-variant/5 rounded-3xl border border-dashed border-outline/20">
+              <FileText className="w-16 h-16 text-outline/30 mx-auto mb-4" />
+              <p className="text-on-surface-variant font-medium">Las imágenes interactivas del catálogo estarán disponibles próximamente.</p>
+              <p className="text-on-surface-variant/60 text-sm mt-2">Por favor, descarga el PDF completo para ver todos los detalles técnicos.</p>
+            </div>
+          )}
         </div>
         
         {/* Footer Info */}

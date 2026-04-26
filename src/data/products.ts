@@ -170,7 +170,7 @@ export const products: Product[] = [
     heroImage: '/gallery/residential.jpg',
     description: 'Máxima apertura y fluidez visual con diseño estructural resistente.',
     introText:
-      'La Línea Delta ofrece un deslizamiento extremadamente suave gracias a su pista de acero inoxidable intercambiable. Es ideal para puertas balcón de tamaño medio y grande que requieren apertura constante con el mínimo esfuerzo. Especialmente diseñada para aplicaciones de uso intenso donde la durabilidad y el funcionamiento fluido son críticos.',
+      'La Línea Delta es un sistema de carpintería de media-alta prestación que ofrece soluciones versátiles tanto en sistemas corredizos como de rebatir y oscilo-batientes. Destaca por su deslizamiento extremadamente suave gracias a su pista de acero inoxidable intercambiable en corredizas, y su excelente hermeticidad en sistemas de abrir. Es ideal para aberturas de tamaño medio y grande que requieren durabilidad y un funcionamiento fluido.',
     isRPT: false,
     specs: [
       { label: 'Ancho del Marco', value: '80mm', icon: 'settings_overscan' },
