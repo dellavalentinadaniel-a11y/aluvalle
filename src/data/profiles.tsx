@@ -621,8 +621,186 @@ export const gammaProfiles: Profile[] = [
 ];
 
 export const deltaProfiles: Profile[] = [
-  { code: 'D-10', weight: '0.90', shape: 'marco', description: 'Marco Delta', page: '1' },
-  { code: 'D-20', weight: '1.05', shape: 'hoja', description: 'Hoja Delta', page: '2' }
+  {
+    code: 'D-10', weight: '0,92', txp: '3', shape: 'marco', description: 'Marco Perimetral Corrediza Delta', page: '1',
+    technicalDetails: {
+      dimensions: '80mm x 50mm',
+      applications: [
+        'Marco base para puerta corrediza Delta de 2 hojas.',
+        'Compatible con vidrio DVH de hasta 24mm.',
+        'Incluye canal para pista de acero inoxidable intercambiable.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 50" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="5" y="5" width="90" height="40" rx="1" />
+          <path d="M 5,25 L 95,25" opacity="0.3" strokeDasharray="2 2" />
+          <path d="M 35,5 L 35,45 M 65,5 L 65,45" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-20', weight: '1,08', txp: '3', shape: 'hoja', description: 'Hoja Corrediza Delta', page: '2',
+    technicalDetails: {
+      dimensions: '50mm x 46mm',
+      applications: [
+        'Hoja móvil para puerta corrediza Delta de tamaño medio y grande.',
+        'Soporta DVH de hasta 24mm.',
+        'Rodamientos tándem para carga máxima de 150kg por hoja.',
+        'Incluye cierre lateral ciego.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="10" y="5" width="80" height="50" rx="1" />
+          <rect x="18" y="12" width="64" height="36" rx="0.5" opacity="0.4" />
+          <circle cx="25" cy="45" r="3" fill="currentColor" opacity="0.6" />
+          <circle cx="75" cy="45" r="3" fill="currentColor" opacity="0.6" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-30', weight: '0,82', txp: '4', shape: 'guia', description: 'Pista de Acero Inoxidable Delta', page: '3',
+    technicalDetails: {
+      dimensions: '80mm x 12mm',
+      applications: [
+        'Carril de deslizamiento de acero inoxidable intercambiable.',
+        'Sistema modular que se reemplaza sin desmontar marcos.',
+        'Garantiza deslizamiento ultra suave incluso en uso intenso.',
+        'Resistencia a corrosión en ambientes salinos.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="5" y="5" width="90" height="20" rx="1" />
+          <path d="M 15,10 L 85,10 M 15,20 L 85,20" opacity="0.4" strokeDasharray="2 2" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-40', weight: '0,65', txp: '6', shape: 'encuentro-4-hojas', description: 'Encuentro Central de Hojas', page: '4',
+    technicalDetails: {
+      dimensions: '28mm x 40mm',
+      applications: [
+        'Perfil de encuentro entre dos hojas corredizas de la serie Delta.',
+        'Incorpora alojamiento para burletes de sellado.',
+        'Cierre coplanar sin resaltes.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 30,5 L 30,55 L 45,55 L 45,30 L 55,30 L 55,55 L 70,55 L 70,5" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-50', weight: '0,78', txp: '5', shape: 'zocalo', description: 'Zócalo / Cabezal Delta', page: '5',
+    technicalDetails: {
+      dimensions: '80mm x 18mm',
+      applications: [
+        'Cierre superior e inferior del marco perimetral.',
+        'Incluye canal de desagüe para condensación.',
+        'Soporta la carga de ambas hojas.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="5" y="5" width="90" height="20" rx="1" />
+          <path d="M 5,15 L 95,15" opacity="0.3" strokeDasharray="2 2" />
+          <path d="M 20,8 L 20,22" opacity="0.3" strokeDasharray="2 2" />
+          <path d="M 80,8 L 80,22" opacity="0.3" strokeDasharray="2 2" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-60', weight: '0,55', txp: '8', shape: 'accesorio', description: 'Burlete / Felpa Delta', page: '6',
+    technicalDetails: {
+      dimensions: '8mm x 7mm',
+      applications: [
+        'Burlete de EPDM para sellado perimetral.',
+        'Compatible con todos los perfiles marco y encuentro.',
+        'Proporciona impermeabilidad y hermeticidad al aire.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 40" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="15" y="5" width="70" height="30" rx="2" />
+          <path d="M 30,15 L 70,15" opacity="0.4" strokeDasharray="2 2" />
+          <path d="M 30,25 L 70,25" opacity="0.4" strokeDasharray="2 2" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-70', weight: '0,42', txp: '6', shape: 'contravidrio', description: 'Junquillo / Contravidrio Delta', page: '7',
+    technicalDetails: {
+      dimensions: '14mm x 11mm',
+      applications: [
+        'Retención del vidrio dentro de la cámara de acristalamiento.',
+        'Se inserta por presión sin necesidad de tornillos.',
+        'Compatible con vidrio simple y DVH.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 30,5 L 70,5 L 70,15 L 60,15 L 60,25 L 40,25 L 40,15 L 30,15 Z" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-80', weight: '0,68', txp: '4', shape: 'accesorio', description: 'Rodillo Tándem Delta', page: '8',
+    technicalDetails: {
+      dimensions: '28mm diámetro',
+      applications: [
+        'Rodillo de alta carga en configuración tándem.',
+        'Soporta hasta 150kg por hoja.',
+        'Rodamientos blindados anticorrosión.',
+        'Reemplazo simple sin herramientas especiales.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 50" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <circle cx="35" cy="25" r="12" />
+          <circle cx="65" cy="25" r="12" />
+          <line x1="35" y1="13" x2="65" y2="13" />
+          <line x1="35" y1="37" x2="65" y2="37" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-90', weight: '0,35', txp: '8', shape: 'accesorio', description: 'Manija de Accionamiento Delta', page: '9',
+    technicalDetails: {
+      dimensions: '200mm x 28mm',
+      applications: [
+        'Manija ergonómica de aluminio anodizado para apertura.',
+        'Diseño integrado sin tornillos visibles (cierre ciego).',
+        'Compatible con sistemas de seguridad de cierre.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 50" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <ellipse cx="50" cy="25" rx="40" ry="12" />
+          <circle cx="30" cy="25" r="3" fill="currentColor" />
+          <circle cx="70" cy="25" r="3" fill="currentColor" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'D-95', weight: '0,18', txp: '10', shape: 'accesorio', description: 'Tapacabeza Ciego Delta', page: '10',
+    technicalDetails: {
+      dimensions: '80mm x 16mm',
+      applications: [
+        'Cobertura plástica ABS para ocultamiento de tornillos.',
+        'Se ajusta sobre cabezal manteniendo líneas coplanares.',
+        'Color anodizado coordinado con la serie.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 10,10 L 90,10 L 85,20 L 15,20 Z" />
+          <circle cx="50" cy="15" r="2" fill="currentColor" opacity="0.4" />
+        </svg>
+      )
+    }
+  }
 ];
 
 export const monacoProfiles: Profile[] = [

@@ -170,31 +170,54 @@ export const products: Product[] = [
     heroImage: '/gallery/residential.jpg',
     description: 'Máxima apertura y fluidez visual con diseño estructural resistente.',
     introText:
-      'La Línea Delta ofrece un deslizamiento extremadamente suave gracias a su pista de acero inoxidable intercambiable. Es ideal para puertas balcón de tamaño medio y grande que requieren apertura constante con el mínimo esfuerzo.',
+      'La Línea Delta ofrece un deslizamiento extremadamente suave gracias a su pista de acero inoxidable intercambiable. Es ideal para puertas balcón de tamaño medio y grande que requieren apertura constante con el mínimo esfuerzo. Especialmente diseñada para aplicaciones de uso intenso donde la durabilidad y el funcionamiento fluido son críticos.',
     isRPT: false,
     specs: [
       { label: 'Ancho del Marco', value: '80mm', icon: 'settings_overscan' },
-      { label: 'Pista', value: 'Acero Inox.', icon: 'hardware' },
+      { label: 'Pista', value: 'Acero Inoxidable Intercambiable', icon: 'hardware' },
       { label: 'Rodamientos', value: 'Tándem Alta Carga', icon: 'settings_backup_restore' },
-      { label: 'Vidrio', value: 'DVH 24mm', icon: 'window' },
+      { label: 'Vidrio Máximo', value: 'DVH 24mm', icon: 'window' },
+      { label: 'Sistema', value: 'Corredizo 2 Hojas', icon: 'view_quilt' },
+      { label: 'Espesor Marco', value: '80mm x 50mm', icon: 'layers' },
+      { label: 'Esfuerzo Máx. Hojas', value: '150kg por hoja', icon: 'scale' },
     ],
     features: [
       {
+        title: 'Pista de Acero Inoxidable',
+        description: 'Material anticorrosivo intercambiable que garantiza deslizamiento ultra suave incluso bajo uso intenso y en ambientes corrosivos.',
+        icon: 'shield_check',
+      },
+      {
+        title: 'Rodamientos Tándem',
+        description: 'Sistema de rodillos de alta carga en configuración tándem para distribuir peso y garantizar apertura sin esfuerzo.',
+        icon: 'grain',
+      },
+      {
         title: 'Cierre Lateral Ciego',
-        description: 'Mejora estética que oculta tornillería a la vista.',
+        description: 'Mejora estética que oculta toda la tornillería a la vista, proporcionando líneas limpias y contemporáneas.',
         icon: 'visibility_off',
       },
       {
         title: 'Líneas Coplanares',
-        description: 'Diseño superficial alineado y vanguardista.',
+        description: 'Diseño superficial perfectamente alineado sin resaltes, otorgando apariencia vanguardista y minimalista.',
         icon: 'straighten',
+      },
+      {
+        title: 'Alta Resistencia Estructural',
+        description: 'Marco de 80mm con refuerzo interno para resistir cargas de viento en grandes aberturas sin deformación.',
+        icon: 'shield',
+      },
+      {
+        title: 'Mantenimiento Simplificado',
+        description: 'Pista intercambiable que se reemplaza fácilmente sin desmontar marcos ni hojas. Diseño limpio sin recovecos.',
+        icon: 'build',
       },
     ],
     downloads: [
       { type: 'PDF', label: 'Catálogo Técnico Delta', url: '/docs/Línea Delta/Catalogo_Linea_Delta.pdf' },
-      { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-delta' }
+      { type: 'MECANIZADO', label: 'Guía Interactiva de Mecanizado', url: '/mecanizados/linea-delta' }
     ],
-    gallery: ['/gallery/residential.jpg', '/gallery/profiles.jpg'],
+    gallery: ['/gallery/residential.jpg', '/gallery/profiles.jpg', '/gallery/office.jpg'],
   },
   {
     slug: 'linea-monaco',
