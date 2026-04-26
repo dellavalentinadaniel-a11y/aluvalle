@@ -34,6 +34,7 @@ const Contact = () => {
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <img
           src="/gallery/showroom.jpg"
+          loading="lazy"
           className="bg-image-theme animate-slow-zoom"
           alt=""
         />

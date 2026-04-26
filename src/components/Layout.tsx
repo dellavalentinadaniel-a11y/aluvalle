@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useCalculator } from '../context/CalculatorContext';
 import CookieBanner from './CookieBanner';
 import WhatsAppButton from './WhatsAppButton';
+import { ScrollToTopButton } from './ScrollToTopButton';
 import logoAluvalle from './logo-aluvalle.png';
 
 export default function Layout() {
@@ -570,6 +571,7 @@ export default function Layout() {
         </div>
       </div>
       <CookieBanner />
+      <ScrollToTopButton />
     </div>
   );
 }

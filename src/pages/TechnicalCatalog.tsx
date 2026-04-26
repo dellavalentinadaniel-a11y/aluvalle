@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Download, FileText, ZoomIn } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 const catalogData: Record<string, { pdf: string, images: any[] }> = {
   'linea-tradicional': {
@@ -47,13 +48,21 @@ const catalogData: Record<string, { pdf: string, images: any[] }> = {
 export default function TechnicalCatalog() {
   const { slug } = useParams<{ slug: string }>();
   const currentCatalog = catalogData[slug || ''] || catalogData['linea-tradicional'];
+  const [selectedImage, setSelectedImage] = useState<any>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="bg-background min-h-screen pt-32 pb-20 relative">
+    <div className="bg-background min-h-screen pb-20 relative">
+      {/* Breadcrumb */}
+      <Breadcrumb
+        items={[
+          { label: 'Productos', path: '/productos' },
+          { label: slug?.replace(/-/g, ' ').toUpperCase() || 'Catálogo' },
+        ]}
+      />
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img
@@ -99,13 +108,14 @@ export default function TechnicalCatalog() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentCatalog.images.length > 0 ? (
             currentCatalog.images.map((image, index) => (
-              <motion.div 
+              <motion.div
                 key={image.id}
-                className="group relative bg-surface-variant/5 border border-outline/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 backdrop-blur-sm"
+                className="group relative bg-surface-variant/5 border border-outline/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 backdrop-blur-sm cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
+                onClick={() => setSelectedImage(image)}
               >
                 {/* ... existing image rendering ... */}
                 <div className="aspect-[3/4] overflow-hidden relative">
@@ -161,6 +171,52 @@ export default function TechnicalCatalog() {
             </Link>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl max-h-[90vh] w-full bg-surface-container rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 z-10 bg-surface-container-high/80 hover:bg-surface-container-high border border-outline/20 rounded-full p-2 transition-all"
+                aria-label="Cerrar modal"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </button>
+
+              <div className="w-full h-full flex items-center justify-center bg-surface-container-lowest">
+                <img
+                  src={selectedImage.url}
+                  alt={selectedImage.title}
+                  className="max-w-full max-h-[85vh] object-contain"
+                />
+              </div>
+
+              <div className="bg-surface-container-high border-t border-outline/20 p-6">
+                <h3 className="text-on-surface font-bold text-lg uppercase tracking-wide mb-2">
+                  {selectedImage.title}
+                </h3>
+                <p className="text-on-surface-variant">{selectedImage.description}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

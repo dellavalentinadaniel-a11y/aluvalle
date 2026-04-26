@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useEffect } from 'react';
 import ProfileTable from '../components/ProfileTable';
+import { Breadcrumb } from '../components/Breadcrumb';
 import {
   traditionalProfiles,
   gammaProfiles,
@@ -58,10 +59,20 @@ export default function ProductDetail() {
 
   return (
     <div className="bg-background min-h-screen relative">
+      {/* Breadcrumb */}
+      <Breadcrumb
+        items={[
+          { label: 'Sistemas', path: '/sistemas/ventanas-y-puertas' },
+          { label: product.category, path: `/sistemas/${product.categorySlug}` },
+          { label: product.name },
+        ]}
+      />
+
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img
           src="/gallery/showroom.jpg"
+          loading="lazy"
           className="bg-image-theme animate-slow-zoom"
           alt=""
         />

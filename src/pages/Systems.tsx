@@ -98,6 +98,7 @@ export default function Systems() {
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img
           src="/gallery/showroom.jpg"
+          loading="lazy"
           className="bg-image-theme animate-slow-zoom"
           alt=""
         />
@@ -135,28 +136,28 @@ export default function Systems() {
           </div>
 
         {/* Filter / Categorization */}
-        <div className="flex flex-wrap gap-4 mb-20 border-b border-outline/10 pb-4">
-          <button 
+        <div className="flex gap-3 mb-20 border-b border-outline/10 pb-4 overflow-x-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent flex-shrink-0">
+          <button
             onClick={() => setActiveFilter('all')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'all' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'all' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
           >
             Ver Todos
           </button>
-          <button 
+          <button
             onClick={() => setActiveFilter('corrediza')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'corrediza' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'corrediza' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
           >
             Correderas
           </button>
-          <button 
+          <button
             onClick={() => setActiveFilter('batiente')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'batiente' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'batiente' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
           >
             Batientes
           </button>
-          <button 
+          <button
             onClick={() => setActiveFilter('rpt')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'rpt' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'rpt' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
           >
             Con RPT
           </button>
