@@ -84,7 +84,7 @@ export default function DeltaMachining() {
             </p>
           </div>
           <a
-            href="/docs/Sistemas de ventanas y puertas/Línea Delta/Catalogo_Linea_Delta.pdf"
+            href="/docs/Línea Delta/Catalogo_Linea_Delta.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 bg-primary text-on-primary px-8 py-5 font-bold uppercase text-xs tracking-[0.2em] hover:brightness-110 transition-all shadow-2xl"

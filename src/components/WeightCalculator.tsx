@@ -121,10 +121,12 @@ const WeightCalculator: React.FC = () => {
           </div>
 
           <div className="md:col-span-2">
-            <label className="block text-xs font-bold text-primary uppercase mb-2 ml-1">
+            <label htmlFor="length-input" className="block text-xs font-bold text-primary uppercase mb-2 ml-1">
               Largo (m)
             </label>
             <input
+              id="length-input"
+              title="Largo en metros"
               type="number"
               step="0.1"
               value={length}
@@ -134,10 +136,12 @@ const WeightCalculator: React.FC = () => {
           </div>
 
           <div className="md:col-span-2">
-            <label className="block text-xs font-bold text-primary uppercase mb-2 ml-1">
+            <label htmlFor="quantity-input" className="block text-xs font-bold text-primary uppercase mb-2 ml-1">
               Cantidad
             </label>
             <input
+              id="quantity-input"
+              title="Cantidad de piezas"
               type="number"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}

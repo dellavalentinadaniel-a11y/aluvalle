@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState, useMemo } from 'react';
 
 const productLines = [
   {
@@ -7,6 +8,7 @@ const productLines = [
     category: 'Sistemas Básicos',
     desc: 'Sistema de carpintería tradicional con excelente relación costo-beneficio.',
     img: '/gallery/warehouse.jpg',
+    type: 'batiente'
   },
   {
     name: 'Línea Mediterránea',
@@ -14,6 +16,7 @@ const productLines = [
     category: 'Sistemas Premium',
     desc: 'La máxima expresión del diseño en aluminio para residencias de lujo.',
     img: '/gallery/residential.jpg',
+    type: 'premium'
   },
   {
     name: 'Línea Gamma',
@@ -21,6 +24,7 @@ const productLines = [
     category: 'Sistemas Ligeros',
     desc: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales.',
     img: '/gallery/office.jpg',
+    type: 'corrediza'
   },
   {
     name: 'Línea Delta',
@@ -28,6 +32,7 @@ const productLines = [
     category: 'Deslizamiento Suave',
     desc: 'Máxima apertura y fluidez visual con diseño estructural resistente.',
     img: '/gallery/residential.jpg',
+    type: 'corrediza'
   },
   {
     name: 'Línea Mónaco',
@@ -35,6 +40,7 @@ const productLines = [
     category: 'Alta Gama',
     desc: 'Sistema avanzado de estanqueidad y cierre para grandes dimensiones.',
     img: '/gallery/showroom.jpg',
+    type: 'premium'
   },
   {
     name: 'Línea Atlántica',
@@ -42,6 +48,7 @@ const productLines = [
     category: 'Robustez Extra',
     desc: 'Especialmente diseñada para frentes marítimos y presiones extremas de viento.',
     img: '/gallery/warehouse.jpg',
+    type: 'batiente'
   },
   {
     name: 'Línea Niza',
@@ -49,6 +56,7 @@ const productLines = [
     category: 'Estilo Europeo',
     desc: 'Detalles europeos y precisión milimétrica en cada encuentro.',
     img: '/gallery/residential.jpg',
+    type: 'premium'
   },
   {
     name: 'Línea Mónaco RPT',
@@ -56,6 +64,7 @@ const productLines = [
     category: 'Ruptura Puente Térmico',
     desc: 'Eficiencia energética superior manteniendo la estética de la Línea Mónaco.',
     img: '/gallery/office.jpg',
+    type: 'rpt'
   },
   {
     name: 'Línea Mediterránea RPT',
@@ -63,10 +72,26 @@ const productLines = [
     category: 'Ruptura Puente Térmico',
     desc: 'El tope de gama en rendimiento acústico, térmico y sofisticación de diseño.',
     img: '/gallery/office.jpg',
+    type: 'rpt'
   },
 ];
 
 export default function Systems() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filteredProducts = useMemo(() => {
+    return productLines.filter((product) => {
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          product.desc.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesFilter = activeFilter === 'all' || 
+                           (activeFilter === 'corrediza' && product.type === 'corrediza') ||
+                           (activeFilter === 'batiente' && product.type === 'batiente') ||
+                           (activeFilter === 'rpt' && product.type === 'rpt');
+      return matchesSearch && matchesFilter;
+    });
+  }, [searchQuery, activeFilter]);
+
   return (
     <div className="pt-24 pb-20 bg-background relative min-h-screen">
       {/* Background patterns */}
@@ -93,26 +118,46 @@ export default function Systems() {
                 <span className="text-on-surface-variant">Ventanas y Puertas</span>
               </h1>
             </div>
-            <div className="hidden md:block pb-2">
-              <p className="font-body text-on-surface-variant max-w-xs text-sm leading-relaxed border-l border-outline/10 pl-6">
-              Descubra nuestra línea completa de soluciones en carpintería de aluminio. Ingeniería
-              de precisión diseñada para todo tipo de proyectos.
-            </p>
+            <div className="w-full md:w-auto pb-2">
+              <div className="relative group">
+                <input
+                  type="text"
+                  placeholder="Buscar sistema..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full md:w-80 bg-surface-container border border-outline/20 px-6 py-4 rounded-2xl text-on-surface focus:outline-none focus:border-primary transition-all group-hover:border-primary/50 shadow-xl"
+                />
+                <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-hover:text-primary transition-colors">
+                  search
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Filter / Categorization (Simplified logic for visual presence) */}
+        {/* Filter / Categorization */}
         <div className="flex flex-wrap gap-4 mb-20 border-b border-outline/10 pb-4">
-          <button className="px-5 py-2 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg shadow-primary/20">
+          <button 
+            onClick={() => setActiveFilter('all')}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'all' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+          >
             Ver Todos
           </button>
-          <button className="px-5 py-2 bg-surface-container border border-outline/10 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container-high hover:text-on-surface transition-colors">
+          <button 
+            onClick={() => setActiveFilter('corrediza')}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'corrediza' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+          >
             Correderas
           </button>
-          <button className="px-5 py-2 bg-surface-container border border-outline/10 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container-high hover:text-on-surface transition-colors">
+          <button 
+            onClick={() => setActiveFilter('batiente')}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'batiente' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+          >
             Batientes
           </button>
-          <button className="px-5 py-2 bg-surface-container border border-outline/10 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container-high hover:text-on-surface transition-colors">
+          <button 
+            onClick={() => setActiveFilter('rpt')}
+            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activeFilter === 'rpt' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
+          >
             Con RPT
           </button>
         </div>
@@ -121,7 +166,7 @@ export default function Systems() {
       {/* Product Grid */}
       <section className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {productLines.map((product) => (
+          {filteredProducts.map((product) => (
             <div
               key={product.name}
               className="group flex flex-col bg-surface-container border border-outline/10 shadow-xl hover:shadow-2xl rounded-[2.5rem] overflow-hidden hover:border-primary/50 transition-all duration-300"
@@ -175,6 +220,14 @@ export default function Systems() {
               </div>
             </div>
           ))}
+          {filteredProducts.length === 0 && (
+            <div className="col-span-full py-20 text-center">
+              <span className="material-symbols-outlined text-6xl text-outline/20 mb-4 block">
+                search_off
+              </span>
+              <p className="text-on-surface-variant font-body">No se encontraron sistemas que coincidan con su búsqueda.</p>
+            </div>
+          )}
         </div>
       </section>
 

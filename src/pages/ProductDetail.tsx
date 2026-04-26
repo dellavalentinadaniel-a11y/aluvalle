@@ -351,6 +351,44 @@ export default function ProductDetail() {
                   </div>
                 </Link>
               )}
+              {product.slug === 'linea-gamma' && (
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="/docs/Línea Gamma/Catalogo_Linea_Gamma.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl"
+                  >
+                    <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                      <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                        Catálogo Completo
+                      </p>
+                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                        Descargar PDF Gamma
+                      </p>
+                    </div>
+                  </a>
+                  <Link
+                    to="/mecanizados/linea-gamma"
+                    className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
+                  >
+                    <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                      <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                        Producción Técnica
+                      </p>
+                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                        Ver Manual de Mecanizado
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              )}
             </div>
             <ProfileTable
               systemName={product.name}
@@ -438,26 +476,51 @@ export default function ProductDetail() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 w-full">
-            {product.downloads.map((dl) => (
-              <a
-                key={dl.label}
-                href={dl.url}
-                className="w-full sm:flex-1 min-w-[280px] bg-surface-container-low border border-outline/20 p-6 md:p-8 flex items-center gap-6 hover:border-primary/30 hover:bg-surface-container transition-all group"
-              >
-                <div className="h-16 w-16 bg-surface-container border border-outline/30 flex items-center justify-center font-bold text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
-                  {dl.type}
-                </div>
-                <div>
-                  <h4 className="text-on-surface font-bold uppercase text-xs tracking-widest mb-1">
-                    {dl.label}
-                  </h4>
-                  <span className="text-on-surface-variant text-[10px] flex items-center gap-2">
-                    <span className="material-symbols-outlined text-xs">download</span>
-                    Descargar Archivo
-                  </span>
-                </div>
-              </a>
-            ))}
+            {product.downloads.map((dl) => {
+              const isInternal = dl.url.startsWith('/');
+              const isMecanizado = dl.type === 'MECANIZADO';
+              
+              const content = (
+                <>
+                  <div className="h-16 w-16 bg-surface-container border border-outline/30 flex items-center justify-center font-bold text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                    {dl.type}
+                  </div>
+                  <div>
+                    <h4 className="text-on-surface font-bold uppercase text-xs tracking-widest mb-1">
+                      {dl.label}
+                    </h4>
+                    <span className="text-on-surface-variant text-[10px] flex items-center gap-2">
+                      <span className="material-symbols-outlined text-xs">
+                        {isMecanizado ? 'engineering' : 'download'}
+                      </span>
+                      {isMecanizado ? 'Ver Guía Técnica' : 'Descargar Archivo'}
+                    </span>
+                  </div>
+                </>
+              );
+
+              const className = "w-full sm:flex-1 min-w-[280px] bg-surface-container-low border border-outline/20 p-6 md:p-8 flex items-center gap-6 hover:border-primary/30 hover:bg-surface-container transition-all group";
+
+              if (isMecanizado && isInternal) {
+                return (
+                  <Link key={dl.label} to={dl.url} className={className}>
+                    {content}
+                  </Link>
+                );
+              }
+
+              return (
+                <a
+                  key={dl.label}
+                  href={dl.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                >
+                  {content}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>

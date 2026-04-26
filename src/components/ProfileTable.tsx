@@ -43,9 +43,15 @@ const ShapeIcon: React.FC<{ shape?: string }> = ({ shape }) => {
       case 'goteron': return 'M 20,20 L 20,80 L 80,80 L 50,20 Z';
       case 'varilla': return 'M 10,45 L 90,45 L 90,55 L 10,55 Z';
       case 'inversor': return 'M 10,30 L 30,30 L 30,10 L 70,10 L 70,30 L 90,30 L 90,90 L 70,90 L 70,70 L 30,70 L 30,90 L 10,90 Z';
+      case 'traslapo': return 'M 30,10 L 30,90 L 45,90 L 45,50 L 55,50 L 55,90 L 70,90 L 70,10 Z';
+      case 'junta': return 'M 20,10 L 20,80 L 50,80 L 50,40 L 80,40 L 80,10 L 70,10 L 70,30 L 50,30 L 50,10 Z';
+      case 'complemento': return 'M 20,20 L 80,20 L 80,50 L 60,50 L 60,35 L 40,35 L 40,50 L 20,50 Z';
+      case 'encuentro-4-hojas': return 'M 10,40 L 40,40 L 40,10 L 60,10 L 60,40 L 90,40 L 90,60 L 60,60 L 60,90 L 40,90 L 40,60 L 10,60 Z M 45,45 L 55,45 L 55,55 L 45,55 Z';
+      case 'encuentro': return 'M 20,10 L 40,10 L 40,90 L 20,90 Z M 60,10 L 80,10 L 80,90 L 60,90 Z M 40,45 L 60,45 L 60,55 L 40,55 Z';
       default: return 'M 20,20 L 80,20 L 80,80 L 20,80 Z';
     }
   };
+
 
   return (
     <svg viewBox="0 0 100 100" className="w-10 h-10 fill-none stroke-[#a0d87a] stroke-[2] opacity-80 group-hover:opacity-100 transition-all">

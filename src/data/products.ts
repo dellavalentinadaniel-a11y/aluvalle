@@ -92,8 +92,13 @@ export const products: Product[] = [
         url: '/docs/Línea Mediterránea/Catalogo_Linea_Mediterranea.pdf',
       },
       {
+        type: 'PDF',
+        label: 'Manual de Mecanizados Mediterránea',
+        url: '/docs/Línea Mediterránea/Mecanizados_Linea_Mediterranea.pdf',
+      },
+      {
         type: 'MECANIZADO',
-        label: 'Guía de Mecanizados Mediterránea',
+        label: 'Guía Interactiva de Mecanizado',
         url: '/mecanizados/linea-mediterranea',
       },
     ],
@@ -104,39 +109,47 @@ export const products: Product[] = [
     name: 'Línea Gamma',
     category: 'Sistemas Ligeros',
     categorySlug: 'ventanas-y-puertas',
-    heroImage: '/gallery/office.jpg',
-    description: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales.',
+    heroImage: '/gallery/gamma-hero.png',
+    description: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales de alta gama.',
     introText:
-      'Nuestra Línea Gamma es perfecta para proyectos modernos que necesitan perfiles más delgados para maximizar la superficie vidriada, manteniendo las máximas prestaciones estructurales de Alcemar.',
+      'La Línea Gamma representa la evolución del sistema corredizo liviano de Alcemar. Con un marco perimetral de tan solo 62mm de ancho y la posibilidad de alojar vidrio simple o DVH de hasta 24mm, esta línea maximiza la superficie vidriada manteniendo una estética limpia y moderna. Ideal para proyectos residenciales donde se busca amplitud visual sin resignar prestaciones mecánicas ni hermeticidad.',
     isRPT: false,
     specs: [
       { label: 'Ancho del Marco', value: '62mm', icon: 'settings_overscan' },
       { label: 'Tipo de Vidrio', value: 'Simple / DVH', icon: 'window' },
-      { label: 'Espesor Máx.', value: '24mm', icon: 'layers' },
-      { label: 'Tipologías', value: 'Corrediza', icon: 'view_quilt' },
+      { label: 'Espesor Máx. Vidrio', value: '24mm', icon: 'layers' },
+      { label: 'Tipologías', value: 'Corrediza 2 y 3 Guías', icon: 'view_quilt' },
+      { label: 'Largo de Barra', value: '6.030mm', icon: 'straighten' },
+      { label: 'Cortes', value: '45° (Marcos y Hojas)', icon: 'content_cut' },
     ],
     features: [
       {
         title: 'Diseño Esbelto',
-        description: 'Menor vista de aluminio de frente para una apariencia más despejada.',
+        description: 'Marco perimetral de sólo 62mm minimiza la vista de aluminio al frente, maximizando la superficie vidriada y la entrada de luz natural.',
         icon: 'panorama',
       },
       {
-        title: 'Alta Resistencia',
-        description: 'Cálculos estructurales optimizados para resistir viento sin deformación.',
+        title: 'Alta Resistencia Estructural',
+        description: 'Perfiles extruidos en aleación 6063 T5 con cálculos inerciales optimizados para resistir cargas de viento sin deformación permanente.',
         icon: 'shield',
       },
       {
-        title: 'Fácil Ensamble',
-        description: 'Diseñado pensando en la productividad del fabricante e instalador.',
+        title: 'Sistema de 2 y 3 Guías',
+        description: 'Flexibilidad total: marcos de 2 guías para ventanas estándar y de 3 guías para composiciones con mosquitero integrado o paño fijo central.',
+        icon: 'view_column',
+      },
+      {
+        title: 'Fácil Mecanizado',
+        description: 'Cortes a 45° estandarizados y calados simplificados. Diseñado para alta productividad en taller con mínimo herramental especializado.',
         icon: 'construction',
       },
     ],
     downloads: [
-      { type: 'PDF', label: 'Catálogo Gamma', url: '/docs/Línea Gamma/Catalogo_Linea_Gamma.pdf' },
-      { type: 'MECANIZADO', label: 'Guía de Mecanizado Gamma', url: '/mecanizados/linea-gamma' },
+      { type: 'PDF', label: 'Catálogo Técnico Gamma', url: '/docs/Línea Gamma/Catalogo_Linea_Gamma.pdf' },
+      { type: 'PDF', label: 'Manual de Mecanizado Gamma', url: '/docs/Línea Gamma/Mecanizados_Linea_Gamma.pdf' },
+      { type: 'MECANIZADO', label: 'Guía Interactiva de Mecanizado', url: '/mecanizados/linea-gamma' },
     ],
-    gallery: ['/gallery/office.jpg', '/gallery/showroom.jpg'],
+    gallery: ['/gallery/gamma-hero.png', '/gallery/gamma-gallery-1.png', '/gallery/gamma-gallery-2.png'],
   },
   {
     slug: 'linea-delta',
@@ -167,7 +180,7 @@ export const products: Product[] = [
       },
     ],
     downloads: [
-      { type: 'PDF', label: 'Folleto Delta', url: '/docs/Línea Delta/Catalogo_Linea_Delta.pdf' },
+      { type: 'PDF', label: 'Catálogo Técnico Delta', url: '/docs/Línea Delta/Catalogo_Linea_Delta.pdf' },
       { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-delta' }
     ],
     gallery: ['/gallery/residential.jpg', '/gallery/profiles.jpg'],
@@ -200,8 +213,11 @@ export const products: Product[] = [
       },
     ],
     downloads: [
-      { type: 'PDF', label: 'Catálogo Mónaco', url: '/docs/Línea Mónaco/Catalogo_Linea_Monaco.pdf' },
-      { type: 'MECANIZADO', label: 'Guía de Mecanizados', url: '/mecanizados/linea-monaco' }
+      { type: 'PDF', label: 'Catálogo Comercial Mónaco', url: '/docs/Línea Mónaco/Catalogo_Comercial_Linea_Monaco.pdf' },
+      { type: 'PDF', label: 'Catálogo Técnico Mónaco', url: '/docs/Línea Mónaco/Catalogo_Linea_Monaco.pdf' },
+      { type: 'PDF', label: 'Manual de Mecanizados Mónaco', url: '/docs/Línea Mónaco/Mecanizados_Linea_Monaco.pdf' },
+      { type: 'PDF', label: 'Reporte de Testeos Mónaco', url: '/docs/Línea Mónaco/Testeos_Linea_Monaco.pdf' },
+      { type: 'MECANIZADO', label: 'Guía Interactiva de Mecanizado', url: '/mecanizados/linea-monaco' }
     ],
     gallery: ['/gallery/showroom.jpg', '/gallery/office.jpg'],
   },
@@ -233,8 +249,9 @@ export const products: Product[] = [
       },
     ],
     downloads: [
-      { type: 'PDF', label: 'Catálogo Atlántica', url: '/docs/Línea Atlántica/Catalogo_Linea_Atlantica.pdf' },
-      { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-atlantica' }
+      { type: 'PDF', label: 'Catálogo Técnico Atlántica', url: '/docs/Línea Atlántica/Catalogo_Linea_Atlantica.pdf' },
+      { type: 'PDF', label: 'Manual de Mecanizado Atlántica', url: '/docs/Línea Atlántica/Mecanizados-Atlantica.pdf' },
+      { type: 'MECANIZADO', label: 'Guía Interactiva de Mecanizado', url: '/mecanizados/linea-atlantica' }
     ],
     gallery: ['/gallery/warehouse.jpg', '/gallery/industrial.jpg'],
   },
@@ -260,8 +277,9 @@ export const products: Product[] = [
       },
     ],
     downloads: [
-      { type: 'PDF', label: 'Catálogo Niza', url: '/docs/Línea Niza/Catalogo_Linea_Niza.pdf' },
-      { type: 'MECANIZADO', label: 'Manual de Mecanizado', url: '/mecanizados/linea-niza' }
+      { type: 'PDF', label: 'Catálogo Técnico Niza', url: '/docs/Línea Niza/Catalogo_Linea_Niza.pdf' },
+      { type: 'PDF', label: 'Manual de Mecanizado Niza', url: '/docs/Línea Niza/Mecanizados_Linea_Niza.pdf' },
+      { type: 'MECANIZADO', label: 'Guía Interactiva de Mecanizado', url: '/mecanizados/linea-niza' }
     ],
     gallery: ['/gallery/residential.jpg', '/gallery/showroom.jpg'],
   },
@@ -295,8 +313,13 @@ export const products: Product[] = [
     downloads: [
       {
         type: 'PDF',
-        label: 'Catálogo Línea Mónaco RPT',
+        label: 'Catálogo Técnico Mónaco RPT',
         url: '/docs/Línea Mónaco RPT/Catalogo_linea_MonacoRPT.pdf',
+      },
+      {
+        type: 'MECANIZADO',
+        label: 'Guía Interactiva de Mecanizado',
+        url: '/mecanizados/linea-monaco-rpt',
       },
     ],
     gallery: ['/gallery/office.jpg', '/gallery/showroom.jpg'],
@@ -331,17 +354,22 @@ export const products: Product[] = [
     downloads: [
       {
         type: 'PDF',
-        label: 'Catálogo Técnico RPT',
+        label: 'Catálogo Comercial Mediterránea RPT',
+        url: '/docs/Línea Mediterránea RPT/Catalogo_Comercial_Linea_Mediterranea_RPT.pdf',
+      },
+      {
+        type: 'PDF',
+        label: 'Catálogo Técnico Mediterránea RPT',
         url: '/docs/Línea Mediterránea RPT/Catalogo_Linea_Mediterranea_RPT.pdf',
       },
       {
         type: 'PDF',
-        label: 'Catálogo Comercial RPT',
-        url: '/docs/Línea Mediterránea RPT/Catalogo_Comercial_Linea_Mediterranea_RPT.pdf',
+        label: 'Manual de Mecanizados Mediterránea RPT',
+        url: '/docs/Línea Mediterránea RPT/Mecanizados_Linea_Mediterranea_RPT.pdf',
       },
       {
         type: 'MECANIZADO',
-        label: 'Manual de Mecanizado RPT',
+        label: 'Guía Interactiva de Mecanizado',
         url: '/mecanizados/linea-mediterranea-rpt',
       },
     ],

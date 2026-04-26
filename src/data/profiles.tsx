@@ -6,7 +6,7 @@ export interface Profile {
   txp?: string;
   description: string;
   page?: string;
-  shape?: 'marco' | 'hoja' | 'zocalo' | 'contravidrio' | 'parante' | 'travesaño' | 'acople' | 'contramarco' | 'premarco' | 'bisagra' | 'tubo' | 'guia' | 'mosquitero' | 'accesorio' | 'botaagua' | 'umbral' | 'goteron' | 'varilla' | 'omega' | 'inversor';
+  shape?: 'marco' | 'hoja' | 'zocalo' | 'contravidrio' | 'parante' | 'travesaño' | 'acople' | 'contramarco' | 'premarco' | 'bisagra' | 'tubo' | 'guia' | 'mosquitero' | 'accesorio' | 'botaagua' | 'umbral' | 'goteron' | 'varilla' | 'omega' | 'inversor' | 'traslapo' | 'junta' | 'complemento';
   technicalDetails?: {
     dimensions: string;
     applications: string[];
@@ -44,7 +44,7 @@ export const traditionalProfiles: Profile[] = [
     txp: "12", 
     description: "Encuentro Central para Ventana y Puerta Corrediza de 4 Hojas", 
     page: "10", 
-    shape: 'parante',
+    shape: 'encuentro-4-hojas',
     technicalDetails: {
       dimensions: "31mm x 20mm",
       applications: [
@@ -128,10 +128,10 @@ export const traditionalProfiles: Profile[] = [
   },
   { code: "22", weight: "0,23", txp: "16", description: "Porta Felpa Zócalo", page: "14", shape: 'accesorio' },
   { code: "23", weight: "0,50", txp: "8", description: "Zócalo para Ventana Corrediza - Línea Combinada", page: "9", shape: 'zocalo' },
-  { code: "26", weight: "0,27", txp: "10", description: "Encuentro Central para Ventana y Puerta Corrediza - Línea Combinada", page: "9", shape: 'parante' },
-  { code: "27", weight: "0,18", txp: "20", description: "Encuentro Central para 4 Hojas con Perfil 481 de Parante Lateral", page: "9", shape: 'parante' },
+  { code: "26", weight: "0,27", txp: "10", description: "Encuentro Central para Ventana y Puerta Corrediza - Línea Combinada", page: "9", shape: 'encuentro-4-hojas' },
+  { code: "27", weight: "0,18", txp: "20", description: "Encuentro Central para 4 Hojas con Perfil 481 de Parante Lateral", page: "9", shape: 'encuentro-4-hojas' },
   { code: "34", weight: "0,14", txp: "20", description: "Contravidrio", page: "11, 12", shape: 'contravidrio' },
-  { code: "43", weight: "1,17", txp: "2", description: "Columna a 45º", page: "25", shape: 'parante' },
+  { code: "43", weight: "1,17", txp: "2", description: "Columna a 45º", page: "25", shape: 'encuentro-4-hojas' },
   { code: "60", weight: "0,25", txp: "12", description: "Mosquitero para Ventana y Corrediza Línea Liviana", page: "21", shape: 'mosquitero' },
   { code: "61", weight: "0,17", txp: "20", description: "Mosquitero Fijo", page: "21", shape: 'mosquitero' },
   { code: "66", weight: "0,15", txp: "20", description: "Tapacanto para Puerta de Rebatir", page: "11", shape: 'accesorio' },
@@ -146,29 +146,29 @@ export const traditionalProfiles: Profile[] = [
   { code: "190", weight: "0,45", txp: "8", description: "Travesaño de Mosquitero", page: "21", shape: 'travesaño' },
   { code: "271 (a)", weight: "0,54", txp: "4", description: "Marco para Puerta de Rebatir - Línea Recta, sin Contravidrio", page: "13", shape: 'marco' },
   { code: "272", weight: "1,05", txp: "3", description: "Travesaño para Puerta de Rebatir - Línea Recta, sin Contravidrio", page: "13", shape: 'travesaño' },
-  { code: "273 (a)", weight: "0,96", txp: "3", description: "Parante para Puerta de Rebatir - Línea Recta, sin Contravidrio", page: "13", shape: 'parante' },
+  { code: "273 (a)", weight: "0,96", txp: "3", description: "Parante para Puerta de Rebatir - Línea Recta, sin Contravidrio", page: "13", shape: 'encuentro-4-hojas' },
   { code: "275 (a)", weight: "0,29", txp: "8", description: "Batiente para Puerta de Rebatir - Línea Recta, sin Contravidrio", page: "13", shape: 'hoja' },
   { code: "289 (a)", weight: "0,59", txp: "4", description: "Marco Postigón", page: "15", shape: 'marco' },
   { code: "290", weight: "0,44", txp: "8", description: "Hoja de Raja", page: "15", shape: 'hoja' },
   { code: "291", weight: "0,35", txp: "12", description: "Marco Postigón", page: "15", shape: 'marco' },
   { code: "427 (a)", weight: "0,58", txp: "6", description: "Marco para Puerta de Rebatir - Línea Tradicional", page: "11", shape: 'marco' },
-  { code: "428 (a)", weight: "0,98", txp: "3", description: "Parante para Puerta de Rebatir - Línea Tradicional", page: "11", shape: 'parante' },
+  { code: "428 (a)", weight: "0,98", txp: "3", description: "Parante para Puerta de Rebatir - Línea Tradicional", page: "11", shape: 'encuentro-4-hojas' },
   { code: "429", weight: "1,01", txp: "3", description: "Travesaño para Puerta de Rebatir - Línea Tradicional", page: "11, 12", shape: 'travesaño' },
   { code: "432 (a)", weight: "0,79", txp: "6", description: "Marco para Puerta de Rebatir - Línea con Bisagra de Encolizar", page: "12", shape: 'marco' },
-  { code: "433 (a)", weight: "1,13", txp: "3", description: "Parante para Puerta de Rebatir - Línea con Bisagra de Encolizar", page: "12", shape: 'parante' },
+  { code: "433 (a)", weight: "1,13", txp: "3", description: "Parante para Puerta de Rebatir - Línea con Bisagra de Encolizar", page: "12", shape: 'encuentro-4-hojas' },
   { code: "448", weight: "0,30", txp: "10", description: "Tablilla de Postigón", page: "16", shape: 'tubo' },
   { code: "449", weight: "0,26", txp: "10", description: "Tablilla de Postigón Recta", page: "16", shape: 'tubo' },
   { code: "453", weight: "0,45", txp: "8", description: "Acople", page: "25", shape: 'acople' },
-  { code: "455", weight: "1,18", txp: "2", description: "Columna a 90º / 180º", page: "25", shape: 'parante' },
-  { code: "462", weight: "0,45", txp: "8", description: "Parante de Postigón", page: "16", shape: 'parante' },
-  { code: "463 (a)", weight: "0,56", txp: "4", description: "Parante de Postigón y Puerta de Rebatir de 24,5 mm.", page: "16", shape: 'parante' },
+  { code: "455", weight: "1,18", txp: "2", description: "Columna a 90º / 180º", page: "25", shape: 'encuentro-4-hojas' },
+  { code: "462", weight: "0,45", txp: "8", description: "Parante de Postigón", page: "16", shape: 'encuentro-4-hojas' },
+  { code: "463 (a)", weight: "0,56", txp: "4", description: "Parante de Postigón y Puerta de Rebatir de 24,5 mm.", page: "16", shape: 'encuentro-4-hojas' },
   { code: "470", weight: "0,27", txp: "8", description: "Perimetral de Vidrio Repartido", page: "22", shape: 'tubo' },
   { code: "471", weight: "0,32", txp: "8", description: "Central de Vidrio Repartido", page: "22", shape: 'tubo' },
-  { code: "480", weight: "0,58", txp: "6", description: "Parante Central para Ventana y Puerta Corrediza - Línea Combinada", page: "9", shape: 'parante' },
+  { code: "480", weight: "0,58", txp: "6", description: "Parante Central para Ventana y Puerta Corrediza - Línea Combinada", page: "9", shape: 'encuentro-4-hojas' },
   { code: "481", weight: "0,68", txp: "4", description: "Hoja para Ventana y Puerta Corrediza - Línea Combinada", page: "9", shape: 'hoja' },
   { code: "514 (a)", weight: "0,91", txp: "3", description: "Hoja para Puerta de Rebatir", page: "14", shape: 'hoja' },
   { code: "516 (a)", weight: "0,76", txp: "2", description: "Marco para Ventana Banderola, Ventana y Puerta de Rebatir y Oscilo-Batiente", page: "14", shape: 'marco' },
-  { code: "518", weight: "1,00", txp: "4", description: "Refuerzo de Parante", page: "8", shape: 'parante' },
+  { code: "518", weight: "1,00", txp: "4", description: "Refuerzo de Parante", page: "8", shape: 'encuentro-4-hojas' },
   { code: "552", weight: "0,86", txp: "3", description: "Travesaño de Hoja s/contravidrio", page: "14", shape: 'travesaño' },
   { code: "553", weight: "0,21", txp: "16", description: "Adaptador para D.V.H.", page: "25", shape: 'acople' },
   { code: "648 (a)", weight: "0,50", txp: "5", description: "Premarco de 55 mm", page: "23", shape: 'premarco' },
@@ -191,7 +191,7 @@ export const traditionalProfiles: Profile[] = [
   { code: "921", weight: "1,00", txp: "4", description: "Marco Reforzado para Ventana y Puerta Corrediza - Línea Tradicional", page: "8", shape: 'marco' },
   { code: "952", weight: "0,28", txp: "8", description: "Porta - Contravidrio", page: "20", shape: 'contravidrio' },
   { code: "961", weight: "1,16", txp: "2", description: "Marco de 3 Guía para Ventana Corrediza", page: "10", shape: 'marco' },
-  { code: "986", weight: "1,06", txp: "2", description: "Columna Curva a 90º", page: "25", shape: 'parante' },
+  { code: "986", weight: "1,06", txp: "2", description: "Columna Curva a 90º", page: "25", shape: 'encuentro-4-hojas' },
   { code: "993", weight: "0,67", txp: "8", description: "Travesaño Angosto para Paño Fijo", page: "20", shape: 'travesaño' },
   { code: "994", weight: "0,96", txp: "3", description: "Travesaño Ancho para Paño Fijo", page: "19", shape: 'travesaño' }
 ];
@@ -206,8 +206,8 @@ export const mediterraneaProfiles: Profile[] = [
   { code: "380", weight: "0,22", txp: "20", description: "Contravidrio", page: "3, 26", shape: 'contravidrio' },
   { code: "405", weight: "0,72", txp: "4", description: "Hoja Perimetral para Vidrio Simple Ventana y Puerta Corrediza recta 61 mm", page: "3, 17", shape: 'hoja' },
   { code: "406", weight: "0,68", txp: "4", description: "Hoja Perimetral para D.V.H. Ventana y Puerta Corrediza recta 61 mm", page: "3, 17", shape: 'hoja' },
-  { code: "500 (a)", weight: "2,17", txp: "2", description: "Cabezal y Parante Grande para Puerta de Rebatir M-Cinco", page: "3, 16", shape: 'parante' },
-  { code: "518", weight: "1,00", txp: "4", description: "Refuerzo de Parante Corrediza para M-Uno, M-Tres y M-Cinco", page: "3, 23", shape: 'parante' },
+  { code: "500 (a)", weight: "2,17", txp: "2", description: "Cabezal y Parante Grande para Puerta de Rebatir M-Cinco", page: "3, 16", shape: 'encuentro-4-hojas' },
+  { code: "518", weight: "1,00", txp: "4", description: "Refuerzo de Parante Corrediza para M-Uno, M-Tres y M-Cinco", page: "3, 23", shape: 'encuentro-4-hojas' },
   { code: "523", weight: "0,17", txp: "20", description: "Contravidrio de 16 mm", page: "3, 26", shape: 'contravidrio' },
   { code: "525", weight: "0,19", txp: "20", description: "Contravidrio", page: "3, 26", shape: 'contravidrio' },
   { code: "526", weight: "0,15", txp: "20", description: "Contravidrio", page: "3, 26", shape: 'contravidrio' },
@@ -221,7 +221,7 @@ export const mediterraneaProfiles: Profile[] = [
   { code: "547 (a)", weight: "1,66", txp: "2", description: "Hoja Angosta de Puerta Rebatir M-Cinco", page: "3, 15", shape: 'hoja' },
   { code: "554 (a)", weight: "1,48", txp: "2", description: "Marco para Ventana y Puerta Corrediza M-Cinco", page: "3, 22", shape: 'marco' },
   { code: "555 (a)", weight: "1,43", txp: "3", description: "Hoja de Ventana y Puerta Corrediza M-Cinco", page: "4, 23", shape: 'hoja' },
-  { code: "556 (a)", weight: "0,46", txp: "8", description: "Encuentro de Hoja para Perfil 555 Ventana y Puerta Corrediza M - Cinco", page: "4, 23", shape: 'parante' },
+  { code: "556 (a)", weight: "0,46", txp: "8", description: "Encuentro de Hoja para Perfil 555 Ventana y Puerta Corrediza M - Cinco", page: "4, 23", shape: 'encuentro-4-hojas' },
   { code: "558", weight: "0,49", txp: "8", description: "Guía de Mosquitero para Ventana y Puerta Corrediza M-Cinco", page: "4, 22", shape: 'guia' },
   { code: "559", weight: "0,24", txp: "20", description: "Contravidrio Interno de 16 mm para Ventana y Puerta Corrediza M-Cinco", page: "4, 23", shape: 'contravidrio' },
   { code: "561", weight: "0,09", txp: "20", description: "Guía Inferior para Ventana y Puerta Corredizas M-Tres y M-Cinco", page: "4, 18", shape: 'guia' },
@@ -232,13 +232,13 @@ export const mediterraneaProfiles: Profile[] = [
   { code: "566", weight: "0,21", txp: "10", description: "Guía de Cierre para Puerta Vaivén M-Cinco", page: "4, 14", shape: 'guia' },
   { code: "567 (a)", weight: "1,77", txp: "2", description: "Hoja para Puerta Vaivén M-Cinco", page: "4, 14", shape: 'hoja' },
   { code: "568", weight: "0,56", txp: "6", description: "Acople Recto", page: "4, 31", shape: 'acople' },
-  { code: "569", weight: "0,33", txp: "10", description: "Encuentro de 4 Hojas para Ventana y Puerta Corrediza M-Tres y M-Cinco", page: "4, 21", shape: 'parante' },
+  { code: "569", weight: "0,33", txp: "10", description: "Encuentro de 4 Hojas para Ventana y Puerta Corrediza M-Tres y M-Cinco", page: "4, 21", shape: 'encuentro-4-hojas' },
   { code: "572 (a)", weight: "1,83", txp: "2", description: "Marco para Ventana y Puerta Corrediza M-Cinco con guía de mosquitero", page: "4, 22", shape: 'marco' },
   { code: "574", weight: "0,38", txp: "10", description: "Guía de Mosquitero para Ventana y Puerta Corrediza M-Siete", page: "4, 25", shape: 'guia' },
   { code: "577 (a)", weight: "0,49", txp: "8", description: "Guía Postiza de Cortina (Común y Barrio)", page: "4, 29", shape: 'guia' },
   { code: "580 (a)", weight: "1,54", txp: "3", description: "Hoja con Contravidrio de Ventana y Puerta Corrediza M-Cinco", page: "4, 23", shape: 'hoja' },
   { code: "589 (a)", weight: "1,43", txp: "3", description: "Hoja recta DVH de Ventana y Puerta Corrediza M-Cinco", page: "4, 23", shape: 'hoja' },
-  { code: "590", weight: "0,20", txp: "10", description: "Encuentro 4 Hojas para Ventana y Puerta Corrediza M-Uno", page: "4, 21", shape: 'parante' },
+  { code: "590", weight: "0,20", txp: "10", description: "Encuentro 4 Hojas para Ventana y Puerta Corrediza M-Uno", page: "4, 21", shape: 'encuentro-4-hojas' },
   { code: "595", weight: "0,58", txp: "4", description: "Rotula Interior", page: "4, 31", shape: 'acople' },
   { code: "596", weight: "0,50", txp: "4", description: "Rotula Exterior", page: "4, 31", shape: 'acople' },
   { code: "597 (a)", weight: "0,89", txp: "4", description: "Marco VaiVen", page: "4, 14", shape: 'marco' },
@@ -247,9 +247,9 @@ export const mediterraneaProfiles: Profile[] = [
   { code: "601 (a)", weight: "2,35", txp: "2", description: "Marco para Corrediza-Elevable M-Siete", page: "5, 24", shape: 'marco' },
   { code: "602 (a)", weight: "2,33", txp: "2", description: "Hoja para Corrediza-Elevable M-Siete", page: "5, 24", shape: 'hoja' },
   { code: "603 (a)", weight: "0,13", txp: "3", description: "Marco postizo para Corrediza-Elevable M-Siete", page: "5, 25", shape: 'marco' },
-  { code: "607", weight: "0,62", txp: "20", description: "Encuentro de 4 Hojas para Corrediza-Elevable M-Siete", page: "5, 25", shape: 'parante' },
+  { code: "607", weight: "0,62", txp: "20", description: "Encuentro de 4 Hojas para Corrediza-Elevable M-Siete", page: "5, 25", shape: 'encuentro-4-hojas' },
   { code: "608", weight: "0,26", txp: "8", description: "Guía Inferior para Corrediza-Elevable M-Siete", page: "5, 24", shape: 'guia' },
-  { code: "609 (a)", weight: "0,66", txp: "4", description: "Encuentro de Hoja para Perfil 602 Corrediza-Elevable M-Siete", page: "5, 24", shape: 'parante' },
+  { code: "609 (a)", weight: "0,66", txp: "4", description: "Encuentro de Hoja para Perfil 602 Corrediza-Elevable M-Siete", page: "5, 24", shape: 'encuentro-4-hojas' },
   { code: "611", weight: "0,30", txp: "20", description: "Contravidrio Interno 7.2mm M-Cinco", page: "5, 16", shape: 'contravidrio' },
   { code: "612", weight: "0,31", txp: "20", description: "Contravidrio Interno 21.2mm M-Cinco", page: "5, 16", shape: 'contravidrio' },
   { code: "638", weight: "0,70", txp: "5", description: "Travesaño para Hoja 405 Ventana y Puerta Corrediza", page: "5, 17", shape: 'travesaño' },
@@ -262,7 +262,7 @@ export const mediterraneaProfiles: Profile[] = [
   { code: "698", weight: "0,20", txp: "20", description: "Contravidrio de 23,5mm", page: "5, 26", shape: 'contravidrio' },
   { code: "699", weight: "0,13", txp: "20", description: "Contravidrio de 3 mm", page: "5, 26", shape: 'contravidrio' },
   { code: "705", weight: "0,16", txp: "20", description: "Contravidrio de 11 mm", page: "5, 26", shape: 'contravidrio' },
-  { code: "713", weight: "0,41", txp: "8", description: "Encuentro Hoja para Ventana y Puerta Corrediza - M-Tres", page: "5, 21", shape: 'parante' },
+  { code: "713", weight: "0,41", txp: "8", description: "Encuentro Hoja para Ventana y Puerta Corrediza - M-Tres", page: "5, 21", shape: 'encuentro-4-hojas' },
   { code: "725", weight: "0,26", txp: "10", description: "Tope Inferior Umbral Transitable para Puerta de Rebatir", page: "5, 32", shape: 'accesorio' },
   { code: "726", weight: "0,39", txp: "10", description: "Umbral Transitable para Puerta de Rebatir", page: "5, 32", shape: 'umbral' },
   { code: "727", weight: "0,26", txp: "10", description: "Embellecedor de Marco", page: "5, 34", shape: 'accesorio' },
@@ -271,24 +271,24 @@ export const mediterraneaProfiles: Profile[] = [
   { code: "739", weight: "0,13", txp: "20", description: "Tapa Mosquitero Reforzado.", page: "6, 23", shape: 'accesorio' },
   { code: "741", weight: "0,76", txp: "4", description: "Hoja Perimetral para Vidrio Simple Ventana y Puerta Corrediza M-Uno", page: "6, 17", shape: 'hoja' },
   { code: "742", weight: "0,76", txp: "4", description: "Hoja Perimetral D.V.H. para Ventana y Puerta Corrediza M-Uno", page: "6, 17", shape: 'hoja' },
-  { code: "743", weight: "0,30", txp: "8", description: "Encuentro Central para Ventana y Puerta Corrediza M-Uno", page: "6, 17", shape: 'parante' },
+  { code: "743", weight: "0,30", txp: "8", description: "Encuentro Central para Ventana y Puerta Corrediza M-Uno", page: "6, 17", shape: 'encuentro-4-hojas' },
   { code: "785", weight: "0,82", txp: "4", description: "Marco para Ventana Desplazable M-Tres", page: "6, 14", shape: 'marco' },
   { code: "786", weight: "1,18", txp: "4", description: "Hoja para Ventana Desplazable M-Tres", page: "6, 14", shape: 'hoja' },
   { code: "787", weight: "0,76", txp: "4", description: "Hoja Perimetral para Vidrio Laminado Ventana y Puerta Corrediza M-Uno", page: "6, 17", shape: 'hoja' },
   { code: "802", weight: "1,09", txp: "2", description: "Marco Perimetral para Ventana y Puerta Corrediza M-Uno", page: "6, 18", shape: 'marco' },
   { code: "815", weight: "0,59", txp: "5", description: "Cabezal - Zocalo para Vidrio D.V.H Ventana y Puerta Corrediza", page: "6, 19", shape: 'zocalo' },
-  { code: "816 (a)", weight: "0,57", txp: "8", description: "Parante Central para Vidrio D.V.H Ventana y Puerta Corrediza", page: "6, 19", shape: 'parante' },
-  { code: "817 (a)", weight: "0,85", txp: "4", description: "Parante Central con Refuerzo para Vidrio D.V.H Ventana y Puerta Corrediza", page: "6, 19", shape: 'parante' },
+  { code: "816 (a)", weight: "0,57", txp: "8", description: "Parante Central para Vidrio D.V.H Ventana y Puerta Corrediza", page: "6, 19", shape: 'encuentro-4-hojas' },
+  { code: "817 (a)", weight: "0,85", txp: "4", description: "Parante Central con Refuerzo para Vidrio D.V.H Ventana y Puerta Corrediza", page: "6, 19", shape: 'encuentro-4-hojas' },
   { code: "818", weight: "1,08", txp: "4", description: "Zocalo Alto para Vidrio D.V.H Puerta Corrediza", page: "6, 19", shape: 'zocalo' },
-  { code: "819 (a)", weight: "0,61", txp: "5", description: "Parante Lateral para Vidrio D.V.H Ventana y Puerta Corrediza", page: "6, 19", shape: 'parante' },
+  { code: "819 (a)", weight: "0,61", txp: "5", description: "Parante Lateral para Vidrio D.V.H Ventana y Puerta Corrediza", page: "6, 19", shape: 'encuentro-4-hojas' },
   { code: "820", weight: "0,62", txp: "5", description: "Cabezal - Zocalo para Vidrio Simple Ventana y Puerta Corrediza", page: "6, 18", shape: 'zocalo' },
-  { code: "822 (a)", weight: "0,60", txp: "8", description: "Parante Central para Vidrio Simple Ventana y Puerta Corrediza", page: "6, 18", shape: 'parante' },
-  { code: "823 (a)", weight: "0,64", txp: "5", description: "Parante Lateral para Vidrio Simple Ventana y Puerta Corrediza", page: "6, 18", shape: 'parante' },
+  { code: "822 (a)", weight: "0,60", txp: "8", description: "Parante Central para Vidrio Simple Ventana y Puerta Corrediza", page: "6, 18", shape: 'encuentro-4-hojas' },
+  { code: "823 (a)", weight: "0,64", txp: "5", description: "Parante Lateral para Vidrio Simple Ventana y Puerta Corrediza", page: "6, 18", shape: 'encuentro-4-hojas' },
   { code: "824", weight: "1,11", txp: "4", description: "Zocalo Alto para Vidrio Simple Puerta Corrediza", page: "6, 18", shape: 'zocalo' },
   { code: "825 (a)", weight: "0,84", txp: "4", description: "Inversor de Hoja para Ventana y Puerta de Rebatir M-Tres", page: "6, 11", shape: 'inversor' },
   { code: "826 (a)", weight: "1,05", txp: "2", description: "Hoja Perimetral para Vidrio DVH S/CV", page: "6, 10", shape: 'hoja' },
   { code: "827 (a)", weight: "1,09", txp: "2", description: "Hoja Perimetral para Vidrio Simple S/CV", page: "6, 10", shape: 'hoja' },
-  { code: "834 (a)", weight: "0,88", txp: "4", description: "Parante Central con Refuerzo para Vidrio Simple Ventana y Puerta Corrediza", page: "6, 19", shape: 'parante' },
+  { code: "834 (a)", weight: "0,88", txp: "4", description: "Parante Central con Refuerzo para Vidrio Simple Ventana y Puerta Corrediza", page: "6, 19", shape: 'encuentro-4-hojas' },
   { code: "835", weight: "0,94", txp: "4", description: "Travesaño para Paño Fijo M-Tres", page: "7, 11", shape: 'travesaño' },
   { code: "843 (a)", weight: "0,34", txp: "10", description: "Bisagra Tapacintas", page: "7, 30", shape: 'bisagra' },
   { code: "849", weight: "1,54", txp: "2", description: "Zócalo de Hoja para Puerta de Rebatir M-Tres", page: "7, 11", shape: 'zocalo' },
@@ -300,7 +300,7 @@ export const mediterraneaProfiles: Profile[] = [
   { code: "857 (a)", weight: "0,27", txp: "12", description: "Contramarco de 65 mm", page: "7, 27", shape: 'contramarco' },
   { code: "859", weight: "0,57", txp: "6", description: "Soporte Exterior de Vidrio para Paño Fijo M-Cinco", page: "7, 13", shape: 'accesorio' },
   { code: "860", weight: "1,19", txp: "4", description: "Marco para Paño Fijo M-Cinco", page: "7, 13", shape: 'marco' },
-  { code: "861 (a)", weight: "1,10", txp: "2", description: "Cabezal y Parante de Hoja para Puerta M-Tres", page: "7, 11", shape: 'parante' },
+  { code: "861 (a)", weight: "1,10", txp: "2", description: "Cabezal y Parante de Hoja para Puerta M-Tres", page: "7, 11", shape: 'encuentro-4-hojas' },
   { code: "862 (a)", weight: "0,21", txp: "12", description: "Contramarco de 45 mm", page: "7, 27", shape: 'contramarco' },
   { code: "870", weight: "0,23", txp: "20", description: "Contravidrio de 30,5 mm", page: "7, 26", shape: 'contravidrio' },
   { code: "873 (a)", weight: "2,10", txp: "2", description: "Marco Perimetral de 3 Pistas para Ventana y Puerta Corrediza M-Tres", page: "7, 21", shape: 'marco' },
@@ -332,12 +332,12 @@ export const mediterraneaRPTProfiles: Profile[] = [
   { code: '146(a)', weight: '0.19', shape: 'contramarco', description: 'Contramarco RPT Grande', page: '8' },
   { code: '270', weight: '0.31', shape: 'acople', description: 'Suplemento Cerradero Jamba RPT', page: '12' },
   { code: '278', weight: '0.53', shape: 'umbral', description: 'Sobre Guía Umbral ST-MF RPT', page: '15' },
-  { code: '281', weight: '0.35', shape: 'parante', description: 'Encuentro Central ST-MF RPT', page: '15' },
+  { code: '281', weight: '0.35', shape: 'encuentro-4-hojas', description: 'Encuentro Central ST-MF RPT', page: '15' },
   { code: '285', weight: '0.26', shape: 'acople', description: 'Tapa Vertical Lado Móvil ST-MF RPT', page: '16' },
   { code: '286', weight: '0.37', shape: 'acople', description: 'Tapa Horizontal Lado Móvil ST-MF RPT', page: '16' },
   { code: '310(a)', weight: '0.49', shape: 'acople', description: 'Tapa Terminación Exterior Marco RPT', page: '18' },
-  { code: '342', weight: '0.29', shape: 'parante', description: 'Encuentro Central M-Tres RPT', page: '11' },
-  { code: '347', weight: '0.22', shape: 'parante', description: 'Encuentro Central M-Uno RPT', page: '11' },
+  { code: '342', weight: '0.29', shape: 'encuentro-4-hojas', description: 'Encuentro Central M-Tres RPT', page: '11' },
+  { code: '347', weight: '0.22', shape: 'encuentro-4-hojas', description: 'Encuentro Central M-Uno RPT', page: '11' },
   { code: '519', weight: '0.11', shape: 'acople', description: 'Adaptador Porta-Burlete RPT', page: '20' },
   { code: '6350', weight: '1.25', shape: 'marco', description: 'Marco Perimetral RPT', page: '5' },
   { code: '6351', weight: '1.45', shape: 'hoja', description: 'Hoja Perimetral RPT', page: '6' },
@@ -347,13 +347,13 @@ export const mediterraneaRPTProfiles: Profile[] = [
 
 export const monacoRPTProfiles: Profile[] = [
   { code: '2001', weight: '1.15', shape: 'marco', description: 'Marco Monaco RPT', page: '5' },
-  { code: '2002', weight: '1.35', shape: 'hoja', description: 'Hoja Monaco RPT', page: '6' },
-  { code: '2003', weight: '1.05', shape: 'inversor', description: 'Inversor Monaco RPT', page: '7' },
-  { code: '2021', weight: '1.45', shape: 'marco', description: 'Marco Corrediza Monaco RPT', page: '8' },
-  { code: '2022', weight: '1.25', shape: 'hoja', description: 'Hoja Corrediza Monaco RPT', page: '9' },
-  { code: '2100', weight: '0.08', shape: 'varilla', description: 'Varilla Poliamida Standard RPT', page: '10' },
-  { code: '2201', weight: '1.55', shape: 'marco', description: 'Marco con Contramarco RPT', page: '12' },
-  { code: '2301', weight: '1.10', shape: 'travesaño', description: 'Travesaño Monaco RPT', page: '4' }
+  { code: "2002", weight: "1,35", shape: 'hoja', description: "Hoja Monaco RPT", page: "6" },
+  { code: "2003", weight: "1,05", shape: 'inversor', description: "Inversor Monaco RPT", page: "7" },
+  { code: "2021", weight: "1,45", shape: 'marco', description: "Marco Corrediza Monaco RPT", page: "8" },
+  { code: "2022", weight: "1,25", shape: 'hoja', description: "Hoja Corrediza Monaco RPT", page: "9" },
+  { code: "2100", weight: "0,08", shape: 'varilla', description: "Varilla Poliamida Standard RPT", page: "10" },
+  { code: "2201", weight: "1,55", shape: 'marco', description: "Marco con Contramarco RPT", page: "12" },
+  { code: '2301', weight: '1,10', shape: 'travesaño', description: 'Travesaño Monaco RPT', page: '4' }
 ];
 
 export const lamaParasolProfiles: Profile[] = [
@@ -373,8 +373,198 @@ export const frameJuntaCerradaProfiles: Profile[] = [
 ];
 
 export const gammaProfiles: Profile[] = [
-  { code: 'G-10', weight: '0.85', shape: 'marco', description: 'Marco Perimetral Gamma', page: '1' },
-  { code: 'G-20', weight: '0.95', shape: 'hoja', description: 'Hoja Corrediza Gamma', page: '2' }
+  { 
+    code: 'G-10', weight: '0,85', txp: '4', shape: 'marco', description: 'Marco Perimetral Corrediza 2 Guías', page: '4',
+    technicalDetails: {
+      dimensions: '62mm x 32mm',
+      applications: [
+        'Marco base para ventana corrediza Gamma de 2 hojas.',
+        'Compatible con vidrio simple de 4mm y DVH de hasta 24mm.',
+        'Incluye canal para felpa de polipropileno 7x6mm.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 50" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="5" y="5" width="90" height="40" rx="1" />
+          <path d="M 5,25 L 95,25" opacity="0.3" strokeDasharray="2 2" />
+          <path d="M 35,5 L 35,45 M 65,5 L 65,45" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-11', weight: '1,25', txp: '3', shape: 'marco', description: 'Marco Perimetral Corrediza 3 Guías', page: '5',
+    technicalDetails: {
+      dimensions: '93mm x 32mm',
+      applications: [
+        'Marco para ventana corrediza de 3 hojas o con mosquitero integrado.',
+        'Tres pistas de deslizamiento con guías de aluminio interior.',
+        'Permite composiciones con paño fijo central.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 50" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="5" y="5" width="90" height="40" rx="1" />
+          <path d="M 28,5 L 28,45 M 50,5 L 50,45 M 72,5 L 72,45" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-20', weight: '0,95', txp: '4', shape: 'hoja', description: 'Hoja Corrediza Gamma — Corte a 45°', page: '6',
+    technicalDetails: {
+      dimensions: '46mm x 34mm',
+      applications: [
+        'Hoja móvil para ventana corrediza liviana.',
+        'Armado con corte a 45° en todos los encuentros.',
+        'Soporte para vidrio simple 4mm y DVH 20mm con suplemento.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="10" y="5" width="80" height="50" rx="1" />
+          <rect x="20" y="12" width="60" height="36" rx="0.5" opacity="0.4" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-21', weight: '1,15', txp: '3', shape: 'hoja', description: 'Hoja Reforzada para DVH Gamma', page: '7',
+    technicalDetails: {
+      dimensions: '46mm x 42mm',
+      applications: [
+        'Hoja de mayor sección para alojar DVH de 24mm.',
+        'Ideal para puertas balcón corredizas de hasta 2000mm de alto.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="10" y="5" width="80" height="50" rx="1" />
+          <rect x="18" y="10" width="64" height="40" rx="0.5" opacity="0.4" />
+          <rect x="22" y="14" width="56" height="32" rx="0.5" opacity="0.2" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-30', weight: '0,75', txp: '6', shape: 'traslapo', description: 'Traslapo Central de Encuentro', page: '8',
+    technicalDetails: {
+      dimensions: '22mm x 40mm',
+      applications: [
+        'Perfil de encuentro entre dos hojas corredizas.',
+        'Incorpora alojamiento para felpa doble de hermeticidad.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 30,5 L 30,55 L 45,55 L 45,30 L 55,30 L 55,55 L 70,55 L 70,5" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-35', weight: '0,65', txp: '6', shape: 'inversor', description: 'Inversor / Cierre Lateral de Hojas', page: '9',
+    technicalDetails: {
+      dimensions: '18mm x 36mm',
+      applications: [
+        'Perfil de cierre en los laterales de las hojas corredizas.',
+        'Compatible con burletes de EPDM para sellado hermético.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 25,10 L 40,10 L 40,25 L 60,25 L 60,10 L 75,10 L 75,50 L 60,50 L 60,35 L 40,35 L 40,50 L 25,50 Z" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-40', weight: '0,88', txp: '4', shape: 'zocalo', description: 'Zócalo / Cabezal Perimetral', page: '10',
+    technicalDetails: {
+      dimensions: '62mm x 15mm',
+      applications: [
+        'Cierre superior e inferior del marco perimetral.',
+        'Incluye canal de desagüe para evacuación de agua de condensación.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="5" y="5" width="90" height="20" rx="1" />
+          <path d="M 5,15 L 95,15" opacity="0.3" strokeDasharray="2 2" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-50', weight: '0,45', txp: '8', shape: 'junta', description: 'Junta de Encuentro Marco-Pared', page: '11',
+    technicalDetails: {
+      dimensions: '30mm x 12mm',
+      applications: [
+        'Perfil de terminación entre el marco y la mampostería.',
+        'Permite un acabado limpio con sellado de silicona perimetral.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 40" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 20,5 L 20,35 L 50,35 L 50,15 L 80,15 L 80,5" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-60', weight: '0,70', txp: '4', shape: 'mosquitero', description: 'Marco Mosquitero Gamma', page: '12',
+    technicalDetails: {
+      dimensions: '25mm x 18mm',
+      applications: [
+        'Marco perimetral para tela mosquitera deslizable.',
+        'Se aloja en la tercera guía del marco G-11.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="15" y="10" width="70" height="40" rx="1" />
+          <rect x="20" y="15" width="60" height="30" rx="0.5" opacity="0.3" strokeDasharray="3 3" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-61', weight: '0,55', txp: '6', shape: 'hoja', description: 'Hoja Mosquitero Corrediza', page: '13',
+    technicalDetails: {
+      dimensions: '22mm x 14mm',
+      applications: [
+        'Hoja liviana para mosquitero de la serie Gamma.',
+        'Compatible con tela de fibra de vidrio estándar.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 50" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="15" y="10" width="70" height="30" rx="1" />
+          <rect x="20" y="14" width="60" height="22" rx="0.5" opacity="0.2" strokeDasharray="2 2" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-70', weight: '0,35', txp: '8', shape: 'complemento', description: 'Adaptador para Vidrio Simple 4mm', page: '14',
+    technicalDetails: {
+      dimensions: '15mm x 8mm',
+      applications: [
+        'Suplemento para adaptar la cámara de acristalamiento a vidrio simple de 4mm.',
+        'Se inserta por presión en la canal de la hoja.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 20,5 L 80,5 L 80,25 L 60,25 L 60,12 L 40,12 L 40,25 L 20,25 Z" />
+        </svg>
+      )
+    }
+  },
+  { 
+    code: 'G-71', weight: '0,25', txp: '10', shape: 'contravidrio', description: 'Contravidrio / Junquillo Gamma', page: '15',
+    technicalDetails: {
+      dimensions: '12mm x 10mm',
+      applications: [
+        'Retención del vidrio dentro de la cámara de acristalamiento.',
+        'Se inserta por clip a presión sin necesidad de tornillos.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 30,5 L 70,5 L 70,15 L 60,15 L 60,25 L 40,25 L 40,15 L 30,15 Z" />
+        </svg>
+      )
+    }
+  }
 ];
 
 export const deltaProfiles: Profile[] = [
@@ -403,18 +593,18 @@ export const monacoTopProfiles: Profile[] = [
 ];
 
 export const frenteIntegralProfiles: Profile[] = [
-  { code: 'FI-101', weight: '2.10', shape: 'parante', description: 'Columna de Frente Integral' },
+  { code: 'FI-101', weight: '2.10', shape: 'encuentro-4-hojas', description: 'Columna de Frente Integral' },
   { code: 'FI-102', weight: '1.85', shape: 'travesaño', description: 'Travesaño de Frente Integral' }
 ];
 
 export const frenteVidriadoProfiles: Profile[] = [
-  { code: 'FV-201', weight: '1.95', shape: 'parante', description: 'Columna de Frente Vidriado' },
+  { code: 'FV-201', weight: '1.95', shape: 'encuentro-4-hojas', description: 'Columna de Frente Vidriado' },
   { code: 'FV-202', weight: '1.70', shape: 'travesaño', description: 'Travesaño de Frente Vidriado' }
 ];
 
 export const barandasProfiles: Profile[] = [
-  { code: 'B-101', weight: '0.95', shape: 'parante', description: 'Pasamano de Baranda' },
-  { code: 'B-102', weight: '0.85', shape: 'parante', description: 'Columna de Baranda' }
+  { code: 'B-101', weight: '0.95', shape: 'encuentro-4-hojas', description: 'Pasamano de Baranda' },
+  { code: 'B-102', weight: '0.85', shape: 'encuentro-4-hojas', description: 'Columna de Baranda' }
 ];
 
 export const mamparasProfiles: Profile[] = [
@@ -436,6 +626,7 @@ export const complementariosProfiles: Profile[] = [
   { code: 'CP-01', weight: '0.45', shape: 'tubo', description: 'Tubo Estándar' },
   { code: 'CP-02', weight: '0.55', shape: 'varilla', description: 'Ángulo Estándar' }
 ];
+
 export const allProfiles: Profile[] = [
   ...traditionalProfiles,
   ...mediterraneaProfiles,
