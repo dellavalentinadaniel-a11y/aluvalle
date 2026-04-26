@@ -173,13 +173,14 @@ export const products: Product[] = [
       'La Línea Delta es un sistema de carpintería de media-alta prestación que ofrece soluciones versátiles tanto en sistemas corredizos como de rebatir y oscilo-batientes. Destaca por su deslizamiento extremadamente suave gracias a su pista de acero inoxidable intercambiable en corredizas, y su excelente hermeticidad en sistemas de abrir. Es ideal para aberturas de tamaño medio y grande que requieren durabilidad y un funcionamiento fluido.',
     isRPT: false,
     specs: [
-      { label: 'Ancho del Marco', value: '80mm', icon: 'settings_overscan' },
-      { label: 'Pista', value: 'Acero Inoxidable Intercambiable', icon: 'hardware' },
-      { label: 'Rodamientos', value: 'Tándem Alta Carga', icon: 'settings_backup_restore' },
-      { label: 'Vidrio Máximo', value: 'DVH 24mm', icon: 'window' },
-      { label: 'Sistema', value: 'Corredizo 2 Hojas', icon: 'view_quilt' },
-      { label: 'Espesor Marco', value: '80mm x 50mm', icon: 'layers' },
-      { label: 'Esfuerzo Máx. Hojas', value: '150kg por hoja', icon: 'scale' },
+      { label: 'Ancho del Marco', value: '80mm robusto con refuerzos internos', icon: 'settings_overscan' },
+      { label: 'Material Base', value: 'Aluminio 6063 T5 anodizado', icon: 'hardware' },
+      { label: 'Pista de Rodadura', value: 'Acero Inoxidable 304 (intercambiable)', icon: 'tune' },
+      { label: 'Rodamientos', value: 'Sistema Tándem dual - 150kg/hoja', icon: 'settings_backup_restore' },
+      { label: 'Capacidad Máxima', value: 'DVH 24mm | 150kg por hoja', icon: 'window' },
+      { label: 'Configuración', value: 'Corredizo 2 hojas | Oscilo-batiente', icon: 'view_quilt' },
+      { label: 'Secciones', value: 'Marco 80x50mm | Hoja 90x45mm', icon: 'layers' },
+      { label: 'Cierre Lateral', value: 'Ciego coplanar sin tornillos visibles', icon: 'visibility_off' },
     ],
     features: [
       {
