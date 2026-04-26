@@ -112,36 +112,47 @@ export const products: Product[] = [
     heroImage: '/gallery/gamma-hero.png',
     description: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales de alta gama.',
     introText:
-      'La Línea Gamma representa la evolución del sistema corredizo liviano de Alcemar. Con un marco perimetral de tan solo 62mm de ancho y la posibilidad de alojar vidrio simple o DVH de hasta 24mm, esta línea maximiza la superficie vidriada manteniendo una estética limpia y moderna. Ideal para proyectos residenciales donde se busca amplitud visual sin resignar prestaciones mecánicas ni hermeticidad.',
+      'La Línea Gamma representa la evolución del sistema corredizo liviano de Alcemar. Con un marco perimetral de tan solo 62mm de ancho y la posibilidad de alojar vidrio simple o DVH de hasta 24mm, esta línea maximiza la superficie vidriada manteniendo una estética limpia y moderna. Ideal para proyectos residenciales donde se busca amplitud visual sin resignar prestaciones mecánicas ni hermeticidad. Sistema de cortes a 45° que facilita el armado rápido y el acabado limpio en todas las esquinas.',
     isRPT: false,
     specs: [
       { label: 'Ancho del Marco', value: '62mm', icon: 'settings_overscan' },
-      { label: 'Tipo de Vidrio', value: 'Simple / DVH', icon: 'window' },
+      { label: 'Tipo de Vidrio', value: 'Simple 4mm / DVH (hasta 24mm)', icon: 'window' },
       { label: 'Espesor Máx. Vidrio', value: '24mm', icon: 'layers' },
       { label: 'Tipologías', value: 'Corrediza 2 y 3 Guías', icon: 'view_quilt' },
       { label: 'Largo de Barra', value: '6.030mm', icon: 'straighten' },
       { label: 'Cortes', value: '45° (Marcos y Hojas)', icon: 'content_cut' },
+      { label: 'Aleación', value: '6063 T5', icon: 'science' },
     ],
     features: [
       {
         title: 'Diseño Esbelto',
-        description: 'Marco perimetral de sólo 62mm minimiza la vista de aluminio al frente, maximizando la superficie vidriada y la entrada de luz natural.',
+        description: 'Marco perimetral de sólo 62mm minimiza la vista de aluminio al frente, maximizando la superficie vidriada y la entrada de luz natural para espacios abiertos y luminosos.',
         icon: 'panorama',
       },
       {
         title: 'Alta Resistencia Estructural',
-        description: 'Perfiles extruidos en aleación 6063 T5 con cálculos inerciales optimizados para resistir cargas de viento sin deformación permanente.',
+        description: 'Perfiles extruidos en aleación 6063 T5 con cálculos inerciales optimizados para resistir cargas de viento sin deformación permanente, incluso en grandes dimensiones.',
         icon: 'shield',
       },
       {
         title: 'Sistema de 2 y 3 Guías',
-        description: 'Flexibilidad total: marcos de 2 guías para ventanas estándar y de 3 guías para composiciones con mosquitero integrado o paño fijo central.',
+        description: 'Flexibilidad total: marcos de 2 guías para ventanas estándar y de 3 guías para composiciones con mosquitero integrado o paño fijo central. Adaptable a cualquier proyecto.',
         icon: 'view_column',
       },
       {
         title: 'Fácil Mecanizado',
-        description: 'Cortes a 45° estandarizados y calados simplificados. Diseñado para alta productividad en taller con mínimo herramental especializado.',
+        description: 'Cortes a 45° estandarizados y calados simplificados. Diseñado para alta productividad en taller con mínimo herramental especializado y máxima eficiencia.',
         icon: 'construction',
+      },
+      {
+        title: 'Hermeticidad Garantizada',
+        description: 'Sistema de felpas de polipropileno perimetral continuo para hermeticidad al aire e impermeabilidad básica ante aguas de lluvia.',
+        icon: 'cloud_done',
+      },
+      {
+        title: 'Acabado Premium',
+        description: 'Anodizado decorativo en platería estándar o acabados especiales. Presencia elegante y moderna que complementa cualquier estilo arquitectónico.',
+        icon: 'brush',
       },
     ],
     downloads: [

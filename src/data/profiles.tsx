@@ -6,7 +6,7 @@ export interface Profile {
   txp?: string;
   description: string;
   page?: string;
-  shape?: 'marco' | 'hoja' | 'zocalo' | 'contravidrio' | 'parante' | 'travesaño' | 'acople' | 'contramarco' | 'premarco' | 'bisagra' | 'tubo' | 'guia' | 'mosquitero' | 'accesorio' | 'botaagua' | 'umbral' | 'goteron' | 'varilla' | 'omega' | 'inversor' | 'traslapo' | 'junta' | 'complemento';
+  shape?: 'marco' | 'hoja' | 'zocalo' | 'contravidrio' | 'parante' | 'travesaño' | 'acople' | 'contramarco' | 'premarco' | 'bisagra' | 'tubo' | 'guia' | 'mosquitero' | 'accesorio' | 'botaagua' | 'umbral' | 'goteron' | 'varilla' | 'omega' | 'inversor' | 'traslapo' | 'junta' | 'complemento' | 'encuentro-4-hojas';
   technicalDetails?: {
     dimensions: string;
     applications: string[];
@@ -550,7 +550,7 @@ export const gammaProfiles: Profile[] = [
       )
     }
   },
-  { 
+  {
     code: 'G-71', weight: '0,25', txp: '10', shape: 'contravidrio', description: 'Contravidrio / Junquillo Gamma', page: '15',
     technicalDetails: {
       dimensions: '12mm x 10mm',
@@ -561,6 +561,59 @@ export const gammaProfiles: Profile[] = [
       sketch: (
         <svg viewBox="0 0 100 30" className="w-full h-full fill-none stroke-current stroke-[1.5]">
           <path d="M 30,5 L 70,5 L 70,15 L 60,15 L 60,25 L 40,25 L 40,15 L 30,15 Z" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'G-72', weight: '0,32', txp: '8', shape: 'junta', description: 'Felpa de Hermeticidad Gamma', page: '16',
+    technicalDetails: {
+      dimensions: '7mm x 6mm',
+      applications: [
+        'Burlete de polipropileno para sellado perimetral.',
+        'Compatible con todos los perfiles marco y hoja de la serie.',
+        'Proporciona hermeticidad al aire e impermeabilidad básica.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 40" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <rect x="15" y="5" width="70" height="30" rx="2" />
+          <path d="M 30,15 L 70,15" opacity="0.4" strokeDasharray="2 2" />
+          <path d="M 30,25 L 70,25" opacity="0.4" strokeDasharray="2 2" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'G-80', weight: '0,18', txp: '10', shape: 'accesorio', description: 'Tapa Plástica de Cierre Lateral', page: '17',
+    technicalDetails: {
+      dimensions: '18mm x 15mm',
+      applications: [
+        'Cubierta estética para las tornillerías de cierre lateral.',
+        'Material plástico ABS color anodizado.',
+        'Inserción simple sin necesidad de herramientas.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 60" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <path d="M 30,10 L 70,10 L 75,30 L 70,50 L 30,50 L 25,30 Z" />
+          <circle cx="50" cy="30" r="6" opacity="0.3" />
+        </svg>
+      )
+    }
+  },
+  {
+    code: 'G-81', weight: '0,40', txp: '6', shape: 'accesorio', description: 'Manija de Accionamiento Gamma', page: '18',
+    technicalDetails: {
+      dimensions: '180mm x 25mm',
+      applications: [
+        'Manija ergonómica para abrir y cerrar las hojas corredizas.',
+        'Material aluminio anodizado plateado.',
+        'Instalación rápida con tornillos de fijación M5.'
+      ],
+      sketch: (
+        <svg viewBox="0 0 100 50" className="w-full h-full fill-none stroke-current stroke-[1.5]">
+          <ellipse cx="50" cy="25" rx="40" ry="12" />
+          <circle cx="30" cy="25" r="3" fill="currentColor" />
+          <circle cx="70" cy="25" r="3" fill="currentColor" />
         </svg>
       )
     }
