@@ -1,0 +1,27 @@
+# Archivos de imagen grandes
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+
+# Archivos comprimidos
+*.zip
+*.rar
+*.7z
+
+# Configuración local
+.claude/
+.claude/*
+desktop.ini
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias y build
+node_modules/
+dist/
+build/
+.env
+.env.local
