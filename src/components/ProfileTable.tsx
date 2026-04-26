@@ -161,7 +161,7 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => 
 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
-            <thead>
+            <thead className="sticky top-0 bg-surface-container-high z-10">
               <tr className="bg-surface-container-highest/30 text-primary text-[11px] uppercase tracking-widest font-bold">
                 <th className="px-8 py-5 border-b border-outline/5">Código</th>
                 <th className="px-6 py-5 border-b border-outline/5">Peso</th>

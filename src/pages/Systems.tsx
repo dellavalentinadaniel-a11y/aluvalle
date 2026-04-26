@@ -114,7 +114,7 @@ export default function Systems() {
               <span className="font-label text-primary uppercase tracking-[0.2em] text-xs mb-4 block">
                 Catálogo de Productos
               </span>
-              <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-surface leading-none uppercase">
+              <h1 className="font-headline text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-on-surface leading-none uppercase">
                 Sistemas de <br />
                 <span className="text-on-surface-variant">Ventanas y Puertas</span>
               </h1>
@@ -123,10 +123,10 @@ export default function Systems() {
               <div className="relative group">
                 <input
                   type="text"
-                  placeholder="Buscar sistema..."
+                  placeholder="Buscar..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full md:w-80 bg-surface-container border border-outline/20 px-6 py-4 rounded-2xl text-on-surface focus:outline-none focus:border-primary transition-all group-hover:border-primary/50 shadow-xl"
+                  className="w-full md:w-72 bg-surface-container border border-outline/20 px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl text-on-surface focus:outline-none focus:border-primary transition-all group-hover:border-primary/50 shadow-xl text-sm"
                 />
                 <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-hover:text-primary transition-colors">
                   search
@@ -166,7 +166,7 @@ export default function Systems() {
 
       {/* Product Grid */}
       <section className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
             <div
               key={product.name}
@@ -193,7 +193,7 @@ export default function Systems() {
                   </span>
                 </div>
               </div>
-              <div className="p-8 flex flex-col flex-grow">
+              <div className="p-5 sm:p-8 flex flex-col flex-grow">
                 <span className="font-label text-primary text-[10px] uppercase tracking-widest mb-2 block font-bold">
                   {product.category}
                 </span>
