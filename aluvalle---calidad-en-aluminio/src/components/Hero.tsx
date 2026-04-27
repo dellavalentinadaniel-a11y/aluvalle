@@ -5,14 +5,23 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-alu-dark">
-      {/* Background Image with Overlay */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
-          alt="Aluminum Architecture"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover opacity-50"
-          referrerPolicy="no-referrer"
-        />
+        >
+          <source src="/gallery/aluvalle.mp4" type="video/mp4" />
+          <img
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
+            alt="Aluminum Architecture"
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-alu-dark via-alu-dark/60 to-transparent"></div>
       </div>
 
