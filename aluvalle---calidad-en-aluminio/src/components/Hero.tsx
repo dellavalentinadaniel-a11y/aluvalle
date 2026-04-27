@@ -15,17 +15,11 @@ export default function Hero() {
           crossOrigin="anonymous"
           preload="auto"
           onError={() => console.error('Video failed to load')}
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/aluvalle.mp4" type="video/mp4" />
         </video>
-        <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
-          alt="Aluminum Architecture"
-          className="absolute inset-0 w-full h-full object-cover hidden"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-alu-dark from-20% via-alu-dark/40 via-50% to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 from-5% via-black/25 via-45% to-transparent pointer-events-none" style={{ mixBlendMode: 'multiply' }}></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
