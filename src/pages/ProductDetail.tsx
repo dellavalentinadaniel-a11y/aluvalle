@@ -1,9 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { products } from '../data/products';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ProfileTable from '../components/ProfileTable';
-import { Breadcrumb } from '../components/Breadcrumb';
-import { FloatingCTA } from '../components/FloatingCTA';
+import { useBreadcrumb } from '../context/BreadcrumbContext';
 import { TechTabs } from '../components/TechTabs';
 import {
   traditionalProfiles,
@@ -27,7 +27,7 @@ import {
   frameJuntaCerradaProfiles,
 } from '../data/profiles';
 import { ChevronDown, Beaker, PenTool, FileText } from 'lucide-react';
-import { useState } from 'react';
+
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -35,6 +35,45 @@ export default function ProductDetail() {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
     slug === 'linea-monaco' ? 'monaco-standard' : null
   );
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [cardSlide, setCardSlide] = useState(0);
+
+  const productLines = [
+    { name: 'Línea Tradicional', slug: 'linea-tradicional', category: 'Sistemas Básicos', img: '/SISTEMA DE VENTANAS Y PUERTAS/TRADICIONAL (1).jpg' },
+    { name: 'Línea Mediterránea', slug: 'linea-mediterranea', category: 'Sistemas Premium', img: '/SISTEMA DE VENTANAS Y PUERTAS/MEDITERRANEA.jpg' },
+    { name: 'Línea Gamma', slug: 'linea-gamma', category: 'Sistemas Ligeros', img: '/SISTEMA DE VENTANAS Y PUERTAS/GAMMA.jpg' },
+    { name: 'Línea Delta', slug: 'linea-delta', category: 'Deslizamiento Suave', img: '/SISTEMA DE VENTANAS Y PUERTAS/DELTA.jpg' },
+    { name: 'Línea Mónaco', slug: 'linea-monaco', category: 'Alta Gama', img: '/SISTEMA DE VENTANAS Y PUERTAS/MONACO.jpg' },
+    { name: 'Línea Atlántica', slug: 'linea-atlantica', category: 'Robustez Extra', img: '/SISTEMA DE VENTANAS Y PUERTAS/ATLANTICA-1.jpg' },
+    { name: 'Línea Niza', slug: 'linea-niza', category: 'Estilo Europeo', img: '/SISTEMA DE VENTANAS Y PUERTAS/NIZA.jpg' },
+    { name: 'Línea Mónaco RPT', slug: 'linea-monaco-rpt', category: 'Ruptura Puente Térmico', img: '/SISTEMA DE VENTANAS Y PUERTAS/MONACO-RPT-660x660.jpg' },
+    { name: 'Línea Mediterránea RPT', slug: 'linea-mediterranea-rpt', category: 'Ruptura Puente Térmico', img: '/SISTEMA DE VENTANAS Y PUERTAS/MEDITERRANEO-RPT.jpg' },
+  ];
+  const CARDS_PER_PAGE = 3;
+  const totalPages = Math.ceil(productLines.length / CARDS_PER_PAGE);
+
+  const heroImages = [
+    { src: '/gallery/herobanner/sistemas-arquitectonicos-aluvalle-cerramientos-modernos.webp', alt: 'Sistemas arquitectónicos Aluvalle, cerramientos modernos y eficientes' },
+    { src: '/gallery/herobanner/carpinteria-aluminio-alta-prestacion-ventanas-corredizas.webp', alt: 'Carpintería de aluminio de alta prestación, ventanas corredizas Premium' },
+    { src: '/gallery/herobanner/aluvalle-aberturas-aluminio-linea-gamma-premium.webp', alt: 'Aberturas de aluminio Línea Gamma Premium por Aluvalle' },
+    { src: '/gallery/herobanner/perfiles-aluminio-optimizacion-termica-acustica.webp', alt: 'Perfiles de aluminio con optimización térmica y acústica superior' },
+    { src: '/gallery/herobanner/diseno-innovador-aberturas-aluminio-linea-gamma.webp', alt: 'Diseño innovador en aberturas de aluminio, Línea Gamma' },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
+  useEffect(() => {
+    const cardTimer = setInterval(() => {
+      setCardSlide((prev) => (prev + 1) % totalPages);
+    }, 4000);
+    return () => clearInterval(cardTimer);
+  }, [totalPages]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -59,16 +98,19 @@ export default function ProductDetail() {
     );
   }
 
+  const { setItems: setBreadcrumb } = useBreadcrumb();
+
+  useEffect(() => {
+    setBreadcrumb([
+      { label: 'Sistemas', path: '/sistemas/ventanas-y-puertas' },
+      { label: product.category, path: `/sistemas/${product.categorySlug}` },
+      { label: product.name },
+    ]);
+    return () => setBreadcrumb([]);
+  }, [product, setBreadcrumb]);
+
   return (
     <div className="bg-background min-h-screen relative">
-      {/* Breadcrumb */}
-      <Breadcrumb
-        items={[
-          { label: 'Sistemas', path: '/sistemas/ventanas-y-puertas' },
-          { label: product.category, path: `/sistemas/${product.categorySlug}` },
-          { label: product.name },
-        ]}
-      />
 
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -85,14 +127,22 @@ export default function ProductDetail() {
       <div className="relative z-10">
       {/* Hero Section */}
       <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={product.heroImage}
-            alt={product.name}
-            fetchPriority="high"
-            className="w-full h-full object-cover scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        <div className="absolute inset-0 z-0 bg-black">
+          <AnimatePresence mode="popLayout">
+            <motion.img
+              key={currentSlide}
+              src={heroImages[currentSlide].src}
+              alt={heroImages[currentSlide].alt}
+              title={heroImages[currentSlide].alt}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+              className="absolute w-full h-full object-cover"
+              fetchPriority="high"
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-32">
@@ -177,6 +227,113 @@ export default function ProductDetail() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Action Buttons Container */}
+            <div className="flex flex-col gap-4 mt-8">
+              {(product.slug === 'linea-atlantica' ||
+                product.slug === 'linea-niza' ||
+                product.slug === 'linea-mediterranea' ||
+                product.slug === 'linea-mediterranea-rpt') && (
+                <Link
+                  to={
+                    product.slug === 'linea-atlantica'
+                      ? '/mecanizados/linea-atlantica'
+                      : product.slug === 'linea-niza'
+                        ? '/mecanizados/linea-niza'
+                        : product.slug === 'linea-mediterranea'
+                          ? '/mecanizados/linea-mediterranea'
+                          : '/mecanizados/linea-mediterranea-rpt'
+                  }
+                  className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl w-full"
+                >
+                  <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                    <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                      Producción Técnica
+                    </p>
+                    <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                      Ver Manual de Mecanizado
+                    </p>
+                  </div>
+                </Link>
+              )}
+              {product.slug === 'linea-tradicional' && (
+                <>
+                  <Link
+                    to="/mecanizados/linea-tradicional"
+                    className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl w-full"
+                  >
+                    <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                      <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                        Producción Técnica
+                      </p>
+                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                        Ver Manual de Mecanizado
+                      </p>
+                    </div>
+                  </Link>
+                  <Link
+                    to={`/catalogo-tecnico/${product.slug}`}
+                    className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl w-full"
+                  >
+                    <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                      <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                        Documentación Técnica
+                      </p>
+                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                        Ver Catálogo de Cortes
+                      </p>
+                    </div>
+                  </Link>
+                </>
+              )}
+              {product.slug === 'linea-gamma' && (
+                <>
+                  <Link
+                    to="/mecanizados/linea-gamma"
+                    className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl w-full"
+                  >
+                    <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                      <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                        Producción Técnica
+                      </p>
+                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                        Ver Manual de Mecanizado
+                      </p>
+                    </div>
+                  </Link>
+                  <a
+                    href="/docs/Línea Gamma/Catalogo_Linea_Gamma.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl w-full"
+                  >
+                    <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                      <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                        Catálogo Completo
+                      </p>
+                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                        Descargar PDF Gamma
+                      </p>
+                    </div>
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -308,104 +465,10 @@ export default function ProductDetail() {
           product.slug === 'sistema-de-lama-parasol' ||
           product.slug === 'sistema-frame-de-junta-cerrada') && (
           <section className="max-w-7xl mx-auto px-6 pb-24">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
-              <div className="max-w-2xl">
-                <h2 className="font-headline text-3xl md:text-5xl font-bold text-on-surface uppercase mb-4">
-                  Catálogo de Perfiles
-                </h2>
-                <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">
-                  Detalle técnico exhaustivo para especificación arquitectónica.
-                </p>
-              </div>
-
-              {(product.slug === 'linea-atlantica' ||
-                product.slug === 'linea-niza' ||
-                product.slug === 'linea-mediterranea' ||
-                product.slug === 'linea-mediterranea-rpt') && (
-                <Link
-                  to={
-                    product.slug === 'linea-atlantica'
-                      ? '/mecanizados/linea-atlantica'
-                      : product.slug === 'linea-niza'
-                        ? '/mecanizados/linea-niza'
-                        : product.slug === 'linea-mediterranea'
-                          ? '/mecanizados/linea-mediterranea'
-                          : '/mecanizados/linea-mediterranea-rpt'
-                  }
-                  className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
-                >
-                  <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
-                    <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
-                      Producción Técnica
-                    </p>
-                    <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
-                      Ver Manual de Mecanizado
-                    </p>
-                  </div>
-                </Link>
-              )}
-              {product.slug === 'linea-tradicional' && (
-                <Link
-                  to={`/catalogo-tecnico/${product.slug}`}
-                  className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl"
-                >
-                  <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
-                    <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
-                      Documentación Técnica
-                    </p>
-                    <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
-                      Ver Catálogo de Cortes
-                    </p>
-                  </div>
-                </Link>
-              )}
-              {product.slug === 'linea-gamma' && (
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="/docs/Línea Gamma/Catalogo_Linea_Gamma.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl"
-                  >
-                    <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
-                      <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
-                    </div>
-                    <div className="text-left">
-                      <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
-                        Catálogo Completo
-                      </p>
-                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
-                        Descargar PDF Gamma
-                      </p>
-                    </div>
-                  </a>
-                  <Link
-                    to="/mecanizados/linea-gamma"
-                    className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
-                  >
-                    <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
-                      <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
-                    </div>
-                    <div className="text-left">
-                      <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
-                        Producción Técnica
-                      </p>
-                      <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
-                        Ver Manual de Mecanizado
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              )}
-            </div>
             <ProfileTable
               systemName={product.name}
+              title="Catálogo de Perfiles"
+              subtitle="Detalle técnico exhaustivo para especificación arquitectónica."
               profiles={
                 product.slug === 'linea-tradicional'
                   ? traditionalProfiles
@@ -446,35 +509,80 @@ export default function ProductDetail() {
         )
       )}
 
-      {/* Gallery Section */}
+      {/* Lines Carousel Section */}
       <section className="bg-background py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="font-label text-primary uppercase tracking-widest text-[10px] mb-12 flex items-center justify-center gap-4">
             <span className="w-12 h-[1px] bg-primary/50"></span>
-            Galería de Aplicación
+            Otras Líneas del Sistema
             <span className="w-12 h-[1px] bg-primary/50"></span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {product.gallery.map((img, i) => (
-              <div
-                key={img}
-                className={`relative overflow-hidden group ${i === 0 ? 'md:col-span-1' : ''}`}
-              >
-                <img
-                  src={img}
-                  alt={`Proyecto ${i}`}
-                  className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 img-filter-theme"
-                />
-                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform">
-                  <span className="text-white font-bold tracking-[0.2em] text-[10px] uppercase">
-                    Proyecto Referencial {i + 1}
-                  </span>
-                </div>
-              </div>
+
+          <div className="relative overflow-hidden">
+            <motion.div
+              key={cardSlide}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {productLines
+                .slice(cardSlide * CARDS_PER_PAGE, cardSlide * CARDS_PER_PAGE + CARDS_PER_PAGE)
+                .map((pl) => (
+                  <Link
+                    key={pl.slug}
+                    to={`/productos/${pl.slug}`}
+                    className="group flex flex-col bg-surface-container border border-outline/10 shadow-xl hover:shadow-2xl rounded-[2.5rem] overflow-hidden hover:border-primary/50 transition-all duration-300"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
+                      <img
+                        src={pl.img}
+                        alt={pl.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 img-filter-theme"
+                      />
+                      <div className="absolute bottom-6 right-6">
+                        <span className="bg-background/80 backdrop-blur-md text-on-surface px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest border border-outline/20 rounded-full">
+                          + Info
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <span className="font-label text-primary text-[10px] uppercase tracking-widest mb-2 block font-bold">
+                        {pl.category}
+                      </span>
+                      <h3 className="font-headline text-xl font-bold text-on-surface uppercase mb-4 tracking-tight">
+                        {pl.name}
+                      </h3>
+                      <div className="pt-4 border-t border-outline/10 flex justify-between items-center mt-auto">
+                        <span className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-[0.2em] group-hover:opacity-70 transition-colors">
+                          Ver Detalles
+                          <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+            </motion.div>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-10">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCardSlide(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === cardSlide ? 'w-6 h-2 bg-primary' : 'w-2 h-2 bg-outline/30 hover:bg-primary/50'
+                }`}
+                aria-label={`Página ${i + 1}`}
+              />
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Downloads Section */}
       <section className="max-w-7xl mx-auto px-6 py-32 border-t border-outline/20">
@@ -559,7 +667,7 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      <FloatingCTA showAfterSeconds={5} />
+
     </div>
   </div>
 );

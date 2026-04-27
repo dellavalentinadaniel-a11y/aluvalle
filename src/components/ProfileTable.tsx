@@ -19,6 +19,9 @@ interface Profile {
 interface ProfileTableProps {
   systemName: string;
   profiles: Profile[];
+  title?: string;
+  subtitle?: string;
+  actions?: React.ReactNode;
 }
 
 const ShapeIcon: React.FC<{ shape?: string }> = ({ shape }) => {
@@ -125,16 +128,12 @@ const ProfileDetailDrawer: React.FC<{ profile: Profile | null; onClose: () => vo
   );
 };
 
-const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => {
+const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title, subtitle, actions }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState<Profile | null>(null);
   const { items, addItem } = useCalculator();
-  const INITIAL_COUNT = 10;
   
-  const displayedProfiles = isExpanded ? profiles : profiles.slice(0, INITIAL_COUNT);
-  const hasMore = profiles.length > INITIAL_COUNT;
-
-  // Crear un Set de códigos añadidos para búsqueda rápida
+  // Create a Set of added codes for quick lookup
   const addedCodes = useMemo(() => new Set(items.map(item => item.profile.code)), [items]);
 
   return (
@@ -142,20 +141,31 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => 
       <ProfileDetailDrawer profile={selectedProfile} onClose={() => setSelectedProfile(null)} />
       
       <div className="w-full bg-surface border border-outline/10 shadow-xl overflow-hidden mt-16 rounded-[2rem]">
-        <div className="bg-surface-container-low px-8 py-8 border-b border-outline/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div>
-            <h3 className="font-headline text-3xl font-bold text-on-surface uppercase tracking-tight">Índice de Perfiles</h3>
-            <p className="font-label text-primary text-[10px] uppercase tracking-widest mt-1">
-              {systemName} — {profiles.length} perfiles
-            </p>
+        <div className="bg-surface-container-low px-8 py-8 border-b border-outline/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+          <div className="max-w-2xl">
+            <h3 className="font-headline text-3xl font-bold text-on-surface uppercase tracking-tight">{title || 'Catálogo de Perfiles'}</h3>
+            {subtitle ? (
+               <p className="text-on-surface-variant text-sm leading-relaxed mt-2">{subtitle}</p>
+            ) : (
+               <p className="font-label text-primary text-[10px] uppercase tracking-widest mt-1">
+                 {systemName} — {profiles.length} perfiles
+               </p>
+            )}
           </div>
-          <div className="flex items-center gap-4 text-on-surface-variant text-[10px] uppercase tracking-widest bg-surface-container-high/50 px-6 py-3 rounded-full border border-outline/5">
-            <span className="hidden sm:flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary/40"></span> T.xP.: Tiras por Paquete
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary"></span> Largo: 6150mm
-            </span>
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+            {actions && (
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                {actions}
+              </div>
+            )}
+            <div className="flex items-center justify-center sm:justify-start gap-4 text-on-surface-variant text-[10px] uppercase tracking-widest bg-surface-container-high/50 px-6 py-3 rounded-full border border-outline/5 w-full sm:w-auto">
+              <span className="hidden sm:flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary/40"></span> T.xP.: Tiras por Paquete
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary"></span> Largo: 6150mm
+              </span>
+            </div>
           </div>
         </div>
 
@@ -171,66 +181,78 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles }) => 
                 <th className="px-6 py-5 border-b border-outline/5 text-center">Acciones</th>
               </tr>
             </thead>
-            <tbody className="font-body text-sm">
-              {displayedProfiles.map((profile, index) => {
-                const isAdded = addedCodes.has(profile.code);
-                return (
-                  <tr 
-                    key={profile.code + index} 
-                    className={`group transition-colors border-b border-outline/5 last:border-0 ${isAdded ? 'bg-primary/5' : 'hover:bg-primary/5'}`}
-                  >
-                    <td className={`px-8 py-6 font-bold transition-all duration-300 ${isAdded ? 'text-primary' : 'text-on-surface group-hover:text-primary'}`}>{profile.code}</td>
-                    <td className="px-6 py-6 text-on-surface-variant">{profile.weight}</td>
-                    <td className="px-6 py-6 text-on-surface-variant">
-                      <span className="bg-surface-container px-2.5 py-1.5 rounded-lg text-[10px] border border-outline/5 font-bold uppercase">{profile.txp}</span>
-                    </td>
-                    <td className="px-6 py-6 text-on-surface font-medium leading-relaxed max-w-xs">{profile.description}</td>
-                    <td className="px-6 py-6 text-center">
-                      <div className={`bg-surface-container-high/40 p-1.5 inline-block border transition-all rounded-xl ${isAdded ? 'border-primary/50' : 'border-outline/5 group-hover:border-primary/30'}`}>
-                        <ShapeIcon shape={profile.shape} />
-                      </div>
-                    </td>
-                    <td className="px-6 py-6">
-                      <div className="flex items-center justify-center gap-2">
-                        <button 
-                          onClick={() => setSelectedProfile(profile)}
-                          className="bg-surface-container-high/60 p-2.5 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm"
-                          title="Ver ficha técnica"
-                          aria-label={`Ver ficha técnica del perfil ${profile.code}`}
-                        >
-                          <Info className="w-5 h-5" />
-                        </button>
-                        <button 
-                          onClick={() => !isAdded && addItem(profile)}
-                          className={`p-2.5 border transition-all rounded-xl shadow-sm flex items-center justify-center ${
-                            isAdded
-                              ? 'bg-primary text-on-primary border-primary cursor-default'
-                              : 'bg-surface-container-high/60 text-on-surface-variant border-outline/10 hover:border-primary hover:text-primary'
-                          }`}
-                          title={isAdded ? "Ya añadido a la calculadora" : "Añadir a calculadora de peso"}
-                          aria-label={isAdded ? `Perfil ${profile.code} ya añadido` : `Añadir perfil ${profile.code} a calculadora`}
-                        >
-                          {isAdded ? (
-                            <Check className="w-5 h-5 animate-in zoom-in duration-300" />
-                          ) : (
-                            <Calculator className="w-5 h-5" />
-                          )}
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            {isExpanded && (
+              <tbody className="font-body text-sm">
+                {profiles.map((profile, index) => {
+                  const isAdded = addedCodes.has(profile.code);
+                  return (
+                    <tr
+                      key={profile.code + index}
+                      className={`group transition-colors border-b border-outline/5 last:border-0 ${isAdded ? 'bg-primary/5' : 'hover:bg-primary/5'}`}
+                    >
+                      <td className={`px-8 py-6 font-bold transition-all duration-300 ${isAdded ? 'text-primary' : 'text-on-surface group-hover:text-primary'}`}>{profile.code}</td>
+                      <td className="px-6 py-6 text-on-surface-variant">{profile.weight}</td>
+                      <td className="px-6 py-6 text-on-surface-variant">
+                        <span className="bg-surface-container px-2.5 py-1.5 rounded-lg text-[10px] border border-outline/5 font-bold uppercase">{profile.txp}</span>
+                      </td>
+                      <td className="px-6 py-6 text-on-surface font-medium leading-relaxed max-w-xs">{profile.description}</td>
+                      <td className="px-6 py-6 text-center">
+                        <div className={`bg-surface-container-high/40 p-1.5 inline-block border transition-all rounded-xl ${isAdded ? 'border-primary/50' : 'border-outline/5 group-hover:border-primary/30'}`}>
+                          <ShapeIcon shape={profile.shape} />
+                        </div>
+                      </td>
+                      <td className="px-6 py-6">
+                        <div className="flex items-center justify-center gap-2">
+                          <button
+                            onClick={() => setSelectedProfile(profile)}
+                            className="bg-surface-container-high/60 p-2.5 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm"
+                            title="Ver ficha técnica"
+                            aria-label={`Ver ficha técnica del perfil ${profile.code}`}
+                          >
+                            <Info className="w-5 h-5" />
+                          </button>
+                          <button
+                            onClick={() => !isAdded && addItem(profile)}
+                            className={`p-2.5 border transition-all rounded-xl shadow-sm flex items-center justify-center ${
+                              isAdded
+                                ? 'bg-primary text-on-primary border-primary cursor-default'
+                                : 'bg-surface-container-high/60 text-on-surface-variant border-outline/10 hover:border-primary hover:text-primary'
+                            }`}
+                            title={isAdded ? "Ya añadido a la calculadora" : "Añadir a calculadora de peso"}
+                            aria-label={isAdded ? `Perfil ${profile.code} ya añadido` : `Añadir perfil ${profile.code} a calculadora`}
+                          >
+                            {isAdded ? (
+                              <Check className="w-5 h-5 animate-in zoom-in duration-300" />
+                            ) : (
+                              <Calculator className="w-5 h-5" />
+                            )}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            )}
           </table>
         </div>
 
-        {hasMore && (
+        {profiles.length > 0 && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full py-8 bg-surface-container-low hover:bg-primary text-primary hover:text-on-primary font-bold uppercase text-[10px] tracking-[0.3em] transition-all duration-500 border-t border-outline/5"
+            className="w-full flex items-center justify-center gap-2 py-8 bg-surface-container-low hover:bg-primary text-primary hover:text-on-primary font-bold uppercase text-[10px] tracking-[0.3em] transition-all duration-500 border-t border-outline/5"
           >
-            {isExpanded ? <><ChevronUp className="w-4 h-4" /> Mostrar Menos</> : <><ChevronDown className="w-4 h-4" /> Ver Catálogo Completo</>}
+            {isExpanded ? (
+              <>
+                <ChevronUp className="w-4 h-4" />
+                OCULTAR CATÁLOGO
+              </>
+            ) : (
+              <>
+                <ChevronDown className="w-4 h-4" />
+                VER CATÁLOGO DESGLOSADO
+              </>
+            )}
           </button>
         )}
       </div>

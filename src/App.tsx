@@ -26,8 +26,11 @@ const GammaMachining = lazy(() => import('./pages/GammaMachining.tsx'));
 const DeltaMachining = lazy(() => import('./pages/DeltaMachining.tsx'));
 const TradicionalMachining = lazy(() => import('./pages/TradicionalMachining.tsx'));
 const TechnicalCatalog = lazy(() => import('./pages/TechnicalCatalog.tsx'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage.tsx'));
 
 import { CalculatorProvider } from './context/CalculatorContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { BreadcrumbProvider } from './context/BreadcrumbContext';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -41,7 +44,9 @@ const LoadingScreen = () => (
 
 export default function App() {
   return (
-    <CalculatorProvider>
+    <ThemeProvider>
+      <CalculatorProvider>
+      <BreadcrumbProvider>
       <Analytics />
       <SpeedInsights />
       <Router>
@@ -74,10 +79,13 @@ export default function App() {
             <Route path="mecanizados/linea-gamma" element={<GammaMachining />} />
             <Route path="mecanizados/linea-delta" element={<DeltaMachining />} />
             <Route path="mecanizados/linea-tradicional" element={<TradicionalMachining />} />
+            <Route path="perfil" element={<ProfilePage />} />
           </Route>
         </Routes>
       </Suspense>
     </Router>
+    </BreadcrumbProvider>
     </CalculatorProvider>
+    </ThemeProvider>
   );
 }

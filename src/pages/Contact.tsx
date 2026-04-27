@@ -40,10 +40,10 @@ const Contact = () => {
 
     // Validar todos los campos
     Object.entries(formData).forEach(([key, value]) => {
-      validateField(key, value);
+      validateField(key, value as string);
     });
 
-    if (Object.keys(errors).length === 0 && Object.values(formData).every(v => v.trim())) {
+    if (Object.keys(errors).length === 0 && Object.values(formData).every(v => (v as string).trim())) {
       setFormState('sending');
       setTimeout(() => setFormState('success'), 1500);
     }
@@ -207,7 +207,6 @@ const Contact = () => {
                             ? 'border-red-500 focus:border-red-500'
                             : 'border-outline/20 focus:border-primary'
                         }`}
-                        style={{ fontSize: '16px' }}
                       ></textarea>
                       {errors.mensaje && <p className="text-red-500 text-xs font-semibold">{errors.mensaje}</p>}
                     </div>

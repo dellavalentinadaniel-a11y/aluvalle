@@ -1,22 +1,50 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'motion/react';
-import { useCalculator } from '../context/CalculatorContext';
 import CookieBanner from './CookieBanner';
 import WhatsAppButton from './WhatsAppButton';
 import { ScrollToTopButton } from './ScrollToTopButton';
-import logoAluvalle from './logo-aluvalle.png';
+import { SubHeader } from './SubHeader';
+import logoAluvalle from './logo-aluvalle-new.png';
 
 export default function Layout() {
-  const { items } = useCalculator();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const [expandedSubMenu, setExpandedSubMenu] = useState<string | null>(null);
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const { theme } = useTheme();
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  // Lógica de Smart Header: ocultar si está detenido
+  useEffect(() => {
+    const handleInteraction = () => {
+      setIsHeaderVisible(true);
+      
+      if (idleTimerRef.current) {
+        clearTimeout(idleTimerRef.current);
+      }
+      
+      // Si el usuario deja de interactuar por 3 segundos, se oculta el header principal
+      idleTimerRef.current = setTimeout(() => {
+        // Solo ocultar si no estamos en el tope de la página
+        if (window.scrollY > 100) {
+          setIsHeaderVisible(false);
+        }
+      }, 3000);
+    };
+
+    window.addEventListener('scroll', handleInteraction);
+    window.addEventListener('mousemove', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction);
+
+    return () => {
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, []);
 
   const navLinks = [
     {
@@ -52,26 +80,19 @@ export default function Layout() {
     { name: 'Proyectos Arquitectónicos', path: '/proyectos' },
     { name: 'Oficina Técnica', path: '/oficina-tecnica' },
     { name: 'Sostenibilidad', path: '/sostenibilidad' },
-    { name: 'Contacto', path: '/contact' },
   ];
 
   return (
     <div
-      className={`min-h-screen flex flex-col transition-colors duration-500 ${theme === 'light' ? 'light bg-background' : 'bg-background'}`}
+      className={`min-h-screen flex flex-col transition-colors duration-500 ${theme === 'light' ? 'light' : ''}`}
     >
       <header
-        className={`fixed top-0 w-full z-50 backdrop-blur-xl border-b border-outline/10 ${theme === 'light' ? 'bg-background/80' : 'bg-surface-container-low/60'}`}
+        className={`fixed top-0 w-full z-50 backdrop-blur-xl border-b border-outline/10 transition-transform duration-500 ${
+          theme === 'light' ? 'bg-background/80' : 'bg-surface-container-low/60'
+        } ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <nav className="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="material-symbols-outlined text-primary lg:hidden p-3 -m-3"
-              aria-label="Abrir menú de navegación"
-              aria-expanded={isMobileMenuOpen ? 'true' : 'false'}
-            >
-              menu
-            </button>
             <Link to="/" className="flex items-center">
               <img
                 src={logoAluvalle}
@@ -144,42 +165,8 @@ export default function Layout() {
               )
             )}
           </div>
-          <div className="flex items-center gap-6">
-            <button
-              onClick={toggleTheme}
-              className="material-symbols-outlined text-on-surface hover:text-primary transition-all p-3 -m-1 rounded-full hover:bg-surface-container"
-              aria-label={`Cambiar a modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
-              title={`Modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
-            >
-              {theme === 'light' ? 'dark_mode' : 'light_mode'}
-            </button>
-            <button
-              className="hidden md:block material-symbols-outlined text-on-surface hover:text-primary transition-all p-3 -m-1 rounded-full hover:bg-surface-container"
-              aria-label="Buscar"
-              title="Buscar"
-            >
-              search
-            </button>
-            
-            {/* Calculator Icon with Badge */}
-            <Link
-              to="/oficina-tecnica"
-              className="relative p-3 -m-1 text-on-surface hover:text-primary transition-all rounded-full hover:bg-surface-container group"
-              title="Ver Calculadora de Pesos"
-              aria-label="Calculadora de pesos"
-            >
-              <span className="material-symbols-outlined">calculate</span>
-              {items.length > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute top-0 right-0 w-4 h-4 bg-primary text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center shadow-lg border border-background"
-                >
-                  {items.length}
-                </motion.span>
-              )}
-            </Link>
-
+          
+          <div className="flex items-center gap-6 ml-auto lg:ml-8">
             <Link
               to="/contact"
               className="btn-gradient px-8 py-3 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] transform hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center gap-2"
@@ -236,7 +223,7 @@ export default function Layout() {
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
                           className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
-                          aria-expanded={expandedSubMenu === link.name}
+                          aria-expanded={expandedSubMenu === link.name ? 'true' : 'false'}
                         >
                           {link.name}
                           <motion.span
@@ -307,6 +294,7 @@ export default function Layout() {
       </AnimatePresence>
 
       <WhatsAppButton />
+      <SubHeader isMainHeaderVisible={isHeaderVisible} />
       <main className="flex-grow pt-[72px]">
         <Outlet />
       </main>

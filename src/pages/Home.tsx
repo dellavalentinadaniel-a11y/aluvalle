@@ -4,21 +4,21 @@ import { motion } from 'motion/react';
 
 export default function Home() {
   return (
-    <div className="bg-background transition-colors duration-500">
+    <div className="transition-colors duration-500">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-surface">
-          <motion.img
-            initial={{ scale: 1.05, opacity: 1 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5 }}
-            className="w-full h-full object-cover grayscale img-filter-theme"
-            src="/gallery/showroom.jpg"
-            alt="Arquitectura de Vanguardia"
-            fetchPriority="high"
-            width={1920}
-            height={1080}
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/gallery/herobanner/sistemas-arquitectonicos-aluvalle-cerramientos-modernos.webp"
+            className="absolute inset-0 block w-full h-full object-cover"
+          >
+            <source src="/gallery/banner-video/aluvalle.mp4" type="video/mp4" />
+          </video>
           <div className="hero-overlay" />
         </div>
 
@@ -106,25 +106,28 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="md:col-span-2 h-[300px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+              className="md:col-span-2 h-[300px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-2xl"
             >
               <img
-                src="/gallery/warehouse.jpg"
+                src="/gallery/hero-sistemas-banner/sistemas-de-aluminio-para-la-construccion-alumed-aluminium-systems-alicante-showroom-7-perfiles-cristal-1-1024x645.jpg"
                 alt="Almacén de perfiles"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
-              <div className="absolute bottom-10 left-10">
-                <span className="bg-primary text-on-primary text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter mb-4 inline-block shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
+              <div className="absolute bottom-10 left-10 right-10">
+                <span className="bg-primary text-on-primary text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter mb-4 inline-block shadow-lg shadow-primary/40">
                   Logística
                 </span>
-                <h4 className="text-3xl font-bold text-on-surface mb-2">Stock Permanente Capaz</h4>
-                <p className="text-on-surface-variant text-sm max-w-sm leading-relaxed">
+                <h4 className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg">Stock Permanente Capaz</h4>
+                <p className="text-white/80 text-sm max-w-md leading-relaxed">
                   Garantizamos la disponibilidad inmediata de toda nuestra gama de sistemas para
                   proyectos de gran envergadura.
                 </p>
+              </div>
+              <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span className="material-symbols-outlined text-white text-lg">arrow_outward</span>
               </div>
             </motion.div>
 
@@ -134,21 +137,21 @@ export default function Home() {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+                className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
               >
                 <img
-                  src="/gallery/showroom.jpg"
+                  src="/gallery/herobanner/sistemas-arquitectonicos-aluvalle-cerramientos-modernos.webp"
                   alt="Showroom Aluvallé"
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-90" />
-                <div className="absolute bottom-6 left-6">
-                  <h4 className="text-xl font-bold text-on-surface">Showroom Técnico</h4>
-                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mt-1">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-1">
                     Experiencia inmersiva
                   </p>
+                  <h4 className="text-xl font-bold text-white drop-shadow-md">Showroom Técnico</h4>
                 </div>
               </motion.div>
               <motion.div
@@ -156,21 +159,21 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+                className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
               >
                 <img
-                  src="/gallery/showroom.jpg"
+                  src="/gallery/herobanner/perfiles-aluminio-optimizacion-termica-acustica.webp"
                   alt="Perfiles de aluminio"
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-90" />
-                <div className="absolute bottom-6 left-6">
-                  <h4 className="text-xl font-bold text-on-surface">Matricería Propia</h4>
-                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mt-1">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-1">
                     Diseño de vanguardia
                   </p>
+                  <h4 className="text-xl font-bold text-white drop-shadow-md">Matricería Propia</h4>
                 </div>
               </motion.div>
             </div>
@@ -182,19 +185,22 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+              className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
             >
               <img
-                src="/gallery/industrial.jpg"
+                src="/gallery/hero-sistemas-banner/_T1A2631.jpg"
                 alt="Planta industrial"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
-              <div className="absolute bottom-8 left-8">
-                <h4 className="text-2xl font-bold text-on-surface">Extrusión de Precisión</h4>
-                <p className="text-on-surface-variant text-sm mt-2 max-w-xs leading-relaxed">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
+              <div className="absolute bottom-8 left-8 right-8">
+                <span className="bg-white/10 backdrop-blur-md text-primary border border-primary/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">
+                  Producción
+                </span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Extrusión de Precisión</h4>
+                <p className="text-white/80 text-sm mt-2 max-w-sm leading-relaxed">
                   Procesos industriales certificados bajo los más altos estándares internacionales
                   de calidad.
                 </p>
@@ -205,19 +211,22 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-crosshair border border-outline/5"
+              className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
             >
               <img
-                src="/gallery/office.jpg"
+                src="/gallery/hero-sistemas-banner/POPLE_(012).jpg"
                 alt="Divisiones de oficina"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 img-filter-theme"
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-90" />
-              <div className="absolute bottom-8 left-8">
-                <h4 className="text-2xl font-bold text-on-surface">Arquitectura Interior</h4>
-                <p className="text-on-surface-variant text-sm mt-2 max-w-xs leading-relaxed">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
+              <div className="absolute bottom-8 left-8 right-8">
+                <span className="bg-white/10 backdrop-blur-md text-primary border border-primary/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">
+                  Corporativo
+                </span>
+                <h4 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Arquitectura Interior</h4>
+                <p className="text-white/80 text-sm mt-2 max-w-sm leading-relaxed">
                   Sistemas modulares y perfiles para divisiones de alta gama en entornos
                   corporativos.
                 </p>
@@ -244,13 +253,13 @@ export default function Home() {
             className="mb-12 rounded-[2.5rem] overflow-hidden aspect-video border border-outline/10 shadow-2xl relative group"
           >
             <img
-              src="/gallery/industrial.jpg"
+              src="/gallery/herobanner/aluvalle-aberturas-aluminio-linea-gamma-premium.webp"
               alt="Precisión Técnica"
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+              className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold text-on-surface mb-8 tracking-tight uppercase">
             El estándar de oro en perfiles arquitectónicos

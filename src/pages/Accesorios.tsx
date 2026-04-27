@@ -1,4 +1,12 @@
 import { Link } from 'react-router-dom';
+import SystemsHeroBanner from '../components/SystemsHeroBanner';
+
+const heroImages = [
+  { src: '/gallery/hero-sistemas-banner/b8229e173084125.6496fe7d0c235.png', alt: 'Detalle de accesorios y herrajes' },
+  { src: '/gallery/hero-sistemas-banner/ventanas-aluminio-madrid.webp', alt: 'Sistema de cierre y manijas' },
+  { src: '/gallery/hero-sistemas-banner/191199-18215397.jpg', alt: 'Carpintería con accesorios premium' },
+  { src: '/gallery/hero-sistemas-banner/OIP (1).webp', alt: 'Componentes técnicos en aluminio' },
+];
 
 const productLines = [
   {
@@ -47,43 +55,29 @@ export default function Accesorios() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-6 mb-16 pt-12">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-12">
-            <div className="max-w-2xl">
-              <span className="font-label text-primary uppercase tracking-[0.2em] text-xs mb-4 block">
-                Catálogo de Productos
-              </span>
-              <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-surface leading-none uppercase">
-                Catálogo de <br />
-                <span className="text-on-surface-variant">Accesorios</span>
-              </h1>
-            </div>
-            <div className="hidden md:block pb-2">
-              <p className="font-body text-on-surface-variant max-w-xs text-sm leading-relaxed border-l border-outline/10 pl-6">
-                Todos los componentes y herrajes originales necesarios para el armado óptimo de las
-                líneas de aluminio estructural.
-              </p>
-            </div>
-          </div>
-
-          {/* Filter / Categorization */}
-          <div className="flex flex-wrap gap-4 mb-20 border-b border-outline/20 pb-4">
-            <button className="px-5 py-2 bg-primary/10 text-primary border border-primary/30 rounded-full text-xs font-bold uppercase tracking-wider">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12">
+        <SystemsHeroBanner
+          eyebrow="Catálogo de Productos"
+          titleLine1="Catálogo de"
+          titleLine2="Accesorios"
+          description="Componentes y herrajes originales para el armado óptimo de las líneas de aluminio estructural."
+          images={heroImages}
+        >
+          <div className="flex flex-wrap gap-2">
+            <button type="button" className="px-5 py-2 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg shadow-primary/30 flex-shrink-0">
               Ver Todos
             </button>
-            <button className="px-5 py-2 bg-surface-variant/50 border border-outline/30 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary/20 hover:text-primary transition-all">
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
               Seguridad
             </button>
-            <button className="px-5 py-2 bg-surface-variant/50 border border-outline/30 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary/20 hover:text-primary transition-all">
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
               Estanqueidad
             </button>
-            <button className="px-5 py-2 bg-surface-variant/50 border border-outline/30 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary/20 hover:text-primary transition-all">
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
               Armado
             </button>
           </div>
-        </section>
+        </SystemsHeroBanner>
 
         {/* Product Grid */}
         <section className="max-w-7xl mx-auto px-6">

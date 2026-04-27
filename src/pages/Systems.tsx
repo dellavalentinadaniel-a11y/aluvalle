@@ -1,5 +1,13 @@
 import { Link } from 'react-router-dom';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, type ChangeEvent } from 'react';
+import SystemsHeroBanner from '../components/SystemsHeroBanner';
+
+const heroImages = [
+  { src: '/gallery/hero-sistemas-banner/ventanas-aluminio-madrid.webp', alt: 'Ventanas de aluminio modernas' },
+  { src: '/gallery/hero-sistemas-banner/_T1A2631.jpg', alt: 'Sistemas de aluminio premium' },
+  { src: '/gallery/hero-sistemas-banner/ViviendasUnifamiliares_CasaS_Alcemar_07-1024x683.jpg', alt: 'Vivienda unifamiliar con sistemas Alcemar' },
+  { src: '/gallery/hero-sistemas-banner/sistemas-de-aluminio-para-la-construccion-alumed-aluminium-systems-alicante-showroom-7-perfiles-cristal-1-1024x645.jpg', alt: 'Showroom de perfiles de aluminio' },
+];
 
 const productLines = [
   {
@@ -7,7 +15,7 @@ const productLines = [
     slug: 'linea-tradicional',
     category: 'Sistemas Básicos',
     desc: 'Sistema de carpintería tradicional con excelente relación costo-beneficio.',
-    img: '/gallery/warehouse.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/TRADICIONAL (1).jpg',
     type: 'batiente'
   },
   {
@@ -15,7 +23,7 @@ const productLines = [
     slug: 'linea-mediterranea',
     category: 'Sistemas Premium',
     desc: 'La máxima expresión del diseño en aluminio para residencias de lujo.',
-    img: '/gallery/residential.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/MEDITERRANEA.jpg',
     type: 'premium'
   },
   {
@@ -23,7 +31,7 @@ const productLines = [
     slug: 'linea-gamma',
     category: 'Sistemas Ligeros',
     desc: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales.',
-    img: '/gallery/office.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/GAMMA.jpg',
     type: 'corrediza'
   },
   {
@@ -31,7 +39,7 @@ const productLines = [
     slug: 'linea-delta',
     category: 'Deslizamiento Suave',
     desc: 'Máxima apertura y fluidez visual con diseño estructural resistente.',
-    img: '/gallery/residential.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/DELTA.jpg',
     type: 'corrediza'
   },
   {
@@ -39,7 +47,7 @@ const productLines = [
     slug: 'linea-monaco',
     category: 'Alta Gama',
     desc: 'Sistema avanzado de estanqueidad y cierre para grandes dimensiones.',
-    img: '/gallery/showroom.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/MONACO.jpg',
     type: 'premium'
   },
   {
@@ -47,7 +55,7 @@ const productLines = [
     slug: 'linea-atlantica',
     category: 'Robustez Extra',
     desc: 'Especialmente diseñada para frentes marítimos y presiones extremas de viento.',
-    img: '/gallery/warehouse.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/ATLANTICA-1.jpg',
     type: 'batiente'
   },
   {
@@ -55,7 +63,7 @@ const productLines = [
     slug: 'linea-niza',
     category: 'Estilo Europeo',
     desc: 'Detalles europeos y precisión milimétrica en cada encuentro.',
-    img: '/gallery/residential.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/NIZA.jpg',
     type: 'premium'
   },
   {
@@ -63,7 +71,7 @@ const productLines = [
     slug: 'linea-monaco-rpt',
     category: 'Ruptura Puente Térmico',
     desc: 'Eficiencia energética superior manteniendo la estética de la Línea Mónaco.',
-    img: '/gallery/office.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/MONACO-RPT-660x660.jpg',
     type: 'rpt'
   },
   {
@@ -71,7 +79,7 @@ const productLines = [
     slug: 'linea-mediterranea-rpt',
     category: 'Ruptura Puente Térmico',
     desc: 'El tope de gama en rendimiento acústico, térmico y sofisticación de diseño.',
-    img: '/gallery/office.jpg',
+    img: '/SISTEMA DE VENTANAS Y PUERTAS/MEDITERRANEO-RPT.jpg',
     type: 'rpt'
   },
 ];
@@ -106,63 +114,61 @@ export default function Systems() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-6 mb-16 pt-12">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-12">
-            <div className="max-w-2xl">
-              <span className="font-label text-primary uppercase tracking-[0.2em] text-xs mb-4 block">
-                Catálogo de Productos
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12">
+        <SystemsHeroBanner
+          eyebrow="Catálogo de Productos"
+          titleLine1="Sistemas de"
+          titleLine2="Ventanas y Puertas"
+          description="Líneas de carpintería de aluminio para residencias, comercios y proyectos arquitectónicos de alta exigencia."
+          images={heroImages}
+        >
+          <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center">
+            {/* Search */}
+            <div className="relative group flex-1 max-w-md">
+              <input
+                type="text"
+                placeholder="Buscar..."
+                value={searchQuery}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+                className="w-full bg-black/40 backdrop-blur-md border border-white/20 px-5 py-3 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-primary transition-all shadow-xl text-sm"
+              />
+              <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-white/60 group-hover:text-primary transition-colors">
+                search
               </span>
-              <h1 className="font-headline text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-on-surface leading-none uppercase">
-                Sistemas de <br />
-                <span className="text-on-surface-variant">Ventanas y Puertas</span>
-              </h1>
             </div>
-            <div className="w-full md:w-auto pb-2">
-              <div className="relative group">
-                <input
-                  type="text"
-                  placeholder="Buscar..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full md:w-72 bg-surface-container border border-outline/20 px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl text-on-surface focus:outline-none focus:border-primary transition-all group-hover:border-primary/50 shadow-xl text-sm"
-                />
-                <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-hover:text-primary transition-colors">
-                  search
-                </span>
-              </div>
+            {/* Filter buttons */}
+            <div className="flex gap-2 overflow-x-auto no-scrollbar">
+              <button
+                type="button"
+                onClick={() => setActiveFilter('all')}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'all' ? 'bg-primary text-on-primary shadow-lg shadow-primary/30' : 'bg-black/40 backdrop-blur-md border border-white/20 text-white/80 hover:text-white hover:border-white/40'}`}
+              >
+                Ver Todos
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveFilter('corrediza')}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'corrediza' ? 'bg-primary text-on-primary shadow-lg shadow-primary/30' : 'bg-black/40 backdrop-blur-md border border-white/20 text-white/80 hover:text-white hover:border-white/40'}`}
+              >
+                Correderas
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveFilter('batiente')}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'batiente' ? 'bg-primary text-on-primary shadow-lg shadow-primary/30' : 'bg-black/40 backdrop-blur-md border border-white/20 text-white/80 hover:text-white hover:border-white/40'}`}
+              >
+                Batientes
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveFilter('rpt')}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'rpt' ? 'bg-primary text-on-primary shadow-lg shadow-primary/30' : 'bg-black/40 backdrop-blur-md border border-white/20 text-white/80 hover:text-white hover:border-white/40'}`}
+              >
+                Con RPT
+              </button>
             </div>
           </div>
-
-        {/* Filter / Categorization */}
-        <div className="flex gap-3 mb-20 border-b border-outline/10 pb-4 overflow-x-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent flex-shrink-0">
-          <button
-            onClick={() => setActiveFilter('all')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'all' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
-          >
-            Ver Todos
-          </button>
-          <button
-            onClick={() => setActiveFilter('corrediza')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'corrediza' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
-          >
-            Correderas
-          </button>
-          <button
-            onClick={() => setActiveFilter('batiente')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'batiente' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
-          >
-            Batientes
-          </button>
-          <button
-            onClick={() => setActiveFilter('rpt')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex-shrink-0 ${activeFilter === 'rpt' ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-surface-container border border-outline/10 text-on-surface-variant hover:text-on-surface'}`}
-          >
-            Con RPT
-          </button>
-        </div>
-      </section>
+        </SystemsHeroBanner>
 
       {/* Product Grid */}
       <section className="max-w-7xl mx-auto px-6">

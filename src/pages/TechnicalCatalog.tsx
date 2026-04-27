@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Download, FileText, ZoomIn } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Breadcrumb } from '../components/Breadcrumb';
+import { useBreadcrumb } from '../context/BreadcrumbContext';
 
 const catalogData: Record<string, { pdf: string, images: any[] }> = {
   'linea-tradicional': {
@@ -50,19 +50,19 @@ export default function TechnicalCatalog() {
   const currentCatalog = catalogData[slug || ''] || catalogData['linea-tradicional'];
   const [selectedImage, setSelectedImage] = useState<any>(null);
 
+  const { setItems: setBreadcrumb } = useBreadcrumb();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    setBreadcrumb([
+      { label: 'Productos', path: '/productos' },
+      { label: slug?.replace(/-/g, ' ').toUpperCase() || 'Catálogo' },
+    ]);
+    return () => setBreadcrumb([]);
+  }, [slug, setBreadcrumb]);
 
   return (
     <div className="bg-background min-h-screen pb-20 relative">
-      {/* Breadcrumb */}
-      <Breadcrumb
-        items={[
-          { label: 'Productos', path: '/productos' },
-          { label: slug?.replace(/-/g, ' ').toUpperCase() || 'Catálogo' },
-        ]}
-      />
       {/* Background patterns */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <img

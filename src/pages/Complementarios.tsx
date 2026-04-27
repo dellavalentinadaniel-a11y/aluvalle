@@ -1,4 +1,12 @@
 import { Link } from 'react-router-dom';
+import SystemsHeroBanner from '../components/SystemsHeroBanner';
+
+const heroImages = [
+  { src: '/gallery/hero-sistemas-banner/sistemas-de-aluminio-para-la-construccion-alumed-aluminium-systems-alicante-showroom-7-perfiles-cristal-1-1024x645.jpg', alt: 'Showroom de sistemas complementarios' },
+  { src: '/gallery/hero-sistemas-banner/_T1A2631.jpg', alt: 'Sistema complementario en aluminio' },
+  { src: '/gallery/hero-sistemas-banner/ViviendasUnifamiliares_CasaS_Alcemar_07-1024x683.jpg', alt: 'Aplicación residencial' },
+  { src: '/gallery/hero-sistemas-banner/POPLE_(012).jpg', alt: 'Detalle de carpintería interior' },
+];
 
 const productLines = [
   {
@@ -45,40 +53,26 @@ export default function Complementarios() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-6 mb-16 pt-12">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-12">
-            <div className="max-w-2xl">
-              <span className="font-label text-primary uppercase tracking-[0.2em] text-xs mb-4 block">
-                Catálogo de Productos
-              </span>
-              <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-surface leading-none uppercase">
-                Sistemas <br />
-                <span className="text-on-surface-variant">Complementarios</span>
-              </h1>
-            </div>
-          <div className="hidden md:block pb-2">
-            <p className="font-body text-on-surface-variant max-w-xs text-sm leading-relaxed border-l border-outline/30 pl-6">
-              Integre soluciones en aluminio para todas las terminaciones de su obra. Máxima calidad
-              en funcionalidad y diseño interior.
-            </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12">
+        <SystemsHeroBanner
+          eyebrow="Catálogo de Productos"
+          titleLine1="Sistemas"
+          titleLine2="Complementarios"
+          description="Soluciones en aluminio para terminaciones de obra: barandas, mamparas, cortinas y frentes de placard."
+          images={heroImages}
+        >
+          <div className="flex flex-wrap gap-2">
+            <button type="button" className="px-5 py-2 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg shadow-primary/30 flex-shrink-0">
+              Ver Todos
+            </button>
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
+              Interiores
+            </button>
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
+              Exteriores
+            </button>
           </div>
-        </div>
-
-        {/* Filter / Categorization */}
-        <div className="flex flex-wrap gap-4 mb-20 border-b border-outline/20 pb-4">
-          <button className="px-5 py-2 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
-            Ver Todos
-          </button>
-          <button className="px-5 py-2 bg-surface-container-low border border-outline/30 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
-            Interiores
-          </button>
-          <button className="px-5 py-2 bg-surface-container-low border border-outline/30 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
-            Exteriores
-          </button>
-        </div>
-      </section>
+        </SystemsHeroBanner>
 
       {/* Product Grid */}
       <section className="max-w-7xl mx-auto px-6">

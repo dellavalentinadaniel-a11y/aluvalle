@@ -1,4 +1,12 @@
 import { Link } from 'react-router-dom';
+import SystemsHeroBanner from '../components/SystemsHeroBanner';
+
+const heroImages = [
+  { src: '/gallery/hero-sistemas-banner/POPLE_(012).jpg', alt: 'Fachada moderna en aluminio' },
+  { src: '/gallery/hero-sistemas-banner/b8229e173084125.6496fe7d0c235.png', alt: 'Lamas y fachada arquitectónica' },
+  { src: '/gallery/hero-sistemas-banner/191199-18215397.jpg', alt: 'Sistema de fachada con perfiles' },
+  { src: '/gallery/hero-sistemas-banner/OIP (1).webp', alt: 'Lamas parasol en edificio' },
+];
 
 const productLines = [
   {
@@ -45,43 +53,29 @@ export default function LamasYFachadas() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-6 mb-16 pt-12">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-12">
-            <div className="max-w-2xl">
-              <span className="font-label text-primary uppercase tracking-[0.2em] text-xs mb-4 block">
-                Catálogo de Productos
-              </span>
-              <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-surface leading-none uppercase">
-                Sistemas de <br />
-                <span className="text-on-surface-variant">Lamas y Fachadas</span>
-              </h1>
-            </div>
-          <div className="hidden md:block pb-2">
-            <p className="font-body text-[#94979e] max-w-xs text-sm leading-relaxed border-l border-[#323539]/50 pl-6">
-              Descubra nuestra línea de soluciones estructurales en aluminio. Sistemas diseñados
-              para grandes envolventes de arquitectura comercial.
-            </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12">
+        <SystemsHeroBanner
+          eyebrow="Catálogo de Productos"
+          titleLine1="Sistemas de"
+          titleLine2="Lamas y Fachadas"
+          description="Soluciones estructurales en aluminio para grandes envolventes de arquitectura comercial e institucional."
+          images={heroImages}
+        >
+          <div className="flex flex-wrap gap-2">
+            <button type="button" className="px-5 py-2 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg shadow-primary/30 flex-shrink-0">
+              Ver Todos
+            </button>
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
+              Piel de Vidrio
+            </button>
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
+              Modulares
+            </button>
+            <button type="button" className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/20 text-white/80 rounded-full text-xs font-bold uppercase tracking-wider hover:text-white hover:border-white/40 transition-colors flex-shrink-0">
+              Control Solar
+            </button>
           </div>
-        </div>
-
-        {/* Filter / Categorization */}
-        <div className="flex flex-wrap gap-4 mb-20 border-b border-outline/10 pb-4">
-          <button className="px-5 py-2 bg-surface-container text-primary border border-primary/30 rounded-full text-xs font-bold uppercase tracking-wider">
-            Ver Todos
-          </button>
-          <button className="px-5 py-2 bg-surface-container-low border border-outline/20 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
-            Piel de Vidrio
-          </button>
-          <button className="px-5 py-2 bg-surface-container-low border border-outline/20 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
-            Modulares
-          </button>
-          <button className="px-5 py-2 bg-surface-container-low border border-outline/20 text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider hover:bg-surface-container hover:text-on-surface transition-colors">
-            Control Solar
-          </button>
-        </div>
-      </section>
+        </SystemsHeroBanner>
 
       {/* Product Grid */}
       <section className="max-w-7xl mx-auto px-6">
