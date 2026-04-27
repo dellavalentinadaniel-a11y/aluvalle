@@ -6,23 +6,26 @@ export default function Hero() {
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-alu-dark">
       {/* Background Video with Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-alu-dark">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          crossOrigin="anonymous"
+          preload="auto"
+          onError={() => console.error('Video failed to load')}
+          className="w-full h-full object-cover"
         >
           <source src="/aluvalle.mp4" type="video/mp4" />
-          <img
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
-            alt="Aluminum Architecture"
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-alu-dark via-alu-dark/60 to-transparent"></div>
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
+          alt="Aluminum Architecture"
+          className="absolute inset-0 w-full h-full object-cover hidden"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-alu-dark from-20% via-alu-dark/40 via-50% to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
