@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import ProfileTable from '../components/ProfileTable';
 import { useBreadcrumb } from '../context/BreadcrumbContext';
 import { TechTabs } from '../components/TechTabs';
+import { FloatingCTA } from '../components/FloatingCTA';
 import {
   traditionalProfiles,
   gammaProfiles,
@@ -172,9 +173,13 @@ export default function ProductDetail() {
         </div>
       </section>
 
+      {/* Floating CTA */}
+      <FloatingCTA showAfterSeconds={5} />
+
       {/* Overview & Specs */}
       <section className="max-w-7xl mx-auto px-6 py-12 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        {/* Desktop Layout */}
+        <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="flex flex-col">
             <h2 className="font-label text-primary uppercase tracking-widest text-[10px] mb-8 flex items-center gap-4">
               <span className="w-8 h-[1px] bg-primary/50"></span>
@@ -336,6 +341,180 @@ export default function ProductDetail() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Mobile Layout (Tabs) */}
+        <div className="md:hidden">
+          <TechTabs
+            tabs={[
+              {
+                id: 'presentacion',
+                label: 'Presentación',
+                content: (
+                  <div className="pt-6 flex flex-col">
+                    <p className="font-headline text-2xl text-on-surface font-bold leading-tight mb-6 uppercase tracking-tight">
+                      {product.description}
+                    </p>
+                    <p className="font-body text-on-surface-variant text-base leading-relaxed mb-8 border-l border-primary/20 pl-6">
+                      {product.introText}
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-px bg-outline/20 border border-outline/20 p-px">
+                      {product.specs.map((spec) => (
+                        <div
+                          key={spec.label}
+                          className="bg-surface-container-low p-4 flex flex-col items-center text-center"
+                        >
+                          <span className="material-symbols-outlined text-primary/40 mb-2">
+                            {spec.icon}
+                          </span>
+                          <span className="text-on-surface-variant text-[9px] uppercase tracking-widest mb-1">
+                            {spec.label}
+                          </span>
+                          <span className="text-on-surface font-bold text-xs tracking-tight">
+                            {spec.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )
+              },
+              {
+                id: 'tecnico',
+                label: 'Técnico',
+                content: (
+                  <div className="pt-6 flex flex-col gap-8 bg-surface-container-low/40 backdrop-blur-md border border-outline/20 p-6 mt-4">
+                    <h3 className="font-headline text-xl font-bold text-on-surface uppercase mb-2">
+                      Características
+                    </h3>
+                    <div className="space-y-6">
+                      {product.features.map((feature) => (
+                        <div key={feature.title} className="flex gap-4">
+                          <span className="material-symbols-outlined text-primary h-10 w-10 flex-shrink-0 flex items-center justify-center rounded-full bg-primary/5 border border-primary/20">
+                            {feature.icon}
+                          </span>
+                          <div>
+                            <h4 className="text-on-surface font-bold uppercase text-xs mb-1 tracking-wide">
+                              {feature.title}
+                            </h4>
+                            <p className="text-on-surface-variant text-sm leading-relaxed">{feature.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Action Buttons Container */}
+                    <div className="flex flex-col gap-4 mt-4">
+                      {(product.slug === 'linea-atlantica' ||
+                        product.slug === 'linea-niza' ||
+                        product.slug === 'linea-mediterranea' ||
+                        product.slug === 'linea-mediterranea-rpt') && (
+                        <Link
+                          to={
+                            product.slug === 'linea-atlantica'
+                              ? '/mecanizados/linea-atlantica'
+                              : product.slug === 'linea-niza'
+                                ? '/mecanizados/linea-niza'
+                                : product.slug === 'linea-mediterranea'
+                                  ? '/mecanizados/linea-mediterranea'
+                                  : '/mecanizados/linea-mediterranea-rpt'
+                          }
+                          className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl w-full"
+                        >
+                          <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                            <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                          </div>
+                          <div className="text-left">
+                            <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                              Producción Técnica
+                            </p>
+                            <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                              Ver Manual de Mecanizado
+                            </p>
+                          </div>
+                        </Link>
+                      )}
+                      {product.slug === 'linea-tradicional' && (
+                        <>
+                          <Link
+                            to="/mecanizados/linea-tradicional"
+                            className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl w-full"
+                          >
+                            <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                              <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                            </div>
+                            <div className="text-left">
+                              <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                                Producción Técnica
+                              </p>
+                              <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                                Ver Manual de Mecanizado
+                              </p>
+                            </div>
+                          </Link>
+                          <Link
+                            to={`/catalogo-tecnico/${product.slug}`}
+                            className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl w-full"
+                          >
+                            <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                              <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                            </div>
+                            <div className="text-left">
+                              <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                                Documentación Técnica
+                              </p>
+                              <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                                Ver Catálogo de Cortes
+                              </p>
+                            </div>
+                          </Link>
+                        </>
+                      )}
+                      {product.slug === 'linea-gamma' && (
+                        <>
+                          <Link
+                            to="/mecanizados/linea-gamma"
+                            className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl w-full"
+                          >
+                            <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                              <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                            </div>
+                            <div className="text-left">
+                              <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                                Producción Técnica
+                              </p>
+                              <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                                Ver Manual de Mecanizado
+                              </p>
+                            </div>
+                          </Link>
+                          <a
+                            href="/docs/Línea Gamma/Catalogo_Linea_Gamma.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl w-full"
+                          >
+                            <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                              <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                            </div>
+                            <div className="text-left">
+                              <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                                Catálogo Completo
+                              </p>
+                              <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                                Descargar PDF Gamma
+                              </p>
+                            </div>
+                          </a>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )
+              }
+            ]}
+          />
         </div>
       </section>
 

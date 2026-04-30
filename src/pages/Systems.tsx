@@ -130,7 +130,7 @@ export default function Systems() {
                 placeholder="Buscar..."
                 value={searchQuery}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
-                className="w-full bg-black/40 backdrop-blur-md border border-white/20 px-5 py-3 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-primary transition-all shadow-xl text-sm"
+                className="w-full bg-black/40 backdrop-blur-md border border-white/20 px-4 py-3 md:px-5 md:py-3 rounded-xl md:rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-primary transition-all shadow-xl text-sm md:text-base"
               />
               <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-white/60 group-hover:text-primary transition-colors">
                 search

@@ -169,11 +169,24 @@ export default function Layout() {
           <div className="flex items-center gap-6 ml-auto lg:ml-8">
             <Link
               to="/contact"
-              className="btn-gradient px-8 py-3 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] transform hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center gap-2"
+              className="hidden lg:flex btn-gradient px-8 py-3 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] transform hover:-translate-y-0.5 active:scale-95 transition-all duration-300 items-center gap-2"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse" />
               <span className="text-on-primary">Contáctanos</span>
             </Link>
+
+            {/* Hamburger button — solo en mobile */}
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Abrir menú de navegación"
+              aria-expanded={isMobileMenuOpen}
+              className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-xl hover:bg-surface-container transition-colors group"
+            >
+              <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
+              <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
+              <span className="block w-3 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full ml-auto" />
+            </button>
           </div>
         </nav>
       </header>
@@ -223,7 +236,7 @@ export default function Layout() {
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
                           className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
-                          aria-expanded={expandedSubMenu === link.name ? 'true' : 'false'}
+                          aria-expanded={expandedSubMenu === link.name}
                         >
                           {link.name}
                           <motion.span
