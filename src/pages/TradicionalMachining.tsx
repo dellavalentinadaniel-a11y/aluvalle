@@ -1,9 +1,19 @@
-import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench, ShoppingCart } from 'lucide-react';
+import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { technicalTools, consumables as affiliateConsumables } from '../data/affiliateProducts';
 
 export default function TradicionalMachining() {
+  const techCarouselRef = useRef<HTMLDivElement>(null);
+  const consCarouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
+    if (ref.current) {
+      const scrollAmount = ref.current.clientWidth > 1024 ? ref.current.clientWidth / 3 : ref.current.clientWidth > 768 ? ref.current.clientWidth / 2 : ref.current.clientWidth * 0.85;
+      ref.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -79,10 +89,20 @@ export default function TradicionalMachining() {
 
         {/* Tools Carousels */}
         <div className="mb-24">
-          <h2 className="font-headline text-3xl font-bold text-on-surface uppercase mb-8">
-            Herramientas Técnicas Recomendadas
-          </h2>
-          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+            <h2 className="font-headline text-3xl font-bold text-on-surface uppercase">
+              Herramientas Técnicas Recomendadas
+            </h2>
+            <div className="flex gap-2">
+              <button onClick={() => scrollCarousel(techCarouselRef, 'left')} className="p-2 bg-surface-variant/10 hover:bg-primary/20 rounded-full border border-outline/10 text-on-surface transition-colors" aria-label="Desplazar a la izquierda">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button onClick={() => scrollCarousel(techCarouselRef, 'right')} className="p-2 bg-surface-variant/10 hover:bg-primary/20 rounded-full border border-outline/10 text-on-surface transition-colors" aria-label="Desplazar a la derecha">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+          <div ref={techCarouselRef} className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar scroll-smooth">
             {technicalTools.map((t, i) => (
               <div
                 key={i}
@@ -112,10 +132,20 @@ export default function TradicionalMachining() {
             ))}
           </div>
 
-          <h2 className="font-headline text-3xl font-bold text-on-surface uppercase mb-8 mt-16">
-            Consumibles y Accesorios
-          </h2>
-          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8 mt-16">
+            <h2 className="font-headline text-3xl font-bold text-on-surface uppercase">
+              Consumibles y Accesorios
+            </h2>
+            <div className="flex gap-2">
+              <button onClick={() => scrollCarousel(consCarouselRef, 'left')} className="p-2 bg-surface-variant/10 hover:bg-primary/20 rounded-full border border-outline/10 text-on-surface transition-colors" aria-label="Desplazar a la izquierda">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button onClick={() => scrollCarousel(consCarouselRef, 'right')} className="p-2 bg-surface-variant/10 hover:bg-primary/20 rounded-full border border-outline/10 text-on-surface transition-colors" aria-label="Desplazar a la derecha">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+          <div ref={consCarouselRef} className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar scroll-smooth">
             {affiliateConsumables.map((t, i) => (
               <div
                 key={i}

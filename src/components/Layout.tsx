@@ -48,6 +48,27 @@ export default function Layout() {
     };
   }, []);
 
+  const advertisingCarouselRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll para el carrusel de publicidad
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (advertisingCarouselRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = advertisingCarouselRef.current;
+        // Si llegó al final, vuelve al principio. Agregamos un margen de 10px por si hay decimales.
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          advertisingCarouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Desplazar el ancho de un elemento
+          const scrollAmount = clientWidth > 768 ? clientWidth / 3 : clientWidth > 640 ? clientWidth / 2 : clientWidth * 0.8;
+          advertisingCarouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const navLinks = [
     {
       name: 'Productos',
@@ -320,7 +341,7 @@ export default function Layout() {
           <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface uppercase mb-8">
             Ofertas y Herramientas Destacadas
           </h2>
-          <div className="grid grid-rows-1 md:grid-rows-2 grid-flow-col auto-cols-[calc(80%-0.5rem)] sm:auto-cols-[calc(50%-0.5rem)] md:auto-cols-[calc(33.333%-1rem)] gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-8 hide-scrollbar">
+          <div ref={advertisingCarouselRef} className="grid grid-rows-1 md:grid-rows-2 grid-flow-col auto-cols-[calc(80%-0.5rem)] sm:auto-cols-[calc(50%-0.5rem)] md:auto-cols-[calc(33.333%-1rem)] gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-8 hide-scrollbar scroll-smooth">
             {advertisingProducts.map((p, i) => (
               <div
                 key={i}
