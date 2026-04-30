@@ -1,5 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { ShoppingCart } from 'lucide-react';
+import { advertisingProducts } from '../data/affiliateProducts';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'motion/react';
 import CookieBanner from './CookieBanner';
@@ -311,6 +313,44 @@ export default function Layout() {
       <main className="flex-grow pt-[72px]">
         <Outlet />
       </main>
+
+      {/* Publicidad Recomendada */}
+      <section className="bg-surface-variant/5 border-t border-outline/10 py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface uppercase mb-8">
+            Ofertas y Herramientas Destacadas
+          </h2>
+          <div className="grid grid-rows-1 md:grid-rows-2 grid-flow-col auto-cols-[calc(80%-0.5rem)] sm:auto-cols-[calc(50%-0.5rem)] md:auto-cols-[calc(33.333%-1rem)] gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-8 hide-scrollbar">
+            {advertisingProducts.map((p, i) => (
+              <div
+                key={i}
+                className="snap-start flex flex-col bg-surface border border-outline/10 p-4 md:p-6 group hover:border-primary/50 transition-all backdrop-blur-sm shadow-sm"
+              >
+                <div className="w-full h-32 md:h-40 bg-white rounded-lg mb-4 md:mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
+                  <img src={p.imageUrl} alt={p.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" />
+                </div>
+                <h3 className="text-on-surface font-bold uppercase text-[11px] md:text-sm mb-1 md:mb-2 tracking-wide leading-snug line-clamp-2" title={p.title}>
+                  {p.title}
+                </h3>
+                <p className="text-on-surface-variant text-[10px] md:text-[13px] leading-relaxed mb-4 md:mb-6 flex-grow line-clamp-2 md:line-clamp-3" title={p.description}>
+                  {p.description}
+                </p>
+                {p.buyLink && (
+                  <a
+                    href={p.buyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-primary font-bold text-[9px] md:text-[10px] uppercase tracking-wider hover:bg-primary hover:text-on-primary px-3 py-2 md:px-4 md:py-3 border border-primary/30 transition-all mt-auto self-start w-full"
+                  >
+                    <ShoppingCart className="w-3 md:w-3.5 h-3 md:h-3.5 flex-shrink-0" />
+                    Ver en ML
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Footer - Partner logos band */}
       <footer className="w-full bg-surface-container-lowest font-body text-[10px] leading-relaxed">

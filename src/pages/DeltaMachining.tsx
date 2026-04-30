@@ -1,29 +1,12 @@
-import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench } from 'lucide-react';
+import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { technicalTools, consumables as affiliateConsumables } from '../data/affiliateProducts';
 
 export default function DeltaMachining() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const tools = [
-    {
-      title: 'Punzonadora Delta',
-      description: 'Cortes y calados específicos para guías de rodamiento y cierres laterales.',
-      icon: Wrench,
-    },
-    {
-      title: 'Fresadora de Desagües',
-      description: 'Mecanizado de ranuras de descarga de agua en marcos de ventana corrediza.',
-      icon: Settings,
-    },
-    {
-      title: 'Herramienta de Montaje',
-      description: 'Kit de plantillas para la colocación precisa de accesorios y rodamientos.',
-      icon: Scissors,
-    },
-  ];
 
   const operations = [
     {
@@ -110,20 +93,73 @@ export default function DeltaMachining() {
           </a>
         </div>
 
-        {/* Tools Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          {tools.map((t, i) => (
-            <div
-              key={i}
-              className="bg-surface-variant/5 border border-outline/10 p-10 group hover:border-primary/50 transition-all backdrop-blur-sm"
-            >
-              <t.icon className="w-12 h-12 text-primary mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-on-surface font-bold uppercase text-lg mb-3 tracking-wide">
-                {t.title}
-              </h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">{t.description}</p>
-            </div>
-          ))}
+        {/* Tools Carousels */}
+        <div className="mb-24">
+          <h2 className="font-headline text-3xl font-bold text-on-surface uppercase mb-8">
+            Herramientas Técnicas Recomendadas
+          </h2>
+          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar">
+            {technicalTools.map((t, i) => (
+              <div
+                key={i}
+                className="snap-start flex-shrink-0 w-[280px] md:w-[320px] bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
+              >
+                <div className="w-full h-40 bg-white rounded-lg mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
+                  <img src={t.imageUrl} alt={t.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" />
+                </div>
+                <h3 className="text-on-surface font-bold uppercase text-sm mb-2 tracking-wide leading-snug line-clamp-2" title={t.title}>
+                  {t.title}
+                </h3>
+                <p className="text-on-surface-variant text-[13px] leading-relaxed mb-6 flex-grow line-clamp-3" title={t.description}>
+                  {t.description}
+                </p>
+                {t.buyLink && (
+                  <a
+                    href={t.buyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-primary font-bold text-[10px] uppercase tracking-wider hover:bg-primary hover:text-on-primary px-4 py-3 border border-primary/30 transition-all mt-auto self-start w-full"
+                  >
+                    <ShoppingCart className="w-3.5 h-3.5" />
+                    Ver en MercadoLibre
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <h2 className="font-headline text-3xl font-bold text-on-surface uppercase mb-8 mt-16">
+            Consumibles y Accesorios
+          </h2>
+          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar">
+            {affiliateConsumables.map((t, i) => (
+              <div
+                key={i}
+                className="snap-start flex-shrink-0 w-[280px] md:w-[320px] bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
+              >
+                <div className="w-full h-40 bg-white rounded-lg mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
+                  <img src={t.imageUrl} alt={t.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" />
+                </div>
+                <h3 className="text-on-surface font-bold uppercase text-sm mb-2 tracking-wide leading-snug line-clamp-2" title={t.title}>
+                  {t.title}
+                </h3>
+                <p className="text-on-surface-variant text-[13px] leading-relaxed mb-6 flex-grow line-clamp-3" title={t.description}>
+                  {t.description}
+                </p>
+                {t.buyLink && (
+                  <a
+                    href={t.buyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-primary font-bold text-[10px] uppercase tracking-wider hover:bg-primary hover:text-on-primary px-4 py-3 border border-primary/30 transition-all mt-auto self-start w-full"
+                  >
+                    <ShoppingCart className="w-3.5 h-3.5" />
+                    Ver en MercadoLibre
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
