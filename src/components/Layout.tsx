@@ -101,6 +101,7 @@ export default function Layout() {
       ],
     },
     { name: 'Proyectos Arquitectónicos', path: '/proyectos' },
+    { name: 'Red de Carpinterías', path: '/carpinterias' },
     { name: 'Oficina Técnica', path: '/oficina-tecnica' },
     { name: 'Sostenibilidad', path: '/sostenibilidad' },
   ];

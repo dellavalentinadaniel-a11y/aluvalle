@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden pt-32 pb-20">
+    <div className="min-h-screen bg-background relative overflow-hidden pt-32 pb-20">
       {/* Background glow */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[60%] h-[60%] bg-primary/8 blur-[140px] rounded-full" />
@@ -102,6 +102,70 @@ export default function ProfilePage() {
             Contactarnos
           </Link>
         </motion.div>
+      </div>
+
+      {/* Benefits Section */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 mt-24">
+        <div className="text-center mb-16">
+          <h2 className="font-headline text-3xl font-bold text-on-surface uppercase tracking-wide mb-4">
+            Beneficios Exclusivos
+          </h2>
+          <p className="text-on-surface-variant max-w-2xl mx-auto">
+            Próximamente, al acceder con tu cuenta de cliente, podrás disfrutar de una serie de herramientas diseñadas para optimizar tus proyectos y simplificar tus gestiones operativas.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Beneficio 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-surface-container-low border border-outline/10 p-8 rounded-2xl hover:border-primary/30 transition-all group"
+          >
+            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <span className="material-symbols-outlined text-primary text-3xl">inventory_2</span>
+            </div>
+            <h3 className="text-xl font-bold text-on-surface mb-3">Seguimiento de Pedidos</h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed">
+              Consulta en tiempo real el estado de tus compras, fechas de entrega estimadas y descarga remitos o facturas al instante.
+            </p>
+          </motion.div>
+
+          {/* Beneficio 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-surface-container-low border border-outline/10 p-8 rounded-2xl hover:border-primary/30 transition-all group"
+          >
+            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <span className="material-symbols-outlined text-primary text-3xl">menu_book</span>
+            </div>
+            <h3 className="text-xl font-bold text-on-surface mb-3">Oficina Técnica Digital</h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed">
+              Accede a planos de armado detallados, calculadoras de peso exclusivas y manuales de usuario de todos nuestros sistemas.
+            </p>
+          </motion.div>
+
+          {/* Beneficio 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="bg-surface-container-low border border-outline/10 p-8 rounded-2xl hover:border-primary/30 transition-all group"
+          >
+            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <span className="material-symbols-outlined text-primary text-3xl">support_agent</span>
+            </div>
+            <h3 className="text-xl font-bold text-on-surface mb-3">Atención Prioritaria</h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed">
+              Comunicación directa con nuestros asesores para consultas técnicas complejas, cotizaciones rápidas y soporte posventa garantizado.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

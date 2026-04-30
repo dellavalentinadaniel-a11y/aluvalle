@@ -27,6 +27,7 @@ const DeltaMachining = lazy(() => import('./pages/DeltaMachining.tsx'));
 const TradicionalMachining = lazy(() => import('./pages/TradicionalMachining.tsx'));
 const TechnicalCatalog = lazy(() => import('./pages/TechnicalCatalog.tsx'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage.tsx'));
+const CarpinteriasPage = lazy(() => import('./pages/CarpinteriasPage.tsx'));
 
 import { CalculatorProvider } from './context/CalculatorContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -80,6 +81,7 @@ export default function App() {
             <Route path="mecanizados/linea-delta" element={<DeltaMachining />} />
             <Route path="mecanizados/linea-tradicional" element={<TradicionalMachining />} />
             <Route path="perfil" element={<ProfilePage />} />
+            <Route path="carpinterias" element={<CarpinteriasPage />} />
           </Route>
         </Routes>
       </Suspense>
