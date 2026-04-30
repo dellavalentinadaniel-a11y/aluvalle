@@ -108,27 +108,28 @@ export default function Home() {
               viewport={{ once: true }}
               className="md:col-span-2 h-[300px] md:h-[600px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-2xl"
             >
-              <img
-                src="/gallery/hero-sistemas-banner/sistemas-de-aluminio-para-la-construccion-alumed-aluminium-systems-alicante-showroom-7-perfiles-cristal-1-1024x645.jpg"
-                alt="Almacén de perfiles"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
-              <div className="absolute bottom-10 left-10 right-10">
-                <span className="bg-primary text-on-primary text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter mb-4 inline-block shadow-lg shadow-primary/40">
-                  Logística
-                </span>
-                <h4 className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg">Stock Permanente Capaz</h4>
-                <p className="text-white/80 text-sm max-w-md leading-relaxed">
-                  Garantizamos la disponibilidad inmediata de toda nuestra gama de sistemas para
-                  proyectos de gran envergadura.
-                </p>
-              </div>
-              <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <span className="material-symbols-outlined text-white text-lg">arrow_outward</span>
-              </div>
+              <Link to="/productos/linea-mediterranea" className="block w-full h-full">
+                <img
+                  src="/gallery/hero-sistemas-banner/sistemas-de-aluminio-para-la-construccion-alumed-aluminium-systems-alicante-showroom-7-perfiles-cristal-1-1024x645.jpg"
+                  alt="Línea Mediterránea"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
+                <div className="absolute bottom-10 left-10 right-10">
+                  <span className="bg-primary text-on-primary text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter mb-4 inline-block shadow-lg shadow-primary/40">
+                    Alta Gama
+                  </span>
+                  <h4 className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg">Línea Mediterránea</h4>
+                  <p className="text-white/80 text-sm max-w-md leading-relaxed">
+                    Sistemas de alta prestación con ruptura de puente térmico para el máximo confort.
+                  </p>
+                </div>
+                <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="material-symbols-outlined text-white text-lg">arrow_forward</span>
+                </div>
+              </Link>
             </motion.div>
 
             {/* Side column */}
@@ -139,20 +140,22 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
               >
-                <img
-                  src="/gallery/herobanner/sistemas-arquitectonicos-aluvalle-cerramientos-modernos.webp"
-                  alt="Showroom Aluvallé"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-1">
-                    Experiencia inmersiva
-                  </p>
-                  <h4 className="text-xl font-bold text-white drop-shadow-md">Showroom Técnico</h4>
-                </div>
+                <Link to="/productos/linea-tradicional" className="block w-full h-full">
+                  <img
+                    src="/gallery/herobanner/sistemas-arquitectonicos-aluvalle-cerramientos-modernos.webp"
+                    alt="Línea Tradicional"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-1">
+                      Calidad Probada
+                    </p>
+                    <h4 className="text-xl font-bold text-white drop-shadow-md">Línea Tradicional</h4>
+                  </div>
+                </Link>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -161,20 +164,22 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="h-[250px] md:h-[287px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
               >
-                <img
-                  src="/gallery/herobanner/perfiles-aluminio-optimizacion-termica-acustica.webp"
-                  alt="Perfiles de aluminio"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-1">
-                    Diseño de vanguardia
-                  </p>
-                  <h4 className="text-xl font-bold text-white drop-shadow-md">Matricería Propia</h4>
-                </div>
+                <Link to="/productos/linea-gamma" className="block w-full h-full">
+                  <img
+                    src="/gallery/herobanner/perfiles-aluminio-optimizacion-termica-acustica.webp"
+                    alt="Línea Gamma"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <p className="text-primary font-bold text-[10px] uppercase tracking-widest mb-1">
+                      Nueva Innovación
+                    </p>
+                    <h4 className="text-xl font-bold text-white drop-shadow-md">Línea Gamma</h4>
+                  </div>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -187,24 +192,28 @@ export default function Home() {
               viewport={{ once: true }}
               className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
             >
-              <img
-                src="/gallery/hero-sistemas-banner/_T1A2631.jpg"
-                alt="Planta industrial"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <span className="bg-white/10 backdrop-blur-md text-primary border border-primary/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">
-                  Producción
-                </span>
-                <h4 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Extrusión de Precisión</h4>
-                <p className="text-white/80 text-sm mt-2 max-w-sm leading-relaxed">
-                  Procesos industriales certificados bajo los más altos estándares internacionales
-                  de calidad.
-                </p>
-              </div>
+              <a href="https://www.aluar.com.ar/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                <img
+                  src="/assets/images/aluar-representative.png"
+                  alt="Aluar"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <span className="bg-white/10 backdrop-blur-md text-primary border border-primary/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">
+                    Fabricante
+                  </span>
+                  <h4 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Aluar</h4>
+                  <p className="text-white/80 text-sm mt-2 max-w-sm leading-relaxed">
+                    Líder indiscutido en la producción de aluminio primario en Argentina.
+                  </p>
+                </div>
+                <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="material-symbols-outlined text-white text-sm">open_in_new</span>
+                </div>
+              </a>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -213,24 +222,28 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               className="h-[250px] md:h-[400px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer border border-outline/10 shadow-xl"
             >
-              <img
-                src="/gallery/hero-sistemas-banner/POPLE_(012).jpg"
-                alt="Divisiones de oficina"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <span className="bg-white/10 backdrop-blur-md text-primary border border-primary/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">
-                  Corporativo
-                </span>
-                <h4 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Arquitectura Interior</h4>
-                <p className="text-white/80 text-sm mt-2 max-w-sm leading-relaxed">
-                  Sistemas modulares y perfiles para divisiones de alta gama en entornos
-                  corporativos.
-                </p>
-              </div>
+              <a href="https://alcemar.com.ar/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                <img
+                  src="/assets/images/alcemar-representative.png"
+                  alt="Alcemar"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <span className="bg-white/10 backdrop-blur-md text-primary border border-primary/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">
+                    Proveedor Oficial
+                  </span>
+                  <h4 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Alcemar</h4>
+                  <p className="text-white/80 text-sm mt-2 max-w-sm leading-relaxed">
+                    Sistemas de perfiles de aluminio diseñados para la arquitectura de vanguardia.
+                  </p>
+                </div>
+                <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="material-symbols-outlined text-white text-sm">open_in_new</span>
+                </div>
+              </a>
             </motion.div>
           </div>
         </div>
