@@ -7,7 +7,7 @@ export default function GammaMachining() {
   const techCarouselRef = useRef<HTMLDivElement>(null);
   const consCarouselRef = useRef<HTMLDivElement>(null);
 
-  const scrollCarousel = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
+  const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
     if (ref.current) {
       const scrollAmount = ref.current.clientWidth > 1024 ? ref.current.clientWidth / 3 : ref.current.clientWidth > 768 ? ref.current.clientWidth / 2 : ref.current.clientWidth * 0.85;
       ref.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
