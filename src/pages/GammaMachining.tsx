@@ -1,4 +1,4 @@
-import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench, Wind } from 'lucide-react';
+import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench, Wind, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -9,28 +9,32 @@ export default function GammaMachining() {
 
   const tools = [
     {
-      title: 'Sierra a 45° de Precisión',
+      title: 'Cortadora Ingletadora Angular 550mm',
       description:
-        'Esencial para el armado de marcos G-10/G-11 y hojas G-20/G-21. Todos los encuentros de la Línea Gamma utilizan cortes a 45° para lograr aristas limpias y juntas herméticas.',
-      icon: Scissors,
+        'Ingletadora manual con ángulo regulable y hoja de 550mm. Incluye base de madera y sistema de ángulos de fácil regulación para cortes precisos a 45°.',
+      imageUrl: 'https://http2.mlstatic.com/D_NQ_NP_778616-MLA92441326748_092025-O.webp',
+      buyLink: 'https://meli.la/2q5bF9j',
     },
     {
-      title: 'Punzonadora Gamma',
+      title: 'Sierra Circular 1100W Corte 45° DCK',
       description:
-        'Para el calado de desagüe en el zócalo G-40 y la inserción de rodamientos en la base de las hojas G-20 y G-21.',
-      icon: Wrench,
+        'Sierra circular profesional de 1100W con motor de 5600 RPM. Ofrece una capacidad de corte de 66mm y bisel ajustable de 0° a 45° para perfiles.',
+      imageUrl: 'https://http2.mlstatic.com/D_NQ_NP_918524-MLA99147645672_112025-O.webp',
+      buyLink: 'https://meli.la/32HYwA1',
     },
     {
-      title: 'Kit de Medición Digital',
+      title: 'Sierra Circular de Mesa Lusqtoff 2000W',
       description:
-        'Calibrador ±0.1mm para verificar sección en marcos (62mm). Escuadra de referencia para el ajuste de encuentros a 45° ±0.5°.',
-      icon: Ruler,
+        'Sierra de mesa industrial con motor robusto de 2000W y disco de 315mm. Ideal para cortes limpios y escuadrados en grandes volúmenes.',
+      imageUrl: 'https://http2.mlstatic.com/D_NQ_NP_916608-MLA108654325809_032026-O.webp',
+      buyLink: 'https://meli.la/1qyAXcE',
     },
     {
       title: 'Sopladora de Limpieza',
       description:
         'Limpieza de virutas de aluminio en el canal de las felpas G-72 antes del armado. Fundamental para garantizar el deslizamiento correcto de las hojas.',
       icon: Wind,
+      buyLink: 'https://listado.mercadolibre.com.ar/sopladora',
     },
   ];
 
@@ -168,13 +172,30 @@ export default function GammaMachining() {
           {tools.map((t, i) => (
             <div
               key={i}
-              className="bg-surface-variant/5 border border-outline/10 p-8 group hover:border-primary/50 transition-all backdrop-blur-sm"
+              className="bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
             >
-              <t.icon className="w-10 h-10 text-primary mb-5 group-hover:scale-110 transition-transform" />
-              <h3 className="text-on-surface font-bold uppercase text-sm mb-2 tracking-wide">
+              {t.imageUrl ? (
+                <div className="w-full h-40 bg-white rounded-lg mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
+                  <img src={t.imageUrl} alt={t.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" />
+                </div>
+              ) : (
+                t.icon && <t.icon className="w-10 h-10 text-primary mb-5 group-hover:scale-110 transition-transform" />
+              )}
+              <h3 className="text-on-surface font-bold uppercase text-sm mb-2 tracking-wide leading-snug">
                 {t.title}
               </h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">{t.description}</p>
+              <p className="text-on-surface-variant text-[13px] leading-relaxed mb-6 flex-grow">{t.description}</p>
+              {t.buyLink && (
+                <a
+                  href={t.buyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 text-primary font-bold text-[10px] uppercase tracking-wider hover:bg-primary hover:text-on-primary px-4 py-3 border border-primary/30 transition-all mt-auto self-start w-full"
+                >
+                  <ShoppingCart className="w-3.5 h-3.5" />
+                  Ver en MercadoLibre
+                </a>
+              )}
             </div>
           ))}
         </div>
