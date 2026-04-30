@@ -194,7 +194,7 @@ export default function Home() {
             >
               <a href="https://www.aluar.com.ar/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                 <img
-                  src="/assets/images/aluar-representative.png"
+                  src="/Aluar-azul.jpg"
                   alt="Aluar"
                   loading="lazy"
                   decoding="async"
@@ -224,7 +224,7 @@ export default function Home() {
             >
               <a href="https://alcemar.com.ar/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                 <img
-                  src="/assets/images/alcemar-representative.png"
+                  src="/alcemar-rosa.jpg"
                   alt="Alcemar"
                   loading="lazy"
                   decoding="async"
