@@ -203,7 +203,7 @@ export default function Layout() {
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Abrir menú de navegación"
-              aria-expanded={isMobileMenuOpen ? "true" : "false"}
+              aria-expanded={isMobileMenuOpen}
               className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-xl hover:bg-surface-container transition-colors group"
             >
               <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
@@ -259,7 +259,7 @@ export default function Layout() {
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
                           className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
-                          aria-expanded={expandedSubMenu === link.name ? "true" : "false"}
+                          aria-expanded={expandedSubMenu === link.name}
                         >
                           {link.name}
                           <motion.span

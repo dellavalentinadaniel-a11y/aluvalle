@@ -188,31 +188,11 @@ export default function GammaMachining() {
           </div>
           <div ref={consCarouselRef} className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 -mx-6 px-6 hide-scrollbar scroll-smooth">
             {affiliateConsumables.map((t, i) => (
-              <div
-                key={i}
-                className="snap-start flex-shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
-              >
-                <div className="w-full h-40 bg-white rounded-lg mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
-                  <img src={t.imageUrl} alt={t.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" />
-                </div>
-                <h3 className="text-on-surface font-bold uppercase text-sm mb-2 tracking-wide leading-snug line-clamp-2" title={t.title}>
-                  {t.title}
-                </h3>
-                <p className="text-on-surface-variant text-[13px] leading-relaxed mb-6 flex-grow line-clamp-3" title={t.description}>
-                  {t.description}
-                </p>
-                {t.buyLink && (
-                  <a
-                    href={t.buyLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 text-primary font-bold text-[10px] uppercase tracking-wider hover:bg-primary hover:text-on-primary px-4 py-3 border border-primary/30 transition-all mt-auto self-start w-full"
-                  >
-                    <ShoppingCart className="w-3.5 h-3.5" />
-                    Ver en MercadoLibre
-                  </a>
-                )}
-              </div>
+              <AffiliateProductCard 
+                key={i} 
+                product={t} 
+                className="w-[calc(85%-0.5rem)] sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0" 
+              />
             ))}
           </div>
         </div>
