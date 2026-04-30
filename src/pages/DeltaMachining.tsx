@@ -102,7 +102,7 @@ export default function DeltaMachining() {
             {technicalTools.map((t, i) => (
               <div
                 key={i}
-                className="snap-start flex-shrink-0 w-[280px] md:w-[320px] bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
+                className="snap-start flex-shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
               >
                 <div className="w-full h-40 bg-white rounded-lg mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
                   <img src={t.imageUrl} alt={t.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" />
@@ -135,7 +135,7 @@ export default function DeltaMachining() {
             {affiliateConsumables.map((t, i) => (
               <div
                 key={i}
-                className="snap-start flex-shrink-0 w-[280px] md:w-[320px] bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
+                className="snap-start flex-shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-surface-variant/5 border border-outline/10 p-6 group hover:border-primary/50 transition-all backdrop-blur-sm flex flex-col"
               >
                 <div className="w-full h-40 bg-white rounded-lg mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
                   <img src={t.imageUrl} alt={t.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" />
