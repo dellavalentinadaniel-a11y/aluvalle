@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { X, Trash2, Plus, Minus, ShoppingCart, Send } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useCalculator } from '../context/CalculatorContext';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, updateNotes, clearCart, totalItems } = useCart();
+  const { items: calcItems, totalWeight } = useCalculator();
   const [expandedNotes, setExpandedNotes] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ nombre: '', empresa: '', email: '', telefono: '' });
@@ -14,7 +16,10 @@ export default function CartDrawer() {
     const lines = items.map(i =>
       `• ${i.productName} (${i.productCategory}) x${i.quantity}${i.notes ? ` — Notas: ${i.notes}` : ''}`
     ).join('%0A');
-    const msg = `Hola Aluvallé! Quisiera solicitar una cotización:%0A%0A${lines}%0A%0ANombre: ${form.nombre}%0AEmpresa: ${form.empresa}%0AEmail: ${form.email}%0ATeléfono: ${form.telefono}`;
+    const weightSection = calcItems.length > 0
+      ? `%0A%0A📐 Peso calculado (calculadora de perfiles):%0A${calcItems.map(c => `• ${c.profile.code} ${c.length}m x${c.quantity} = ${(parseFloat(c.profile.weight.replace(',', '.')) * c.length * c.quantity).toFixed(2)} kg`).join('%0A')}%0APeso total: ${totalWeight.toFixed(2)} kg`
+      : '';
+    const msg = `Hola Aluvallé! Quisiera solicitar una cotización:%0A%0A${lines}${weightSection}%0A%0ANombre: ${form.nombre}%0AEmpresa: ${form.empresa}%0AEmail: ${form.email}%0ATeléfono: ${form.telefono}`;
     window.open(`https://wa.me/5492996087387?text=${msg}`, '_blank');
     setSubmitted(true);
     clearCart();
@@ -181,6 +186,33 @@ export default function CartDrawer() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Calculator weight summary */}
+                  {calcItems.length > 0 && (
+                    <div className="mx-4 mb-2 rounded-2xl border border-primary/20 bg-primary/5 p-4 flex flex-col gap-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="material-symbols-outlined text-primary text-[18px]">calculate</span>
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-primary">Peso calculado</span>
+                        </div>
+                        <span className="font-black text-on-surface text-lg tracking-tight">{totalWeight.toFixed(2)} kg</span>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        {calcItems.map(c => {
+                          const wpm = parseFloat(c.profile.weight.replace(',', '.'));
+                          return (
+                            <div key={c.id} className="flex justify-between text-[10px] text-on-surface-variant">
+                              <span>{c.profile.code} · {c.length}m × {c.quantity}</span>
+                              <span className="font-bold">{(wpm * c.length * c.quantity).toFixed(2)} kg</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <p className="text-[10px] text-on-surface-variant/60 mt-1">
+                        Este dato se incluirá automáticamente en tu solicitud de cotización.
+                      </p>
+                    </div>
+                  )}
 
                   {/* Quote form */}
                   <form onSubmit={handleSubmit} className="px-4 py-6 border-t border-outline/10 flex flex-col gap-4">

@@ -8,6 +8,7 @@ export interface CartItem {
   productImage: string;
   quantity: number;
   notes: string;
+  estimatedWeight?: number;
 }
 
 interface CartState {
@@ -16,7 +17,7 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: 'ADD_ITEM'; payload: Omit<CartItem, 'id' | 'quantity' | 'notes'> }
+  | { type: 'ADD_ITEM'; payload: Omit<CartItem, 'id' | 'quantity' | 'notes' | 'estimatedWeight'> & { estimatedWeight?: number } }
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
   | { type: 'UPDATE_NOTES'; payload: { id: string; notes: string } }
@@ -47,7 +48,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
           isOpen: true,
           items: state.items.map(i =>
             i.productSlug === action.payload.productSlug
-              ? { ...i, quantity: i.quantity + 1 }
+              ? { ...i, quantity: i.quantity + 1, estimatedWeight: action.payload.estimatedWeight ?? i.estimatedWeight }
               : i
           ),
         };

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SystemsHeroBanner from '../components/SystemsHeroBanner';
+import { useCart } from '../context/CartContext';
 
 const heroImages = [
   { src: '/gallery/hero-sistemas-banner/b8229e173084125.6496fe7d0c235.png', alt: 'Detalle de accesorios y herrajes' },
@@ -42,6 +43,7 @@ const productLines = [
 ];
 
 export default function Accesorios() {
+  const { addItem, items: cartItems } = useCart();
   return (
     <div className="pt-24 pb-20 bg-background relative min-h-screen">
       {/* Background patterns */}
@@ -111,15 +113,25 @@ export default function Accesorios() {
                   </p>
 
                   <div className="pt-6 border-t border-outline/10 flex justify-between items-center">
-                    <button className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-[0.2em] group/btn hover:brightness-125 transition-all">
+                    <span className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-[0.2em]">
                       Despiece y Ficha
-                      <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
-                        arrow_forward
-                      </span>
-                    </button>
-                    <span className="material-symbols-outlined text-outline group-hover:text-primary transition-colors">
-                      add_circle
+                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
                     </span>
+                    <button
+                      type="button"
+                      onClick={() => addItem({ productSlug: product.name.toLowerCase().replace(/\s+/g, '-'), productName: product.name, productCategory: product.category, productImage: product.img })}
+                      title={cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'Ya en cotización' : 'Agregar a cotización'}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
+                        cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-'))
+                          ? 'bg-primary/10 text-primary border border-primary/30'
+                          : 'border border-outline/20 text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary/5'
+                      }`}
+                    >
+                      <span className="material-symbols-outlined text-[14px]">
+                        {cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'check' : 'add_shopping_cart'}
+                      </span>
+                      {cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'Agregado' : 'Cotizar'}
+                    </button>
                   </div>
                 </div>
               </div>

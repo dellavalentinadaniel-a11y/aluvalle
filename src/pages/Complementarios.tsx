@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SystemsHeroBanner from '../components/SystemsHeroBanner';
+import { useCart } from '../context/CartContext';
 
 const heroImages = [
   { src: '/gallery/hero-sistemas-banner/sistemas-de-aluminio-para-la-construccion-alumed-aluminium-systems-alicante-showroom-7-perfiles-cristal-1-1024x645.jpg', alt: 'Showroom de sistemas complementarios' },
@@ -40,6 +41,7 @@ const productLines = [
 ];
 
 export default function Complementarios() {
+  const { addItem, items: cartItems } = useCart();
   return (
     <div className="pt-24 pb-20 bg-background relative min-h-screen">
       {/* Background patterns */}
@@ -115,9 +117,21 @@ export default function Complementarios() {
                       arrow_forward
                     </span>
                   </Link>
-                  <span className="material-symbols-outlined text-outline group-hover:text-primary transition-colors">
-                    add_circle
-                  </span>
+                  <button
+                    type="button"
+                    onClick={() => addItem({ productSlug: product.slug, productName: product.name, productCategory: product.category, productImage: product.img })}
+                    title={cartItems.some(i => i.productSlug === product.slug) ? 'Ya en cotización' : 'Agregar a cotización'}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
+                      cartItems.some(i => i.productSlug === product.slug)
+                        ? 'bg-primary/10 text-primary border border-primary/30'
+                        : 'border border-outline/20 text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary/5'
+                    }`}
+                  >
+                    <span className="material-symbols-outlined text-[14px]">
+                      {cartItems.some(i => i.productSlug === product.slug) ? 'check' : 'add_shopping_cart'}
+                    </span>
+                    {cartItems.some(i => i.productSlug === product.slug) ? 'Agregado' : 'Cotizar'}
+                  </button>
                 </div>
               </div>
             </div>
