@@ -8,6 +8,8 @@ import ProductsPage from './pages/ProductsPage';
 import ContactPage from './pages/ContactPage';
 import ProductDetail from './pages/ProductDetail';
 import GammaMachining from './pages/GammaMachining';
+import CartPage from './pages/CartPage';
+import { CartProvider } from './context/CartContext';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -31,22 +33,25 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <Router>
-      <div className="min-h-screen relative">
-        <ScrollToTop />
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/productos" element={<ProductsPage />} />
-            <Route path="/productos/:slug" element={<ProductDetail />} />
-            <Route path="/mecanizados/linea-gamma" element={<GammaMachining />} />
-            <Route path="/contacto" element={<ContactPage />} />
-          </Routes>
-        </main>
-        <Footer />
-        <ChatWidget />
-      </div>
-    </Router>
+    <CartProvider>
+      <Router>
+        <div className="min-h-screen relative">
+          <ScrollToTop />
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/productos" element={<ProductsPage />} />
+              <Route path="/productos/:slug" element={<ProductDetail />} />
+              <Route path="/mecanizados/linea-gamma" element={<GammaMachining />} />
+              <Route path="/contacto" element={<ContactPage />} />
+              <Route path="/carrito" element={<CartPage />} />
+            </Routes>
+          </main>
+          <Footer />
+          <ChatWidget />
+        </div>
+      </Router>
+    </CartProvider>
   );
 }

@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ChevronRight, Download, ArrowLeft } from 'lucide-react';
+import { ChevronRight, Download, ArrowLeft, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { getProductBySlug } from '../data/products';
 import { gammaProfiles, traditionalProfiles } from '../data/profiles';
 import ProfileTable from '../components/ProfileTable';
+import { useCart } from '../context/CartContext';
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const product = slug ? getProductBySlug(slug) : null;
+  const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState(1);
 
   if (!product) {
     return (
@@ -55,6 +58,38 @@ export default function ProductDetail() {
               <p className="text-xl text-gray-300 leading-relaxed mb-8">
                 {product.longDescription}
               </p>
+              
+              <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 mb-8 max-w-md">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <span className="text-sm text-gray-400 block uppercase tracking-wider mb-1">Precio Unitario</span>
+                    <span className="text-3xl font-black text-white">${product.price.toLocaleString()}</span>
+                  </div>
+                  <div className="flex items-center gap-4 bg-white/10 rounded-2xl p-2 border border-white/10">
+                    <button 
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 transition-colors"
+                    >
+                      <Minus size={20} />
+                    </button>
+                    <span className="text-xl font-bold w-8 text-center">{quantity}</span>
+                    <button 
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 transition-colors"
+                    >
+                      <Plus size={20} />
+                    </button>
+                  </div>
+                </div>
+                
+                <button 
+                  onClick={() => addToCart(product, quantity)}
+                  className="w-full bg-alu-green hover:bg-alu-green/90 text-white py-4 rounded-2xl font-black flex items-center justify-center gap-3 transition-all shadow-xl shadow-alu-green/20 group"
+                >
+                  <ShoppingCart size={24} className="group-hover:scale-110 transition-transform" />
+                  AÑADIR AL CARRITO
+                </button>
+              </div>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl">

@@ -10,6 +10,7 @@ export interface Product {
   features: Array<{ title: string; description: string }>;
   downloads: Array<{ title: string; url: string }>;
   gallery: string[];
+  price: number;
 }
 
 export const products: Product[] = [
@@ -21,6 +22,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1503708928676-1cb796a0891e?auto=format&fit=crop&q=80&w=800',
     description: 'Nuestra línea más versátil. Sistemas de carpintería liviana y mediana para todo tipo de obras.',
     longDescription: 'La Línea Tradicional representa nuestra oferta clásica de alta prestación. Versatilidad y eficiencia para todo tipo de aberturas residenciales y comerciales.',
+    price: 1500,
     specifications: [
       'Marco: 70mm',
       'Vidrio: Simple 4mm / DVH (hasta 24mm)',
@@ -56,6 +58,7 @@ export const products: Product[] = [
     image: '/gallery/gamma-hero.png',
     description: 'Diseño contemporáneo y perfiles esbeltos para aplicaciones residenciales de alta gama',
     longDescription: 'La Línea Gamma es nuestra oferta de última generación. Diseño contemporáneo con perfiles esbeltos (62mm) que mantienen alta resistencia estructural mediante aleación 6063 T5 optimizada.',
+    price: 1850,
     specifications: [
       'Marco: 62mm',
       'Vidrio: Simple 4mm / DVH (hasta 24mm)',
@@ -91,6 +94,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800',
     description: 'Líneas de alta prestación para aberturas de gran tamaño con aislamiento térmico',
     longDescription: 'Diseñados para proyectos arquitectónicos exigentes. Combinan estética minimalista con el máximo rendimiento térmico y acústico.',
+    price: 2200,
     specifications: [
       'Ruptura de puente térmico',
       'Hermeticidad avanzada',
@@ -120,6 +124,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800',
     description: 'Muro cortina y piel de vidrio para edificios corporativos y residenciales',
     longDescription: 'Desarrollamos sistemas de fachadas continuas que permiten materializar las visiones arquitectónicas más vanguardistas.',
+    price: 3500,
     specifications: [
       'Frente integral',
       'Structural glazing',
@@ -149,6 +154,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800',
     description: 'Soluciones a medida para diversas aplicaciones industriales y estructurales',
     longDescription: 'Más allá de la arquitectura, proveemos soluciones de extrusión de aluminio para la industria automotriz, electrónica, publicitaria y manufacturera.',
+    price: 950,
     specifications: [
       'Perfiles estándar',
       'Matricería propia',

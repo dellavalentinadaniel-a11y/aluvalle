@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ShoppingCart } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { Link, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,6 +15,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { totalItems } = useCart();
 
   const location = useLocation();
 
@@ -77,13 +79,13 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="relative flex items-center">
+            <Link to="/" className="relative flex items-center">
                <span className="text-3xl font-black tracking-tighter flex items-baseline">
                 <span className="text-alu-green">Alu</span>
                 <span className={cn("transition-colors duration-300", scrolled ? "text-alu-dark" : "text-alu-dark")}>valle</span>
               </span>
               <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-alu-green/30 rounded-full"></div>
-            </div>
+            </Link>
             <div className="hidden sm:block ml-4 pl-4 border-l border-gray-300">
               <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-alu-gray block leading-tight">Calidad en</span>
               <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-alu-gray block leading-tight">Aluminio</span>
@@ -105,6 +107,17 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            
+            {/* Cart Icon */}
+            <Link to="/carrito" className="relative p-2 text-alu-dark hover:text-alu-green transition-colors">
+              <ShoppingCart size={24} />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-alu-green text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+
             <Link to="/contacto" className="bg-alu-green text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-alu-green/90 transition-all shadow-lg shadow-alu-green/20">
               Presupuesto
             </Link>
@@ -112,6 +125,16 @@ export default function Navbar() {
 
           {/* Mobile Menu Dropdown & Contact */}
           <div className="md:hidden flex items-center gap-2">
+            {/* Mobile Cart Icon */}
+            <Link to="/carrito" className="relative p-2 text-alu-dark hover:text-alu-green transition-colors mr-2">
+              <ShoppingCart size={20} />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-alu-green text-white text-[8px] font-bold w-4 h-4 flex items-center justify-center rounded-full border-2 border-white shadow-sm">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+
             {/* Dropdown Menu */}
             <div className="relative" ref={dropdownRef}>
               <button
