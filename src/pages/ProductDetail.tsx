@@ -27,7 +27,8 @@ import {
   lamaParasolProfiles,
   frameJuntaCerradaProfiles,
 } from '../data/profiles';
-import { ChevronDown, Beaker, PenTool, FileText } from 'lucide-react';
+import { ChevronDown, Beaker, PenTool, FileText, ShoppingCart } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 
 export default function ProductDetail() {
@@ -100,6 +101,17 @@ export default function ProductDetail() {
   }
 
   const { setItems: setBreadcrumb } = useBreadcrumb();
+  const { addItem, items: cartItems } = useCart();
+  const isInCart = cartItems.some(i => i.productSlug === product.slug);
+
+  const handleAddToCart = () => {
+    addItem({
+      productSlug: product.slug,
+      productName: product.name,
+      productCategory: product.category,
+      productImage: product.heroImage,
+    });
+  };
 
   useEffect(() => {
     setBreadcrumb([
@@ -823,6 +835,31 @@ export default function ProductDetail() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Add to Cart CTA */}
+      <section className="max-w-7xl mx-auto px-6 py-12 border-t border-outline/10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-surface-container-low/60 backdrop-blur-md border border-outline/20 rounded-3xl px-8 py-8">
+          <div className="flex flex-col gap-1 text-center sm:text-left">
+            <span className="font-headline font-bold text-on-surface text-lg uppercase tracking-tight">
+              ¿Te interesa este sistema?
+            </span>
+            <span className="text-on-surface-variant text-sm">
+              Agregalo a tu lista y solicitá una cotización personalizada.
+            </span>
+          </div>
+          <button
+            onClick={handleAddToCart}
+            className={`flex items-center gap-3 px-8 py-4 rounded-full font-black text-[11px] tracking-[0.2em] uppercase transition-all duration-300 flex-shrink-0 ${
+              isInCart
+                ? 'bg-primary/10 text-primary border border-primary/30 cursor-default'
+                : 'btn-gradient text-on-primary shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] hover:-translate-y-0.5 active:scale-95'
+            }`}
+          >
+            <ShoppingCart size={16} />
+            {isInCart ? 'Agregado a la cotización' : 'Agregar a cotización'}
+          </button>
         </div>
       </section>
 

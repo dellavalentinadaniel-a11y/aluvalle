@@ -32,6 +32,7 @@ const CarpinteriasPage = lazy(() => import('./pages/CarpinteriasPage.tsx'));
 import { CalculatorProvider } from './context/CalculatorContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { BreadcrumbProvider } from './context/BreadcrumbContext';
+import { CartProvider } from './context/CartContext';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -46,6 +47,7 @@ const LoadingScreen = () => (
 export default function App() {
   return (
     <ThemeProvider>
+      <CartProvider>
       <CalculatorProvider>
       <BreadcrumbProvider>
       <Analytics />
@@ -88,6 +90,7 @@ export default function App() {
     </Router>
     </BreadcrumbProvider>
     </CalculatorProvider>
+    </CartProvider>
     </ThemeProvider>
   );
 }

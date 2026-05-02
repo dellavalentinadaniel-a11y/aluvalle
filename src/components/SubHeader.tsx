@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useCalculator } from '../context/CalculatorContext';
 import { useBreadcrumb } from '../context/BreadcrumbContext';
+import { useCart } from '../context/CartContext';
 import { motion } from 'motion/react';
 import MiniWeightCalculator from './MiniWeightCalculator';
 
@@ -20,6 +21,7 @@ export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
   const { theme, toggleTheme } = useTheme();
   const { items: calcItems } = useCalculator();
   const { items } = useBreadcrumb();
+  const { totalItems: cartCount, openCart } = useCart();
   const location = useLocation();
   const [calcOpen, setCalcOpen] = useState(false);
 
@@ -121,6 +123,26 @@ export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
               </motion.span>
             )}
           </Link>
+
+          {/* Carrito de cotización */}
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label="Abrir carrito de cotización"
+            title="Solicitar cotización"
+            className="relative p-2.5 rounded-xl transition-all hover:bg-surface-container text-on-surface hover:text-primary group"
+          >
+            <span className="material-symbols-outlined text-[22px] block">shopping_cart</span>
+            {cartCount > 0 && (
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="absolute top-1 right-1 w-4 h-4 bg-primary text-on-primary text-[9px] font-black rounded-full flex items-center justify-center shadow-lg border-2 border-surface-container-lowest"
+              >
+                {cartCount}
+              </motion.span>
+            )}
+          </button>
 
           <Link
             to="/perfil"

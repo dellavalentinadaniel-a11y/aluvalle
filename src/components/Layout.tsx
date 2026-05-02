@@ -8,6 +8,7 @@ import CookieBanner from './CookieBanner';
 import WhatsAppButton from './WhatsAppButton';
 import { ScrollToTopButton } from './ScrollToTopButton';
 import { SubHeader } from './SubHeader';
+import CartDrawer from './CartDrawer';
 import logoAluvalle from './logo-aluvalle-new.png';
 
 export default function Layout() {
@@ -331,6 +332,7 @@ export default function Layout() {
       </AnimatePresence>
 
       <WhatsAppButton />
+      <CartDrawer />
       <SubHeader isMainHeaderVisible={isHeaderVisible} />
       <main className="flex-grow pt-[72px]">
         <Outlet />
