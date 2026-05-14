@@ -123,15 +123,19 @@ export default function ProfilePage() {
             <button 
               onClick={() => fileInputRef.current?.click()}
               className="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center"
+              aria-label="Cambiar foto de perfil"
+              title="Cambiar foto de perfil"
             >
               <Camera className="w-5 h-5" />
             </button>
             <input 
               type="file" 
+              id="profile-image-upload"
               ref={fileInputRef} 
               onChange={handleImageUpload} 
               className="hidden" 
               accept="image/*"
+              aria-label="Subir foto de perfil"
             />
           </div>
 
@@ -289,78 +293,90 @@ export default function ProfilePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
-                    <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+                    <label htmlFor="empresa" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
                       <Building2 className="w-3 h-3" /> Empresa
                     </label>
                     <input 
+                      id="empresa"
                       type="text" 
                       value={profileData.empresa} 
                       disabled={!isEditing}
                       onChange={(e) => setProfileData({...profileData, empresa: e.target.value})}
                       className="w-full bg-surface-container-high border border-outline/5 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60"
+                      placeholder="Nombre de la empresa"
                     />
                   </div>
                   <div>
-                    <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+                    <label htmlFor="puesto" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
                       <Briefcase className="w-3 h-3" /> Puesto / Cargo
                     </label>
                     <input 
+                      id="puesto"
                       type="text" 
                       value={profileData.puesto} 
                       disabled={!isEditing}
                       onChange={(e) => setProfileData({...profileData, puesto: e.target.value})}
                       className="w-full bg-surface-container-high border border-outline/5 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60"
+                      placeholder="Tu cargo"
                     />
                   </div>
                   <div>
-                    <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+                    <label htmlFor="direccionEmpresa" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
                       <MapPin className="w-3 h-3" /> Dirección de la Empresa
                     </label>
                     <input 
+                      id="direccionEmpresa"
                       type="text" 
                       value={profileData.direccionEmpresa} 
                       disabled={!isEditing}
                       onChange={(e) => setProfileData({...profileData, direccionEmpresa: e.target.value})}
                       className="w-full bg-surface-container-high border border-outline/5 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60"
+                      placeholder="Dirección comercial"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+                    <label htmlFor="sitioWeb" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
                       <Globe className="w-3 h-3" /> Sitio Web
                     </label>
                     <input 
+                      id="sitioWeb"
                       type="text" 
                       value={profileData.sitioWeb} 
                       disabled={!isEditing}
                       onChange={(e) => setProfileData({...profileData, sitioWeb: e.target.value})}
                       className="w-full bg-surface-container-high border border-outline/5 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60"
+                      placeholder="https://tuempresa.com"
                     />
                   </div>
                   <div>
-                    <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+                    <label htmlFor="linkedin" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
                       <Linkedin className="w-3 h-3" /> LinkedIn
                     </label>
                     <input 
+                      id="linkedin"
                       type="text" 
                       value={profileData.redes.linkedin} 
                       disabled={!isEditing}
                       onChange={(e) => setProfileData({...profileData, redes: {...profileData.redes, linkedin: e.target.value}})}
                       className="w-full bg-surface-container-high border border-outline/5 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60"
+                      placeholder="URL de LinkedIn"
                     />
                   </div>
                   <div>
-                    <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+                    <label htmlFor="instagram" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
                       <Instagram className="w-3 h-3" /> Instagram
                     </label>
                     <input 
+                      id="instagram"
                       type="text" 
                       value={profileData.redes.instagram} 
                       disabled={!isEditing}
                       onChange={(e) => setProfileData({...profileData, redes: {...profileData.redes, instagram: e.target.value}})}
                       className="w-full bg-surface-container-high border border-outline/5 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60"
+                      placeholder="Usuario de Instagram"
                     />
                   </div>
                 </div>
@@ -445,7 +461,11 @@ export default function ProfilePage() {
                     <h4 className="font-bold text-sm mb-1">Edificio Las Acacias</h4>
                     <p className="text-xs text-on-surface-variant">Av. San Martín 1542, CABA</p>
                   </div>
-                  <button className="p-2 text-on-surface-variant group-hover:text-primary transition-colors">
+                  <button 
+                    className="p-2 text-on-surface-variant group-hover:text-primary transition-colors"
+                    aria-label="Editar dirección"
+                    title="Editar dirección"
+                  >
                     <Edit3 className="w-4 h-4" />
                   </button>
                 </div>
@@ -454,7 +474,11 @@ export default function ProfilePage() {
                     <h4 className="font-bold text-sm mb-1">Casa Lote 14</h4>
                     <p className="text-xs text-on-surface-variant">Barrio Privado El Encuentro, Tigre</p>
                   </div>
-                  <button className="p-2 text-on-surface-variant group-hover:text-primary transition-colors">
+                  <button 
+                    className="p-2 text-on-surface-variant group-hover:text-primary transition-colors"
+                    aria-label="Editar dirección"
+                    title="Editar dirección"
+                  >
                     <Edit3 className="w-4 h-4" />
                   </button>
                 </div>

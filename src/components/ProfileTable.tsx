@@ -263,6 +263,8 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
                               onChange={(e) => setQuantities(p => ({ ...p, [profile.code]: Math.max(1, parseInt(e.target.value) || 1) }))} 
                               className="w-8 bg-transparent text-center text-sm font-bold focus:outline-none appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" 
                               min="1" 
+                              aria-label={`Cantidad para perfil ${profile.code}`}
+                              title="Cantidad"
                             />
                             <button 
                               onClick={() => handleQuantityChange(profile.code, 1)} 

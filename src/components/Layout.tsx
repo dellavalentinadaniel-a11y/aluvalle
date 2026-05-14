@@ -235,7 +235,7 @@ export default function Layout() {
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Abrir menú de navegación"
-              aria-expanded={!!isMobileMenuOpen}
+              aria-expanded={isMobileMenuOpen ? "true" : "false"}
               className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-xl hover:bg-surface-container transition-colors group"
             >
               <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
@@ -291,7 +291,7 @@ export default function Layout() {
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
                           className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
-                          aria-expanded={!!(expandedSubMenu === link.name)}
+                          aria-expanded={expandedSubMenu === link.name ? "true" : "false"}
                         >
                           {link.name}
                           <motion.span
@@ -371,13 +371,24 @@ export default function Layout() {
       {/* Publicidad Recomendada */}
       <section className="bg-surface-variant/5 border-t border-outline/10 py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="font-headline text-2xl md:text-3xl font-bold text-on-surface uppercase mb-8">
-            Ofertas y Herramientas Destacadas
-          </h2>
-          <div ref={advertisingCarouselRef} className="grid grid-rows-1 md:grid-rows-2 grid-flow-col auto-cols-[calc(80%-0.5rem)] sm:auto-cols-[calc(50%-0.5rem)] md:auto-cols-[calc(33.333%-1rem)] gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-8 hide-scrollbar scroll-smooth">
-            {advertisingProducts.map((p, i) => (
-              <AffiliateProductCard key={i} product={p} />
-            ))}
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            <div className="lg:w-1/3">
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface uppercase mb-4 leading-tight">
+                Herramientas <span className="text-primary">Pro</span>
+              </h2>
+              <p className="text-on-surface-variant text-sm mb-8 leading-relaxed">
+                Seleccionamos las mejores ofertas de Mercado Libre para tu taller. Calidad garantizada para profesionales del aluminio.
+              </p>
+              <div className="hidden lg:block p-6 bg-primary/5 border border-primary/10 rounded-2xl">
+                <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary mb-2">Publicidad</p>
+                <p className="text-xs text-on-surface-variant">Al comprar a través de estos enlaces, apoyas el mantenimiento de la plataforma Aluvalle.</p>
+              </div>
+            </div>
+            <div className="lg:w-2/3 grid grid-cols-1 gap-6 w-full max-w-xl mx-auto">
+              {advertisingProducts.slice(0, 3).map((p, i) => (
+                <AffiliateProductCard key={i} product={p} className="flex-row items-center !h-auto" />
+              ))}
+            </div>
           </div>
         </div>
       </section>

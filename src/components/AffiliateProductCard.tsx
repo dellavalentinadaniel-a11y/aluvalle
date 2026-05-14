@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, ExternalLink, Sparkles } from 'lucide-react';
 import { AffiliateProduct } from '../data/affiliateProducts';
+import { motion } from 'motion/react';
 
 interface Props {
   product: AffiliateProduct;
@@ -19,32 +20,54 @@ export const AffiliateProductCard: React.FC<Props> = ({ product, className = "" 
   };
 
   return (
-    <div className={`snap-start flex flex-col bg-surface border border-outline/10 p-4 md:p-6 group hover:border-primary/50 transition-all backdrop-blur-sm shadow-sm ${className}`}>
-      <div className="w-full h-32 md:h-40 bg-white rounded-lg mb-4 md:mb-5 overflow-hidden flex items-center justify-center p-2 shadow-inner border border-outline/5">
-        <img 
+    <motion.div 
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={`relative flex flex-col bg-surface-container-lowest border border-outline/10 rounded-2xl overflow-hidden group hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5 ${className}`}
+    >
+      {/* Mercado Libre Badge */}
+      <div className="absolute top-3 right-3 z-10">
+        <div className="bg-[#FFE600] text-black px-2 py-1 rounded-md text-[9px] font-bold uppercase tracking-tighter flex items-center gap-1 shadow-sm border border-black/5">
+          <Sparkles className="w-2.5 h-2.5" />
+          Meli
+        </div>
+      </div>
+
+      <div className="w-full h-40 md:h-48 bg-white p-6 overflow-hidden flex items-center justify-center relative">
+        <motion.img 
           src={imgSrc} 
           alt={product.title} 
           onError={handleError}
-          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 mix-blend-multiply" 
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full h-full object-contain mix-blend-multiply" 
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none" />
       </div>
-      <h3 className="text-on-surface font-bold uppercase text-[11px] md:text-sm mb-1 md:mb-2 tracking-wide leading-snug line-clamp-2" title={product.title}>
-        {product.title}
-      </h3>
-      <p className="text-on-surface-variant text-[10px] md:text-[13px] leading-relaxed mb-4 md:mb-6 flex-grow line-clamp-2 md:line-clamp-3" title={product.description}>
-        {product.description}
-      </p>
-      {product.buyLink && (
-        <a
-          href={product.buyLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-auto flex items-center justify-center gap-2 bg-primary/10 hover:bg-primary text-primary hover:text-on-primary py-2 md:py-3 px-4 rounded-lg text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 border border-primary/20 hover:border-primary active:scale-95 group/btn shadow-sm hover:shadow-primary/20"
-        >
-          <ShoppingCart className="w-3 h-3 md:w-4 md:h-4 group-hover/btn:rotate-12 transition-transform" />
-          Ver en MercadoLibre
-        </a>
-      )}
-    </div>
+
+      <div className="p-5 md:p-6 flex flex-col flex-grow">
+        <div className="mb-4">
+          <h3 className="text-on-surface font-bold uppercase text-xs md:text-sm mb-2 tracking-wide leading-tight line-clamp-2 min-h-[2.5rem]" title={product.title}>
+            {product.title}
+          </h3>
+          <p className="text-on-surface-variant text-[11px] md:text-xs leading-relaxed line-clamp-2" title={product.description}>
+            {product.description}
+          </p>
+        </div>
+
+        {product.buyLink && (
+          <a
+            href={product.buyLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto flex items-center justify-center gap-2 bg-[#FFE600] hover:bg-[#D4C000] text-black py-2.5 md:py-3 px-4 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 border border-black/5 active:scale-95 group/btn shadow-sm"
+          >
+            <ShoppingCart className="w-3.5 h-3.5 group-hover/btn:rotate-12 transition-transform" />
+            Ver Oferta
+            <ExternalLink className="w-3 h-3 ml-1 opacity-50" />
+          </a>
+        )}
+      </div>
+    </motion.div>
   );
 };
