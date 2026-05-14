@@ -35,7 +35,7 @@ export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const product = products.find((p) => p.slug === slug);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
-    slug === 'linea-monaco' ? 'monaco-standard' : null
+    slug === 'linea-monaco' ? 'monaco-standard' : slug === 'linea-mediterranea' ? 'mediterranea-standard' : null
   );
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -49,8 +49,6 @@ export default function ProductDetail() {
     { name: 'Línea Mónaco', slug: 'linea-monaco', category: 'Alta Gama', img: '/SISTEMA DE VENTANAS Y PUERTAS/MONACO.jpg' },
     { name: 'Línea Atlántica', slug: 'linea-atlantica', category: 'Robustez Extra', img: '/SISTEMA DE VENTANAS Y PUERTAS/ATLANTICA-1.jpg' },
     { name: 'Línea Niza', slug: 'linea-niza', category: 'Estilo Europeo', img: '/SISTEMA DE VENTANAS Y PUERTAS/NIZA.jpg' },
-    { name: 'Línea Mónaco RPT', slug: 'linea-monaco-rpt', category: 'Ruptura Puente Térmico', img: '/SISTEMA DE VENTANAS Y PUERTAS/MONACO-RPT-660x660.jpg' },
-    { name: 'Línea Mediterránea RPT', slug: 'linea-mediterranea-rpt', category: 'Ruptura Puente Térmico', img: '/SISTEMA DE VENTANAS Y PUERTAS/MEDITERRANEO-RPT.jpg' },
   ];
   const CARDS_PER_PAGE = 3;
   const totalPages = Math.ceil(productLines.length / CARDS_PER_PAGE);
@@ -633,6 +631,120 @@ export default function ProductDetail() {
               {activeAccordion === 'monaco-top' && (
                 <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
                   <ProfileTable systemName="Mónaco Top" profiles={monacoTopProfiles} />
+                </div>
+              )}
+            </div>
+            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+              <button
+                onClick={() =>
+                  setActiveAccordion(activeAccordion === 'monaco-rpt' ? null : 'monaco-rpt')
+                }
+                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+              >
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                    Mónaco RPT
+                  </h3>
+                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                    Sistemas con Ruptura de Puente Térmico
+                  </p>
+                </div>
+                <ChevronDown
+                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'monaco-rpt' ? 'rotate-180' : ''}`}
+                />
+              </button>
+              {activeAccordion === 'monaco-rpt' && (
+                <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                  <ProfileTable systemName="Mónaco RPT" profiles={monacoRPTProfiles} />
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      ) : product.slug === 'linea-mediterranea' ? (
+        <section className="max-w-7xl mx-auto px-6 pb-24">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold text-on-surface uppercase mb-4">
+                Catálogo de Perfiles
+              </h2>
+              <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">
+                Explore las diferentes variantes y componentes de la Línea Mediterránea. Seleccione una
+                categoría para ver el detalle de pesos y formas.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                to="/mecanizados/linea-mediterranea"
+                className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
+              >
+                <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                  <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                </div>
+                <div className="text-left">
+                  <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-[#0b0e12] font-bold">
+                    Producción Técnica
+                  </p>
+                  <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">
+                    Ver Manual de Mecanizado
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+              <button
+                onClick={() =>
+                  setActiveAccordion(
+                    activeAccordion === 'mediterranea-standard' ? null : 'mediterranea-standard'
+                  )
+                }
+                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+              >
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                    Mediterránea Estándar
+                  </h3>
+                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                    Perfiles base de la línea premium
+                  </p>
+                </div>
+                <ChevronDown
+                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'mediterranea-standard' ? 'rotate-180' : ''}`}
+                />
+              </button>
+              {activeAccordion === 'mediterranea-standard' && (
+                <div className="p-1 sm:p-4 border-t border-[#323539]/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                  <ProfileTable systemName="Mediterránea Estándar" profiles={mediterraneaProfiles} />
+                </div>
+              )}
+            </div>
+
+            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+              <button
+                onClick={() =>
+                  setActiveAccordion(activeAccordion === 'mediterranea-rpt' ? null : 'mediterranea-rpt')
+                }
+                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+              >
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                    Mediterránea RPT
+                  </h3>
+                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                    Sistemas con Ruptura de Puente Térmico
+                  </p>
+                </div>
+                <ChevronDown
+                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'mediterranea-rpt' ? 'rotate-180' : ''}`}
+                />
+              </button>
+              {activeAccordion === 'mediterranea-rpt' && (
+                <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                  <ProfileTable systemName="Mediterránea RPT" profiles={mediterraneaRPTProfiles} />
                 </div>
               )}
             </div>

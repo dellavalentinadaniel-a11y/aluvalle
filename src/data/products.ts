@@ -97,6 +97,11 @@ export const products: Product[] = [
         url: '/docs/Línea Mediterránea/Mecanizados_Linea_Mediterranea.pdf',
       },
       {
+        type: 'PDF',
+        label: 'Catálogo Técnico Mediterránea RPT',
+        url: '/docs/Línea Mediterránea RPT/Catalogo_Linea_Mediterranea_RPT.pdf',
+      },
+      {
         type: 'MECANIZADO',
         label: 'Guía Interactiva de Mecanizado',
         url: '/mecanizados/linea-mediterranea',
@@ -252,6 +257,7 @@ export const products: Product[] = [
       { type: 'PDF', label: 'Catálogo Técnico Mónaco', url: '/docs/Línea Mónaco/Catalogo_Linea_Monaco.pdf' },
       { type: 'PDF', label: 'Manual de Mecanizados Mónaco', url: '/docs/Línea Mónaco/Mecanizados_Linea_Monaco.pdf' },
       { type: 'PDF', label: 'Reporte de Testeos Mónaco', url: '/docs/Línea Mónaco/Testeos_Linea_Monaco.pdf' },
+      { type: 'PDF', label: 'Catálogo Técnico Mónaco RPT', url: '/docs/Línea Mónaco RPT/Catalogo_linea_MonacoRPT.pdf' },
       { type: 'MECANIZADO', label: 'Guía Interactiva de Mecanizado', url: '/mecanizados/linea-monaco' }
     ],
     gallery: ['/gallery/showroom.jpg', '/gallery/office.jpg'],
@@ -264,23 +270,36 @@ export const products: Product[] = [
     heroImage: '/gallery/warehouse.jpg',
     description: 'Especialmente diseñada para frentes marítimos y presiones extremas de viento.',
     introText:
-      'La Línea Atlántica fue diseñada enfrentando la necesidad arquitectónica de zonas costeras y edificios en altura donde la fuerza del viento y la exposición salina es implacable.',
+      'La Línea Atlántica fue diseñada enfrentando la necesidad arquitectónica de zonas costeras y edificios en altura donde la fuerza del viento y la exposición salina es implacable. Es un sistema de alta gama con perfiles de gran sección y robustez, permitiendo aberturas de dimensiones extraordinarias con un funcionamiento suave y seguro. Su diseño contempla una estanqueidad superior mediante un sistema de drenaje escalonado y burletes de EPDM de alta calidad.',
     isRPT: false,
     specs: [
-      { label: 'Ancho del Marco', value: '130mm', icon: 'settings_overscan' },
-      { label: 'Cierre', value: 'Presión Multipunto', icon: 'lock' },
-      { label: 'Aleación', value: 'Aluminio Templado', icon: 'science' },
+      { label: 'Ancho del Marco', value: '130mm (robusto)', icon: 'settings_overscan' },
+      { label: 'Cierre', value: 'Presión Multipunto / Falleba', icon: 'lock' },
+      { label: 'Aleación', value: 'Aluminio 6063 T6 (Templado)', icon: 'science' },
+      { label: 'Resistencia Viento', value: 'Clase superior según norma AS-2047', icon: 'air' },
+      { label: 'Vidrio Soportado', value: 'DVH hasta 32mm', icon: 'layers' },
+      { label: 'Tipologías', value: 'Corrediza 2 y 3 guías, Rebatir, Paño Fijo', icon: 'view_quilt' },
     ],
     features: [
       {
         title: 'Extrema Carga Viento',
-        description: 'Perfiles con refuerzo interior inercial.',
+        description: 'Perfiles con refuerzo interior inercial y parantes reforzados para resistir ráfagas extremas sin deformación.',
         icon: 'air',
       },
       {
         title: 'Anti-filtraciones',
-        description: 'Sistema de canales superpuestos para rápido desahogo de agua.',
+        description: 'Sistema de canales superpuestos y drenajes de gran capacidad para rápido desahogo de agua en tormentas severas.',
         icon: 'waterfall_chart',
+      },
+      {
+        title: 'Funcionamiento Suave',
+        description: 'Rodamientos de alta carga con pistas de acero inoxidable opcionales para un deslizamiento sin esfuerzo en hojas pesadas.',
+        icon: 'smooth_image',
+      },
+      {
+        title: 'Durabilidad Marina',
+        description: 'Tratamientos de anodizado de 20 micrones para protección total contra el salitre y la corrosión costera.',
+        icon: 'beach_access',
       },
     ],
     downloads: [
@@ -288,7 +307,7 @@ export const products: Product[] = [
       { type: 'PDF', label: 'Manual de Mecanizado Atlántica', url: '/docs/Línea Atlántica/Mecanizados-Atlantica.pdf' },
       { type: 'MECANIZADO', label: 'Guía Interactiva de Mecanizado', url: '/mecanizados/linea-atlantica' }
     ],
-    gallery: ['/gallery/warehouse.jpg', '/gallery/industrial.jpg'],
+    gallery: ['/gallery/warehouse.jpg', '/gallery/industrial.jpg', '/gallery/residential.jpg'],
   },
   {
     slug: 'linea-niza',
@@ -318,98 +337,7 @@ export const products: Product[] = [
     ],
     gallery: ['/gallery/residential.jpg', '/gallery/showroom.jpg'],
   },
-  {
-    slug: 'linea-monaco-rpt',
-    name: 'Línea Mónaco RPT',
-    category: 'Sistemas de ventanas y puertas',
-    categorySlug: 'ventanas-y-puertas',
-    heroImage: '/gallery/office.jpg',
-    description: 'Eficiencia energética superior manteniendo la estética de la Línea Mónaco.',
-    introText:
-      'Al incorporar perfiles de poliamida reforzada, logramos dividir térmicamente la cara interior de la exterior del aluminio, impidiendo la transferencia térmica y reduciendo enormemente el gasto energético en calefacción y refrigeración del hogar.',
-    isRPT: true,
-    specs: [
-      { label: 'Poliamida', value: '24mm', icon: 'horizontal_rule' },
-      { label: 'Transmitancia U', value: '< 2.5 W/m²K', icon: 'thermostat' },
-      { label: 'Vidrio Soportado', value: 'DVH 32mm', icon: 'window' },
-    ],
-    features: [
-      {
-        title: 'Ahorro Energético',
-        description: 'Cumple certificaciones sustentables tipo LEED y Passivhaus.',
-        icon: 'eco',
-      },
-      {
-        title: 'Confort Interior',
-        description: 'Anula la condensación de humedad (transpiración) invernal en el marco.',
-        icon: 'water_drop',
-      },
-    ],
-    downloads: [
-      {
-        type: 'PDF',
-        label: 'Catálogo Técnico Mónaco RPT',
-        url: '/docs/Línea Mónaco RPT/Catalogo_linea_MonacoRPT.pdf',
-      },
-      {
-        type: 'MECANIZADO',
-        label: 'Guía Interactiva de Mecanizado',
-        url: '/mecanizados/linea-monaco-rpt',
-      },
-    ],
-    gallery: ['/gallery/office.jpg', '/gallery/showroom.jpg'],
-  },
-  {
-    slug: 'linea-mediterranea-rpt',
-    name: 'Línea Mediterránea RPT',
-    category: 'Sistemas de ventanas y puertas',
-    categorySlug: 'ventanas-y-puertas',
-    heroImage: '/gallery/residential.jpg',
-    description: 'El tope de gama en rendimiento acústico, térmico y sofisticación de diseño.',
-    introText:
-      'La suma del diseño europeo pesado de la Línea Mediterránea y la Ruptura de Puente Térmico (RPT) de 34mm convierten a este sistema en el rey absoluto del asilamiento térmico en carpinterías nacionales de alta gama.',
-    isRPT: true,
-    specs: [
-      { label: 'Poliamida', value: '34mm', icon: 'horizontal_rule' },
-      { label: 'Vidrio Triple', value: 'Hasta 40mm', icon: 'layers' },
-      { label: 'Punta a Punta', value: 'Alineación Perfecta', icon: 'square' },
-    ],
-    features: [
-      {
-        title: 'Silencio Total',
-        description: 'Junto con un TVH asimétrico blinda cualquier ruido de autopistas cercanas.',
-        icon: 'volume_off',
-      },
-      {
-        title: 'Bicolor RPT',
-        description: 'La poliamida permite armar un perfil en un color interior y otro exterior.',
-        icon: 'format_paint',
-      },
-    ],
-    downloads: [
-      {
-        type: 'PDF',
-        label: 'Catálogo Comercial Mediterránea RPT',
-        url: '/docs/Línea Mediterránea RPT/Catalogo_Comercial_Linea_Mediterranea_RPT.pdf',
-      },
-      {
-        type: 'PDF',
-        label: 'Catálogo Técnico Mediterránea RPT',
-        url: '/docs/Línea Mediterránea RPT/Catalogo_Linea_Mediterranea_RPT.pdf',
-      },
-      {
-        type: 'PDF',
-        label: 'Manual de Mecanizados Mediterránea RPT',
-        url: '/docs/Línea Mediterránea RPT/Mecanizados_Linea_Mediterranea_RPT.pdf',
-      },
-      {
-        type: 'MECANIZADO',
-        label: 'Guía Interactiva de Mecanizado',
-        url: '/mecanizados/linea-mediterranea-rpt',
-      },
-    ],
-    gallery: ['/gallery/residential.jpg', '/gallery/office.jpg'],
-  },
+
 
   // --- LAMAS Y FACHADAS ---
   {

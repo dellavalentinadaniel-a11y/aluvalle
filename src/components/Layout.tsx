@@ -9,9 +9,13 @@ import WhatsAppButton from './WhatsAppButton';
 import { ScrollToTopButton } from './ScrollToTopButton';
 import { SubHeader } from './SubHeader';
 import CartDrawer from './CartDrawer';
+import { useAuth } from '../context/AuthContext';
+import { AuthModal } from './AuthModal';
 import logoAluvalle from './logo-aluvalle-new.png';
 
 export default function Layout() {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { user, signOut } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const [expandedSubMenu, setExpandedSubMenu] = useState<string | null>(null);
@@ -200,12 +204,38 @@ export default function Layout() {
               <span className="text-on-primary">Contáctanos</span>
             </Link>
 
+            {user ? (
+              <div className="hidden lg:flex items-center gap-3">
+                <Link
+                  to="/perfil"
+                  className="text-xs font-bold text-on-surface hover:text-primary truncate max-w-[120px] transition-colors flex items-center gap-1 bg-surface-container px-3 py-2 rounded-full border border-outline/10 hover:border-primary/30"
+                  title={user.email || ''}
+                >
+                  <span className="material-symbols-outlined text-[14px]">person</span>
+                  <span className="truncate">{user.email?.split('@')[0]}</span>
+                </Link>
+                <button
+                  onClick={() => signOut()}
+                  className="px-4 py-2 text-[10px] uppercase font-bold tracking-widest border border-outline/20 rounded-full hover:bg-red-500/10 hover:text-red-500 hover:border-red-500/20 transition-colors"
+                >
+                  Salir
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsAuthModalOpen(true)}
+                className="hidden lg:flex px-4 py-2 text-[10px] uppercase font-bold tracking-widest border border-outline/20 rounded-full hover:bg-surface-container transition-colors"
+              >
+                Ingresar
+              </button>
+            )}
+
             {/* Hamburger button — solo en mobile */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Abrir menú de navegación"
-              aria-expanded={isMobileMenuOpen}
+              aria-expanded={!!isMobileMenuOpen}
               className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-xl hover:bg-surface-container transition-colors group"
             >
               <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
@@ -261,7 +291,7 @@ export default function Layout() {
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
                           className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
-                          aria-expanded={expandedSubMenu === link.name}
+                          aria-expanded={!!(expandedSubMenu === link.name)}
                         >
                           {link.name}
                           <motion.span
@@ -619,6 +649,7 @@ export default function Layout() {
       </div>
       <CookieBanner />
       <ScrollToTopButton />
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </div>
   );
 }

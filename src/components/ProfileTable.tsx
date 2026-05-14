@@ -1,20 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, Info, Calculator, Check } from 'lucide-react';
-import { useCalculator } from '../context/CalculatorContext';
+import { ChevronDown, ChevronUp, Info, ShoppingCart, Check, Minus, Plus, Star } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
-interface Profile {
-  code: string;
-  weight: string;
-  txp?: string;
-  description: string;
-  page?: string;
-  shape?: string;
-  technicalDetails?: {
-    dimensions: string;
-    applications: string[];
-    sketch: React.ReactNode;
-  };
-}
+import { Profile } from '../data/profiles';
 
 interface ProfileTableProps {
   systemName: string;
@@ -131,10 +119,48 @@ const ProfileDetailDrawer: React.FC<{ profile: Profile | null; onClose: () => vo
 const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title, subtitle, actions }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState<Profile | null>(null);
-  const { items, addItem } = useCalculator();
+  const { items, addItem } = useCart();
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const [recentlyAdded, setRecentlyAdded] = useState<Record<string, boolean>>({});
+  const [favorites, setFavorites] = useState<Record<string, boolean>>({});
+
+  const toggleFavorite = (code: string) => {
+    setFavorites(prev => ({
+      ...prev,
+      [code]: !prev[code]
+    }));
+  };
+
+  const handleQuantityChange = (code: string, delta: number) => {
+    setQuantities(prev => ({
+      ...prev,
+      [code]: Math.max(1, (prev[code] || 1) + delta)
+    }));
+  };
+
+  const handleAddToCart = (profile: Profile) => {
+    const quantity = quantities[profile.code] || 1;
+    // Replace comma with dot to parse the string safely
+    const parsedWeight = parseFloat(profile.weight.replace(',', '.'));
+    const numericWeight = isNaN(parsedWeight) ? 0 : parsedWeight;
+
+    addItem({
+      productSlug: profile.code,
+      productName: `${systemName} - Perfil ${profile.code}`,
+      productCategory: systemName,
+      productImage: '',
+      estimatedWeight: numericWeight,
+      quantity
+    });
+
+    setRecentlyAdded(prev => ({ ...prev, [profile.code]: true }));
+    setTimeout(() => {
+      setRecentlyAdded(prev => ({ ...prev, [profile.code]: false }));
+    }, 2000);
+  };
   
-  // Create a Set of added codes for quick lookup
-  const addedCodes = useMemo(() => new Set(items.map(item => item.profile.code)), [items]);
+  // Create a Set of added codes for quick lookup to style rows
+  const addedCodes = useMemo(() => new Set(items.map(item => item.productSlug)), [items]);
 
   return (
     <div className="relative">
@@ -204,27 +230,63 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
                       <td className="px-6 py-6">
                         <div className="flex items-center justify-center gap-2">
                           <button
+                            onClick={() => toggleFavorite(profile.code)}
+                            className={`p-2 transition-all rounded-xl shadow-sm h-10 w-10 flex items-center justify-center border ${
+                              favorites[profile.code] 
+                                ? 'bg-secondary/10 text-secondary border-secondary/20 hover:bg-secondary/20' 
+                                : 'bg-surface-container-high/60 text-on-surface-variant border-outline/10 hover:border-secondary hover:text-secondary hover:bg-secondary/5'
+                            }`}
+                            title={favorites[profile.code] ? "Quitar de favoritos" : "Añadir a favoritos"}
+                          >
+                            <Star className={`w-5 h-5 ${favorites[profile.code] ? 'fill-secondary' : ''}`} />
+                          </button>
+                          <button
                             onClick={() => setSelectedProfile(profile)}
-                            className="bg-surface-container-high/60 p-2.5 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm"
+                            className="bg-surface-container-high/60 p-2 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm h-10 w-10 flex items-center justify-center"
                             title="Ver ficha técnica"
                             aria-label={`Ver ficha técnica del perfil ${profile.code}`}
                           >
                             <Info className="w-5 h-5" />
                           </button>
+                          
+                          <div className="flex items-center bg-surface-container-high/60 border border-outline/10 rounded-xl overflow-hidden shadow-sm h-10">
+                            <button 
+                              onClick={() => handleQuantityChange(profile.code, -1)} 
+                              className="px-2.5 h-full hover:text-primary transition-colors flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest"
+                              title="Reducir cantidad"
+                            >
+                              <Minus className="w-4 h-4" />
+                            </button>
+                            <input 
+                              type="number" 
+                              value={quantities[profile.code] || 1} 
+                              onChange={(e) => setQuantities(p => ({ ...p, [profile.code]: Math.max(1, parseInt(e.target.value) || 1) }))} 
+                              className="w-8 bg-transparent text-center text-sm font-bold focus:outline-none appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" 
+                              min="1" 
+                            />
+                            <button 
+                              onClick={() => handleQuantityChange(profile.code, 1)} 
+                              className="px-2.5 h-full hover:text-primary transition-colors flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest"
+                              title="Aumentar cantidad"
+                            >
+                              <Plus className="w-4 h-4" />
+                            </button>
+                          </div>
+
                           <button
-                            onClick={() => !isAdded && addItem(profile)}
-                            className={`p-2.5 border transition-all rounded-xl shadow-sm flex items-center justify-center ${
-                              isAdded
-                                ? 'bg-primary text-on-primary border-primary cursor-default'
-                                : 'bg-surface-container-high/60 text-on-surface-variant border-outline/10 hover:border-primary hover:text-primary'
+                            onClick={() => handleAddToCart(profile)}
+                            className={`p-2 border transition-all rounded-xl shadow-sm flex items-center justify-center h-10 w-10 ${
+                              recentlyAdded[profile.code]
+                                ? 'bg-primary text-on-primary border-primary'
+                                : 'bg-surface-container-high/60 text-on-surface-variant border-outline/10 hover:border-primary hover:text-primary hover:bg-primary/5'
                             }`}
-                            title={isAdded ? "Ya añadido a la calculadora" : "Añadir a calculadora de peso"}
-                            aria-label={isAdded ? `Perfil ${profile.code} ya añadido` : `Añadir perfil ${profile.code} a calculadora`}
+                            title="Añadir a carrito"
+                            aria-label={`Añadir perfil ${profile.code} al carrito`}
                           >
-                            {isAdded ? (
+                            {recentlyAdded[profile.code] ? (
                               <Check className="w-5 h-5 animate-in zoom-in duration-300" />
                             ) : (
-                              <Calculator className="w-5 h-5" />
+                              <ShoppingCart className="w-5 h-5" />
                             )}
                           </button>
                         </div>

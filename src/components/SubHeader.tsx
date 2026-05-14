@@ -86,7 +86,7 @@ export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
               type="button"
               onClick={() => setCalcOpen((v: boolean) => !v)}
               aria-label="Calculadora de pesos"
-              aria-expanded={calcOpen ? 'true' : 'false'}
+              aria-expanded={!!calcOpen}
               title="Calculadora rápida de pesos"
               className={`relative p-2.5 transition-all rounded-xl hover:bg-surface-container group ${
                 calcOpen ? 'text-primary bg-primary/10' : 'text-on-surface hover:text-primary'

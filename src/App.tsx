@@ -33,6 +33,7 @@ import { CalculatorProvider } from './context/CalculatorContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { BreadcrumbProvider } from './context/BreadcrumbContext';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -47,7 +48,8 @@ const LoadingScreen = () => (
 export default function App() {
   return (
     <ThemeProvider>
-      <CartProvider>
+      <AuthProvider>
+        <CartProvider>
       <CalculatorProvider>
       <BreadcrumbProvider>
       <Analytics />
@@ -91,6 +93,7 @@ export default function App() {
     </BreadcrumbProvider>
     </CalculatorProvider>
     </CartProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

@@ -17,7 +17,7 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: 'ADD_ITEM'; payload: Omit<CartItem, 'id' | 'quantity' | 'notes' | 'estimatedWeight'> & { estimatedWeight?: number } }
+  | { type: 'ADD_ITEM'; payload: Omit<CartItem, 'id' | 'quantity' | 'notes' | 'estimatedWeight'> & { estimatedWeight?: number, quantity?: number } }
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
   | { type: 'UPDATE_NOTES'; payload: { id: string; notes: string } }
@@ -29,7 +29,7 @@ interface CartContextType {
   items: CartItem[];
   isOpen: boolean;
   totalItems: number;
-  addItem: (product: Omit<CartItem, 'id' | 'quantity' | 'notes'>) => void;
+  addItem: (product: Omit<CartItem, 'id' | 'quantity' | 'notes'> & { quantity?: number }) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   updateNotes: (id: string, notes: string) => void;
@@ -42,13 +42,14 @@ function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'ADD_ITEM': {
       const existing = state.items.find(i => i.productSlug === action.payload.productSlug);
+      const addedQuantity = action.payload.quantity || 1;
       if (existing) {
         return {
           ...state,
           isOpen: true,
           items: state.items.map(i =>
             i.productSlug === action.payload.productSlug
-              ? { ...i, quantity: i.quantity + 1, estimatedWeight: action.payload.estimatedWeight ?? i.estimatedWeight }
+              ? { ...i, quantity: i.quantity + addedQuantity, estimatedWeight: action.payload.estimatedWeight ?? i.estimatedWeight }
               : i
           ),
         };
@@ -61,7 +62,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
           {
             ...action.payload,
             id: Math.random().toString(36).substr(2, 9),
-            quantity: 1,
+            quantity: addedQuantity,
             notes: '',
           },
         ],
@@ -118,7 +119,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <CartContext.Provider value={{
       items: state.items,
       isOpen: state.isOpen,
-      totalItems: state.items.reduce((acc, i) => acc + i.quantity, 0),
+      totalItems: state.items.reduce((acc: number, i: CartItem) => acc + i.quantity, 0),
       addItem: (product) => dispatch({ type: 'ADD_ITEM', payload: product }),
       removeItem: (id) => dispatch({ type: 'REMOVE_ITEM', payload: id }),
       updateQuantity: (id, quantity) => dispatch({ type: 'UPDATE_QUANTITY', payload: { id, quantity } }),
