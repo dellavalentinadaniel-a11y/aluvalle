@@ -237,13 +237,15 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
             <div className="relative w-full md:w-auto flex items-center bg-surface-container-high border border-outline/10 rounded-xl px-3 py-2.5">
               <Filter className="w-4 h-4 text-on-surface-variant mr-2" />
               <select 
+                aria-label="Filtrar por forma"
+                title="Filtrar por forma"
                 value={categoryFilter}
                 onChange={e => setCategoryFilter(e.target.value)}
                 className="bg-transparent text-sm text-on-surface focus:outline-none appearance-none pr-6 cursor-pointer w-full"
               >
                 <option value="all">Todas las formas</option>
                 {Array.from(new Set(profiles.map(p => p.shape))).filter(Boolean).map(shape => (
-                  <option key={shape} value={shape}>{shape?.charAt(0).toUpperCase() + shape?.slice(1)}</option>
+                  <option key={shape!} value={shape!}>{shape!.charAt(0).toUpperCase() + shape!.slice(1)}</option>
                 ))}
               </select>
             </div>
@@ -251,6 +253,8 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
             <div className="relative w-full md:w-auto flex items-center bg-surface-container-high border border-outline/10 rounded-xl px-3 py-2.5">
               <ArrowUpDown className="w-4 h-4 text-on-surface-variant mr-2" />
               <select 
+                aria-label="Ordenar perfiles"
+                title="Ordenar perfiles"
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value as 'code' | 'weight')}
                 className="bg-transparent text-sm text-on-surface focus:outline-none appearance-none pr-6 cursor-pointer w-full"
@@ -271,7 +275,6 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
                 <th className="px-6 py-5 border-b border-outline/5">Peso</th>
                 <th className="px-6 py-5 border-b border-outline/5">T.xP.</th>
                 <th className="px-6 py-5 border-b border-outline/5">Descripción</th>
-                <th className="px-6 py-5 border-b border-outline/5 text-center">Forma</th>
                 <th className="px-6 py-5 border-b border-outline/5 text-center">Acciones</th>
               </tr>
             </thead>
@@ -290,11 +293,6 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
                         <span className="bg-surface-container px-2.5 py-1.5 rounded-lg text-[10px] border border-outline/5 font-bold uppercase">{profile.txp}</span>
                       </td>
                       <td className="px-6 py-6 text-on-surface font-medium leading-relaxed max-w-xs">{profile.description}</td>
-                      <td className="px-6 py-6 text-center">
-                        <div className={`bg-surface-container-high/40 p-1.5 inline-block border transition-all rounded-xl ${isAdded ? 'border-primary/50' : 'border-outline/5 group-hover:border-primary/30'}`}>
-                          <ShapeIcon shape={profile.shape} />
-                        </div>
-                      </td>
                       <td className="px-6 py-6">
                         <div className="flex items-center justify-center gap-2">
                           

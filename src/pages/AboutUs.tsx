@@ -209,7 +209,7 @@ export default function AboutUs() {
               <span className="text-2xl font-black text-on-surface">5.0</span>
               <div className="flex text-amber-500">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="material-symbols-outlined fill-current text-[20px] text-amber-500" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
+                  <span key={i} className="material-symbols-outlined fill-current text-[20px] text-amber-500 [font-variation-settings:'FILL'_1]">star</span>
                 ))}
               </div>
               <span className="text-xs text-on-surface-variant uppercase font-bold tracking-wider ml-1">Calificación de Excelencia</span>
@@ -234,7 +234,7 @@ export default function AboutUs() {
                   </div>
                   <div className="flex text-amber-500 shrink-0">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="material-symbols-outlined fill-current text-[16px] text-amber-500" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
+                      <span key={i} className="material-symbols-outlined fill-current text-[16px] text-amber-500 [font-variation-settings:'FILL'_1]">star</span>
                     ))}
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export default function AboutUs() {
                   </div>
                   <div className="flex text-amber-500 shrink-0">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="material-symbols-outlined fill-current text-[16px] text-amber-500" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
+                      <span key={i} className="material-symbols-outlined fill-current text-[16px] text-amber-500 [font-variation-settings:'FILL'_1]">star</span>
                     ))}
                   </div>
                 </div>

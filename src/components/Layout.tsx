@@ -152,17 +152,14 @@ export default function Layout() {
           href="https://seogrowthers.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-[#090b0e] hover:bg-black text-white rounded-xl border border-outline/10 shadow-sm transition-all hover:scale-125 hover:-translate-y-1.5 hover:shadow-xl shrink-0"
+          className="transition-all duration-300 hover:scale-125 hover:-translate-y-1.5 flex-shrink-0 flex items-center"
           aria-label="Visitar Seogrowthers"
         >
-          <span className="font-headline font-black italic uppercase tracking-tighter text-xs text-white">
-            SEOGROWTHERS
-          </span>
-          <div className="w-5.5 h-5.5 bg-primary rounded flex items-center justify-center rotate-3 shrink-0">
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-on-primary" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2S4.5 8.5 4.5 14c0 3 2.5 5.5 5.5 5.5.5 0 1.5-.5 2-.5s1.5.5 2 .5c3 0 5.5-2.5 5.5-5.5C19.5 8.5 12 2 12 2zm-2 18s.5 2 2 2 2-2 2-2H10z" />
-            </svg>
-          </div>
+          <img
+            src="/gallery/seo_growthers_logo.png"
+            alt="SEO Growthers"
+            className="h-14 md:h-16 w-auto object-contain drop-shadow-lg"
+          />
         </a>
       )
     }
@@ -270,7 +267,7 @@ export default function Layout() {
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Abrir menú de navegación"
-              aria-expanded={isMobileMenuOpen}
+              aria-expanded={isMobileMenuOpen ? "true" : "false"}
               className="flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-xl hover:bg-surface-container transition-colors group"
             >
               <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
@@ -326,7 +323,7 @@ export default function Layout() {
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
                           className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
-                          aria-expanded={expandedSubMenu === link.name}
+                          aria-expanded={expandedSubMenu === link.name ? "true" : "false"}
                         >
                           {link.name}
                           <motion.span
@@ -638,18 +635,13 @@ export default function Layout() {
               rel="noopener noreferrer"
               className="flex flex-col items-center md:items-end group cursor-pointer"
             >
-              <span className="font-body text-[9px] text-[#94979e]/40 uppercase tracking-widest mb-1">
-                Agencia de Crecimiento
-              </span>
+
               <div className="flex items-center gap-3">
-                <span className="font-headline font-black text-on-surface italic uppercase tracking-tighter text-xl group-hover:text-primary transition-colors">
-                  SEOGROWTHERS
-                </span>
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-12 transition-transform shadow-lg shadow-primary/30">
-                  <span className="material-symbols-outlined text-on-primary text-sm font-bold">
-                    rocket_launch
-                  </span>
-                </div>
+                <img
+                  src="/gallery/seo_growthers_logo.png"
+                  alt="SEO Growthers"
+                  className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-2xl"
+                />
               </div>
             </a>
           </div>

@@ -9,41 +9,69 @@ const heroImages = [
   { src: '/gallery/hero-sistemas-banner/OIP (1).webp', alt: 'Componentes técnicos en aluminio' },
 ];
 
-const productLines = [
+import { useState } from 'react';
+import { accessoriesData } from '../data/accessories';
+
+const categories = [
   {
-    name: 'Sistemas de Cierre',
-    category: 'Seguridad',
-    desc: 'Cerraduras, cierres laterales, cierres centrales, mecanismos multipunto y cerraderos de máxima precisión comercial.',
-    img: 'https://images.unsplash.com/photo-1520697830682-840f90bdc69b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    name: 'Cierres centrales',
+    category: 'Accesorios',
+    desc: 'Sistemas de cierres centrales para una máxima seguridad y ajuste perfecto en aberturas.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2021/06/Prueba-1-cerra-660x660.jpg',
   },
   {
-    name: 'Herrajes y Rodamientos',
-    category: 'Movimiento',
-    desc: 'Grupos de bisagras de alta resistencia, conjuntos oscilobatientes y sistemas de ruedas para un desplazamiento suave y seguro.',
-    img: 'https://images.unsplash.com/photo-1585645362391-7f8e84a86477?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    name: 'Cierres laterales',
+    category: 'Accesorios',
+    desc: 'Cierres laterales de alta resistencia y precisión para hojas corredizas y de rebatir.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2021/12/8877-300x300.jpg',
   },
   {
-    name: 'Manijas y Aldabas',
-    category: 'Accionamiento',
-    desc: 'Amplia variedad de aldabas, manijas y bocallaves diseñados ergonómicamente para realzar el aspecto interior de la abertura.',
-    img: 'https://images.unsplash.com/photo-1601004652250-97645d94bc02?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    name: 'Conjunto Oscilobatiente',
+    category: 'Accesorios',
+    desc: 'Mecanismos para aberturas con sistema de apertura oscilobatiente, garantizando hermeticidad.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2021/06/8865aa-660x660.jpg',
   },
   {
-    name: 'Estanqueidad y Burletes',
-    category: 'Hermeticidad',
-    desc: 'Felpas, burletes de caucho EPDM y perfiles de poliamida para garantizar aislación térmica y acústica extrema (RPT).',
-    img: 'https://images.unsplash.com/photo-1616788289456-1cb7d5df2fbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    name: 'Cuñas',
+    category: 'Accesorios',
+    desc: 'Elementos de fijación y ajuste para asegurar la rigidez y escuadra del marco estructural.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2022/01/9163.Bb_-660x660.jpg',
   },
   {
-    name: 'Elements de Armado',
-    category: 'Estructura',
-    desc: 'Escuadras de armado, tornillos especiales y cuñas que aseguran la rigidez, escuadra y durabilidad del marco estructural.',
-    img: 'https://images.unsplash.com/photo-1533090369800-41bf37bd2a44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    name: 'Escuadras',
+    category: 'Accesorios',
+    desc: 'Escuadras de armado de aluminio de extrusión para uniones de alta resistencia a tracción.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2021/12/8415-300x300.jpg',
+  },
+  {
+    name: 'Felpas y Burletes',
+    category: 'Accesorios',
+    desc: 'Aislación térmica y acústica extrema con felpas y burletes de caucho EPDM.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2021/06/8422cc-660x660.jpg',
+  },
+  {
+    name: 'Llaves',
+    category: 'Accesorios',
+    desc: 'Variedad de llaves y bocallaves para complementar la seguridad y el accionamiento.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2021/06/95000-2-660x660.jpg',
+  },
+  {
+    name: 'Mecanismo Multipunto',
+    category: 'Accesorios',
+    desc: 'Seguridad perimetral y cierres multipunto diseñados ergonómicamente.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2022/01/9615-660x660.jpg',
+  },
+  {
+    name: 'Otros',
+    category: 'Accesorios',
+    desc: 'Tornillos especiales, tapones y complementos para el armado óptimo de las líneas.',
+    img: 'https://alcemar.com.ar/wp-content/uploads/2021/06/9552-660x660.jpg',
   },
 ];
 
 export default function Accesorios() {
   const { addItem, items: cartItems } = useCart();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   return (
     <div className="pt-24 pb-20 bg-background relative min-h-screen">
       {/* Background patterns */}
@@ -81,62 +109,98 @@ export default function Accesorios() {
           </div>
         </SystemsHeroBanner>
 
-        {/* Product Grid */}
+        {/* Product Grid / Category View */}
         <section className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {productLines.map((product) => (
-              <div
-                key={product.name}
-                className="group flex flex-col bg-surface-variant/5 border border-outline/10 shadow-lg hover:border-primary/50 transition-all duration-300"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-black">
-                  <img
-                    src={product.img}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
-                  />
-                  <div className="absolute bottom-4 right-4">
-                    <span className="bg-black/60 backdrop-blur-md text-on-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-outline/20">
-                      + Info
-                    </span>
-                  </div>
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <span className="font-label text-primary text-[10px] uppercase tracking-widest mb-2 block">
-                    {product.category}
-                  </span>
-                  <h3 className="font-headline text-2xl font-bold text-on-surface uppercase mb-4 tracking-tight">
-                    {product.name}
-                  </h3>
-                  <p className="font-body text-on-surface-variant text-sm mb-8 flex-grow leading-relaxed">
-                    {product.desc}
-                  </p>
-
-                  <div className="pt-6 border-t border-outline/10 flex justify-between items-center">
-                    <span className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-[0.2em]">
-                      Despiece y Ficha
-                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => addItem({ productSlug: product.name.toLowerCase().replace(/\s+/g, '-'), productName: product.name, productCategory: product.category, productImage: product.img })}
-                      title={cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'Ya en cotización' : 'Agregar a cotización'}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
-                        cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-'))
-                          ? 'bg-primary/10 text-primary border border-primary/30'
-                          : 'border border-outline/20 text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary/5'
-                      }`}
-                    >
-                      <span className="material-symbols-outlined text-[14px]">
-                        {cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'check' : 'add_shopping_cart'}
+          {!selectedCategory ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {categories.map((category) => (
+                <div
+                  key={category.name}
+                  className="group flex flex-col bg-surface-variant/5 border border-outline/10 shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer"
+                  onClick={() => setSelectedCategory(category.name)}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-black">
+                    <img
+                      src={category.img}
+                      alt={category.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
+                    />
+                    <div className="absolute bottom-4 right-4">
+                      <span className="bg-black/60 backdrop-blur-md text-on-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-outline/20">
+                        Ver Productos
                       </span>
-                      {cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'Agregado' : 'Cotizar'}
-                    </button>
+                    </div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <span className="font-label text-primary text-[10px] uppercase tracking-widest mb-2 block">
+                      {category.category}
+                    </span>
+                    <h3 className="font-headline text-2xl font-bold text-on-surface uppercase mb-4 tracking-tight group-hover:text-primary transition-colors">
+                      {category.name}
+                    </h3>
+                    <p className="font-body text-on-surface-variant text-sm flex-grow leading-relaxed">
+                      {category.desc}
+                    </p>
                   </div>
                 </div>
+              ))}
+            </div>
+          ) : (
+            <div className="mb-20">
+              <button 
+                onClick={() => setSelectedCategory(null)}
+                className="mb-8 flex items-center gap-2 text-primary font-bold uppercase tracking-wider hover:text-on-surface transition-colors"
+              >
+                <span className="material-symbols-outlined">arrow_back</span>
+                Volver a Categorías
+              </button>
+              <h2 className="text-3xl font-headline font-bold text-on-surface uppercase mb-10 border-b border-outline/10 pb-4">
+                {selectedCategory}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {(accessoriesData[selectedCategory as keyof typeof accessoriesData] || []).map((product) => (
+                  <div
+                    key={product.name}
+                    className="group flex flex-col bg-surface-variant/5 border border-outline/10 shadow-lg hover:border-primary/50 transition-all duration-300"
+                  >
+                    <div className="relative aspect-square overflow-hidden bg-white">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-700"
+                      />
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <span className="font-label text-primary text-[10px] uppercase tracking-widest mb-2 block">
+                        {selectedCategory}
+                      </span>
+                      <h3 className="font-headline text-lg font-bold text-on-surface mb-6 flex-grow">
+                        {product.name}
+                      </h3>
+
+                      <div className="pt-4 border-t border-outline/10 flex justify-end">
+                        <button
+                          type="button"
+                          onClick={() => addItem({ productSlug: product.name.toLowerCase().replace(/\s+/g, '-'), productName: product.name, productCategory: selectedCategory, productImage: product.image })}
+                          title={cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'Ya en cotización' : 'Agregar a cotización'}
+                          className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all w-full justify-center ${
+                            cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-'))
+                              ? 'bg-primary/10 text-primary border border-primary/30'
+                              : 'border border-outline/20 text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary/5'
+                          }`}
+                        >
+                          <span className="material-symbols-outlined text-[14px]">
+                            {cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'check' : 'add_shopping_cart'}
+                          </span>
+                          {cartItems.some(i => i.productSlug === product.name.toLowerCase().replace(/\s+/g, '-')) ? 'Agregado' : 'Cotizar'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </section>
 
         {/* CTA Section */}

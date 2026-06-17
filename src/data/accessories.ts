@@ -1,0 +1,380 @@
+export const accessoriesData = {
+  "Cierres centrales": [
+    {
+      "name": "Cierre central 1099",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8162-300x300.jpg"
+    },
+    {
+      "name": "Cierre central Appli",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8174-300x300.jpg"
+    },
+    {
+      "name": "Cierre central Chamical 1042",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2021/12/Prueba-1042-300x300.jpg"
+    },
+    {
+      "name": "Cierre central Chamical 1070",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2021/06/Prueba-1-cerra-300x300.jpg"
+    },
+    {
+      "name": "Cierre Central con Cerradura",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/05/8011-3-300x300.jpg"
+    },
+    {
+      "name": "Cierre central Guillotina H-120",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/08/8831--300x300.jpg"
+    },
+    {
+      "name": "Cierre central Guillotina H-120",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/08/8831--300x300.jpg"
+    },
+    {
+      "name": "Cierre central H-24",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8152-300x300.jpg"
+    },
+    {
+      "name": "Cierre central Tamara",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8154-300x300.jpg"
+    },
+    {
+      "name": "Cierre central Venus",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/08/8160.-300x300.jpg"
+    },
+    {
+      "name": "Cierre Chamical 1088",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2021/12/Prueba-1088-300x300.jpg"
+    }
+  ],
+  "Cierres laterales": [
+    {
+      "name": "Cierre lateral 1096",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8156-300x300.jpg"
+    },
+    {
+      "name": "Cierre lateral 1501 c/Kit Alfa",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2025/09/89763-300x300.png"
+    },
+    {
+      "name": "Cierre Lateral 1612",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/8957-300x300.jpg"
+    },
+    {
+      "name": "Cierre Lateral Brio C/sup.",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/02/8192-300x300.jpg"
+    },
+    {
+      "name": "Cierre Lateral Brio Mini Automático",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8198-300x300.jpg"
+    },
+    {
+      "name": "Cierre Lateral Brio Sin Kit",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/02/8191-300x300.jpg"
+    },
+    {
+      "name": "Cierre lateral Chamical 1308",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2021/12/8167-300x300.jpg"
+    },
+    {
+      "name": "Cierre Lateral Chamical 1308",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8176-300x300.jpg"
+    },
+    {
+      "name": "Cierre Lateral Chamical 1408",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8170-300x300.jpg"
+    },
+    {
+      "name": "Cierre lateral Chamical 1615 (H-64)",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2021/12/8970-300x300.jpg"
+    },
+    {
+      "name": "Cierre lateral de embutir Titan",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2021/12/8877-300x300.jpg"
+    },
+    {
+      "name": "Cierre lateral Génova",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/06/8165-300x300.jpg"
+    }
+  ],
+  "Conjunto Oscilobatiente": [
+    {
+      "name": "Angulo de Reenvio OB Fapim con Punto de cierre",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9235-300x300.jpg"
+    },
+    {
+      "name": "Bisagra Oscilo Coplanar Fapim",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9226-300x300.jpg"
+    },
+    {
+      "name": "Bisagra Oscilo No Coplanar Fapim",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9226-300x300.jpg"
+    },
+    {
+      "name": "Bloque Conexión OB Fapim",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9231-300x300.jpg"
+    },
+    {
+      "name": "Bloque Conexión OB Fapim",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9231-300x300.jpg"
+    },
+    {
+      "name": "Brazo de empuje 160mm H-63",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8931-2100889410N_001-e1706297420297-300x300.jpg"
+    },
+    {
+      "name": "Brazo de empuje 160mm H63",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9074-300x300.jpg"
+    },
+    {
+      "name": "Brazo de empuje 200mm",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8472-01321_001-e1706296026187-300x300.jpg"
+    },
+    {
+      "name": "Brazo de empuje 200mm Coplanar",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8487-01533_001-e1706296063640-300x300.jpg"
+    },
+    {
+      "name": "Brazo de empuje 224mm H-63",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8930-2100890410N_001-e1706296983927-300x300.jpg"
+    },
+    {
+      "name": "Brazo de empuje 224mm H63",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9074-300x300.jpg"
+    },
+    {
+      "name": "Brazo de empuje 300mm",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8473-01322_001-e1706294315612-300x300.jpg"
+    }
+  ],
+  "Cuñas": [
+    {
+      "name": "Burlete de Apoyo Baranda SP",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9165-300x300.jpg"
+    },
+    {
+      "name": "Burlete de Apoyo Baranda SPL",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9165-300x300.jpg"
+    },
+    {
+      "name": "Cuña plástica Baranda SP/SPL/SPU",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/01/9163.Bb_-300x300.jpg"
+    },
+    {
+      "name": "Cuña plástica Baranda SP/SPL/SPU",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/01/9163.Bb_-300x300.jpg"
+    },
+    {
+      "name": "Cuña plástica Baranda SP/SPL/SPU",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/01/9163.Bb_-300x300.jpg"
+    },
+    {
+      "name": "Cuñas plástica SP/SPL/SPU",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/01/9168-2-300x300.jpg"
+    }
+  ],
+  "Escuadras": [
+    {
+      "name": "&#8220;U&#8221; de armado",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/09/8522.-300x300.jpg"
+    },
+    {
+      "name": "&#8220;U&#8221; De Armado P/ 790",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/08/8751-57790_002_ESC-e1706291222761-300x300.jpg"
+    },
+    {
+      "name": "&#8220;U&#8221; de armado para 789",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8754-57789_002_ESC-300x300.jpg"
+    },
+    {
+      "name": "&#8220;U&#8221; de armado para 796",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8756-57799_002_ESC-300x300.jpg"
+    },
+    {
+      "name": "&#8220;U&#8221; de armado para 800",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/01/8757-57800_003_ESC-300x300.jpg"
+    },
+    {
+      "name": "Anclaje Columna ANC951",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9521-300x300.jpg"
+    },
+    {
+      "name": "Anclaje Columna ANC966",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9523-300x300.jpg"
+    },
+    {
+      "name": "Anclaje inferior columna (Anc 964)",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/08/9522.-300x300.jpg"
+    },
+    {
+      "name": "Boca de desagüe T-94",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8946-300x300.jpg"
+    },
+    {
+      "name": "Cierre Suplementarios Horizontal",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/9120-1-300x300.jpeg"
+    },
+    {
+      "name": "Cierre Suplementarios Vertical",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/9121-1-300x300.jpg"
+    },
+    {
+      "name": "Empalme de Columna LUV974",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9524-300x300.jpg"
+    }
+  ],
+  "Felpas y Burletes": [
+    {
+      "name": "Burlete Acople Paños",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9333-300x300.jpg"
+    },
+    {
+      "name": "Burlete Adaptador DVH",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9609-300x300.jpg"
+    },
+    {
+      "name": "Burlete apoyo vidrio fijo Silicona 2mm",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9364-300x300.jpg"
+    },
+    {
+      "name": "Burlete apoyo vidrio fijo Silicona 3mm",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9364-300x300.jpg"
+    },
+    {
+      "name": "Burlete Apoyo Vidrio Larguero Techo",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9605-300x300.jpg"
+    },
+    {
+      "name": "Burlete Apoyo Vidrio Travesaño Techo",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9606-300x300.jpg"
+    },
+    {
+      "name": "Burlete B-30",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8418-300x300.jpg"
+    },
+    {
+      "name": "Burlete B-31",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8418-300x300.jpg"
+    },
+    {
+      "name": "Burlete B-33 Baranda clásica para vidrio de 6 a 8 mm.",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8304-300x300.jpg"
+    },
+    {
+      "name": "Burlete B-37 P/Vidrio",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/09/8753-300x300.jpg"
+    },
+    {
+      "name": "Burlete B-52",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8444-300x300.jpg"
+    },
+    {
+      "name": "Burlete B-57",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8440-300x300.jpg"
+    }
+  ],
+  "Llaves": [
+    {
+      "name": "Llave virgen Tesa T-60",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/01/9500-300x300.jpg"
+    },
+    {
+      "name": "Llave virgen tesa TE-5",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/01/9501-1-scaled-1-300x300.jpg"
+    }
+  ],
+  "Mecanismo Multipunto": [
+    {
+      "name": "Cierre Gamma 2 Puntos",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9429-300x228.jpg"
+    },
+    {
+      "name": "Kit 174-1",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9424-300x300.jpg"
+    },
+    {
+      "name": "Kit 174-4",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9424-300x300.jpg"
+    },
+    {
+      "name": "Kit 177-3",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9447-300x300.jpg"
+    },
+    {
+      "name": "Kit 178-1",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9425-300x300.jpg"
+    },
+    {
+      "name": "Kit 178-2",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9425-300x300.jpg"
+    },
+    {
+      "name": "Kit 178-3",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9448-300x300.jpg"
+    },
+    {
+      "name": "Kit 178-4",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9425-300x300.jpg"
+    },
+    {
+      "name": "Kit 179-1",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9426-300x300.jpg"
+    },
+    {
+      "name": "Kit 179-2",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9426-300x300.jpg"
+    },
+    {
+      "name": "Kit 179-3",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9449-300x300.jpg"
+    },
+    {
+      "name": "Kit 179-4",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9426-300x300.jpg"
+    }
+  ],
+  "Otros": [
+    {
+      "name": "Anclaje Baranda Clásica",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/08/8303.-300x300.jpg"
+    },
+    {
+      "name": "Anclaje de Baranda Clásica perfil 476",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8302-300x300.jpg"
+    },
+    {
+      "name": "Anclaje Parasol Oval",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9968-300x300.jpg"
+    },
+    {
+      "name": "Anclaje Pared AA357",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/09/9967-300x300.jpg"
+    },
+    {
+      "name": "Anti Ruido Liviano",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2022/08/8359-300x300.jpg"
+    },
+    {
+      "name": "Antirruido Para Placard perfil 155",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8733-300x300.jpg"
+    },
+    {
+      "name": "Antirruido Para Placard perfil 159",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8733-300x300.jpg"
+    },
+    {
+      "name": "Antirruido Perfil 481",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8369-1-300x300.jpg"
+    },
+    {
+      "name": "Antirruidos 503/504",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8359-300x300.png"
+    },
+    {
+      "name": "Antirruidos livianos 103/104",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8359-300x300.png"
+    },
+    {
+      "name": "Antirruidos Parte ABB",
+      "image": "https://alcemar.com.ar/wp-content/uploads/2024/08/8377-300x300.jpg"
+    }
+  ]
+};

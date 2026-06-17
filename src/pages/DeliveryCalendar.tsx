@@ -98,7 +98,7 @@ const mapPaths: { [key: string]: string[] } = {
   'Cordillera / Sur': ['Junín de los Andes', 'San Martín de los Andes', 'Villa La Angostura', 'San Carlos de Bariloche']
 };
 
-function RouteMiniMap({ activeZone, selectedCity }: { activeZone: string | null; selectedCity: string | null }) {
+function RouteMiniMap({ activeZone, selectedCity, onNodeClick }: { activeZone: string | null; selectedCity: string | null; onNodeClick: (city: string) => void }) {
   const getPathD = (nodesList: string[]) => {
     const coords = nodesList
       .map(n => mapNodes.find(node => node.id === n))
@@ -253,7 +253,9 @@ function RouteMiniMap({ activeZone, selectedCity }: { activeZone: string | null;
             return (
               <g 
                 key={node.id} 
-                className="pointer-events-none"
+                onClick={() => onNodeClick(node.id)}
+                className="cursor-pointer hover:opacity-80 transition-opacity origin-center"
+                style={{ transformOrigin: `${node.x}px ${node.y}px` }}
               >
                 {/* Visual pulse for selected pin */}
                 {isSelected && (
@@ -264,11 +266,7 @@ function RouteMiniMap({ activeZone, selectedCity }: { activeZone: string | null;
                     fill="none"
                     stroke="#4caf50"
                     strokeWidth="1.5"
-                    className="origin-center"
-                    style={{
-                      animation: 'pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite',
-                      transformOrigin: `${node.x}px ${node.y}px`
-                    }}
+                    className="origin-center animate-ping"
                   />
                 )}
 

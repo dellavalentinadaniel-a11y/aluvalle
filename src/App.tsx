@@ -28,8 +28,8 @@ const TradicionalMachining = lazy(() => import('./pages/TradicionalMachining.tsx
 const TechnicalCatalog = lazy(() => import('./pages/TechnicalCatalog.tsx'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage.tsx'));
 const CarpinteriasPage = lazy(() => import('./pages/CarpinteriasPage.tsx'));
-const ProductsPage = lazy(() => import('./pages/ProductsPage.tsx'));
-const DeliveryCalendar = lazy(() => import('./pages/DeliveryCalendar.tsx'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const DeliveryCalendar = lazy(() => import('./pages/DeliveryCalendar'));
 const NewsPage = lazy(() => import('./pages/NewsPage.tsx'));
 const CartPage = lazy(() => import('./pages/CartPage.tsx'));
 
