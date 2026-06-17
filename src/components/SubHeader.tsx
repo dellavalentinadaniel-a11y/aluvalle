@@ -1,7 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-import { useTheme } from '../context/ThemeContext';
 import { useCalculator } from '../context/CalculatorContext';
 import { useBreadcrumb } from '../context/BreadcrumbContext';
 import { useCart } from '../context/CartContext';
@@ -18,11 +17,9 @@ interface SubHeaderProps {
  * Positioned globally under the main Header in Layout.
  */
 export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
-  const { theme, toggleTheme } = useTheme();
   const { items: calcItems } = useCalculator();
   const { items } = useBreadcrumb();
   const { totalItems: cartCount, openCart } = useCart();
-  const location = useLocation();
   const [calcOpen, setCalcOpen] = useState(false);
 
   return (
@@ -67,26 +64,13 @@ export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
 
         {/* Global Utilities Segment */}
         <div className="flex items-center gap-1.5 pl-4 border-l border-outline/5">
-          <UtilityButton 
-            icon="search" 
-            label="Buscar" 
-            title="Buscar" 
-          />
-          
-          <UtilityButton 
-            icon={theme === 'light' ? 'dark_mode' : 'light_mode'} 
-            label="Tema" 
-            title={`Modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
-            onClick={toggleTheme}
-          />
-
           {/* Desktop: mini calculadora popover */}
           <div className="hidden md:block relative">
             <button
               type="button"
               onClick={() => setCalcOpen((v: boolean) => !v)}
               aria-label="Calculadora de pesos"
-              aria-expanded={calcOpen ? "true" : "false"}
+              aria-expanded={calcOpen}
               title="Calculadora rápida de pesos"
               className={`relative p-2.5 transition-all rounded-xl hover:bg-surface-container group ${
                 calcOpen ? 'text-primary bg-primary/10' : 'text-on-surface hover:text-primary'
@@ -143,35 +127,9 @@ export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
               </motion.span>
             )}
           </button>
-
-          <Link
-            to="/perfil"
-            className={`p-2.5 rounded-xl transition-all hover:bg-surface-container group ${
-              location.pathname === '/perfil'
-                ? 'text-primary bg-primary/10'
-                : 'text-on-surface hover:text-primary'
-            }`}
-            title="Mi perfil"
-          >
-            <span className="material-symbols-outlined text-[22px] block font-variation-fill">account_circle</span>
-          </Link>
         </div>
       </div>
     </nav>
   );
 }
 
-/**
- * Small helper for utility icons to keep main component clean
- */
-function UtilityButton({ icon, onClick, title }: { icon: string, onClick?: () => void, label: string, title: string }) {
-  return (
-    <button
-      onClick={onClick}
-      className="material-symbols-outlined text-on-surface hover:text-primary transition-all p-2.5 rounded-xl hover:bg-surface-container text-[22px]"
-      title={title}
-    >
-      {icon}
-    </button>
-  );
-}

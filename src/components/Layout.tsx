@@ -1,7 +1,5 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { advertisingProducts } from '../data/affiliateProducts';
-import { AffiliateProductCard } from './AffiliateProductCard';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'motion/react';
 import CookieBanner from './CookieBanner';
@@ -12,6 +10,7 @@ import CartDrawer from './CartDrawer';
 import { useAuth } from '../context/AuthContext';
 import { AuthModal } from './AuthModal';
 import logoAluvalle from './logo-aluvalle-new.png';
+import logoAluvalle3D from './logo-aluvalle.png';
 
 export default function Layout() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -53,30 +52,14 @@ export default function Layout() {
     };
   }, []);
 
-  const advertisingCarouselRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll para el carrusel de publicidad
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (advertisingCarouselRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = advertisingCarouselRef.current;
-        // Si llegó al final, vuelve al principio. Agregamos un margen de 10px por si hay decimales.
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          advertisingCarouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          // Desplazar el ancho de un elemento
-          const scrollAmount = clientWidth > 768 ? clientWidth / 3 : clientWidth > 640 ? clientWidth / 2 : clientWidth * 0.8;
-          advertisingCarouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-      }
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const navLinks = [
+    { name: 'Noticias', path: '/noticias' },
+    { name: 'Empresa', path: '/sobre-nosotros' },
     {
       name: 'Productos',
+      path: '/productos',
       subLinks: [
         {
           name: 'Sistemas de ventanas y puertas',
@@ -105,10 +88,84 @@ export default function Layout() {
         { name: 'Catálogo de Accesorios', path: '/sistemas/accesorios' },
       ],
     },
-    { name: 'Proyectos Arquitectónicos', path: '/proyectos' },
-    { name: 'Red de Carpinterías', path: '/carpinterias' },
+    { name: 'Repartos', path: '/repartos' },
     { name: 'Oficina Técnica', path: '/oficina-tecnica' },
-    { name: 'Sostenibilidad', path: '/sostenibilidad' },
+  ];
+
+  const partners = [
+    {
+      name: 'Aluvalle',
+      render: () => (
+        <Link
+          to="/"
+          className="transition-all duration-300 hover:scale-125 hover:-translate-y-1.5 flex-shrink-0 flex items-center"
+          aria-label="Visitar Aluvalle"
+        >
+          <img
+            src={logoAluvalle3D}
+            alt="Aluvalle"
+            className="h-16 md:h-20 w-auto object-contain"
+          />
+        </Link>
+      )
+    },
+    {
+      name: 'Alcemar',
+      render: () => (
+        <a
+          href="https://alcemar.com.ar/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-all duration-300 hover:scale-125 hover:-translate-y-1.5 flex-shrink-0 flex items-center"
+          aria-label="Visitar Alcemar"
+        >
+          <img
+            src="/logo-alcemar.jpg"
+            alt="Alcemar"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
+        </a>
+      )
+    },
+    {
+      name: 'Aluar',
+      render: () => (
+        <a
+          href="https://aluar.com.ar/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-all duration-300 hover:scale-125 hover:-translate-y-1.5 flex-shrink-0 flex items-center"
+          aria-label="Visitar Aluar"
+        >
+          <img
+            src="/csm_aluar-logo_daa5258d9f.webp"
+            alt="Aluar"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
+        </a>
+      )
+    },
+    {
+      name: 'Seogrowthers',
+      render: () => (
+        <a
+          href="https://seogrowthers.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-[#090b0e] hover:bg-black text-white rounded-xl border border-outline/10 shadow-sm transition-all hover:scale-125 hover:-translate-y-1.5 hover:shadow-xl shrink-0"
+          aria-label="Visitar Seogrowthers"
+        >
+          <span className="font-headline font-black italic uppercase tracking-tighter text-xs text-white">
+            SEOGROWTHERS
+          </span>
+          <div className="w-5.5 h-5.5 bg-primary rounded flex items-center justify-center rotate-3 shrink-0">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-on-primary" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2S4.5 8.5 4.5 14c0 3 2.5 5.5 5.5 5.5.5 0 1.5-.5 2-.5s1.5.5 2 .5c3 0 5.5-2.5 5.5-5.5C19.5 8.5 12 2 12 2zm-2 18s.5 2 2 2 2-2 2-2H10z" />
+            </svg>
+          </div>
+        </a>
+      )
+    }
   ];
 
   return (
@@ -130,25 +187,28 @@ export default function Layout() {
               />
             </Link>
           </div>
-          <div className="hidden lg:flex items-center gap-8 font-headline tracking-tight font-bold uppercase text-sm">
+
+          {/* Menú y botón alineados a la derecha */}
+          <div className="hidden lg:flex items-center gap-8 ml-auto font-headline tracking-[0.12em] font-bold uppercase text-xs">
             {navLinks.map((link) =>
               link.subLinks ? (
                 <div key={link.name} className="relative group cursor-pointer">
-                  <div
-                    className={`flex items-center gap-1 ${location.pathname.startsWith('/sistemas') ? 'text-primary' : 'text-on-surface group-hover:text-primary'} transition-colors duration-300 py-4`}
+                  <Link
+                    to={link.path!}
+                    className={`flex items-center gap-1 ${location.pathname.startsWith('/productos') || location.pathname.startsWith('/sistemas') ? 'text-primary' : 'text-on-surface group-hover:text-primary'} transition-colors duration-300 py-4`}
                   >
                     {link.name}
                     <span className="material-symbols-outlined text-[1rem]">expand_more</span>
-                  </div>
+                  </Link>
                   <div
-                    className="absolute top-full left-0 mt-2 w-80 bg-surface/95 backdrop-blur-xl border border-outline/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)] opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-3 transition-all duration-500 flex flex-col z-50 rounded-[2rem] overflow-visible p-3"
+                    className="absolute top-full left-0 mt-2 w-80 bg-surface/75 backdrop-blur-2xl border border-outline/10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.5)] opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 flex flex-col z-50 rounded-[2rem] overflow-visible p-3"
                   >
                     <div className="flex flex-col gap-1">
                       {link.subLinks.map((sub) => (
                         <div key={sub.name} className="relative group/sub">
                           <Link
                             to={sub.path}
-                            className={`w-full px-6 py-4 text-[10px] font-headline tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary hover:bg-primary/8 transition-all flex items-center justify-between rounded-2xl ${sub.items ? 'cursor-default' : ''}`}
+                            className={`w-full px-6 py-3.5 text-[10px] font-headline tracking-[0.15em] uppercase text-on-surface-variant hover:text-primary hover:bg-primary/8 transition-all flex items-center justify-between rounded-xl ${sub.items ? 'cursor-default' : ''}`}
                           >
                             {sub.name}
                             {sub.items && (
@@ -160,7 +220,7 @@ export default function Layout() {
 
                           {sub.items && (
                             <div
-                              className="absolute left-full top-0 ml-3 w-72 bg-surface/98 backdrop-blur-xl border border-outline/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)] opacity-0 invisible group-hover/sub:visible group-hover/sub:opacity-100 group-hover/sub:translate-x-0 -translate-x-4 transition-all duration-500 flex flex-col z-[60] rounded-[2rem] p-3"
+                              className="absolute left-full top-0 ml-3 w-72 bg-surface/80 backdrop-blur-2xl border border-outline/10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.5)] opacity-0 invisible group-hover/sub:visible group-hover/sub:opacity-100 group-hover/sub:translate-x-0 -translate-x-3 transition-all duration-300 flex flex-col z-[60] rounded-[2rem] p-3"
                             >
                               <div className="flex flex-col gap-1">
                                 {sub.items.map((item) => (
@@ -193,50 +253,25 @@ export default function Layout() {
                 </Link>
               )
             )}
-          </div>
-          
-          <div className="flex items-center gap-6 ml-auto lg:ml-8">
+
+            {/* Botón de Contáctanos */}
             <Link
               to="/contact"
-              className="hidden lg:flex btn-gradient px-8 py-3 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] transform hover:-translate-y-0.5 active:scale-95 transition-all duration-300 items-center gap-2"
+              className="btn-gradient px-7 py-2.5 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_10px_20px_rgba(51,106,25,0.2)] hover:shadow-[0_15px_30px_rgba(51,106,25,0.3)] transform hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center gap-2"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse" />
               <span className="text-on-primary">Contáctanos</span>
             </Link>
+          </div>
 
-            {user ? (
-              <div className="hidden lg:flex items-center gap-3">
-                <Link
-                  to="/perfil"
-                  className="text-xs font-bold text-on-surface hover:text-primary truncate max-w-[120px] transition-colors flex items-center gap-1 bg-surface-container px-3 py-2 rounded-full border border-outline/10 hover:border-primary/30"
-                  title={user.email || ''}
-                >
-                  <span className="material-symbols-outlined text-[14px]">person</span>
-                  <span className="truncate">{user.email?.split('@')[0]}</span>
-                </Link>
-                <button
-                  onClick={() => signOut()}
-                  className="px-4 py-2 text-[10px] uppercase font-bold tracking-widest border border-outline/20 rounded-full hover:bg-red-500/10 hover:text-red-500 hover:border-red-500/20 transition-colors"
-                >
-                  Salir
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={() => setIsAuthModalOpen(true)}
-                className="hidden lg:flex px-4 py-2 text-[10px] uppercase font-bold tracking-widest border border-outline/20 rounded-full hover:bg-surface-container transition-colors"
-              >
-                Ingresar
-              </button>
-            )}
-
-            {/* Hamburger button — solo en mobile */}
+          {/* Botón hamburguesa alineado a la derecha en móviles */}
+          <div className="lg:hidden flex items-center gap-6 ml-auto">
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Abrir menú de navegación"
-              aria-expanded={isMobileMenuOpen ? "true" : "false"}
-              className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-xl hover:bg-surface-container transition-colors group"
+              aria-expanded={isMobileMenuOpen}
+              className="flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-xl hover:bg-surface-container transition-colors group"
             >
               <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
               <span className="block w-5 h-[2px] bg-on-surface group-hover:bg-primary transition-colors rounded-full" />
@@ -291,7 +326,7 @@ export default function Layout() {
                             setExpandedSubMenu(expandedSubMenu === link.name ? null : link.name)
                           }
                           className="w-full py-5 px-8 flex items-center justify-between font-headline text-sm tracking-widest uppercase text-on-surface-variant hover:bg-surface-container"
-                          aria-expanded={expandedSubMenu === link.name ? "true" : "false"}
+                          aria-expanded={expandedSubMenu === link.name}
                         >
                           {link.name}
                           <motion.span
@@ -368,62 +403,24 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      {/* Publicidad Recomendada */}
-      <section className="bg-surface-variant/5 border-t border-outline/10 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            <div className="lg:w-1/3">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface uppercase mb-4 leading-tight">
-                Herramientas <span className="text-primary">Pro</span>
-              </h2>
-              <p className="text-on-surface-variant text-sm mb-8 leading-relaxed">
-                Seleccionamos las mejores ofertas de Mercado Libre para tu taller. Calidad garantizada para profesionales del aluminio.
-              </p>
-              <div className="hidden lg:block p-6 bg-primary/5 border border-primary/10 rounded-2xl">
-                <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary mb-2">Publicidad</p>
-                <p className="text-xs text-on-surface-variant">Al comprar a través de estos enlaces, apoyas el mantenimiento de la plataforma Aluvalle.</p>
-              </div>
-            </div>
-            <div className="lg:w-2/3 grid grid-cols-1 gap-6 w-full max-w-xl mx-auto">
-              {advertisingProducts.slice(0, 3).map((p, i) => (
-                <AffiliateProductCard key={i} product={p} className="flex-row items-center !h-auto" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer - Partner logos band */}
       <footer className="w-full bg-surface-container-lowest font-body text-[10px] leading-relaxed">
-        {/* Logos socios - banda blanca */}
-        <div className="w-full bg-white py-5 px-6 flex items-center justify-center gap-10 md:gap-16">
-          <a
-            href="https://alcemar.com.ar/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity flex-shrink-0"
-            aria-label="Visitar Alcemar"
-          >
-            <img
-              src="/logo-alcemar.jpg"
-              alt="Alcemar"
-              className="h-10 md:h-14 w-auto object-contain"
-            />
-          </a>
-          <div className="w-px h-10 bg-gray-200" />
-          <a
-            href="https://aluar.com.ar/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity flex-shrink-0"
-            aria-label="Visitar Aluar"
-          >
-            <img
-              src="/csm_aluar-logo_daa5258d9f.webp"
-              alt="Aluar"
-              className="h-10 md:h-14 w-auto object-contain"
-            />
-          </a>
+        {/* Logos socios - banda blanca carrusel infinito */}
+        <div className="w-full bg-white py-6 overflow-hidden relative border-b border-outline/5 select-none flex items-center justify-center">
+          <div className="flex w-max gap-16 md:gap-24 items-center animate-marquee">
+            {/* Primera tanda */}
+            {partners.map((partner, index) => (
+              <div key={`partner-1-${index}`} className="flex items-center justify-center shrink-0">
+                {partner.render()}
+              </div>
+            ))}
+            {/* Segunda tanda (duplicada para efecto infinito) */}
+            {partners.map((partner, index) => (
+              <div key={`partner-2-${index}`} className="flex items-center justify-center shrink-0">
+                {partner.render()}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Separador con glow adaptativo */}

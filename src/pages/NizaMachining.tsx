@@ -1,19 +1,8 @@
-import { Settings, Scissors, Info, Download, ArrowLeft, Ruler, Wrench, ChevronLeft, ChevronRight, Cpu } from 'lucide-react';
+import { Info, Download, ArrowLeft, Wrench, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import { technicalTools, consumables as affiliateConsumables } from '../data/affiliateProducts';
-import { AffiliateProductCard } from '../components/AffiliateProductCard';
+import { useEffect } from 'react';
 
 export default function NizaMachining() {
-  const techCarouselRef = useRef<HTMLDivElement>(null);
-  const consCarouselRef = useRef<HTMLDivElement>(null);
-
-  const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
-    if (ref.current) {
-      const scrollAmount = ref.current.clientWidth > 1024 ? ref.current.clientWidth / 3 : ref.current.clientWidth > 768 ? ref.current.clientWidth / 2 : ref.current.clientWidth * 0.85;
-      ref.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-    }
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -104,45 +93,7 @@ export default function NizaMachining() {
           </a>
         </div>
 
-        {/* Technical Tools Section */}
-        <div className="mb-32">
-          <div className="flex items-center justify-between mb-12">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
-                <Settings className="w-6 h-6" />
-              </div>
-              <h2 className="text-3xl font-bold text-on-surface uppercase tracking-tight">Herramental Recomendado</h2>
-            </div>
-            <div className="flex gap-2">
-              <button 
-                onClick={() => scrollCarousel(techCarouselRef, 'left')}
-                className="p-3 rounded-xl border border-outline/10 hover:bg-surface-container transition-all text-on-surface"
-                title="Desplazar a la izquierda"
-                aria-label="Desplazar a la izquierda"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button 
-                onClick={() => scrollCarousel(techCarouselRef, 'right')}
-                className="p-3 rounded-xl border border-outline/10 hover:bg-surface-container transition-all text-on-surface"
-                title="Desplazar a la derecha"
-                aria-label="Desplazar a la derecha"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-          <div 
-            ref={techCarouselRef}
-            className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-8"
-          >
-            {technicalTools.map((tool) => (
-              <div key={tool.id} className="min-w-[300px] md:min-w-[380px]">
-                <AffiliateProductCard product={tool} />
-              </div>
-            ))}
-          </div>
-        </div>
+
 
         {/* Detailed Operations Grid */}
         <div className="mb-32">
@@ -170,47 +121,7 @@ export default function NizaMachining() {
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Consumables Section */}
-        <div className="mb-32">
-          <div className="flex items-center justify-between mb-12">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
-                <Scissors className="w-6 h-6" />
-              </div>
-              <h2 className="text-3xl font-bold text-on-surface uppercase tracking-tight">Consumibles y Cuidado</h2>
-            </div>
-            <div className="flex gap-2">
-              <button 
-                onClick={() => scrollCarousel(consCarouselRef, 'left')}
-                className="p-3 rounded-xl border border-outline/10 hover:bg-surface-container transition-all text-on-surface"
-                title="Desplazar a la izquierda"
-                aria-label="Desplazar a la izquierda"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button 
-                onClick={() => scrollCarousel(consCarouselRef, 'right')}
-                className="p-3 rounded-xl border border-outline/10 hover:bg-surface-container transition-all text-on-surface"
-                title="Desplazar a la derecha"
-                aria-label="Desplazar a la derecha"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-          <div 
-            ref={consCarouselRef}
-            className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-8"
-          >
-            {affiliateConsumables.map((item) => (
-              <div key={item.id} className="min-w-[300px] md:min-w-[380px]">
-                <AffiliateProductCard product={item} />
-              </div>
-            ))}
+                ))}
           </div>
         </div>
 

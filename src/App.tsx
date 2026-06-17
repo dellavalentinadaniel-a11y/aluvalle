@@ -28,6 +28,9 @@ const TradicionalMachining = lazy(() => import('./pages/TradicionalMachining.tsx
 const TechnicalCatalog = lazy(() => import('./pages/TechnicalCatalog.tsx'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage.tsx'));
 const CarpinteriasPage = lazy(() => import('./pages/CarpinteriasPage.tsx'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage.tsx'));
+const DeliveryCalendar = lazy(() => import('./pages/DeliveryCalendar.tsx'));
+const NewsPage = lazy(() => import('./pages/NewsPage.tsx'));
 
 import { CalculatorProvider } from './context/CalculatorContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -66,9 +69,12 @@ export default function App() {
               <Route path="complementarios" element={<Complementarios />} />
               <Route path="accesorios" element={<Accesorios />} />
             </Route>
+            <Route path="noticias" element={<NewsPage />} />
+            <Route path="productos" element={<ProductsPage />} />
             <Route path="productos/:slug" element={<ProductDetail />} />
             <Route path="catalogo-tecnico/:slug" element={<TechnicalCatalog />} />
             <Route path="oficina-tecnica" element={<TechnicalOffice />} />
+            <Route path="repartos" element={<DeliveryCalendar />} />
             <Route path="proyectos" element={<Projects />} />
             <Route path="sostenibilidad" element={<Sustainability />} />
             <Route path="contact" element={<Contact />} />
