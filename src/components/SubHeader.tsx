@@ -109,10 +109,9 @@ export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
           </Link>
 
           {/* Carrito de cotización */}
-          <button
-            type="button"
-            onClick={openCart}
-            aria-label="Abrir carrito de cotización"
+          <Link
+            to="/carrito"
+            aria-label="Ir al carrito de cotización"
             title="Solicitar cotización"
             className="relative p-2.5 rounded-xl transition-all hover:bg-surface-container text-on-surface hover:text-primary group"
           >
@@ -126,7 +125,7 @@ export function SubHeader({ isMainHeaderVisible = true }: SubHeaderProps) {
                 {cartCount}
               </motion.span>
             )}
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

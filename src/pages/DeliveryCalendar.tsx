@@ -98,13 +98,7 @@ const mapPaths: { [key: string]: string[] } = {
   'Cordillera / Sur': ['Junín de los Andes', 'San Martín de los Andes', 'Villa La Angostura', 'San Carlos de Bariloche']
 };
 
-interface RouteMiniMapProps {
-  activeZone: string | null;
-  selectedCity: string | null;
-  onNodeClick: (city: string) => void;
-}
-
-function RouteMiniMap({ activeZone, selectedCity, onNodeClick }: RouteMiniMapProps) {
+function RouteMiniMap({ activeZone, selectedCity }: { activeZone: string | null; selectedCity: string | null }) {
   const getPathD = (nodesList: string[]) => {
     const coords = nodesList
       .map(n => mapNodes.find(node => node.id === n))
@@ -114,7 +108,7 @@ function RouteMiniMap({ activeZone, selectedCity, onNodeClick }: RouteMiniMapPro
   };
 
   return (
-    <div className="w-full bg-surface-container-lowest/50 border border-outline/10 p-6 rounded-[2rem] shadow-xl flex flex-col justify-between">
+    <div className="w-full bg-surface-container-lowest/50 border border-outline/10 p-6 rounded-[2rem] shadow-xl flex flex-col justify-between select-none">
       <div className="mb-4">
         <span className="text-[9px] font-headline font-black uppercase text-primary tracking-widest block mb-1">
           Mapa de Recorridos
@@ -124,141 +118,183 @@ function RouteMiniMap({ activeZone, selectedCity, onNodeClick }: RouteMiniMapPro
         </h4>
       </div>
 
-      <div className="relative aspect-[4/3] w-full border border-outline/5 rounded-2xl bg-black/40 overflow-hidden">
-        {/* CSS Animations inside SVG */}
+      {/* Map box with Google Maps style colors */}
+      <div className="relative aspect-[4/3] w-full border border-outline/10 rounded-2xl bg-[#eae6df] dark:bg-[#1a2332] overflow-hidden shadow-inner">
         <svg viewBox="0 0 450 320" className="w-full h-full">
-          <defs>
-            <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#a0d87a" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#a0d87a" stopOpacity="0" />
-            </radialGradient>
-          </defs>
+          {/* Rivers: Limay, Neuquen, Rio Negro */}
+          {/* Rio Limay: Suroeste a Confluencia */}
+          <path
+            d="M 35 295 C 60 270 95 240 130 200 T 250 152"
+            fill="none"
+            stroke="#aad3df"
+            strokeWidth="8"
+            strokeLinecap="round"
+            className="opacity-70 dark:opacity-40"
+          />
+          {/* Rio Neuquen: Norte a Confluencia */}
+          <path
+            d="M 238 30 L 238 90 Q 242 120 250 152"
+            fill="none"
+            stroke="#aad3df"
+            strokeWidth="6"
+            strokeLinecap="round"
+            className="opacity-70 dark:opacity-40"
+          />
+          {/* Rio Negro: Confluencia hacia el Este */}
+          <path
+            d="M 250 152 Q 295 154 330 152 T 450 150"
+            fill="none"
+            stroke="#aad3df"
+            strokeWidth="10"
+            strokeLinecap="round"
+            className="opacity-70 dark:opacity-40"
+          />
 
-          <style>{`
-            @keyframes dash {
-              to {
-                stroke-dashoffset: -20;
-              }
-            }
-            @keyframes pulse {
-              0% {
-                transform: scale(1);
-                opacity: 0.9;
-              }
-              100% {
-                transform: scale(2.2);
-                opacity: 0;
-              }
-            }
-            .inactive-path {
-              stroke: #323539;
-              stroke-width: 2;
-              fill: none;
-              stroke-dasharray: 4 4;
-              opacity: 0.4;
-            }
-            .active-route-path {
-              stroke: #a0d87a;
-              stroke-width: 3.5;
-              fill: none;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              stroke-dasharray: 8 4;
-              animation: dash 1.2s linear infinite;
-              filter: drop-shadow(0 0 4px rgba(160, 216, 122, 0.6));
-            }
-            .node-pulse {
-              transform-origin: center;
-              animation: pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-            }
-          `}</style>
+          {/* Valleys/Green areas (Alto Valle fruit production areas) */}
+          <ellipse
+            cx="320"
+            cy="150"
+            rx="90"
+            ry="25"
+            fill="#d2f1d2"
+            className="opacity-60 dark:opacity-10 pointer-events-none"
+          />
+          <ellipse
+            cx="220"
+            cy="130"
+            rx="40"
+            ry="20"
+            fill="#d2f1d2"
+            className="opacity-60 dark:opacity-10 pointer-events-none"
+          />
+          <ellipse
+            cx="70"
+            cy="260"
+            rx="50"
+            ry="45"
+            fill="#d2f1d2"
+            className="opacity-60 dark:opacity-10 pointer-events-none"
+          />
 
-          {/* Grid lines background */}
-          <g opacity="0.05" stroke="#ffffff" strokeWidth="0.5">
-            <line x1="50" y1="0" x2="50" y2="320" />
-            <line x1="100" y1="0" x2="100" y2="320" />
-            <line x1="150" y1="0" x2="150" y2="320" />
-            <line x1="200" y1="0" x2="200" y2="320" />
-            <line x1="250" y1="0" x2="250" y2="320" />
-            <line x1="300" y1="0" x2="300" y2="320" />
-            <line x1="350" y1="0" x2="350" y2="320" />
-            <line x1="400" y1="0" x2="400" y2="320" />
-            
-            <line x1="0" y1="50" x2="450" y2="50" />
-            <line x1="0" y1="100" x2="450" y2="100" />
-            <line x1="0" y1="150" x2="450" y2="150" />
-            <line x1="0" y1="200" x2="450" y2="200" />
-            <line x1="0" y1="250" x2="450" y2="250" />
-            <line x1="0" y1="300" x2="450" y2="300" />
-          </g>
+          {/* Roads: Highway 22 (Ruta 22) */}
+          <path
+            d="M 40 150 L 90 150 L 115 155 L 170 150 L 205 150 L 240 150 L 260 150 L 285 150 L 310 150 L 350 150 L 410 150"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="4"
+            className="opacity-90 dark:opacity-20"
+          />
+          <path
+            d="M 40 150 L 90 150 L 115 155 L 170 150 L 205 150 L 240 150 L 260 150 L 285 150 L 310 150 L 350 150 L 410 150"
+            fill="none"
+            stroke="#ffd24d"
+            strokeWidth="2.5"
+            className="opacity-95 dark:opacity-30"
+          />
 
-          {/* Render paths */}
+          {/* Highway 151 / 7 (Norte a Cipolletti) */}
+          <path
+            d="M 240 35 L 240 120 L 260 150"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="3"
+            className="opacity-90 dark:opacity-20"
+          />
+          <path
+            d="M 240 35 L 240 120 L 260 150"
+            fill="none"
+            stroke="#ffeb80"
+            strokeWidth="1.5"
+            className="opacity-95 dark:opacity-30"
+          />
+
+          {/* Route 237 (Neuquen to Bariloche) */}
+          <path
+            d="M 240 150 C 210 170 160 210 100 210 L 80 290"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="3.5"
+            className="opacity-90 dark:opacity-20"
+          />
+          <path
+            d="M 240 150 C 210 170 160 210 100 210 L 80 290"
+            fill="none"
+            stroke="#ffd24d"
+            strokeWidth="2"
+            className="opacity-95 dark:opacity-30"
+          />
+
+          {/* Render Active Logistics Paths overlays */}
           {Object.entries(mapPaths).map(([zoneName, nodesList]) => {
             const isActive = activeZone === zoneName;
+            if (!isActive) return null;
             return (
               <path
                 key={zoneName}
                 d={getPathD(nodesList)}
-                className={isActive ? 'active-route-path' : 'inactive-path'}
-                transition="all 0.5s ease"
+                fill="none"
+                stroke="#4caf50"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="opacity-90 drop-shadow-[0_0_3px_rgba(76,175,80,0.6)]"
               />
             );
           })}
 
-          {/* Render city nodes */}
+          {/* Render cities as classic Google Maps Pins */}
           {mapNodes.map((node) => {
             const isSelected = selectedCity === node.id;
             const isInActiveZone = activeZone && mapPaths[activeZone]?.includes(node.id);
             
+            // Pin colors: Selected is green (#4caf50), Active Route is light red (#f44336), normal is grey (#90a4ae)
+            const pinColor = isSelected ? '#4caf50' : isInActiveZone ? '#ea4335' : '#90a4ae';
+
             return (
               <g 
                 key={node.id} 
-                className="cursor-pointer group"
-                onClick={() => onNodeClick(node.id)}
+                className="pointer-events-none"
               >
-                {/* Glow ring around selected node */}
+                {/* Visual pulse for selected pin */}
                 {isSelected && (
-                  <>
-                    <circle
-                      cx={node.x}
-                      cy={node.y}
-                      r="12"
-                      fill="url(#glowGrad)"
-                    />
-                    <circle
-                      cx={node.x}
-                      cy={node.y}
-                      r="10"
-                      fill="none"
-                      stroke="#a0d87a"
-                      strokeWidth="1.5"
-                      className="node-pulse"
-                      style={{ transformOrigin: `${node.x}px ${node.y}px` }}
-                    />
-                  </>
+                  <circle
+                    cx={node.x}
+                    cy={node.y}
+                    r="8"
+                    fill="none"
+                    stroke="#4caf50"
+                    strokeWidth="1.5"
+                    className="origin-center"
+                    style={{
+                      animation: 'pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite',
+                      transformOrigin: `${node.x}px ${node.y}px`
+                    }}
+                  />
                 )}
 
-                {/* Node Dot */}
+                {/* Classic Google Maps Pin Path */}
+                {/* Position anchor is at the tip (node.x, node.y) */}
+                <path
+                  d="M 0 0 C -2.5 -4, -5 -5, -5 -8 C -5 -11, -2.5 -13, 0 -13 C 2.5 -13, 5 -11, 5 -8 C 5 -5, 2.5 -4, 0 0 Z"
+                  fill={pinColor}
+                  stroke="#ffffff"
+                  strokeWidth="0.8"
+                  transform={`translate(${node.x}, ${node.y}) scale(${isSelected ? 1.3 : 1})`}
+                />
                 <circle
                   cx={node.x}
-                  cy={node.y}
-                  r={isSelected ? "6" : "4.5"}
-                  fill={isSelected ? "#a0d87a" : isInActiveZone ? "#86bc61" : "#42493c"}
-                  stroke="#111417"
-                  strokeWidth="1.5"
-                  className="transition-all duration-300 group-hover:fill-primary group-hover:scale-125"
-                  style={{ transformOrigin: `${node.x}px ${node.y}px` }}
+                  cy={node.y - (isSelected ? 10.4 : 8)}
+                  r={isSelected ? 1.8 : 1.3}
+                  fill="#ffffff"
                 />
 
                 {/* City Label */}
                 <text
                   x={node.x}
-                  y={node.y - 10}
+                  y={node.y - (isSelected ? 18 : 14)}
                   textAnchor="middle"
-                  fill={isSelected ? "#a0d87a" : isInActiveZone ? "#e1e2e8" : "#8c9383"}
-                  fontSize={isSelected ? "9" : "8"}
-                  fontWeight={isSelected || isInActiveZone ? "bold" : "normal"}
-                  className="pointer-events-none select-none tracking-tight font-sans transition-colors duration-300 group-hover:fill-white"
+                  fill={isSelected ? "#2d5a15" : isInActiveZone ? "#333333" : "#78909c"}
+                  className="dark:fill-[#b0bec5] pointer-events-none select-none tracking-tight font-sans font-bold text-[8px]"
                 >
                   {node.name}
                 </text>
@@ -270,9 +306,9 @@ function RouteMiniMap({ activeZone, selectedCity, onNodeClick }: RouteMiniMapPro
 
       <div className="mt-4 text-[10px] text-on-surface-variant/60 flex items-center justify-between">
         <span className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Ruta Activa
+          <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" /> Zona de Despacho
         </span>
-        <span className="italic">Haz clic en los nodos para buscar</span>
+        <span className="italic">Google Maps Layout</span>
       </div>
     </div>
   );
@@ -283,6 +319,8 @@ export default function DeliveryCalendar() {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   
   // Form state
+  const [formState, setFormState] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -290,7 +328,6 @@ export default function DeliveryCalendar() {
     orderNum: '',
     preferredDate: ''
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Flattened list of all cities for search auto-suggestions
   const allCitiesList = useMemo(() => {
@@ -367,10 +404,34 @@ export default function DeliveryCalendar() {
     return resultDate.toLocaleDateString('es-AR', options);
   };
 
+  const validateField = (name: string, value: string) => {
+    const newErrors = { ...errors };
+
+    if (!value.trim() && ['name', 'phone', 'city'].includes(name)) {
+      newErrors[name] = 'Este campo es requerido';
+    } else if (name === 'phone' && value.trim() && !value.match(/^[+]?[0-9]{8,15}$/)) {
+      newErrors[name] = 'Teléfono inválido (mínimo 8 dígitos numéricos)';
+    } else {
+      delete newErrors[name];
+    }
+
+    setErrors(newErrors);
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    validateField(name, value);
+  };
+
   const handleSelectCity = (city: string) => {
     setSelectedCity(city);
     setSearchQuery(city);
     setFormData(prev => ({ ...prev, city }));
+    setErrors(prev => {
+      const updated = { ...prev };
+      delete updated.city;
+      return updated;
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -380,7 +441,22 @@ export default function DeliveryCalendar() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+
+    const currentErrors: Record<string, string> = {};
+    if (!formData.name.trim()) currentErrors.name = 'Este campo es requerido';
+    if (!formData.city.trim()) currentErrors.city = 'Este campo es requerido';
+    if (!formData.phone.trim()) {
+      currentErrors.phone = 'Este campo es requerido';
+    } else if (!formData.phone.match(/^[+]?[0-9]{8,15}$/)) {
+      currentErrors.phone = 'Teléfono inválido (mínimo 8 dígitos)';
+    }
+
+    setErrors(currentErrors);
+
+    if (Object.keys(currentErrors).length === 0) {
+      setFormState('sending');
+      setTimeout(() => setFormState('success'), 1500);
+    }
   };
 
   // WhatsApp click handler
@@ -598,7 +674,7 @@ export default function DeliveryCalendar() {
 
         {/* Request Slot Form */}
         <section className="max-w-2xl mx-auto">
-          <div className="bg-surface-container-low/30 backdrop-blur-xl border border-outline/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative">
+          <div className="bg-surface-container-low/30 backdrop-blur-xl border border-outline/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
             <div className="text-center mb-10">
               <span className="text-[9px] font-headline font-black uppercase text-primary tracking-widest mb-2 block">
                 Logística Integrada
@@ -611,104 +687,230 @@ export default function DeliveryCalendar() {
               </p>
             </div>
 
-            <form onSubmit={handleFormSubmit} className="space-y-5 text-xs">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-[9px] font-headline font-black uppercase tracking-wider text-on-surface">Nombre Completo / Empresa *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="bg-surface-container-lowest/50 border border-outline/10 px-4 py-3 rounded-lg text-on-surface placeholder-on-surface/30 focus:outline-none focus:border-primary/50"
-                    placeholder="Tu nombre o Razón Social"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="phone" className="text-[9px] font-headline font-black uppercase tracking-wider text-on-surface">Teléfono de Contacto *</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="bg-surface-container-lowest/50 border border-outline/10 px-4 py-3 rounded-lg text-on-surface placeholder-on-surface/30 focus:outline-none focus:border-primary/50"
-                    placeholder="Ej: +54 9 299 1234567"
-                  />
-                </div>
-              </div>
+            <AnimatePresence mode="wait">
+              {formState !== 'success' ? (
+                <motion.div key="form-container" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -20 }}>
+                  <form onSubmit={handleFormSubmit} className="space-y-6 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="relative flex flex-col">
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          required
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          onBlur={handleBlur}
+                          placeholder=" "
+                          className={`peer w-full bg-surface-container-lowest/50 border text-on-surface pt-6 pb-2 px-4 rounded-xl outline-none transition-all text-sm placeholder-transparent ${
+                            errors.name
+                              ? 'border-red-500/50 focus:border-red-500'
+                              : 'border-outline/10 focus:border-primary/50'
+                          }`}
+                        />
+                        <label
+                          htmlFor="name"
+                          className="absolute left-4 top-4.5 text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold transition-all pointer-events-none
+                            peer-placeholder-shown:text-[10px] peer-placeholder-shown:top-4.5
+                            peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-primary
+                            peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px]"
+                        >
+                          Nombre Completo / Empresa *
+                        </label>
+                        {errors.name && <p className="text-red-500 text-[10px] font-semibold mt-1 pl-1">{errors.name}</p>}
+                      </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="flex flex-col gap-1.5 sm:col-span-2">
-                  <label htmlFor="city-form" className="text-[9px] font-headline font-black uppercase tracking-wider text-on-surface">Localidad de Obra / Taller *</label>
-                  <input
-                    type="text"
-                    id="city-form"
-                    name="city"
-                    required
-                    value={formData.city}
-                    onChange={handleInputChange}
-                    className="bg-surface-container-lowest/50 border border-outline/10 px-4 py-3 rounded-lg text-on-surface placeholder-on-surface/30 focus:outline-none focus:border-primary/50"
-                    placeholder="Ciudad a despachar"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="orderNum" className="text-[9px] font-headline font-black uppercase tracking-wider text-on-surface">Nº Pedido / Obra</label>
-                  <input
-                    type="text"
-                    id="orderNum"
-                    name="orderNum"
-                    value={formData.orderNum}
-                    onChange={handleInputChange}
-                    className="bg-surface-container-lowest/50 border border-outline/10 px-4 py-3 rounded-lg text-on-surface placeholder-on-surface/30 focus:outline-none focus:border-primary/50"
-                    placeholder="Opcional"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="preferredDate" className="text-[9px] font-headline font-black uppercase tracking-wider text-on-surface">Fecha o Rango de Reparto Preferido</label>
-                <input
-                  type="text"
-                  id="preferredDate"
-                  name="preferredDate"
-                  value={formData.preferredDate}
-                  onChange={handleInputChange}
-                  className="bg-surface-container-lowest/50 border border-outline/10 px-4 py-3 rounded-lg text-on-surface placeholder-on-surface/30 focus:outline-none focus:border-primary/50"
-                  placeholder="Ej: Próxima semana / Primera quincena de Julio"
-                />
-              </div>
-
-              <div className="pt-4">
-                {!formSubmitted ? (
-                  <button
-                    type="submit"
-                    className="btn-gradient w-full py-4 rounded-xl text-center text-[10px] font-headline font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:shadow-xl transition-all"
-                  >
-                    Confirmar Datos y Enviar
-                  </button>
-                ) : (
-                  <div className="space-y-4">
-                    <div className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-center text-primary font-bold">
-                      ¡Formulario completado correctamente!
+                      <div className="relative flex flex-col">
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          required
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          onBlur={handleBlur}
+                          placeholder=" "
+                          className={`peer w-full bg-surface-container-lowest/50 border text-on-surface pt-6 pb-2 px-4 rounded-xl outline-none transition-all text-sm placeholder-transparent ${
+                            errors.phone
+                              ? 'border-red-500/50 focus:border-red-500'
+                              : 'border-outline/10 focus:border-primary/50'
+                          }`}
+                        />
+                        <label
+                          htmlFor="phone"
+                          className="absolute left-4 top-4.5 text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold transition-all pointer-events-none
+                            peer-placeholder-shown:text-[10px] peer-placeholder-shown:top-4.5
+                            peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-primary
+                            peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px]"
+                        >
+                          Teléfono de Contacto *
+                        </label>
+                        {errors.phone && <p className="text-red-500 text-[10px] font-semibold mt-1 pl-1">{errors.phone}</p>}
+                      </div>
                     </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                      <div className="relative flex flex-col sm:col-span-2">
+                        <input
+                          type="text"
+                          id="city-form"
+                          name="city"
+                          required
+                          value={formData.city}
+                          onChange={handleInputChange}
+                          onBlur={handleBlur}
+                          placeholder=" "
+                          className={`peer w-full bg-surface-container-lowest/50 border text-on-surface pt-6 pb-2 px-4 rounded-xl outline-none transition-all text-sm placeholder-transparent ${
+                            errors.city
+                              ? 'border-red-500/50 focus:border-red-500'
+                              : 'border-outline/10 focus:border-primary/50'
+                          }`}
+                        />
+                        <label
+                          htmlFor="city-form"
+                          className="absolute left-4 top-4.5 text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold transition-all pointer-events-none
+                            peer-placeholder-shown:text-[10px] peer-placeholder-shown:top-4.5
+                            peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-primary
+                            peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px]"
+                        >
+                          Localidad de Obra / Taller *
+                        </label>
+                        {errors.city && <p className="text-red-500 text-[10px] font-semibold mt-1 pl-1">{errors.city}</p>}
+                      </div>
+
+                      <div className="relative flex flex-col">
+                        <input
+                          type="text"
+                          id="orderNum"
+                          name="orderNum"
+                          value={formData.orderNum}
+                          onChange={handleInputChange}
+                          placeholder=" "
+                          className="peer w-full bg-surface-container-lowest/50 border border-outline/10 text-on-surface pt-6 pb-2 px-4 rounded-xl outline-none transition-all text-sm placeholder-transparent focus:border-primary/50"
+                        />
+                        <label
+                          htmlFor="orderNum"
+                          className="absolute left-4 top-4.5 text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold transition-all pointer-events-none
+                            peer-placeholder-shown:text-[10px] peer-placeholder-shown:top-4.5
+                            peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-primary
+                            peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px]"
+                        >
+                          Nº Pedido / Obra
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="relative flex flex-col">
+                      <input
+                        type="text"
+                        id="preferredDate"
+                        name="preferredDate"
+                        value={formData.preferredDate}
+                        onChange={handleInputChange}
+                        placeholder=" "
+                        className="peer w-full bg-surface-container-lowest/50 border border-outline/10 text-on-surface pt-6 pb-2 px-4 rounded-xl outline-none transition-all text-sm placeholder-transparent focus:border-primary/50"
+                      />
+                      <label
+                        htmlFor="preferredDate"
+                        className="absolute left-4 top-4.5 text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold transition-all pointer-events-none
+                          peer-placeholder-shown:text-[10px] peer-placeholder-shown:top-4.5
+                          peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-primary
+                          peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px]"
+                      >
+                        Fecha o Rango de Reparto Preferido
+                      </label>
+                    </div>
+
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        disabled={formState === 'sending'}
+                        className="btn-gradient w-full py-4 rounded-xl text-center text-[10px] font-headline font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        {formState === 'sending' ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-on-primary/30 border-t-on-primary rounded-full animate-spin" />
+                            Coordinando...
+                          </>
+                        ) : (
+                          'Confirmar Datos y Enviar'
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="success-container"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-6 text-xs"
+                >
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="material-symbols-outlined text-primary text-3xl animate-bounce">
+                      check_circle
+                    </span>
+                  </div>
+                  <h3 className="font-headline text-xl font-black text-on-surface uppercase mb-3">
+                    ¡Solicitud Registrada!
+                  </h3>
+                  <p className="text-xs text-on-surface-variant mb-6 max-w-md mx-auto leading-relaxed">
+                    Hemos coordinado su solicitud de reparto de manera exitosa en nuestro sistema logístico interno. Para agilizar el despacho y confirmar detalles inmediatos con nuestro chófer, puede enviar el resumen a través de WhatsApp.
+                  </p>
+
+                  {/* Resumen de reserva premium */}
+                  <div className="bg-surface-container-lowest/50 border border-outline/10 rounded-2xl p-5 mb-8 text-left space-y-3">
+                    <h4 className="text-[9px] font-headline font-black uppercase text-primary tracking-widest border-b border-outline/5 pb-2">
+                      Resumen de Reparto
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4 text-[10px]">
+                      <div>
+                        <span className="text-on-surface-variant/50 block">Empresa / Cliente</span>
+                        <span className="text-on-surface font-bold">{formData.name}</span>
+                      </div>
+                      <div>
+                        <span className="text-on-surface-variant/50 block">Destino</span>
+                        <span className="text-on-surface font-bold uppercase">{formData.city}</span>
+                      </div>
+                      <div>
+                        <span className="text-on-surface-variant/50 block">Contacto</span>
+                        <span className="text-on-surface font-bold">{formData.phone}</span>
+                      </div>
+                      <div>
+                        <span className="text-on-surface-variant/50 block">Nº Pedido / Obra</span>
+                        <span className="text-on-surface font-bold">{formData.orderNum || 'No indicado'}</span>
+                      </div>
+                    </div>
+                    {formData.preferredDate && (
+                      <div className="pt-2 border-t border-outline/5 text-[10px]">
+                        <span className="text-on-surface-variant/50 block">Rango Preferido</span>
+                        <span className="text-primary font-bold">{formData.preferredDate}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <button
                       type="button"
                       onClick={triggerWhatsApp}
-                      className="bg-green-600 hover:bg-green-700 text-white w-full py-4 rounded-xl text-center text-[10px] font-headline font-black uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg transition-all"
+                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl text-center text-[10px] font-headline font-black uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer"
                     >
                       <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                       </svg>
-                      Enviar WhatsApp para Coordinar
+                      Enviar WhatsApp
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormState('idle')}
+                      className="text-on-surface-variant hover:text-on-surface border border-outline/10 hover:border-outline/30 px-6 py-4 rounded-xl transition-all text-[10px] font-headline font-black uppercase tracking-widest cursor-pointer"
+                    >
+                      Registrar Otro Reparto
                     </button>
                   </div>
-                )}
-              </div>
-            </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </section>
       </div>

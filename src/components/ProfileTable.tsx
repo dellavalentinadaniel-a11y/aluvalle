@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, Info, ShoppingCart, Check, Minus, Plus, Star } from 'lucide-react';
+import { ChevronDown, ChevronUp, Info, ShoppingCart, Check, Minus, Plus, Star, Search, Filter, ArrowUpDown } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 import { Profile } from '../data/profiles';
@@ -159,6 +159,30 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
     }, 2000);
   };
   
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<'code' | 'weight'>('code');
+  const [categoryFilter, setCategoryFilter] = useState('all');
+
+  const filteredProfiles = useMemo(() => {
+    let result = profiles.filter(p => 
+      (p.code.toLowerCase().includes(searchTerm.toLowerCase()) || 
+       p.description.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      (categoryFilter === 'all' || p.shape === categoryFilter)
+    );
+
+    result.sort((a, b) => {
+      if (sortBy === 'code') return a.code.localeCompare(b.code);
+      if (sortBy === 'weight') {
+        const wa = parseFloat(a.weight.replace(',', '.')) || 0;
+        const wb = parseFloat(b.weight.replace(',', '.')) || 0;
+        return wa - wb;
+      }
+      return 0;
+    });
+
+    return result;
+  }, [profiles, searchTerm, sortBy, categoryFilter]);
+
   // Create a Set of added codes for quick lookup to style rows
   const addedCodes = useMemo(() => new Set(items.map(item => item.productSlug)), [items]);
 
@@ -195,6 +219,50 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
           </div>
         </div>
 
+        {/* CONTROLES DE BÚSQUEDA Y FILTRADO */}
+        {isExpanded && (
+        <div className="bg-surface-container-lowest px-8 py-4 border-b border-outline/5 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="relative w-full md:max-w-xs">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant" />
+            <input 
+              type="text" 
+              placeholder="Buscar por código o descripción..." 
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+              className="w-full bg-surface-container-high border border-outline/10 text-sm text-on-surface rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:border-primary transition-colors"
+            />
+          </div>
+          
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <div className="relative w-full md:w-auto flex items-center bg-surface-container-high border border-outline/10 rounded-xl px-3 py-2.5">
+              <Filter className="w-4 h-4 text-on-surface-variant mr-2" />
+              <select 
+                value={categoryFilter}
+                onChange={e => setCategoryFilter(e.target.value)}
+                className="bg-transparent text-sm text-on-surface focus:outline-none appearance-none pr-6 cursor-pointer w-full"
+              >
+                <option value="all">Todas las formas</option>
+                {Array.from(new Set(profiles.map(p => p.shape))).filter(Boolean).map(shape => (
+                  <option key={shape} value={shape}>{shape?.charAt(0).toUpperCase() + shape?.slice(1)}</option>
+                ))}
+              </select>
+            </div>
+            
+            <div className="relative w-full md:w-auto flex items-center bg-surface-container-high border border-outline/10 rounded-xl px-3 py-2.5">
+              <ArrowUpDown className="w-4 h-4 text-on-surface-variant mr-2" />
+              <select 
+                value={sortBy}
+                onChange={e => setSortBy(e.target.value as 'code' | 'weight')}
+                className="bg-transparent text-sm text-on-surface focus:outline-none appearance-none pr-6 cursor-pointer w-full"
+              >
+                <option value="code">Ordenar por Código</option>
+                <option value="weight">Ordenar por Peso</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        )}
+
         <div className="overflow-auto max-h-[60vh] md:max-h-[70vh]">
           <table className="w-full text-left border-collapse relative">
             <thead className="sticky top-0 bg-surface-container-high z-10">
@@ -209,7 +277,7 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
             </thead>
             {isExpanded && (
               <tbody className="font-body text-sm">
-                {profiles.map((profile, index) => {
+                {filteredProfiles.map((profile, index) => {
                   const isAdded = addedCodes.has(profile.code);
                   return (
                     <tr
@@ -229,25 +297,7 @@ const ProfileTable: React.FC<ProfileTableProps> = ({ systemName, profiles, title
                       </td>
                       <td className="px-6 py-6">
                         <div className="flex items-center justify-center gap-2">
-                          <button
-                            onClick={() => toggleFavorite(profile.code)}
-                            className={`p-2 transition-all rounded-xl shadow-sm h-10 w-10 flex items-center justify-center border ${
-                              favorites[profile.code] 
-                                ? 'bg-secondary/10 text-secondary border-secondary/20 hover:bg-secondary/20' 
-                                : 'bg-surface-container-high/60 text-on-surface-variant border-outline/10 hover:border-secondary hover:text-secondary hover:bg-secondary/5'
-                            }`}
-                            title={favorites[profile.code] ? "Quitar de favoritos" : "Añadir a favoritos"}
-                          >
-                            <Star className={`w-5 h-5 ${favorites[profile.code] ? 'fill-secondary' : ''}`} />
-                          </button>
-                          <button
-                            onClick={() => setSelectedProfile(profile)}
-                            className="bg-surface-container-high/60 p-2 text-primary border border-outline/10 hover:bg-primary hover:text-on-primary transition-all rounded-xl shadow-sm h-10 w-10 flex items-center justify-center"
-                            title="Ver ficha técnica"
-                            aria-label={`Ver ficha técnica del perfil ${profile.code}`}
-                          >
-                            <Info className="w-5 h-5" />
-                          </button>
+                          
                           
                           <div className="flex items-center bg-surface-container-high/60 border border-outline/10 rounded-xl overflow-hidden shadow-sm h-10">
                             <button 

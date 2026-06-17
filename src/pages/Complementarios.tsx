@@ -9,36 +9,15 @@ const heroImages = [
   { src: '/gallery/hero-sistemas-banner/POPLE_(012).jpg', alt: 'Detalle de carpintería interior' },
 ];
 
-const productLines = [
-  {
-    name: 'Sistemas de Barandas',
-    slug: 'sistemas-de-barandas',
-    category: 'Balcones y Terrazas',
-    desc: 'Línea completa de barandas en aluminio (BBA, Clásica, SP, SPL, SPU) para cristal de seguridad o perfilería, garantizando protección y diseño.',
-    img: 'https://images.unsplash.com/photo-1579725942555-ea819e99ee2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    name: 'Cortinas de Enrollar',
-    slug: 'cortinas-de-enrollar',
-    category: 'Oscurecimiento',
-    desc: 'Sistemas de oscurecimiento y protección exterior fabricados en aluminio, brindando aislamiento térmico, acústico y seguridad.',
-    img: 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    name: 'Frentes de Placard',
-    slug: 'frentes-de-placard',
-    category: 'Mobiliario Interior',
-    desc: 'Perfilería diseñada para el armado de frentes de placard corredizos con deslizamiento suave, silencioso y de elegante terminación.',
-    img: 'https://images.unsplash.com/photo-1595514535415-eb1025ca4e5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    name: 'Sistemas de Mamparas',
-    slug: 'sistemas-de-mamparas',
-    category: 'Baños y Duchas',
-    desc: 'Diseños minimalistas para mamparas de baño de vidrio templado. Incluye sistemas corredizos (F-1, F-3), rebatibles y esquineros.',
-    img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  },
-];
+import { products } from '../data/products';
+
+const productLines = products.filter(p => p.categorySlug === 'complementarios').map(p => ({
+  name: p.name,
+  slug: p.slug,
+  category: p.category,
+  desc: p.introText,
+  img: p.heroImage || p.gallery[0] || 'https://images.unsplash.com/photo-1579725942555-ea819e99ee2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+}));
 
 export default function Complementarios() {
   const { addItem, items: cartItems } = useCart();

@@ -1665,13 +1665,50 @@ export const monacoTopProfiles: Profile[] = [
 ];
 
 export const frenteIntegralProfiles: Profile[] = [
-  { code: 'FI-101', weight: '2.10', shape: 'encuentro-4-hojas', description: 'Columna de Frente Integral' },
-  { code: 'FI-102', weight: '1.85', shape: 'travesaño', description: 'Travesaño de Frente Integral' }
+  { code: '126', weight: '1,03', txp: '3', description: 'Tapa Cosmética', shape: 'accesorio', page: '5' },
+  { code: '127', weight: '0,46', txp: '8', description: 'Portador', shape: 'accesorio', page: '5' },
+  { code: '783', weight: '0,74', txp: '4', description: 'Nariz frente integral', shape: 'accesorio', page: '3' },
+  { code: '784', weight: '0,54', txp: '4', description: 'Adaptador D.V.H', shape: 'acople', page: '5' },
+  { code: '788', weight: '1,90', txp: '2', description: 'Columna de 100 mm.', shape: 'encuentro-4-hojas', page: '3' },
+  { code: '789', weight: '2,11', txp: '2', description: 'Columna de 120 mm.', shape: 'encuentro-4-hojas', page: '3' },
+  { code: '790', weight: '1,19', txp: '2', description: 'Columna de 64 mm.', shape: 'encuentro-4-hojas', page: '3' },
+  { code: '791', weight: '0,44', txp: '8', description: 'Prensa', shape: 'accesorio', page: '5' },
+  { code: '792', weight: '0,37', txp: '8', description: 'Tapa', shape: 'accesorio', page: '5' },
+  { code: '796', weight: '2,63', txp: '2', description: 'Columna de 133.5 mm.', shape: 'encuentro-4-hojas', page: '4' },
+  { code: '797', weight: '0,67', txp: '4', description: 'Tapa Curva', shape: 'accesorio', page: '5' },
+  { code: '800', weight: '3,14', txp: '4', description: 'Columna de 180 mm.', shape: 'encuentro-4-hojas', page: '4' },
 ];
 
 export const frenteVidriadoProfiles: Profile[] = [
-  { code: 'FV-201', weight: '1.95', shape: 'encuentro-4-hojas', description: 'Columna de Frente Vidriado' },
-  { code: 'FV-202', weight: '1.70', shape: 'travesaño', description: 'Travesaño de Frente Vidriado' }
+  { code: '351', weight: '1,07', txp: '4', description: 'Media Columna Rotula Macho', shape: 'acople', page: '4' },
+  { code: '352', weight: '1,23', txp: '3', description: 'Media Columna Rotula Hembra', shape: 'acople', page: '4' },
+  { code: '359', weight: '0,75', txp: '5', description: 'Bota Agua Paño de Abrir p/ V.S', shape: 'botaagua', page: '8' },
+  { code: '367', weight: '1,05', txp: '4', description: 'Columna Divisoria', shape: 'encuentro-4-hojas', page: '2' },
+  { code: '368', weight: '1,78', txp: '2', description: 'Columna a 45º', shape: 'encuentro-4-hojas', page: '3' },
+  { code: '369', weight: '0,38', txp: '10', description: 'Tapa de Columna', shape: 'accesorio', page: '5' },
+  { code: '370', weight: '1,78', txp: '2', description: 'Columna a 90º', shape: 'encuentro-4-hojas', page: '3' },
+  { code: '371', weight: '0,66', txp: '6', description: 'Tapa Columna a 90º', shape: 'accesorio', page: '6' },
+  { code: '372', weight: '0,79', txp: '4', description: 'Tapa de Columna', shape: 'accesorio', page: '6' },
+  { code: '373', weight: '0,78', txp: '4', description: 'Parante de Hoja p/V.S', shape: 'parante', page: '8' },
+  { code: '374', weight: '0,68', txp: '5', description: 'Cabezal / Zócalo de Hoja p/V.S', shape: 'zocalo', page: '8' },
+  { code: '376', weight: '0,60', txp: '7', description: 'Hoja DVH en Offset', shape: 'hoja', page: '4' },
+  { code: '377', weight: '0,69', txp: '5', description: 'Hoja c/Contravidrio V.S', shape: 'hoja', page: '8' },
+  { code: '378', weight: '0,79', txp: '4', description: 'Bota Agua Paño Fijo', shape: 'botaagua', page: '8' },
+  { code: '761', weight: '0,64', txp: '6', description: 'Marco Perimetral', shape: 'marco', page: '6' },
+  { code: '762', weight: '0,57', txp: '7', description: 'Travesaño de Hoja para Vidrio Estructural', shape: 'travesaño', page: '6' },
+  { code: '763', weight: '0,68', txp: '4', description: 'Bota Agua Paño Fijo para Vidrio Estructural', shape: 'botaagua', page: '6' },
+  { code: '764', weight: '0,60', txp: '4', description: 'Bota Agua Paño de Abrir para Vidrio Estructural', shape: 'botaagua', page: '6' },
+  { code: '765', weight: '1,31', txp: '2', description: 'Columna de 57 mm', shape: 'encuentro-4-hojas', page: '2' },
+  { code: '766', weight: '0,56', txp: '8', description: 'Parante de Hoja para Vidrio Estructural', shape: 'parante', page: '6' },
+  { code: '767', weight: '1,82', txp: '2', description: 'Columna de 97 mm', shape: 'encuentro-4-hojas', page: '2' },
+  { code: '768', weight: '1,07', txp: '4', description: 'Media Columna de 97 mm', shape: 'acople', page: '3' },
+  { code: '769', weight: '0,63', txp: '6', description: 'Hoja D.V.H. Pegado para Vidrio Estructural', shape: 'hoja', page: '6' },
+  { code: '770', weight: '0,83', txp: '4', description: 'Hoja D.V.H. con Contravidrio', shape: 'hoja', page: '7' },
+  { code: '771', weight: '0,15', txp: '15', description: 'Contravidrio', shape: 'contravidrio', page: '7' },
+  { code: '781', weight: '0,85', txp: '2', description: 'Bota Agua Paño de abrir', shape: 'botaagua', page: '7' },
+  { code: '782', weight: '0,81', txp: '4', description: 'Bota Agua Paño fijo', shape: 'botaagua', page: '7' },
+  { code: '795', weight: '3,43', txp: '1', description: 'Columna 177 mm', shape: 'encuentro-4-hojas', page: '6' },
+  { code: '798', weight: '2,79', txp: '1', description: 'Columna Grande (151 mm)', shape: 'encuentro-4-hojas', page: '4' },
 ];
 
 export const barandasProfiles: Profile[] = [

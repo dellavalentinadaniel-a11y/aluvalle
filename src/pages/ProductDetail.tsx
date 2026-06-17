@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import ProfileTable from '../components/ProfileTable';
 import { useBreadcrumb } from '../context/BreadcrumbContext';
 import { TechTabs } from '../components/TechTabs';
-import { FloatingCTA } from '../components/FloatingCTA';
+
 import {
   traditionalProfiles,
   gammaProfiles,
@@ -40,6 +40,132 @@ export default function ProductDetail() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [cardSlide, setCardSlide] = useState(0);
+  const [activeCatalogTab, setActiveCatalogTab] = useState<'indice' | 'armado' | 'especificaciones'>('indice');
+
+  const catalogActions = product ? (
+    <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+      {/* Botón de Mecanizado (Corte / Armado) */}
+      {(product.slug === 'linea-tradicional' ||
+        product.slug === 'linea-gamma' ||
+        product.slug === 'linea-delta' ||
+        product.slug === 'linea-monaco' ||
+        product.slug === 'linea-atlantica' ||
+        product.slug === 'linea-niza' ||
+        product.slug === 'linea-mediterranea' ||
+        product.slug === 'linea-mediterranea-rpt') && (
+        <Link
+          to={
+            product.slug === 'linea-tradicional'
+              ? '/mecanizados/linea-tradicional'
+              : product.slug === 'linea-gamma'
+                ? '/mecanizados/linea-gamma'
+                : product.slug === 'linea-delta'
+                  ? '/mecanizados/linea-delta'
+                  : product.slug === 'linea-monaco'
+                    ? '/mecanizados/linea-monaco'
+                    : product.slug === 'linea-atlantica'
+                      ? '/mecanizados/linea-atlantica'
+                      : product.slug === 'linea-niza'
+                        ? '/mecanizados/linea-niza'
+                        : product.slug === 'linea-mediterranea'
+                          ? '/mecanizados/linea-mediterranea'
+                          : '/mecanizados/linea-mediterranea-rpt'
+          }
+          className="group flex items-center gap-3 bg-orange-500/10 border border-orange-500/20 px-4 py-2 hover:bg-orange-500 transition-all rounded-xl shadow-md cursor-pointer"
+        >
+          <div className="bg-orange-500 p-1.5 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+            <PenTool className="w-4 h-4 text-[#0b0e12] group-hover:text-orange-500" />
+          </div>
+          <div className="text-left">
+            <p className="text-[8px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+              Producción Técnica
+            </p>
+            <p className="text-on-surface text-xs font-bold group-hover:text-on-primary transition-colors">
+              Ver Manual de Mecanizado
+            </p>
+          </div>
+        </Link>
+      )}
+
+      {/* Botón de Descargar Catálogo / Ficha de Cortes */}
+      {product.slug === 'linea-tradicional' ? (
+        <Link
+          to={`/catalogo-tecnico/${product.slug}`}
+          className="group flex items-center gap-3 bg-primary/10 border border-primary/20 px-4 py-2 hover:bg-primary transition-all rounded-xl shadow-md cursor-pointer"
+        >
+          <div className="bg-primary p-1.5 rounded-lg group-hover:bg-background transition-colors">
+            <FileText className="w-4 h-4 text-on-primary group-hover:text-primary transition-colors" />
+          </div>
+          <div className="text-left">
+            <p className="text-[8px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+              Documentación Técnica
+            </p>
+            <p className="text-on-surface text-xs font-bold group-hover:text-on-primary transition-colors">
+              Ver Catálogo de Cortes
+            </p>
+          </div>
+        </Link>
+      ) : (
+        product.downloads.find((d) =>
+          d.type === 'PDF' &&
+          (d.label.toLowerCase().includes('técnico') ||
+            d.label.toLowerCase().includes('tecnico') ||
+            d.label.toLowerCase().includes('comercial') ||
+            d.label.toLowerCase().includes('catalogo') ||
+            d.label.toLowerCase().includes('catálogo'))
+        ) ? (
+          <a
+            href={
+              product.downloads.find((d) =>
+                d.type === 'PDF' &&
+                (d.label.toLowerCase().includes('técnico') ||
+                  d.label.toLowerCase().includes('tecnico') ||
+                  d.label.toLowerCase().includes('comercial') ||
+                  d.label.toLowerCase().includes('catalogo') ||
+                  d.label.toLowerCase().includes('catálogo'))
+              )?.url
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 bg-primary/10 border border-primary/20 px-4 py-2 hover:bg-primary transition-all rounded-xl shadow-md cursor-pointer"
+          >
+            <div className="bg-primary p-1.5 rounded-lg group-hover:bg-background transition-colors">
+              <FileText className="w-4 h-4 text-on-primary group-hover:text-primary transition-colors" />
+            </div>
+            <div className="text-left">
+              <p className="text-[8px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                Catálogo Completo
+              </p>
+              <p className="text-on-surface text-xs font-bold group-hover:text-on-primary transition-colors">
+                Descargar Catálogo
+              </p>
+            </div>
+          </a>
+        ) : (
+          product.downloads.find((d) => d.type === 'PDF') && (
+            <a
+              href={product.downloads.find((d) => d.type === 'PDF')?.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 bg-primary/10 border border-primary/20 px-4 py-2 hover:bg-primary transition-all rounded-xl shadow-md cursor-pointer"
+            >
+              <div className="bg-primary p-1.5 rounded-lg group-hover:bg-background transition-colors">
+                <FileText className="w-4 h-4 text-on-primary group-hover:text-primary transition-colors" />
+              </div>
+              <div className="text-left">
+                <p className="text-[8px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                  Catálogo Comercial
+                </p>
+                <p className="text-on-surface text-xs font-bold group-hover:text-on-primary transition-colors">
+                  Descargar Catálogo
+                </p>
+              </div>
+            </a>
+          )
+        )
+      )}
+    </div>
+  ) : null;
 
   const productLines = [
     { name: 'Línea Tradicional', slug: 'linea-tradicional', category: 'Sistemas Básicos', img: '/SISTEMA DE VENTANAS Y PUERTAS/TRADICIONAL (1).jpg' },
@@ -183,8 +309,6 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Floating CTA */}
-      <FloatingCTA showAfterSeconds={5} />
 
       {/* Overview & Specs */}
       <section className="max-w-7xl mx-auto px-6 py-12 md:py-24">
@@ -528,289 +652,560 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Profiles Table */}
-      {/* Profiles Table / Accordions for Monaco and others */}
-      {product.slug === 'linea-monaco' ? (
-        <section className="max-w-7xl mx-auto px-6 pb-24">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="font-headline text-3xl md:text-5xl font-bold text-on-surface uppercase mb-4">
-                Catálogo de Perfiles
-              </h2>
-              <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">
-                Explore las diferentes variantes y componentes de la Línea Mónaco. Seleccione una
-                categoría para ver el detalle de pesos y formas.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/testeos/linea-monaco"
-                className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl"
+      {/* Pestañas de Selección de Catálogo */}
+      <div className="max-w-7xl mx-auto px-6 pt-12">
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 bg-surface-container-low/80 border border-outline/10 rounded-2xl md:rounded-full shadow-inner backdrop-blur-md">
+            <button
+              onClick={() => setActiveCatalogTab('indice')}
+              className={`flex items-center gap-2 px-6 py-3.5 rounded-xl md:rounded-full text-xs font-headline font-black uppercase tracking-widest transition-all cursor-pointer ${
+                activeCatalogTab === 'indice'
+                  ? 'bg-white border border-outline/10 text-[#a0d87a] shadow-md'
+                  : 'text-on-surface hover:text-on-surface hover:bg-surface-container/50 border border-transparent'
+              }`}
+            >
+              <span className="material-symbols-outlined text-sm">layers</span>
+              Índice de Perfiles
+            </button>
+            <button
+              onClick={() => setActiveCatalogTab('armado')}
+              className={`flex items-center gap-2 px-6 py-3.5 rounded-xl md:rounded-full text-xs font-headline font-black uppercase tracking-widest transition-all cursor-pointer ${
+                activeCatalogTab === 'armado'
+                  ? 'bg-white border border-outline/10 text-[#a0d87a] shadow-md'
+                  : 'text-on-surface hover:text-on-surface hover:bg-surface-container/50 border border-transparent'
+              }`}
+            >
+              <span className="material-symbols-outlined text-sm">engineering</span>
+              Detalles de Armado
+            </button>
+            <button
+              onClick={() => setActiveCatalogTab('especificaciones')}
+              className={`flex items-center gap-2 px-6 py-3.5 rounded-xl md:rounded-full text-xs font-headline font-black uppercase tracking-widest transition-all cursor-pointer ${
+                activeCatalogTab === 'especificaciones'
+                  ? 'bg-white border border-outline/10 text-[#a0d87a] shadow-md'
+                  : 'text-on-surface hover:text-on-surface hover:bg-surface-container/50 border border-transparent'
+              }`}
+            >
+              <span className="material-symbols-outlined text-sm">settings_overscan</span>
+              Especificaciones Técnicas
+            </button>
+            {/* Botones de Descarga al lado de los tabs */}
+            {product.downloads?.filter(d => d.type === 'PDF').map((dl, idx) => (
+              <a
+                key={idx}
+                href={dl.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl md:rounded-full text-xs font-headline font-black uppercase tracking-widest transition-all cursor-pointer bg-[#a0d87a] text-black shadow-md hover:brightness-110 ml-0 md:ml-2"
               >
-                <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
-                  <Beaker className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
-                </div>
-                <div className="text-left">
-                  <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
-                    Ensayos Técnicos
-                  </p>
-                  <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
-                    Ver Reporte de Desempeño
-                  </p>
-                </div>
-              </Link>
-
-              <Link
-                to="/mecanizados/linea-monaco"
-                className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
-              >
-                <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
-                  <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
-                </div>
-                <div className="text-left">
-                  <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-[#0b0e12] font-bold">
-                    Producción Técnica
-                  </p>
-                  <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">
-                    Ver Manual de Mecanizado
-                  </p>
-                </div>
-              </Link>
-            </div>
+                <span className="material-symbols-outlined text-sm">download</span>
+                {dl.label}
+              </a>
+            ))}
           </div>
+        </div>
+      </div>
 
-          <div className="space-y-4">
-            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
-              <button
-                onClick={() =>
-                  setActiveAccordion(
-                    activeAccordion === 'monaco-standard' ? null : 'monaco-standard'
-                  )
-                }
-                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
-              >
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
-                    Mónaco Estándar
-                  </h3>
-                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
-                    Perfiles base para tipologías corredizas y batientes
-                  </p>
-                </div>
-                <ChevronDown
-                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'monaco-standard' ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {activeAccordion === 'monaco-standard' && (
-                <div className="p-1 sm:p-4 border-t border-[#323539]/20 animate-in fade-in slide-in-from-top-4 duration-300">
-                  <ProfileTable systemName="Mónaco Estándar" profiles={monacoProfiles} />
-                </div>
-              )}
-            </div>
+      <AnimatePresence mode="wait">
+        {activeCatalogTab === 'indice' && (
+          <motion.div
+            key="indice"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            {product.slug === 'linea-monaco' ? (
+              <section className="max-w-7xl mx-auto px-6 pb-24">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+                  <div className="max-w-2xl">
+                    <h2 className="font-headline text-3xl md:text-5xl font-bold text-on-surface uppercase mb-4">
+                      Catálogo de Perfiles
+                    </h2>
+                    <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">
+                      Explore las diferentes variantes y componentes de la Línea Mónaco. Seleccione una
+                      categoría para ver el detalle de pesos y formas.
+                    </p>
+                  </div>
 
-            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
-              <button
-                onClick={() =>
-                  setActiveAccordion(activeAccordion === 'monaco-top' ? null : 'monaco-top')
-                }
-                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
-              >
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
-                    Mónaco Top
-                  </h3>
-                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
-                    Sistemas de alta prestación reforzados
-                  </p>
-                </div>
-                <ChevronDown
-                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'monaco-top' ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {activeAccordion === 'monaco-top' && (
-                <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
-                  <ProfileTable systemName="Mónaco Top" profiles={monacoTopProfiles} />
-                </div>
-              )}
-            </div>
-            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
-              <button
-                onClick={() =>
-                  setActiveAccordion(activeAccordion === 'monaco-rpt' ? null : 'monaco-rpt')
-                }
-                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
-              >
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
-                    Mónaco RPT
-                  </h3>
-                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
-                    Sistemas con Ruptura de Puente Térmico
-                  </p>
-                </div>
-                <ChevronDown
-                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'monaco-rpt' ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {activeAccordion === 'monaco-rpt' && (
-                <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
-                  <ProfileTable systemName="Mónaco RPT" profiles={monacoRPTProfiles} />
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      ) : product.slug === 'linea-mediterranea' ? (
-        <section className="max-w-7xl mx-auto px-6 pb-24">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="font-headline text-3xl md:text-5xl font-bold text-on-surface uppercase mb-4">
-                Catálogo de Perfiles
-              </h2>
-              <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">
-                Explore las diferentes variantes y componentes de la Línea Mediterránea. Seleccione una
-                categoría para ver el detalle de pesos y formas.
-              </p>
-            </div>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link
+                      to="/testeos/linea-monaco"
+                      className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-6 py-4 hover:bg-primary transition-all rounded-xl"
+                    >
+                      <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                        <Beaker className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-[10px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                          Ensayos Técnicos
+                        </p>
+                        <p className="text-on-surface text-sm font-bold group-hover:text-on-primary transition-colors">
+                          Ver Reporte de Desempeño
+                        </p>
+                      </div>
+                    </Link>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/mecanizados/linea-mediterranea"
-                className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
-              >
-                <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
-                  <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                    <Link
+                      to="/mecanizados/linea-monaco"
+                      className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
+                    >
+                      <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                        <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-[#0b0e12] font-bold">
+                          Producción Técnica
+                        </p>
+                        <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">
+                          Ver Manual de Mecanizado
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                <div className="text-left">
-                  <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-[#0b0e12] font-bold">
-                    Producción Técnica
-                  </p>
-                  <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">
-                    Ver Manual de Mecanizado
-                  </p>
-                </div>
-              </Link>
-            </div>
-          </div>
 
-          <div className="space-y-4">
-            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
-              <button
-                onClick={() =>
-                  setActiveAccordion(
-                    activeAccordion === 'mediterranea-standard' ? null : 'mediterranea-standard'
-                  )
-                }
-                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
-              >
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
-                    Mediterránea Estándar
-                  </h3>
-                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
-                    Perfiles base de la línea premium
-                  </p>
-                </div>
-                <ChevronDown
-                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'mediterranea-standard' ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {activeAccordion === 'mediterranea-standard' && (
-                <div className="p-1 sm:p-4 border-t border-[#323539]/20 animate-in fade-in slide-in-from-top-4 duration-300">
-                  <ProfileTable systemName="Mediterránea Estándar" profiles={mediterraneaProfiles} />
-                </div>
-              )}
-            </div>
+                <div className="space-y-4">
+                  <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+                    <button
+                      onClick={() =>
+                        setActiveAccordion(
+                          activeAccordion === 'monaco-standard' ? null : 'monaco-standard'
+                        )
+                      }
+                      className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+                    >
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                          Mónaco Estándar
+                        </h3>
+                        <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                          Perfiles base para tipologías corredizas y batientes
+                        </p>
+                      </div>
+                      <ChevronDown
+                        className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'monaco-standard' ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {activeAccordion === 'monaco-standard' && (
+                      <div className="p-1 sm:p-4 border-t border-[#323539]/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <ProfileTable systemName="Mónaco Estándar" profiles={monacoProfiles} actions={catalogActions} />
+                      </div>
+                    )}
+                  </div>
 
-            <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
-              <button
-                onClick={() =>
-                  setActiveAccordion(activeAccordion === 'mediterranea-rpt' ? null : 'mediterranea-rpt')
-                }
-                className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
-              >
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
-                    Mediterránea RPT
+                  <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+                    <button
+                      onClick={() =>
+                        setActiveAccordion(activeAccordion === 'monaco-top' ? null : 'monaco-top')
+                      }
+                      className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+                    >
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                          Mónaco Top
+                        </h3>
+                        <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                          Sistemas de alta prestación reforzados
+                        </p>
+                      </div>
+                      <ChevronDown
+                        className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'monaco-top' ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {activeAccordion === 'monaco-top' && (
+                      <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <ProfileTable systemName="Mónaco Top" profiles={monacoTopProfiles} actions={catalogActions} />
+                      </div>
+                    )}
+                  </div>
+                  <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+                    <button
+                      onClick={() =>
+                        setActiveAccordion(activeAccordion === 'monaco-rpt' ? null : 'monaco-rpt')
+                      }
+                      className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+                    >
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                          Mónaco RPT
+                        </h3>
+                        <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                          Sistemas con Ruptura de Puente Térmico
+                        </p>
+                      </div>
+                      <ChevronDown
+                        className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'monaco-rpt' ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {activeAccordion === 'monaco-rpt' && (
+                      <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <ProfileTable systemName="Mónaco RPT" profiles={monacoRPTProfiles} actions={catalogActions} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </section>
+            ) : product.slug === 'linea-mediterranea' ? (
+              <section className="max-w-7xl mx-auto px-6 pb-24">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+                  <div className="max-w-2xl">
+                    <h2 className="font-headline text-3xl md:text-5xl font-bold text-on-surface uppercase mb-4">
+                      Catálogo de Perfiles
+                    </h2>
+                    <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">
+                      Explore las diferentes variantes y componentes de la Línea Mediterránea. Seleccione una
+                      categoría para ver el detalle de pesos y formas.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link
+                      to="/mecanizados/linea-mediterranea"
+                      className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-6 py-4 hover:bg-orange-500 transition-all rounded-xl"
+                    >
+                      <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                        <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-[10px] uppercase tracking-widest text-orange-500 group-hover:text-[#0b0e12] font-bold">
+                          Producción Técnica
+                        </p>
+                        <p className="text-white text-sm font-bold group-hover:text-[#0b0e12]">
+                          Ver Manual de Mecanizado
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+                    <button
+                      onClick={() =>
+                        setActiveAccordion(
+                          activeAccordion === 'mediterranea-standard' ? null : 'mediterranea-standard'
+                        )
+                      }
+                      className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+                    >
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                          Mediterránea Estándar
+                        </h3>
+                        <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                          Perfiles base de la línea premium
+                        </p>
+                      </div>
+                      <ChevronDown
+                        className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'mediterranea-standard' ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {activeAccordion === 'mediterranea-standard' && (
+                      <div className="p-1 sm:p-4 border-t border-[#323539]/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <ProfileTable systemName="Mediterránea Estándar" profiles={mediterraneaProfiles} actions={catalogActions} />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="border border-outline/30 bg-surface-container-low/50 overflow-hidden rounded-2xl">
+                    <button
+                      onClick={() =>
+                        setActiveAccordion(activeAccordion === 'mediterranea-rpt' ? null : 'mediterranea-rpt')
+                      }
+                      className="w-full flex items-center justify-between p-6 sm:p-8 text-left hover:bg-surface-container transition-colors"
+                    >
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-on-surface uppercase">
+                          Mediterránea RPT
+                        </h3>
+                        <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
+                          Sistemas con Ruptura de Puente Térmico
+                        </p>
+                      </div>
+                      <ChevronDown
+                        className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'mediterranea-rpt' ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {activeAccordion === 'mediterranea-rpt' && (
+                      <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <ProfileTable systemName="Mediterránea RPT" profiles={mediterraneaRPTProfiles} actions={catalogActions} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </section>
+            ) : (
+              (product.slug === 'linea-tradicional' ||
+                product.slug === 'linea-gamma' ||
+                product.slug === 'linea-delta' ||
+                product.slug === 'linea-atlantica' ||
+                product.slug === 'linea-niza' ||
+                product.slug === 'linea-mediterranea' ||
+                product.slug === 'linea-mediterranea-rpt' ||
+                product.slug === 'linea-monaco-rpt' ||
+                product.slug === 'frente-integral' ||
+                product.slug === 'frente-vidriado' ||
+                product.slug === 'sistemas-de-barandas' ||
+                product.slug === 'sistemas-de-mamparas' ||
+                product.slug === 'frentes-de-placard' ||
+                product.slug === 'cortinas-de-enrollar' ||
+                product.slug === 'sistema-de-lama-parasol' ||
+                product.slug === 'sistema-frame-de-junta-cerrada') && (
+                <section className="max-w-7xl mx-auto px-6 pb-24">
+                  <ProfileTable
+                    systemName={product.name}
+                    title="Catálogo de Perfiles"
+                    subtitle="Detalle técnico exhaustivo para especificación arquitectónica."
+                    actions={catalogActions}
+                    profiles={
+                      product.slug === 'linea-tradicional'
+                        ? traditionalProfiles
+                        : product.slug === 'linea-gamma'
+                          ? gammaProfiles
+                          : product.slug === 'linea-delta'
+                            ? deltaProfiles
+                            : product.slug === 'linea-atlantica'
+                              ? atlanticaProfiles
+                              : product.slug === 'linea-niza'
+                                ? nizaProfiles
+                                : product.slug === 'linea-mediterranea'
+                                  ? mediterraneaProfiles
+                                  : product.slug === 'linea-mediterranea-rpt'
+                                    ? mediterraneaRPTProfiles
+                                    : product.slug === 'linea-monaco-rpt'
+                                      ? monacoRPTProfiles
+                                      : product.slug === 'frente-integral'
+                                        ? frenteIntegralProfiles
+                                        : product.slug === 'frente-vidriado'
+                                          ? frenteVidriadoProfiles
+                                          : product.slug === 'sistemas-de-barandas'
+                                            ? barandasProfiles
+                                            : product.slug === 'sistemas-de-mamparas'
+                                              ? mamparasProfiles
+                                              : product.slug === 'frentes-de-placard'
+                                                ? placardProfiles
+                                                : product.slug === 'cortinas-de-enrollar'
+                                                  ? cortinasProfiles
+                                                  : product.slug === 'sistema-de-lama-parasol'
+                                                    ? lamaParasolProfiles
+                                                    : product.slug === 'sistema-frame-de-junta-cerrada'
+                                                      ? frameJuntaCerradaProfiles
+                                                      : complementariosProfiles
+                    }
+                  />
+                </section>
+              )
+            )}
+          </motion.div>
+        )}
+
+        {activeCatalogTab === 'armado' && (
+          <motion.div
+            key="armado"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <section className="max-w-7xl mx-auto px-6 pb-24">
+              <div className="w-full bg-surface border border-outline/10 shadow-xl overflow-hidden rounded-[2rem] p-8 md:p-12">
+                <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
+                  <div className="max-w-2xl flex-grow">
+                    <span className="text-[9px] font-headline font-black uppercase text-primary tracking-widest block mb-2">
+                      Esquemas de Mecanizado e Ingeniería
+                    </span>
+                    <h3 className="font-headline text-3xl font-bold text-on-surface uppercase mb-4 tracking-tight">
+                      Detalles de Armado - {product.name}
+                    </h3>
+                    <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
+                      El correcto armado de marcos y hojas requiere precisión milimétrica en los cortes a 45° o 90°, según la tipología. Disponemos de plantillas y planos técnicos detallados de punzonado, calado de fallebas y esquemas de ensamblado para taller.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                      <div className="flex gap-3 items-start bg-surface-container-low p-4 border border-outline/5 rounded-xl">
+                        <span className="material-symbols-outlined text-primary text-xl">content_cut</span>
+                        <div>
+                          <h4 className="font-bold text-xs uppercase tracking-wide text-on-surface">Corte de Perfiles</h4>
+                          <p className="text-[10px] text-on-surface-variant leading-relaxed">Cortes a 45° en marcos y hojas para sistemas premium, y cortes a 90° en complementarios.</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-3 items-start bg-surface-container-low p-4 border border-outline/5 rounded-xl">
+                        <span className="material-symbols-outlined text-primary text-xl">build</span>
+                        <div>
+                          <h4 className="font-bold text-xs uppercase tracking-wide text-on-surface">Punzonado y Calado</h4>
+                          <p className="text-[10px] text-on-surface-variant leading-relaxed">Mecanizado exacto para el paso de agua, desagües, burletes de EPDM y colocación de felpas.</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-3 items-start bg-surface-container-low p-4 border border-outline/5 rounded-xl">
+                        <span className="material-symbols-outlined text-primary text-xl">engineering</span>
+                        <div>
+                          <h4 className="font-bold text-xs uppercase tracking-wide text-on-surface">Escuadras de Armado</h4>
+                          <p className="text-[10px] text-on-surface-variant leading-relaxed">Utilización de escuadras de tracción de aluminio inyectado para encuentros perfectos.</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-3 items-start bg-surface-container-low p-4 border border-outline/5 rounded-xl">
+                        <span className="material-symbols-outlined text-primary text-xl">verified</span>
+                        <div>
+                          <h4 className="font-bold text-xs uppercase tracking-wide text-on-surface">Montaje de Accesorios</h4>
+                          <p className="text-[10px] text-on-surface-variant leading-relaxed">Instalación guiada de rodamientos regulables, fallebas, cierres laterales y felpas fin-seal.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="w-full lg:w-96 bg-surface-container-low border border-outline/10 p-6 md:p-8 rounded-3xl space-y-6 flex-shrink-0">
+                    <h4 className="font-headline text-xs font-bold uppercase tracking-wider text-primary">
+                      Documentación del Mecanizado
+                    </h4>
+                    <p className="text-[10px] text-on-surface-variant leading-relaxed">
+                      Descargue los planos a escala y la secuencia interactiva de punzonado para procesar los perfiles en su taller.
+                    </p>
+
+                    <div className="space-y-4">
+                      {(product.slug === 'linea-tradicional' ||
+                        product.slug === 'linea-gamma' ||
+                        product.slug === 'linea-delta' ||
+                        product.slug === 'linea-monaco' ||
+                        product.slug === 'linea-atlantica' ||
+                        product.slug === 'linea-niza' ||
+                        product.slug === 'linea-mediterranea' ||
+                        product.slug === 'linea-mediterranea-rpt') && (
+                        <Link
+                          to={`/mecanizados/${product.slug === 'linea-mediterranea-rpt' ? 'linea-mediterranea-rpt' : product.slug}`}
+                          className="group flex items-center gap-4 bg-orange-500/10 border border-orange-500/20 px-5 py-4 hover:bg-orange-500 transition-all rounded-xl w-full"
+                        >
+                          <div className="bg-orange-500 p-2 rounded-lg group-hover:bg-[#0b0e12] transition-colors">
+                            <PenTool className="w-5 h-5 text-[#0b0e12] group-hover:text-orange-500" />
+                          </div>
+                          <div className="text-left">
+                            <p className="text-[9px] uppercase tracking-widest text-orange-500 group-hover:text-on-primary font-bold">
+                              Guía Interactiva
+                            </p>
+                            <p className="text-on-surface text-xs font-bold group-hover:text-on-primary transition-colors">
+                              Ver Mecanizado en Pantalla
+                            </p>
+                          </div>
+                        </Link>
+                      )}
+
+                      {product.downloads.find(d => d.type === 'PDF' && (d.label.toLowerCase().includes('mecanizado') || d.label.toLowerCase().includes('armado') || d.label.toLowerCase().includes('corte'))) ? (
+                        <a
+                          href={product.downloads.find(d => d.type === 'PDF' && (d.label.toLowerCase().includes('mecanizado') || d.label.toLowerCase().includes('armado') || d.label.toLowerCase().includes('corte')))?.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-5 py-4 hover:bg-primary transition-all rounded-xl w-full"
+                        >
+                          <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                            <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                          </div>
+                          <div className="text-left">
+                            <p className="text-[9px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                              Manual Técnico
+                            </p>
+                            <p className="text-on-surface text-xs font-bold group-hover:text-on-primary transition-colors">
+                              Descargar PDF de Cortes
+                            </p>
+                          </div>
+                        </a>
+                      ) : (
+                        product.downloads.find(d => d.type === 'PDF') && (
+                          <a
+                            href={product.downloads.find(d => d.type === 'PDF')?.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-4 bg-primary/10 border border-primary/20 px-5 py-4 hover:bg-primary transition-all rounded-xl w-full"
+                          >
+                            <div className="bg-primary p-2 rounded-lg group-hover:bg-background transition-colors">
+                              <FileText className="w-5 h-5 text-on-primary group-hover:text-primary transition-colors" />
+                            </div>
+                            <div className="text-left">
+                              <p className="text-[9px] uppercase tracking-widest text-primary group-hover:text-on-primary font-bold">
+                                Catálogo Comercial
+                              </p>
+                              <p className="text-on-surface text-xs font-bold group-hover:text-on-primary transition-colors">
+                                Descargar Catálogo Completo
+                              </p>
+                            </div>
+                          </a>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </motion.div>
+        )}
+
+        {activeCatalogTab === 'especificaciones' && (
+          <motion.div
+            key="especificaciones"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <section className="max-w-7xl mx-auto px-6 pb-24">
+              <div className="w-full bg-surface border border-outline/10 shadow-xl overflow-hidden rounded-[2rem] p-8 md:p-12">
+                <div className="max-w-3xl mb-12">
+                  <span className="text-[9px] font-headline font-black uppercase text-primary tracking-widest block mb-2">
+                    Ficha Técnica de Homologación
+                  </span>
+                  <h3 className="font-headline text-3xl font-bold text-on-surface uppercase mb-4 tracking-tight">
+                    Especificaciones Técnicas - {product.name}
                   </h3>
-                  <p className="text-on-surface-variant text-xs uppercase tracking-widest mt-1">
-                    Sistemas con Ruptura de Puente Térmico
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
+                    Consulte las especificaciones certificadas para diseño estructural de aberturas de aluminio. Estos datos corresponden a ensayos en cámaras homologadas que validan el desempeño mecánico ante presiones y solicitaciones climáticas.
                   </p>
                 </div>
-                <ChevronDown
-                  className={`w-6 h-6 text-primary transition-transform duration-300 ${activeAccordion === 'mediterranea-rpt' ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {activeAccordion === 'mediterranea-rpt' && (
-                <div className="p-1 sm:p-4 border-t border-outline/20 animate-in fade-in slide-in-from-top-4 duration-300">
-                  <ProfileTable systemName="Mediterránea RPT" profiles={mediterraneaRPTProfiles} />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {product.specs.map((spec) => (
+                    <div
+                      key={spec.label}
+                      className="bg-surface-container-low border border-outline/5 p-6 rounded-2xl flex flex-col justify-between"
+                    >
+                      <span className="material-symbols-outlined text-primary text-2xl mb-4">
+                        {spec.icon}
+                      </span>
+                      <div>
+                        <span className="text-on-surface-variant text-[9px] uppercase tracking-widest block mb-1">
+                          {spec.label}
+                        </span>
+                        <span className="text-on-surface font-bold text-sm leading-snug block">
+                          {spec.value}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              )}
-            </div>
-          </div>
-        </section>
-      ) : (
-        (product.slug === 'linea-tradicional' ||
-          product.slug === 'linea-gamma' ||
-          product.slug === 'linea-delta' ||
-          product.slug === 'linea-atlantica' ||
-          product.slug === 'linea-niza' ||
-          product.slug === 'linea-mediterranea' ||
-          product.slug === 'linea-mediterranea-rpt' ||
-          product.slug === 'linea-monaco-rpt' ||
-          product.slug === 'frente-integral' ||
-          product.slug === 'frente-vidriado' ||
-          product.slug === 'sistemas-de-barandas' ||
-          product.slug === 'sistemas-de-mamparas' ||
-          product.slug === 'frentes-de-placard' ||
-          product.slug === 'cortinas-de-enrollar' ||
-          product.slug === 'sistema-de-lama-parasol' ||
-          product.slug === 'sistema-frame-de-junta-cerrada') && (
-          <section className="max-w-7xl mx-auto px-6 pb-24">
-            <ProfileTable
-              systemName={product.name}
-              title="Catálogo de Perfiles"
-              subtitle="Detalle técnico exhaustivo para especificación arquitectónica."
-              profiles={
-                product.slug === 'linea-tradicional'
-                  ? traditionalProfiles
-                  : product.slug === 'linea-gamma'
-                    ? gammaProfiles
-                    : product.slug === 'linea-delta'
-                      ? deltaProfiles
-                      : product.slug === 'linea-atlantica'
-                        ? atlanticaProfiles
-                        : product.slug === 'linea-niza'
-                          ? nizaProfiles
-                          : product.slug === 'linea-mediterranea'
-                            ? mediterraneaProfiles
-                            : product.slug === 'linea-mediterranea-rpt'
-                              ? mediterraneaRPTProfiles
-                              : product.slug === 'linea-monaco-rpt'
-                                ? monacoRPTProfiles
-                                : product.slug === 'frente-integral'
-                                  ? frenteIntegralProfiles
-                                  : product.slug === 'frente-vidriado'
-                                    ? frenteVidriadoProfiles
-                                    : product.slug === 'sistemas-de-barandas'
-                                      ? barandasProfiles
-                                      : product.slug === 'sistemas-de-mamparas'
-                                        ? mamparasProfiles
-                                        : product.slug === 'frentes-de-placard'
-                                          ? placardProfiles
-                                          : product.slug === 'cortinas-de-enrollar'
-                                            ? cortinasProfiles
-                                            : product.slug === 'sistema-de-lama-parasol'
-                                              ? lamaParasolProfiles
-                                              : product.slug === 'sistema-frame-de-junta-cerrada'
-                                                ? frameJuntaCerradaProfiles
-                                                : complementariosProfiles
-              }
-            />
-          </section>
-        )
-      )}
+
+                <div className="mt-12 pt-8 border-t border-outline/10 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="bg-surface-container-lowest/50 border border-outline/5 p-6 rounded-2xl">
+                    <h4 className="font-bold text-xs uppercase text-primary tracking-wider mb-2">Aleación y Templado</h4>
+                    <p className="text-[10px] text-on-surface-variant leading-relaxed">
+                      Extruido bajo normas IRAM en aleación de aluminio 6063 con temple T5 o T6, garantizando las propiedades mecánicas requeridas para perfiles estructurales expuestos a cargas de viento y flexiones.
+                    </p>
+                  </div>
+                  <div className="bg-surface-container-lowest/50 border border-outline/5 p-6 rounded-2xl">
+                    <h4 className="font-bold text-xs uppercase text-primary tracking-wider mb-2">Tratamientos Superficiales</h4>
+                    <p className="text-[10px] text-on-surface-variant leading-relaxed">
+                      Apto para anodizado químico electrolítico (mínimo 15 a 20 micrones para exteriores hostiles) o prepintado en poliéster al horno que protege contra la corrosión salina e intemperie.
+                    </p>
+                  </div>
+                  <div className="bg-surface-container-lowest/50 border border-outline/5 p-6 rounded-2xl">
+                    <h4 className="font-bold text-xs uppercase text-primary tracking-wider mb-2">Hermeticidad y Aislamiento</h4>
+                    <p className="text-[10px] text-on-surface-variant leading-relaxed">
+                      Cierres de doble y triple contacto por burletes de EPDM continuo, cámara compensadora de presiones y felpas de alta densidad siliconadas con barrera central de polietileno (Fin-Seal).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Lines Carousel Section */}
       <section className="bg-background py-24">

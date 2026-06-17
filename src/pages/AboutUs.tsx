@@ -1,4 +1,6 @@
 import { motion } from 'motion/react';
+import { useState } from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 const coreValues = [
   {
@@ -24,6 +26,17 @@ const coreValues = [
 ];
 
 export default function AboutUs() {
+  const videos = [
+    '/videos/reel1.mp4',
+    '/videos/reel2.mp4',
+    '/videos/reel3.mp4'
+  ];
+  const [currentVideo, setCurrentVideo] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const handleVideoEnd = () => {
+    setCurrentVideo((prev) => (prev + 1) % videos.length);
+  };
   return (
     <div className="min-h-screen pt-32 pb-20 bg-background text-on-surface-variant font-body relative overflow-hidden">
       {/* Background patterns */}
@@ -80,18 +93,41 @@ export default function AboutUs() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="aspect-video lg:aspect-square bg-surface-container/20 backdrop-blur-xl border border-outline/10 flex flex-col items-center justify-center p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden group"
+            className="aspect-[9/16] lg:aspect-[4/5] w-full max-w-md mx-auto bg-surface-container/20 backdrop-blur-xl border border-primary/40 flex flex-col items-center justify-center rounded-[2.5rem] shadow-[0_0_40px_rgba(51,106,25,0.15)] hover:shadow-[0_0_60px_rgba(51,106,25,0.3)] hover:border-primary/80 relative overflow-hidden group transition-all duration-500 p-1.5"
           >
-            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-            <span className="material-symbols-outlined text-7xl md:text-9xl text-primary animate-pulse mb-4">
-              architecture
-            </span>
-            <span className="font-headline font-black text-xs uppercase tracking-widest text-on-surface">
-              Sistemas de Alta Gama
-            </span>
-            <span className="text-[10px] text-on-surface-variant uppercase tracking-wider mt-1">
-              Homologados Alcemar S.A.
-            </span>
+            <div className="w-full h-full rounded-[2rem] overflow-hidden relative bg-black">
+              <video
+                key={currentVideo}
+                src={videos[currentVideo]}
+                autoPlay
+                muted={isMuted}
+                playsInline
+                onEnded={handleVideoEnd}
+                className="w-full h-full object-cover"
+              />
+              {/* Botón de control de volumen */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMuted(!isMuted);
+                }}
+                className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors border border-white/10"
+                aria-label={isMuted ? "Activar sonido" : "Silenciar sonido"}
+              >
+                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              </button>
+              {/* Controles indicadores de progreso */}
+              <div className="absolute bottom-6 left-0 w-full flex justify-center gap-2 z-10">
+                {videos.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
+                      idx === currentVideo ? 'w-8 bg-primary shadow-[0_0_12px_rgba(51,106,25,1)]' : 'w-2 bg-white/50 backdrop-blur-md'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
           </motion.div>
         </section>
 
@@ -159,6 +195,101 @@ export default function AboutUs() {
           </div>
           <div className="absolute left-[-10%] top-[-20%] w-[35%] h-[140%] bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
         </motion.div>
+
+        {/* Google Business Reviews Section */}
+        <section className="mt-28 mb-16">
+          <div className="text-center mb-16">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">
+              Opiniones de Clientes
+            </span>
+            <h2 className="text-2xl md:text-4xl font-headline font-black text-on-surface uppercase">
+              Google Business
+            </h2>
+            <div className="flex items-center justify-center gap-2 mt-4">
+              <span className="text-2xl font-black text-on-surface">5.0</span>
+              <div className="flex text-amber-500">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="material-symbols-outlined fill-current text-[20px] text-amber-500" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
+                ))}
+              </div>
+              <span className="text-xs text-on-surface-variant uppercase font-bold tracking-wider ml-1">Calificación de Excelencia</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Review 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-surface-container-low/30 backdrop-blur-lg p-8 border border-outline/10 hover:border-primary/30 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-lg relative overflow-hidden"
+            >
+              <div>
+                <div className="flex justify-between items-start gap-4 mb-4">
+                  <div>
+                    <h4 className="text-on-surface font-headline font-black uppercase text-sm">
+                      Daniel Alejandro Della Valentina
+                    </h4>
+                    <span className="text-[9px] uppercase tracking-widest text-primary font-bold">Cliente Oficial</span>
+                  </div>
+                  <div className="flex text-amber-500 shrink-0">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="material-symbols-outlined fill-current text-[16px] text-amber-500" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed italic text-on-surface-variant font-medium">
+                  "10 puntos! excelente los muchachos! PD: Tienen que poner a dieta al que sale a repartir!!"
+                </p>
+              </div>
+              <div className="flex items-center gap-2 mt-6 border-t border-outline/5 pt-4">
+                <span className="text-[9px] uppercase tracking-wider text-on-surface-variant/40">Reseña Verificada vía Google</span>
+              </div>
+            </motion.div>
+
+            {/* Review 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-surface-container-low/30 backdrop-blur-lg p-8 border border-outline/10 hover:border-primary/30 rounded-3xl transition-all duration-300 group flex flex-col justify-between shadow-lg relative overflow-hidden"
+            >
+              <div>
+                <div className="flex justify-between items-start gap-4 mb-4">
+                  <div>
+                    <h4 className="text-on-surface font-headline font-black uppercase text-sm">
+                      Daniel Della Valentina
+                    </h4>
+                    <span className="text-[9px] uppercase tracking-widest text-primary font-bold">Cliente Oficial</span>
+                  </div>
+                  <div className="flex text-amber-500 shrink-0">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="material-symbols-outlined fill-current text-[16px] text-amber-500" style={{ fontVariationSettings: '"FILL" 1' }}>star</span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed italic text-on-surface-variant font-medium">
+                  "Un placer fue trabajar con ustedes! Excelente atención!"
+                </p>
+              </div>
+              <div className="flex items-center gap-2 mt-6 border-t border-outline/5 pt-4">
+                <span className="text-[9px] uppercase tracking-wider text-on-surface-variant/40">Reseña Verificada vía Google</span>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="text-center">
+            <a
+              href="https://share.google/KvPIdr3HGfGvdGYBs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gradient inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-black text-[10px] tracking-[0.2em] uppercase text-on-primary shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <span className="material-symbols-outlined text-[16px] block">reviews</span>
+              Ver todas las opiniones en Google
+            </a>
+          </div>
+        </section>
       </div>
     </div>
   );

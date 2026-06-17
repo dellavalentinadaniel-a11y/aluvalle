@@ -86,7 +86,12 @@ export default function NewsPage() {
           {newsList.map((news) => (
             <div
               key={news.id}
-              className="group flex flex-col bg-surface-container/30 backdrop-blur-lg border border-outline/10 hover:border-primary/30 rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
+              onClick={() => setSelectedNews(news)}
+              onKeyDown={(e) => e.key === 'Enter' && setSelectedNews(news)}
+              className="group flex flex-col bg-surface-container/30 backdrop-blur-lg border border-outline/10 hover:border-primary/35 rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 cursor-pointer"
+              role="button"
+              tabIndex={0}
+              aria-label={`Leer noticia: ${news.title}`}
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-surface-container-high/40">
                 <img
@@ -111,15 +116,14 @@ export default function NewsPage() {
                   {news.summary}
                 </p>
 
-                <button
-                  onClick={() => setSelectedNews(news)}
-                  className="inline-flex items-center gap-1.5 text-primary font-bold text-[10px] uppercase tracking-[0.2em] hover:text-on-surface transition-colors mt-auto self-start"
+                <span
+                  className="inline-flex items-center gap-1.5 text-primary font-bold text-[10px] uppercase tracking-[0.2em] group-hover:text-on-surface transition-colors mt-auto self-start"
                 >
                   Leer Artículo
                   <span className="material-symbols-outlined text-[13px]">
                     arrow_forward
                   </span>
-                </button>
+                </span>
               </div>
             </div>
           ))}
